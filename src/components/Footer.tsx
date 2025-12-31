@@ -11,7 +11,7 @@ export function Footer() {
           <div className="flex flex-col gap-4">
             <Link to="/" className="flex items-center gap-2 w-fit">
               <Leaf className="w-8 h-8 text-green-400" />
-              <span className="font-bold text-xl">GreenFluxion</span>
+              <span className="font-bold text-xl">SPIROLINK</span>
             </Link>
             <p className="text-slate-400 text-sm">
               Innovative and sustainable digital solutions for modern businesses.
@@ -65,7 +65,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2 text-slate-400">
                 <Mail className="w-4 h-4" />
-                <span>hello@greenfluxion.com</span>
+                <span>hello@spirolink.com</span>
               </li>
               <li className="flex items-center gap-2 text-slate-400">
                 <Phone className="w-4 h-4" />
@@ -82,7 +82,7 @@ export function Footer() {
         <div className="border-t border-slate-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-slate-400 text-sm">
-              © {currentYear} GreenFluxion. All rights reserved.
+              © {currentYear} SPIROLINK. All rights reserved.
             </p>
             <div className="flex gap-4">
               <a

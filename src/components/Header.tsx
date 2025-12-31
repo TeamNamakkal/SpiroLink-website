@@ -1,65 +1,277 @@
-import { useState } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Leaf } from 'lucide-react';
+import styles from './Header.module.css';
+import MegaMenu from './MegaMenu';
+import MobileMenu from './MobileMenu';
+
+interface NavItem {
+  label: string;
+  href: string;
+  ariaLabel?: string;
+}
+
+const navItems: NavItem[] = [
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/services' },
+  { label: 'Resources', href: '/resources' },
+  { label: 'Contact', href: '/contact' },
+];
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const menuTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const menuButtonRef = useRef<HTMLButtonElement | null>(null);
+  const headerRef = useRef<HTMLHeaderElement | null>(null);
 
-  const navLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/services', label: 'Services' },
-    { path: '/resources', label: 'Resources' },
-    { path: '/contact', label: 'Contact' },
-  ];
+  // Handle scroll events
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Handle window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+      if (window.innerWidth >= 768) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Handle escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setActiveMenu(null);
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, []);
+
+  const handleMouseEnter = useCallback((itemLabel: string) => {
+    if (menuTimeoutRef.current) {
+      clearTimeout(menuTimeoutRef.current);
+    }
+    setActiveMenu(itemLabel);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    menuTimeoutRef.current = setTimeout(() => {
+      setActiveMenu(null);
+    }, 150); // 150ms delay before closing
+  }, []);
+
+  const handleMenuItemClick = useCallback((e: React.KeyboardEvent, itemLabel: string) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      setActiveMenu(activeMenu === itemLabel ? null : itemLabel);
+    }
+  }, [activeMenu]);
+
+  const handleMenuItemKeyDown = useCallback(
+    (e: React.KeyboardEvent, itemLabel: string) => {
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        const currentIndex = navItems.findIndex(item => item.label === itemLabel);
+        const nextIndex = (currentIndex + 1) % navItems.length;
+        navItems[nextIndex].label && setActiveMenu(navItems[nextIndex].label);
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const currentIndex = navItems.findIndex(item => item.label === itemLabel);
+        const prevIndex = (currentIndex - 1 + navItems.length) % navItems.length;
+        navItems[prevIndex].label && setActiveMenu(navItems[prevIndex].label);
+      }
+    },
+    []
+  );
 
   return (
-    <header className="fixed w-full top-0 z-50 bg-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center gap-2 group">
-            <Leaf className="w-8 h-8 text-green-600 group-hover:text-green-700 transition-colors" />
-            <span className="font-bold text-xl text-slate-900">GreenFluxion</span>
-          </Link>
+    <>
+      <header
+        ref={headerRef}
+        className={`fixed top-0 left-0 right-0 h-[72px] z-50 transition-all duration-300 ${
+          scrolled ? 'bg-black/92 backdrop-blur-sm' : 'bg-[#0b0b0b]'
+        }`}
+        role="banner"
+      >
+        <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <Link
+              to="/"
+              className="flex items-center gap-3 hover:opacity-80 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded px-2 py-1"
+              aria-label="SPIROLINK Home"
+            >
+              <img 
+                src="/assets/spirolink-logo.svg" 
+                alt="SPIROLINK" 
+                className="h-8 w-8"
+              />
+              <span className="text-white font-bold text-lg hidden sm:inline">SPIROLINK</span>
+            </Link>
+          </div>
 
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                to={link.path}
-                className="font-medium text-slate-700 hover:text-green-600 transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-7 flex-1 justify-center" aria-label="Main navigation">
+            {navItems.map((item) => {
+              const hasMenu = item.label === 'Services';
+              return (
+                <div
+                  key={item.label}
+                  className="relative"
+                  onMouseEnter={() => hasMenu && handleMouseEnter(item.label)}
+                  onMouseLeave={() => hasMenu && handleMouseLeave()}
+                >
+                  {hasMenu ? (
+                    <button
+                      onClick={() => setActiveMenu(activeMenu === item.label ? null : item.label)}
+                      onKeyDown={(e) => (handleMenuItemClick(e, item.label), handleMenuItemKeyDown(e, item.label))}
+                      className={`navItem relative text-white text-sm font-medium leading-tight py-2 px-1 transition-colors duration-200 hover:text-gray-300 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 flex items-center gap-1 ${
+                        styles.navItem
+                      }`}
+                      aria-expanded={activeMenu === item.label}
+                      aria-haspopup="true"
+                    >
+                      {item.label}
+                      <svg
+                        className={`w-3 h-3 transition-transform duration-300 ${
+                          activeMenu === item.label ? 'rotate-180' : ''
+                        }`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                        />
+                      </svg>
+                      <div className={styles.navUnderline} />
+                    </button>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      className={`navItem relative text-white text-sm font-medium leading-tight py-2 px-1 transition-colors duration-200 hover:text-gray-300 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 flex items-center gap-1 block ${
+                        styles.navItem
+                      }`}
+                    >
+                      {item.label}
+                      <div className={styles.navUnderline} />
+                    </Link>
+                  )}
+
+                  {/* Mega Menu - Only for Services */}
+                  {hasMenu && activeMenu === item.label && (
+                    <div
+                      onMouseEnter={() => handleMouseEnter(item.label)}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <MegaMenu
+                        itemLabel={item.label}
+                        isOpen={activeMenu === item.label}
+                      />
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </nav>
 
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 hover:bg-gray-100 rounded-lg"
-          >
-            {isMenuOpen ? (
-              <X className="w-6 h-6 text-slate-900" />
-            ) : (
-              <Menu className="w-6 h-6 text-slate-900" />
-            )}
-          </button>
+          {/* Right side actions */}
+          <div className="flex items-center gap-6">
+            {/* Search Icon */}
+            <button
+              className="hidden md:flex text-white hover:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+              aria-label="Search"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </button>
+
+            {/* Language Selector */}
+            <button
+              className="hidden md:flex text-white text-sm font-medium hover:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+              aria-label="Language selector"
+            >
+              IND
+            </button>
+
+            {/* Sign In */}
+            <button
+              className="hidden md:flex text-white text-sm font-medium hover:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+              aria-label="Sign in"
+            >
+              Sign in
+            </button>
+
+            {/* Mobile Menu Button */}
+            <button
+              ref={menuButtonRef}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden flex flex-col gap-1.5 text-white hover:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 p-2"
+              aria-label="Toggle navigation menu"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
+            >
+              <span
+                className={`block h-0.5 w-6 bg-white transition-all duration-300 ${
+                  mobileMenuOpen ? 'rotate-45 translate-y-2' : ''
+                }`}
+              />
+              <span
+                className={`block h-0.5 w-6 bg-white transition-all duration-300 ${
+                  mobileMenuOpen ? 'opacity-0' : ''
+                }`}
+              />
+              <span
+                className={`block h-0.5 w-6 bg-white transition-all duration-300 ${
+                  mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                }`}
+              />
+            </button>
+          </div>
         </div>
+      </header>
 
-        {isMenuOpen && (
-          <nav className="md:hidden pb-4 space-y-2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                to={link.path}
-                onClick={() => setIsMenuOpen(false)}
-                className="block px-4 py-2 rounded-lg transition-colors text-slate-700 hover:bg-green-50"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        )}
-      </div>
-    </header>
+      {/* Mobile Menu */}
+      {isMobile && (
+        <MobileMenu
+          isOpen={mobileMenuOpen}
+          onClose={() => setMobileMenuOpen(false)}
+          navItems={navItems}
+        />
+      )}
+
+      {/* Spacer for sticky header */}
+      <div className="h-[72px]" />
+    </>
   );
 }

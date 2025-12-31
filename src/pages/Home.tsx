@@ -7,7 +7,7 @@ import StayTuned from '../components/StayTuned';
 export default function Home() {
   return (
     <>
-      {/* GreenFluxion Hero - Original Design */}
+      {/* SPIROLINK Hero - Original Design */}
       <Section className="bg-gradient-to-br from-green-50 to-blue-50 py-32">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
@@ -15,7 +15,7 @@ export default function Home() {
               Innovative & Sustainable Digital Solutions
             </h1>
             <p className="text-xl text-slate-700 mb-8">
-              GreenFluxion transforms your vision into powerful digital products. We build modern,
+              SPIROLINK transforms your vision into powerful digital products. We build modern,
               scalable solutions that drive growth and efficiency.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -234,7 +234,7 @@ export default function Home() {
       {/* END: Enterprise Wi-Fi Network Module - HOME PAGE OVERVIEW */}
       <Section className="bg-slate-50">
         <SectionHeading
-          title="Why Choose GreenFluxion"
+          title="Why Choose SPIROLINK"
           subtitle="Expert Solutions"
           centered={true}
         />
@@ -274,7 +274,7 @@ export default function Home() {
               </button>
             </Link>
             <button
-              onClick={() => alert('Request a Quote functionality coming soon. Contact us directly at hello@greenfluxion.com')}
+              onClick={() => alert('Request a Quote functionality coming soon. Contact us directly at hello@spirolink.com')}
               className="px-8 py-4 text-lg font-semibold rounded-lg bg-white text-green-600 hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all inline-flex items-center justify-center gap-2"
             >
               Request a Quote <ArrowRight className="w-5 h-5" />

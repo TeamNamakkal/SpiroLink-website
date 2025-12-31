@@ -754,10 +754,10 @@ export default function OpticalLongHaul() {
             If you are planning, upgrading, or operating a long-haul optical transport network, we can support your engineering and planning objectives.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <a href="mailto:hello@greenfluxion.com" className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center">
+            <a href="mailto:hello@spirolink.com" className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center">
               <Mail className="w-12 h-12 text-green-600 mx-auto mb-4" />
               <h3 className="font-bold text-slate-900 mb-2">Email</h3>
-              <p className="text-green-600 hover:text-green-700 font-medium">hello@greenfluxion.com</p>
+              <p className="text-green-600 hover:text-green-700 font-medium">hello@spirolink.com</p>
             </a>
 
             <a href="tel:+15551234567" className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center">

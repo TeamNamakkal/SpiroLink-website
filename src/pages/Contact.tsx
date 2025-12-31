@@ -72,8 +72,8 @@ export default function Contact() {
             {
               icon: Mail,
               title: 'Email',
-              detail: 'hello@greenfluxion.com',
-              link: 'mailto:hello@greenfluxion.com',
+              detail: 'hello@spirolink.com',
+              link: 'mailto:hello@spirolink.com',
             },
             {
               icon: Phone,

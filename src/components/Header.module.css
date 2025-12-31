@@ -1,0 +1,238 @@
+/* Header Animations & Styles */
+
+/* Underline animation - grows from center outward */
+@keyframes underlineGrow {
+  from {
+    transform: scaleX(0);
+    transform-origin: center;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: center;
+  }
+}
+
+/* Underline animation - shrinks to center */
+@keyframes underlineShrink {
+  from {
+    transform: scaleX(1);
+    transform-origin: center;
+  }
+  to {
+    transform: scaleX(0);
+    transform-origin: center;
+  }
+}
+
+/* Fade and slide down animation for mega menu */
+@keyframes slideDownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade and slide up animation for mega menu close */
+@keyframes slideUpFade {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+/* Slide in from right for mobile menu */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide out to right for mobile menu */
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/* Fade in for overlay */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fade out for overlay */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Stagger animation for menu items */
+@keyframes staggerIn {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Navigation item underline element */
+.navUnderline {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: white;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: none;
+}
+
+.navUnderline.active {
+  transform: scaleX(1);
+}
+
+.navItem:hover .navUnderline {
+  animation: underlineGrow 0.3s ease forwards;
+}
+
+.navItem:not(:hover) .navUnderline:not(.active) {
+  animation: underlineShrink 0.3s ease forwards;
+}
+
+/* Mega menu animations */
+.megaMenuEnter {
+  animation: slideDownFade 0.3s ease forwards;
+}
+
+.megaMenuExit {
+  animation: slideUpFade 0.3s ease forwards;
+}
+
+/* Mobile menu animations */
+.mobileMenuEnter {
+  animation: slideInRight 0.3s ease forwards;
+}
+
+.mobileMenuExit {
+  animation: slideOutRight 0.3s ease forwards;
+}
+
+.overlayEnter {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.overlayExit {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+/* Stagger animation for mobile menu items */
+.mobileMenuItem {
+  animation: staggerIn 0.3s ease;
+}
+
+.mobileMenuItem:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.mobileMenuItem:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.mobileMenuItem:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.mobileMenuItem:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.mobileMenuItem:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+.mobileMenuItem:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .navUnderline,
+  .megaMenuEnter,
+  .megaMenuExit,
+  .mobileMenuEnter,
+  .mobileMenuExit,
+  .overlayEnter,
+  .overlayExit,
+  .mobileMenuItem {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .navUnderline.active {
+    transform: scaleX(1);
+  }
+
+  .mobileMenuEnter {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .overlayEnter {
+    opacity: 0.5;
+  }
+}
+
+/* Hover-intent helper class */
+.hoverIntent {
+  pointer-events: none;
+}
+
+/* Focus visible styles for keyboard navigation */
+.navItem:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* Screen reader only class */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
