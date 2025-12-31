@@ -12,8 +12,8 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'Services', href: '/services' },
   { label: 'Resources', href: '/resources' },
+  { label: 'Services', href: '/services' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -109,24 +109,26 @@ export function Header() {
         role="banner"
       >
         <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex-shrink-0">
+          {/* Logo and Brand */}
+          <div className="flex items-center flex-shrink-0">
             <Link
               to="/"
-              className="flex items-center gap-3 hover:opacity-80 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded px-2 py-1"
+              className="flex items-center gap-3 hover:opacity-80 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded px-0 py-1"
               aria-label="SPIROLINK Home"
             >
               <img 
-                src="/assets/spirolink-logo.svg" 
+                src="/assets/downloads/logo.png" 
                 alt="SPIROLINK" 
-                className="h-8 w-8"
+                className="h-10 w-auto"
               />
-              <span className="text-white font-bold text-lg hidden sm:inline">SPIROLINK</span>
+              <span className="text-xl font-semibold text-white whitespace-nowrap">
+                SPIROLINK
+              </span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-7 flex-1 justify-center" aria-label="Main navigation">
+          <nav className="hidden md:flex items-center gap-10 ml-8" aria-label="Main navigation">
             {navItems.map((item) => {
               const hasMenu = item.label === 'Services';
               return (
@@ -194,27 +196,15 @@ export function Header() {
             })}
           </nav>
 
+          {/* Spacer - Pushes right actions to the right */}
+          <div className="flex-1"></div>
+
           {/* Right side actions */}
           <div className="flex items-center gap-6">
-            {/* Search Icon */}
-            <button
-              className="hidden md:flex text-white hover:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
-              aria-label="Search"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-            </button>
+
+
+
+
 
             {/* Language Selector */}
             <button
