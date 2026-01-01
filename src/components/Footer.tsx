@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Leaf, Mail, Phone, MapPin, Linkedin, Twitter, Github } from 'lucide-react';
+import { ShareButton } from './ShareButton';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -84,7 +85,8 @@ export function Footer() {
             <p className="text-slate-400 text-sm">
               © {currentYear} SPIROLINK. All rights reserved.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-4 items-center">
+              <ShareButton />
               <a
                 href="#"
                 className="text-slate-400 hover:text-green-400 transition"
