@@ -95,7 +95,6 @@ export function ShareButton() {
         </div>
       )}
 
-      {/* Backdrop to close menu when clicking outside */}
       {isOpen && (
         <div
           className="fixed inset-0 z-40"
