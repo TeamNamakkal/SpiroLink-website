@@ -30,7 +30,7 @@ export default function Home() {
             </div>
           </div>
           <div className="hidden md:block">
-            <StayTuned title="Stay Tuned" subtitle="This dashboard is under development. Something amazing is coming soon!" />
+            <StayTuned />
           </div>
         </div>
       </Section>
