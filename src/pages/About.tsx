@@ -5,7 +5,7 @@ export default function About() {
     <>
       <Section className="bg-gradient-to-br from-green-50 to-blue-50 py-32">
         <div className="text-center max-w-3xl mx-auto">
-          <h1 className="text-5xl font-bold text-slate-900 mb-6">About GreenFluxion</h1>
+          <h1 className="text-5xl font-bold text-slate-900 mb-6">About SPIROLINK</h1>
           <p className="text-xl text-slate-700 mb-8">
             Coming Soon
           </p>

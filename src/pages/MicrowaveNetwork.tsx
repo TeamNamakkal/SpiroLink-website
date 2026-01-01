@@ -555,7 +555,7 @@ export default function MicrowaveNetwork() {
             <Mail className="w-8 h-8 text-green-600 flex-shrink-0" />
             <div>
               <h4 className="font-bold text-slate-900">Email</h4>
-              <p className="text-slate-700">greenfluxion.com</p>
+              <p className="text-slate-700">spirolink.com</p>
             </div>
           </div>
           <div className="bg-white p-6 rounded-lg border-l-4 border-green-600 flex items-center gap-4">
