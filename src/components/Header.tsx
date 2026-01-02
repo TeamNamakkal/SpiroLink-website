@@ -211,11 +211,6 @@ export function Header() {
 
             {/* Country Selector */}
             <CountrySelector />
-            {/* Language Selector */}
-            <LanguageSelector />
-
-            {/* Country Selector */}
-            <CountrySelector />
 
             {/* Sign In */}
             <button
