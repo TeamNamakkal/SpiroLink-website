@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -8,18 +8,20 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/chat': {
-        target: 'http://localhost:5001',
+        target: 'http://localhost:5000',
         changeOrigin: true,
         secure: false,
       },
       '/health': {
-        target: 'http://localhost:5001',
+        target: 'http://localhost:5000',
         changeOrigin: true,
         secure: false,
       },
     },
   },
-  optimizeDeps: {
-    exclude: ['lucide-react'],
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    minify: 'terser',
   },
 });

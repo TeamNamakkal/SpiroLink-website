@@ -1,103 +1,113 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import OpenAI from "openai";
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import OpenAI from 'openai';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
-app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5174", "http://localhost:5175"],
-  credentials: true,
-}));
+app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 
-// Initialize OpenAI client (API key from .env)
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+let openai;
+
+const initializeOpenAI = () => {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    console.error('❌ OPENAI_API_KEY not found in .env');
+    process.exit(1);
+  }
+  return new OpenAI({ apiKey });
+};
+
+openai = initializeOpenAI();
+
+app.get('/health', (req, res) => {
+  res.json({
+    status: 'OK',
+    timestamp: new Date().toISOString(),
+    apiKeyLoaded: !!process.env.OPENAI_API_KEY
+  });
 });
 
-// Health check endpoint
-app.get("/health", (req, res) => {
-  res.json({ status: "✅ Chatbot backend is running" });
-});
-
-// Chat endpoint
-app.post("/chat", async (req, res) => {
+app.post('/chat', async (req, res) => {
   try {
-    const { message, context } = req.body;
+    const { message } = req.body;
 
-    // Validation
-    if (!message || !message.trim()) {
-      return res.status(400).json({ error: "Message cannot be empty" });
+    if (!message || typeof message !== 'string' || message.trim().length === 0) {
+      return res.status(400).json({ success: false, error: 'Message is required' });
     }
 
-    if (!process.env.OPENAI_API_KEY) {
-      console.error("❌ OPENAI_API_KEY not set in .env");
-      return res.status(500).json({ error: "API key not configured" });
-    }
+    console.log('📨 Message:', message);
 
-    // Create system message for context
-    const systemMessage = context || `You are a helpful website chatbot for SPIROLINK, a company specializing in broadband network infrastructure, including PON, FTTH, microwave networks, optical long-haul, and WiFi solutions. 
-
-Help users with questions about our services, technology, and solutions. Be professional, knowledgeable, and helpful. Keep responses concise and clear.`;
-
-    // Call OpenAI API
     const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: 'gpt-4o-mini',
       messages: [
-        { 
-          role: "system", 
-          content: systemMessage 
+        {
+          role: 'system',
+          content: 'You are a helpful assistant for SPIROLINK, a broadband infrastructure company.'
         },
-        { 
-          role: "user", 
-          content: message 
-        },
+        {
+          role: 'user',
+          content: message.trim()
+        }
       ],
-      max_tokens: 500,
       temperature: 0.7,
+      max_tokens: 500
     });
 
-    const reply = completion.choices[0].message.content;
+    const botMessage = completion.choices[0]?.message?.content;
 
-    res.json({
-      success: true,
-      reply: reply,
-      model: "gpt-4o-mini",
-    });
+    if (!botMessage) {
+      return res.status(500).json({ success: false, error: 'No response from OpenAI' });
+    }
+
+    console.log('✅ Sent:', botMessage.substring(0, 50) + '...');
+
+    return res.json({ success: true, reply: botMessage });
 
   } catch (error) {
-    console.error("❌ Chatbot error:", error.message);
-    
+    console.error('❌ Error:', error.message);
+
     if (error.status === 401) {
-      res.status(401).json({ 
-        error: "API key invalid. Please check your OpenAI API key in .env" 
-      });
-    } else if (error.status === 429) {
-      res.status(429).json({ 
-        error: "Rate limit exceeded. Please try again later." 
-      });
-    } else {
-      res.status(500).json({ 
-        error: "Chatbot error: " + error.message 
-      });
+      return res.status(401).json({ success: false, error: 'Invalid API key - check your OpenAI account' });
     }
+
+    if (error.status === 429) {
+      return res.status(429).json({ success: false, error: 'OpenAI rate limit exceeded. Enable billing on your OpenAI account.' });
+    }
+
+    return res.status(500).json({ success: false, error: error.message });
   }
 });
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-  console.error("❌ Server error:", err);
-  res.status(500).json({ error: "Internal server error" });
+app.use((req, res) => {
+  res.status(404).json({ success: false, error: 'Not found' });
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`✅ Chatbot backend running on http://localhost:${PORT}`);
-  console.log(`📝 POST /chat - Send messages to ChatGPT`);
-  console.log(`🏥 GET /health - Health check`);
+const server = app.listen(PORT, () => {
+  console.log('\n' + '='.repeat(60));
+  console.log('✅ SPIROLINK Chatbot Backend');
+  console.log('='.repeat(60));
+  console.log(`🚀 Running on http://localhost:${PORT}`);
+  console.log(`📝 POST /chat - Chat endpoint`);
+  console.log(`❤️  GET /health - Health check`);
+  console.log('='.repeat(60) + '\n');
 });
+
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`❌ Port ${PORT} already in use!`);
+    console.error(`Kill it: lsof -ti:${PORT} | xargs kill -9`);
+    process.exit(1);
+  }
+});
+
+process.on('SIGINT', () => {
+  console.log('\n⚠️  Shutting down...');
+  server.close(() => process.exit(0));
+});
+
+export default app;

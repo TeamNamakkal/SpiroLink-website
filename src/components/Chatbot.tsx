@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, X, MessageCircle, Loader } from 'lucide-react';
+import { Send, X, MessageCircle, Loader, Mic, Volume2 } from 'lucide-react';
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,13 +7,46 @@ export default function Chatbot() {
     {
       id: 1,
       role: 'bot',
-      content: 'Hello! 👋 I\'m the SPIROLINK assistant. How can I help you today?',
+      content: 'Hello! 👋 I\'m the SPIROLINK assistant. You can type or click the microphone to speak!',
     },
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [isListening, setIsListening] = useState(false);
   const messagesEndRef = useRef(null);
+  const recognitionRef = useRef(null);
+
+  // Initialize Speech Recognition
+  useEffect(() => {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition) {
+      const recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+
+      recognition.onstart = () => setIsListening(true);
+      recognition.onend = () => setIsListening(false);
+
+      recognition.onresult = (event) => {
+        let transcript = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          transcript += event.results[i][0].transcript;
+        }
+        if (transcript.trim()) {
+          setInput(transcript.trim());
+        }
+      };
+
+      recognition.onerror = (event) => {
+        console.error('Speech recognition error:', event.error);
+        setIsListening(false);
+      };
+
+      recognitionRef.current = recognition;
+    }
+  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -22,6 +55,24 @@ export default function Chatbot() {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Text-to-Speech function
+  const speakMessage = (text) => {
+    if ('speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 0.9;
+      utterance.pitch = 1;
+      speechSynthesis.cancel(); // Stop any previous speech
+      speechSynthesis.speak(utterance);
+    }
+  };
+
+  // Start voice input
+  const startListening = () => {
+    if (recognitionRef.current) {
+      recognitionRef.current.start();
+    }
+  };
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -41,15 +92,14 @@ export default function Chatbot() {
     setError(null);
 
     try {
-      // Call backend API
-      const response = await fetch('http://localhost:5000/chat', {
+      // Call backend API via Vite proxy
+      const response = await fetch('/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           message: input,
-          context: 'You are a helpful chatbot for SPIROLINK, specializing in broadband infrastructure.',
         }),
       });
 
@@ -72,11 +122,10 @@ export default function Chatbot() {
       console.error('Chatbot error:', err);
       setError(err.message);
 
-      // Add error message
       const errorMessage = {
         id: Date.now() + 1,
         role: 'bot',
-        content: `❌ Error: ${err.message}. Make sure the backend is running on port 5000.`,
+        content: `❌ Error: ${err.message}. Make sure the backend is running.`,
       };
 
       setMessages((prev) => [...prev, errorMessage]);
@@ -125,13 +174,22 @@ export default function Chatbot() {
                 className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 <div
-                  className={`max-w-xs px-4 py-2 rounded-lg ${
+                  className={`max-w-xs px-4 py-2 rounded-lg flex items-start gap-2 ${
                     msg.role === 'user'
                       ? 'bg-green-600 text-white rounded-br-none'
                       : 'bg-gray-200 text-gray-900 rounded-bl-none'
                   }`}
                 >
-                  <p className="text-sm leading-relaxed">{msg.content}</p>
+                  <p className="text-sm leading-relaxed flex-1">{msg.content}</p>
+                  {msg.role === 'bot' && (
+                    <button
+                      onClick={() => speakMessage(msg.content)}
+                      className="hover:bg-gray-300 p-1 rounded transition-colors flex-shrink-0"
+                      title="Listen"
+                    >
+                      <Volume2 className="w-4 h-4" />
+                    </button>
+                  )}
                 </div>
               </div>
             ))}
@@ -164,10 +222,23 @@ export default function Chatbot() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask me anything..."
+              placeholder="Type or use mic..."
               disabled={isLoading}
               className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 disabled:bg-gray-100"
             />
+            <button
+              type="button"
+              onClick={startListening}
+              disabled={isLoading || isListening}
+              className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-2 ${
+                isListening
+                  ? 'bg-red-600 hover:bg-red-700 text-white'
+                  : 'bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white'
+              }`}
+              title="Click to speak"
+            >
+              <Mic className="w-4 h-4" />
+            </button>
             <button
               type="submit"
               disabled={isLoading || !input.trim()}
