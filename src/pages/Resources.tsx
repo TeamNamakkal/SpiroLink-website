@@ -1,16 +1,54 @@
 import { useState } from 'react';
 import { Download, X } from 'lucide-react';
 import { Section, SectionHeading } from '../components/ui/Section';
-import { useI18n } from '../i18n/I18nProvider';
 
 interface DownloadItem {
+  id: string;
   title: string;
   description: string;
   file: string;
+  icon: string;
 }
 
+const downloadItems: DownloadItem[] = [
+  {
+    id: '1',
+    title: 'PON Technology Guide',
+    description: 'Comprehensive guide on Passive Optical Network technology, architecture, and best practices for deployment.',
+    file: '/public/assets/downloads/Choosing_the_Right_PON_Technology.txt',
+    icon: '📄',
+  },
+  {
+    id: '2',
+    title: 'FTTH Network Planning',
+    description: 'Essential guide for planning Fiber-to-the-Home networks with cost optimization and coverage analysis.',
+    file: '/public/assets/downloads/FTTH_Network_Planning_Best_Practices.txt',
+    icon: '🗺️',
+  },
+  {
+    id: '3',
+    title: 'FTTH Project Essentials',
+    description: 'Step-by-step guide covering all aspects of FTTH project planning, implementation, and management.',
+    file: '/public/assets/downloads/FTTH_Project_Planning_Essentials.txt',
+    icon: '📋',
+  },
+  {
+    id: '4',
+    title: 'Cost Estimation Tool',
+    description: 'Practical tools and methodologies for calculating cost per home passed in fiber network deployments.',
+    file: '/public/assets/downloads/Cost_Per_Home_Passed_Estimator.txt',
+    icon: '💰',
+  },
+  {
+    id: '5',
+    title: 'Grant Application Guide',
+    description: 'Technical documentation package for preparing government grant applications for broadband infrastructure projects.',
+    file: '/public/assets/downloads/Grant_Application_Technical_Documentation.txt',
+    icon: '📑',
+  },
+];
+
 export default function Resources() {
-  const { t } = useI18n();
   const [showModal, setShowModal] = useState(false);
   const [email, setEmail] = useState('');
   const [selectedFile, setSelectedFile] = useState<DownloadItem | null>(null);
@@ -80,22 +118,22 @@ export default function Resources() {
       {/* START: PON & FTTH MODULE - RESOURCES PAGE */}
       <Section className="bg-gradient-to-br from-green-50 to-blue-50 py-32">
         <div className="text-center max-w-3xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">{t('resourcesPageTitle')}</h1>
+          <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">Resources & Tools</h1>
           <p className="text-xl text-slate-700">
-            {t('resourcesPageDescription')}
+            Download essential guides, tools, and documentation for broadband infrastructure planning and deployment
           </p>
         </div>
       </Section>
 
       <Section className="bg-white">
         <SectionHeading 
-          title={t('resourcesDownloadTitle')} 
-          subtitle={t('resourcesDownloadSubtitle')}
+          title="Download Resources" 
+          subtitle="Essential tools and guides for network planning"
           centered={true}
         />
         <div className="max-w-4xl mx-auto mt-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {downloadItems.map((item) => (
+            {downloadItems.map((item: DownloadItem) => (
               <div
                 key={item.id}
                 className="bg-gradient-to-br from-green-50 to-blue-50 border border-green-200 rounded-lg p-6 hover:shadow-lg transition-shadow"
@@ -112,7 +150,7 @@ export default function Resources() {
                   className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-colors"
                 >
                   <Download className="w-4 h-4" />
-                  {t('resourcesDownloadBtn')}
+                  Download
                 </button>
               </div>
             ))}
@@ -126,7 +164,7 @@ export default function Resources() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg shadow-2xl max-w-md w-full p-8">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-bold text-slate-900">{t('resourcesModalTitle')}</h2>
+              <h2 className="text-2xl font-bold text-slate-900">Download File</h2>
               <button
                 onClick={handleCloseModal}
                 className="text-slate-400 hover:text-slate-600 transition-colors"
@@ -136,7 +174,7 @@ export default function Resources() {
             </div>
 
             <p className="text-slate-600 mb-6">
-              {t('resourcesModalDescription')} <span className="font-semibold">{selectedFile?.title}</span>
+              Enter your email to download <span className="font-semibold">{selectedFile?.title}</span>
             </p>
 
             <div className="mb-4">
@@ -144,12 +182,12 @@ export default function Resources() {
                 htmlFor="email"
                 className="block text-sm font-semibold text-slate-700 mb-2"
               >
-                {t('resourcesEmailLabel')}
+                Email Address
               </label>
               <input
                 id="email"
                 type="email"
-                placeholder={t('resourcesEmailPlaceholder')}
+                placeholder="you@example.com"
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
@@ -168,18 +206,18 @@ export default function Resources() {
                 onClick={handleConfirmDownload}
                 className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-lg transition-colors"
               >
-                {t('resourcesDownloadBtnModal')}
+                Download
               </button>
               <button
                 onClick={handleCloseModal}
                 className="flex-1 bg-slate-200 hover:bg-slate-300 text-slate-900 font-semibold py-2 rounded-lg transition-colors"
               >
-                {t('resourcesCancelBtn')}
+                Cancel
               </button>
             </div>
 
             <p className="text-slate-500 text-xs mt-4 text-center">
-              {t('resourcesPrivacyNotice')}
+              We respect your privacy. Your email will only be used to track resource downloads and send occasional updates.
             </p>
           </div>
         </div>
