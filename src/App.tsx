@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { I18nProvider } from './i18n/I18nProvider';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import Chatbot from './components/Chatbot';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import PonFtth from './pages/PonFtth';
@@ -34,6 +35,7 @@ export default function App() {
             </Routes>
           </main>
           <Footer />
+          <Chatbot />
         </div>
       </BrowserRouter>
     </I18nProvider>
