@@ -43,10 +43,8 @@ export const Chatbot: React.FC = () => {
   const sendMessage = async () => {
     if (!input.trim() || isLoading) return;
 
-    // Clear error state
     setError(null);
 
-    // Add user message
     const userMessage: Message = {
       id: Date.now().toString(),
       text: input.trim(),
@@ -59,20 +57,19 @@ export const Chatbot: React.FC = () => {
     setIsLoading(true);
 
     try {
-      // Send to backend
-      const response = await fetch('/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ message: userMessage.text }),
-      });
+      // ✅ Production-ready fetch using .env
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/chat`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: userMessage.text }),
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(
-          errorData.error || `Server error: ${response.status}`
-        );
+        throw new Error(errorData.error || `Server error: ${response.status}`);
       }
 
       const data = await response.json();
@@ -81,7 +78,6 @@ export const Chatbot: React.FC = () => {
         throw new Error('Invalid response from server');
       }
 
-      // Add bot message
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
         text: data.reply,
@@ -94,10 +90,9 @@ export const Chatbot: React.FC = () => {
       const errorMessage =
         err instanceof Error ? err.message : 'Failed to get response';
 
-      // Display error to user
       const errorBotMessage: Message = {
         id: (Date.now() + 2).toString(),
-        text: `❌ Error: ${errorMessage}. Please make sure the backend is running on port 5000.`,
+        text: `❌ Error: ${errorMessage}. Please check your backend or internet connection.`,
         sender: 'bot',
         timestamp: new Date(),
       };
@@ -168,7 +163,6 @@ export const Chatbot: React.FC = () => {
               </div>
             ))}
 
-            {/* Loading Indicator */}
             {isLoading && (
               <div className="flex justify-start">
                 <div className="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg rounded-bl-none flex items-center gap-2">
@@ -178,7 +172,6 @@ export const Chatbot: React.FC = () => {
               </div>
             )}
 
-            {/* Scroll to bottom anchor */}
             <div ref={messagesEndRef} />
           </div>
 
