@@ -93,15 +93,19 @@ export default function Chatbot() {
 
     try {
       // Call backend API via Vite proxy
-      const response = await fetch('/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: input,
-        }),
-      });
+     const response = await fetch(
+  'https://spirolink-web-backend.onrender.com/chat',
+  {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      message: input,
+    }),
+  }
+);
+
 
       if (!response.ok) {
         const errorData = await response.json();
