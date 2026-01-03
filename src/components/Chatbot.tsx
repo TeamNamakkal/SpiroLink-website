@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Send, X, MessageCircle, Loader, Mic, Volume2 } from 'lucide-react';
 
 export default function Chatbot() {
@@ -93,15 +93,19 @@ export default function Chatbot() {
 
     try {
       // Call backend API via Vite proxy
-      const response = await fetch('/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: input,
-        }),
-      });
+     const response = await fetch(
+  'https://spirolink-web-backend.onrender.com/chat',
+  {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      message: input,
+    }),
+  }
+);
+
 
       if (!response.ok) {
         const errorData = await response.json();

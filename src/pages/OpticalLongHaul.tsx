@@ -1,778 +1,338 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Phone, Mail } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Section, SectionHeading } from '../components/ui/Section';
 import { Button } from '../components/ui/Button';
-import { useI18n } from '../i18n/I18nProvider';
+import { ServiceHero, ServiceSection, CTA } from '../components/ServiceDetailLayout';
 
-// START: Long-Haul Optical Network Planning Page
+const rotate3dClasses = ['rotate-3d-1', 'rotate-3d-2', 'rotate-3d-3', 'rotate-3d-4', 'rotate-3d-5'];
+const getRotateClass = (idx: number) => rotate3dClasses[idx % rotate3dClasses.length];
 
 export default function OpticalLongHaul() {
-  const { t } = useI18n();
   return (
     <>
-      {/* Hero Section */}
-      <Section className="bg-gradient-to-br from-green-50 to-blue-50 py-32">
-        <div className="text-center max-w-4xl mx-auto">
-          <h1 className="text-5xl font-bold text-slate-900 mb-6">
-            Designing Resilient Optical Transport Networks for Long-Haul Infrastructure
-          </h1>
-          <p className="text-xl text-slate-700 mb-4 leading-relaxed">
-            High-Capacity Fiber Optic Infrastructure For Global Connectivity
-          </p>
-          <p className="text-lg text-slate-700 mb-12 leading-relaxed">
-            Designing scalable, high-performance longhaul optical networks for carriers, enterprises, and data center operators worldwide. From metro to ultra-longhaul deployments.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact">
-              <Button size="lg" className="bg-green-600 hover:bg-green-700">
-                Get Started <ArrowRight className="w-5 h-5" />
-              </Button>
-            </Link>
-            <button
-              onClick={() => alert('Portfolio: National Carrier Backbone (4,500 km), Multi-Data Center Interconnect (1,200 km), Regional ISP Upgrades, International Corridors. Contact us for detailed case studies.')}
-              className="px-8 py-4 text-lg font-semibold rounded-lg bg-green-600 text-white hover:bg-green-700 active:scale-95 shadow-md hover:shadow-lg transition-all inline-flex items-center justify-center gap-2"
-            >
-              View Our Portfolio <ArrowRight className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
-      </Section>
+      <ServiceHero
+        title="Long-Haul Optical Network Planning Services"
+        description="Designing high-capacity, resilient fiber optic networks for carriers, enterprises, and global infrastructure"
+        badge="Long-Haul Optical Infrastructure"
+        badgeIcon="🌍"
+        themeColor="orange"
+      />
 
-      {/* Introduction */}
-      <Section className="bg-white">
+      <Section className="bg-white relative py-16">
         <SectionHeading
-          title="INTRODUCTION"
-          subtitle="Optical Network Excellence"
+          title="Professional Optical Network Planning"
+          subtitle="Long-Haul Fiber Infrastructure"
           centered={true}
         />
-        <div className="max-w-3xl mx-auto mt-12">
-          <p className="text-lg text-slate-700 leading-relaxed mb-6">
-            Long-haul optical networks form the backbone of modern digital infrastructure, connecting cities, regions, data centers, and critical services across vast distances. Designing these networks requires far more than fiber availability—it demands rigorous engineering around signal integrity, availability, scalability, and operational risk.
+        <div className="text-center max-w-3xl mx-auto mt-8">
+          <p className="text-slate-600 text-lg leading-relaxed mb-6">
+            Long-haul optical networks form the backbone of modern digital infrastructure, connecting cities, regions, data centers, and critical services across vast distances. Designing these networks requires rigorous engineering around signal integrity, availability, scalability, and operational risk.
           </p>
-          <p className="text-lg text-slate-700 leading-relaxed">
-            We specialize in planning and designing high-capacity optical fiber networks that form the backbone of modern telecommunications infrastructure. Our longhaul optical network solutions deliver terabit-scale capacity, ultra-low latency, and exceptional reliability for carriers, internet service providers, data center operators, and large enterprises requiring robust fiber connectivity across cities, regions, and continents.
+          <p className="text-slate-600 text-lg leading-relaxed">
+            We specialize in planning and designing high-capacity optical fiber networks that deliver terabit-scale capacity, ultra-low latency, and exceptional reliability for carriers, ISPs, data center operators, and large enterprises.
           </p>
         </div>
       </Section>
 
-      {/* Core Services */}
-      <Section className="bg-gradient-to-br from-green-50 to-blue-50">
-        <SectionHeading
-          title="OUR CORE SERVICES"
-          centered={true}
-        />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 max-w-5xl mx-auto">
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">1. Longhaul Network Planning & Design</h3>
+      <ServiceSection title="Network Design Services" subtitle="Comprehensive Planning & Engineering">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-8 rounded-xl border border-slate-200 hover:border-orange-400/50 transition-all">
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">Route Planning & Feasibility</h3>
             <ul className="space-y-2 text-slate-700">
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">✓</span>
-                <span>Route planning and fiber path optimization</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">✓</span>
-                <span>Network topology design (ring, mesh, linear)</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">✓</span>
-                <span>Capacity planning and traffic engineering</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">✓</span>
-                <span>Geographic redundancy and diversity routing</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">✓</span>
-                <span>Right-of-way analysis and feasibility studies</span>
-              </li>
+              <li>• Geographic route analysis</li>
+              <li>• Fiber availability assessment</li>
+              <li>• Cost estimation & optimization</li>
+              <li>• Regulatory pathway identification</li>
             </ul>
           </div>
-
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">2. DWDM System Design</h3>
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-8 rounded-xl border border-slate-200 hover:border-orange-400/50 transition-all">
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">DWDM System Design</h3>
             <ul className="space-y-2 text-slate-700">
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">✓</span>
-                <span>Dense Wavelength Division Multiplexing architecture</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">✓</span>
-                <span>Channel planning and wavelength assignment</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">✓</span>
-                <span>Optical amplifier placement and design (EDFA, Raman)</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">✓</span>
-                <span>Coherent optical transmission design (100G, 200G, 400G, 800G+)</span>
-              </li>
+              <li>• Dense wavelength multiplexing</li>
+              <li>• Transponder configuration</li>
+              <li>• Amplification strategy</li>
+              <li>• Channel planning</li>
             </ul>
           </div>
-
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">3. Optical Link Budget Engineering</h3>
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-8 rounded-xl border border-slate-200 hover:border-orange-400/50 transition-all">
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">Link Budget & Optimization</h3>
             <ul className="space-y-2 text-slate-700">
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">✓</span>
-                <span>End-to-end power budget calculations</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">✓</span>
-                <span>Loss budget analysis including fiber, splices, connectors</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">✓</span>
-                <span>Gain and span design optimization</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">✓</span>
-                <span>Regeneration and amplification site planning</span>
-              </li>
+              <li>• Optical loss analysis</li>
+              <li>• Signal integrity assessment</li>
+              <li>• Regenerator placement</li>
+              <li>• Performance optimization</li>
             </ul>
           </div>
-
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">4. Network Resilience & Protection</h3>
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-8 rounded-xl border border-slate-200 hover:border-orange-400/50 transition-all">
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">Resilience & Protection</h3>
             <ul className="space-y-2 text-slate-700">
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">✓</span>
-                <span>Protection schemes (1+1, 1:1, 1:N)</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">✓</span>
-                <span>Optical layer restoration design</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">✓</span>
-                <span>Diverse path routing strategies</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">✓</span>
-                <span>Service level agreement (SLA) optimization</span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">5. Migration & Upgrade Planning</h3>
-            <ul className="space-y-2 text-slate-700">
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">✓</span>
-                <span>Legacy system assessment and modernization</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">✓</span>
-                <span>Technology refresh strategies</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">✓</span>
-                <span>Capacity augmentation planning</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">✓</span>
-                <span>Minimal-disruption migration designs</span>
-              </li>
+              <li>• Redundancy architecture</li>
+              <li>• Protection switching design</li>
+              <li>• Mesh networking strategies</li>
+              <li>• Disaster recovery planning</li>
             </ul>
           </div>
         </div>
-      </Section>
+      </ServiceSection>
 
-      {/* Industries We Serve */}
-      <Section className="bg-white">
-        <SectionHeading
-          title="INDUSTRIES WE SERVE"
-          centered={true}
-        />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 max-w-5xl mx-auto">
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Telecommunications Carriers</h3>
-            <p className="text-slate-700">Design national and international backbone networks, metro connectivity rings, inter-city transport systems, and carrier-grade infrastructure supporting millions of subscribers.</p>
-          </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Internet Service Providers (ISPs)</h3>
-            <p className="text-slate-700">Plan backbone infrastructure, peering connections, regional network expansion, and content delivery networks with competitive service levels.</p>
-          </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Data Center Operators</h3>
-            <p className="text-slate-700">Engineer inter-datacenter connectivity (DCI), disaster recovery links, cloud interconnection, and high-speed campus connectivity.</p>
-          </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Enterprise & Corporate</h3>
-            <p className="text-slate-700">Design dedicated fiber networks for multi-site corporations, financial institutions, healthcare systems, and education networks.</p>
-          </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Content & Cloud Providers</h3>
-            <p className="text-slate-700">Build infrastructure for CDNs, cloud service providers, video streaming platforms, and hyperscale cloud operators.</p>
-          </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Government & Utilities</h3>
-            <p className="text-slate-700">Engineer secure, dedicated optical networks for government agencies, energy providers, and critical national infrastructure.</p>
+      <ServiceSection title="Industries We Serve" subtitle="Sector-Specific Solutions">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mt-12 overflow-hidden">
+          <div className="col-span-full overflow-x-hidden">
+            <div className="flex gap-6 slide-left-right">
+              {[
+                { title: "Telecommunications Carriers", desc: "National and international backbone networks, international gateway systems, cross-border connectivity, and global internet exchange points.", icon: "📡", color: "from-orange-50 to-red-50", border: "border-orange-200" },
+                { title: "Internet Service Providers", desc: "High-capacity backbone infrastructure, regional fiber networks, data center interconnections, and content delivery networks.", icon: "🌐", color: "from-amber-50 to-orange-50", border: "border-amber-200" },
+                { title: "Data Center Operators", desc: "Campus-wide interconnections, multi-data center replication, disaster recovery links, and cloud infrastructure networks.", icon: "🏢", color: "from-yellow-50 to-amber-50", border: "border-yellow-200" },
+                { title: "Enterprise & Financial Services", desc: "Wide-area network backbones, branch office interconnections, trading network links, and business continuity systems.", icon: "💼", color: "from-orange-50 to-yellow-50", border: "border-orange-200" },
+                { title: "Cable & Broadcasting", desc: "Content distribution networks, broadcast centers, master control centers, and media transport networks.", icon: "📺", color: "from-red-50 to-orange-50", border: "border-red-200" },
+                { title: "Government & Military", desc: "Secure government networks, strategic communications infrastructure, critical infrastructure protection, and classified networks.", icon: "🛡️", color: "from-rose-50 to-red-50", border: "border-rose-200" }
+              ].map((item, idx) => (
+                <div key={idx} className={`group relative ${getRotateClass(idx)} flex-shrink-0 w-80`}>
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className={`relative p-6 bg-gradient-to-br ${item.color} rounded-xl border ${item.border} hover:border-orange-400/50 transition-all duration-300 h-full flex flex-col card-glow`}>
+                    <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
+                    <h3 className="text-lg font-bold text-slate-900 mb-3">{item.title}</h3>
+                    <p className="text-sm text-slate-600 leading-relaxed flex-grow">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </Section>
+      </ServiceSection>
 
-      {/* Design Methodology */}
-      <Section className="bg-gradient-to-br from-green-50 to-blue-50">
-        <SectionHeading
-          title="OUR DESIGN APPROACH"
-          centered={true}
-        />
-        <div className="max-w-4xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white p-8 rounded-lg">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">1. Requirements Gathering</h3>
-            <p className="text-slate-700">Understanding your capacity needs, latency requirements, growth projections, budget parameters, geographic coverage, redundancy expectations, and service level objectives.</p>
-          </div>
-
-          <div className="bg-white p-8 rounded-lg">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">2. Route Analysis</h3>
-            <p className="text-slate-700">Comprehensive assessment including fiber availability studies, right-of-way analysis, existing infrastructure evaluation, and geographic diversity options.</p>
-          </div>
-
-          <div className="bg-white p-8 rounded-lg">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">3. Network Architecture</h3>
-            <p className="text-slate-700">Detailed design including topology selection, node placement optimization, equipment specifications, protection scheme design, and network management architecture.</p>
-          </div>
-
-          <div className="bg-white p-8 rounded-lg">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">4. Optical System Engineering</h3>
-            <p className="text-slate-700">Link budget calculations, DWDM channel planning, amplifier site design, dispersion compensation, wavelength assignment, and coherent modem configuration.</p>
-          </div>
-
-          <div className="bg-white p-8 rounded-lg">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">5. Economic Analysis</h3>
-            <p className="text-slate-700">Capital expenditure modeling, operational cost projections, ROI calculations, build-vs-lease analysis, and phased deployment options.</p>
-          </div>
-
-          <div className="bg-white p-8 rounded-lg">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">6. Technical Documentation</h3>
-            <p className="text-slate-700">Complete design packages including network diagrams, equipment lists, fiber specifications, splice schedules, test plans, and commissioning procedures.</p>
-          </div>
-        </div>
-      </Section>
-
-      {/* Technical Capabilities */}
-      <Section className="bg-white">
-        <SectionHeading
-          title="TECHNICAL CAPABILITIES"
-          centered={true}
-        />
-        <div className="max-w-5xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">Transmission Technologies</h3>
-            <ul className="space-y-2 text-slate-700">
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>100G, 200G, 400G, 800G coherent optical</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Advanced modulation formats (DP-QPSK, DP-16QAM, DP-64QAM)</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Flexible grid and super-channel design</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Alien wavelength support</span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">Network Reach</h3>
-            <ul className="space-y-2 text-slate-700">
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span><strong>Metro:</strong> Up to 80 km (amplified)</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span><strong>Regional:</strong> 80-600 km</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span><strong>Longhaul:</strong> 600-2,500 km</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span><strong>Ultra-longhaul:</strong> 2,500+ km</span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">Fiber Types</h3>
-            <ul className="space-y-2 text-slate-700">
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>G.652 (Standard Single-Mode)</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>G.653 (Dispersion-Shifted)</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>G.654 (Cut-off Shifted)</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>G.655 (Non-Zero Dispersion-Shifted)</span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">Capacity Planning</h3>
-            <ul className="space-y-2 text-slate-700">
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Single fiber: Up to 25+ Tbps (C+L band)</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Multi-fiber systems: 100+ Tbps</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Scalable wavelength addition</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Pay-as-you-grow architectures</span>
-              </li>
-            </ul>
+      <ServiceSection title="Our Design Approach" subtitle="6-Phase Methodology" themeColor="orange">
+        <div className="max-w-4xl mx-auto">
+          <div className="space-y-6">
+            <div className="flex gap-6">
+              <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-lg">1</div>
+              <div>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Requirements & Objectives Analysis</h4>
+                <p className="text-slate-700">Comprehensive assessment of capacity requirements, latency targets, availability needs, budget constraints, and future growth plans.</p>
+              </div>
+            </div>
+            <div className="flex gap-6">
+              <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-lg">2</div>
+              <div>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Route Selection & Feasibility</h4>
+                <p className="text-slate-700">Geographic analysis, terrain assessment, fiber availability evaluation, environmental considerations, and cost-benefit optimization.</p>
+              </div>
+            </div>
+            <div className="flex gap-6">
+              <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-lg">3</div>
+              <div>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Optical System Design</h4>
+                <p className="text-slate-700">DWDM configuration, transponder selection, regenerator placement, amplification strategy, and channel planning for terabit-scale capacity.</p>
+              </div>
+            </div>
+            <div className="flex gap-6">
+              <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-lg">4</div>
+              <div>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Link Budget & Performance Analysis</h4>
+                <p className="text-slate-700">Comprehensive link budget calculations, signal integrity analysis, noise figure assessment, and margin optimization across all wavelengths.</p>
+              </div>
+            </div>
+            <div className="flex gap-6">
+              <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-lg">5</div>
+              <div>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Resilience & Redundancy Design</h4>
+                <p className="text-slate-700">Protection switching architecture, mesh networking strategies, automatic recovery mechanisms, and disaster recovery procedures.</p>
+              </div>
+            </div>
+            <div className="flex gap-6">
+              <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-lg">6</div>
+              <div>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Implementation & Support</h4>
+                <p className="text-slate-700">Detailed documentation, equipment specifications, site acquisition support, vendor selection, commissioning oversight, and ongoing optimization.</p>
+              </div>
+            </div>
           </div>
         </div>
-      </Section>
+      </ServiceSection>
 
-      {/* Network Types */}
-      <Section className="bg-gradient-to-br from-green-50 to-blue-50">
-        <SectionHeading
-          title="NETWORK TYPES WE DESIGN"
-          centered={true}
-        />
-        <div className="max-w-5xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h3 className="text-lg font-bold text-slate-900 mb-3">Metro Optical Networks</h3>
-            <p className="text-slate-700">High-density urban networks connecting central offices, cell sites, enterprise locations, and access networks with low-latency, high-capacity fiber rings.</p>
-          </div>
-
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h3 className="text-lg font-bold text-slate-900 mb-3">Regional Networks</h3>
-            <p className="text-slate-700">Mid-haul networks spanning 80-600 km connecting cities, data centers, and carrier points of presence within geographic regions.</p>
-          </div>
-
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h3 className="text-lg font-bold text-slate-900 mb-3">National Backbone</h3>
-            <p className="text-slate-700">Long-haul networks spanning countries and regions, forming the core transport infrastructure for carriers and national network operators.</p>
-          </div>
-
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h3 className="text-lg font-bold text-slate-900 mb-3">Data Center Interconnect (DCI)</h3>
-            <p className="text-slate-700">Dedicated high-capacity links between data centers for storage replication, disaster recovery, cloud interconnection, and distributed computing.</p>
-          </div>
-
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h3 className="text-lg font-bold text-slate-900 mb-3">Private Enterprise Networks</h3>
-            <p className="text-slate-700">Dedicated fiber infrastructure for corporations, financial institutions, healthcare systems, and government agencies requiring secure private connectivity.</p>
-          </div>
-
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h3 className="text-lg font-bold text-slate-900 mb-3">International Corridors</h3>
-            <p className="text-slate-700">Ultra-long-haul networks crossing borders and continents, connecting submarine cable landing stations and international gateway facilities.</p>
-          </div>
-        </div>
-      </Section>
-
-      {/* Key Considerations */}
-      <Section className="bg-white">
-        <SectionHeading
-          title="KEY DESIGN CONSIDERATIONS"
-          centered={true}
-        />
-        <div className="max-w-4xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="text-lg font-bold text-slate-900 mb-3">Capacity & Scalability</h3>
+      <ServiceSection title="Technical Capabilities" subtitle="Advanced Optical Engineering" isDark={false} themeColor="orange">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-3">Capacity & Distance</h3>
             <ul className="space-y-2 text-slate-700 text-sm">
-              <li>• Current and 10-year traffic forecasts</li>
-              <li>• Modular capacity addition strategies</li>
-              <li>• Line system upgrade paths</li>
-              <li>• Wavelength addition without service disruption</li>
+              <li>• Terabit-scale systems (25+ Tbps)</li>
+              <li>• Ultra-long-haul spans (2000+ km)</li>
+              <li>• Regenerator-less configurations</li>
+              <li>• Coherent optical technology</li>
             </ul>
           </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="text-lg font-bold text-slate-900 mb-3">Latency Optimization</h3>
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-3">Fiber & Infrastructure</h3>
             <ul className="space-y-2 text-slate-700 text-sm">
-              <li>• Direct routing vs. cost-optimized paths</li>
-              <li>• Geographic route selection</li>
-              <li>• Processing and equipment delay budgets</li>
-              <li>• Ultra-low latency requirements (finance, gaming)</li>
+              <li>• Single-mode fiber design</li>
+              <li>• Dispersion management</li>
+              <li>• ROADM architectures</li>
+              <li>• Amplification strategies</li>
             </ul>
           </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="text-lg font-bold text-slate-900 mb-3">Reliability & Availability</h3>
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-3">Standards & Compliance</h3>
             <ul className="space-y-2 text-slate-700 text-sm">
-              <li>• Target availability (99.9%, 99.99%, 99.999%)</li>
-              <li>• Geographic diversity requirements</li>
-              <li>• Equipment and fiber protection schemes</li>
-              <li>• Mean time to repair (MTTR) considerations</li>
+              <li>• ITU-T recommendations</li>
+              <li>• International standards</li>
+              <li>• Regional regulations</li>
+              <li>• Industry best practices</li>
             </ul>
           </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="text-lg font-bold text-slate-900 mb-3">Cost Efficiency</h3>
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-3">Routing & Protection</h3>
             <ul className="space-y-2 text-slate-700 text-sm">
-              <li>• Build vs. lease analysis</li>
-              <li>• Shared infrastructure opportunities</li>
-              <li>• Equipment cost optimization</li>
-              <li>• Operational expense reduction strategies</li>
+              <li>• 1+1 Protection switching</li>
+              <li>• Mesh restoration</li>
+              <li>• Automatic protection (APS/PCS)</li>
+              <li>• Multi-layer resilience</li>
             </ul>
           </div>
         </div>
-      </Section>
+      </ServiceSection>
 
-      {/* Why Choose Us */}
-      <Section className="bg-gradient-to-br from-green-50 to-blue-50">
-        <SectionHeading
-          title="WHY CHOOSE OUR OPTICAL NETWORK SOLUTIONS"
-          centered={true}
-        />
-        <div className="max-w-3xl mx-auto mt-12">
-          <div className="space-y-4">
-            <div className="flex gap-4">
-              <span className="text-green-600 font-bold text-xl flex-shrink-0">✓</span>
-              <div>
-                <h3 className="font-bold text-slate-900 text-lg">Terabit-Scale Expertise</h3>
-                <p className="text-slate-700">Proven experience designing networks from 100G to multi-terabit capacity per fiber</p>
-              </div>
+      <ServiceSection title="Network Types We Design" subtitle="Specialized Solutions" themeColor="orange">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-3">National Carrier Backbones</h3>
+            <p className="text-slate-700 text-sm">Nationwide mesh networks connecting major cities, regions, and critical infrastructure with redundancy and high availability requirements.</p>
+          </div>
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-3">International Corridors</h3>
+            <p className="text-slate-700 text-sm">Cross-border systems connecting countries, continents, and global gateway points with regulatory compliance and geopolitical considerations.</p>
+          </div>
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-3">Data Center Interconnects</h3>
+            <p className="text-slate-700 text-sm">High-capacity links between data center campuses supporting replication, disaster recovery, and cloud service delivery across regions.</p>
+          </div>
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-3">Content Distribution Networks</h3>
+            <p className="text-slate-700 text-sm">Optimized fiber networks delivering video, streaming, and content services with high capacity and low latency for end users.</p>
+          </div>
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-3">Submarine Cable Networks</h3>
+            <p className="text-slate-700 text-sm">Undersea cable system design, landing station engineering, international gateway integration, and multi-operator requirements.</p>
+          </div>
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-3">Enterprise Wide-Area Networks</h3>
+            <p className="text-slate-700 text-sm">Private enterprise networks connecting global locations with dedicated capacity, security, and performance guarantees.</p>
+          </div>
+        </div>
+      </ServiceSection>
+
+      <ServiceSection title="Key Design Considerations" subtitle="Critical Success Factors" isDark themeColor="orange">
+        <div className="max-w-3xl mx-auto space-y-4">
+          <div className="flex gap-4 items-start bg-slate-800/50 p-4 rounded-lg">
+            <span className="text-orange-300 font-bold text-xl flex-shrink-0">✓</span>
+            <div>
+              <h4 className="font-semibold text-white">Signal Integrity & Reach</h4>
+              <p className="text-slate-300 text-sm">Comprehensive link budget analysis ensuring signal reaches destination with sufficient margin for aging fiber and environmental variations.</p>
             </div>
-            <div className="flex gap-4">
-              <span className="text-green-600 font-bold text-xl flex-shrink-0">✓</span>
-              <div>
-                <h3 className="font-bold text-slate-900 text-lg">Advanced DWDM Knowledge</h3>
-                <p className="text-slate-700">Deep expertise in latest coherent optical technologies and wavelength multiplexing systems</p>
-              </div>
+          </div>
+          <div className="flex gap-4 items-start bg-slate-800/50 p-4 rounded-lg">
+            <span className="text-orange-300 font-bold text-xl flex-shrink-0">✓</span>
+            <div>
+              <h4 className="font-semibold text-white">Redundancy Architecture</h4>
+              <p className="text-slate-300 text-sm">Diverse routing, protection switching mechanisms, and mesh topologies designed for survivability and rapid recovery from failures.</p>
             </div>
-            <div className="flex gap-4">
-              <span className="text-green-600 font-bold text-xl flex-shrink-0">✓</span>
-              <div>
-                <h3 className="font-bold text-slate-900 text-lg">Vendor-Neutral Design</h3>
-                <p className="text-slate-700">Objective recommendations across leading optical equipment manufacturers</p>
-              </div>
+          </div>
+          <div className="flex gap-4 items-start bg-slate-800/50 p-4 rounded-lg">
+            <span className="text-orange-300 font-bold text-xl flex-shrink-0">✓</span>
+            <div>
+              <h4 className="font-semibold text-white">Scalability & Growth</h4>
+              <p className="text-slate-300 text-sm">Infrastructure supporting capacity upgrades without network redesign, enabling evolution from current to future needs over 10-15 year lifecycle.</p>
             </div>
-            <div className="flex gap-4">
-              <span className="text-green-600 font-bold text-xl flex-shrink-0">✓</span>
-              <div>
-                <h3 className="font-bold text-slate-900 text-lg">Future-Proof Architecture</h3>
-                <p className="text-slate-700">Scalable designs accommodating 10+ year technology evolution</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <span className="text-green-600 font-bold text-xl flex-shrink-0">✓</span>
-              <div>
-                <h3 className="font-bold text-slate-900 text-lg">Cost Optimization</h3>
-                <p className="text-slate-700">Balanced designs minimizing capex and opex while meeting performance targets</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <span className="text-green-600 font-bold text-xl flex-shrink-0">✓</span>
-              <div>
-                <h3 className="font-bold text-slate-900 text-lg">Global Standards Compliance</h3>
-                <p className="text-slate-700">Adherence to ITU-T, IEEE, OIF, and industry best practices</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <span className="text-green-600 font-bold text-xl flex-shrink-0">✓</span>
-              <div>
-                <h3 className="font-bold text-slate-900 text-lg">Rapid Network Deployment</h3>
-                <p className="text-slate-700">Streamlined planning processes reducing time-to-service</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <span className="text-green-600 font-bold text-xl flex-shrink-0">✓</span>
-              <div>
-                <h3 className="font-bold text-slate-900 text-lg">Comprehensive Documentation</h3>
-                <p className="text-slate-700">Complete technical deliverables for seamless implementation</p>
-              </div>
+          </div>
+          <div className="flex gap-4 items-start bg-slate-800/50 p-4 rounded-lg">
+            <span className="text-orange-300 font-bold text-xl flex-shrink-0">✓</span>
+            <div>
+              <h4 className="font-semibold text-white">Cost Optimization</h4>
+              <p className="text-slate-300 text-sm">Equipment selection, fiber routing, and site acquisition strategies optimized for total cost of ownership while maintaining performance and reliability.</p>
             </div>
           </div>
         </div>
-      </Section>
+      </ServiceSection>
 
-      {/* Project Lifecycle Support */}
-      <Section className="bg-white">
-        <SectionHeading
-          title="PROJECT LIFECYCLE SUPPORT"
-          centered={true}
-        />
-        <div className="max-w-5xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">Pre-Planning Phase</h3>
-            <ul className="space-y-2 text-slate-700">
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Feasibility studies</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Technology assessments</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Preliminary route analysis</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Budget estimation</span>
-              </li>
-            </ul>
+      <ServiceSection title="Why Choose Our Optical Solutions" subtitle="What Sets Us Apart" themeColor="orange">
+        <div className="max-w-3xl mx-auto space-y-4">
+          <div className="flex gap-4 items-start">
+            <span className="text-orange-600 font-bold text-xl flex-shrink-0">→</span>
+            <div>
+              <h4 className="font-semibold text-slate-900">Deep Technical Expertise</h4>
+              <p className="text-slate-700 text-sm">Experience designing networks for major carriers, ISPs, data centers, and enterprises globally, spanning all network types and technologies.</p>
+            </div>
           </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">Design Phase</h3>
-            <ul className="space-y-2 text-slate-700">
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Detailed engineering</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Equipment selection</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Vendor negotiations support</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Permitting assistance</span>
-              </li>
-            </ul>
+          <div className="flex gap-4 items-start">
+            <span className="text-orange-600 font-bold text-xl flex-shrink-0">→</span>
+            <div>
+              <h4 className="font-semibold text-slate-900">Proven Success Track Record</h4>
+              <p className="text-slate-700 text-sm">Successfully delivered national backbones, international corridors, data center networks, and enterprise solutions operating reliably at scale.</p>
+            </div>
           </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">Implementation Phase</h3>
-            <ul className="space-y-2 text-slate-700">
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Installation oversight</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Quality assurance</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Commissioning support</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Acceptance testing</span>
-              </li>
-            </ul>
+          <div className="flex gap-4 items-start">
+            <span className="text-orange-600 font-bold text-xl flex-shrink-0">→</span>
+            <div>
+              <h4 className="font-semibold text-slate-900">Cost-Effective Designs</h4>
+              <p className="text-slate-700 text-sm">Optimized solutions that deliver required capacity and reliability while controlling capital expenditure and operational costs.</p>
+            </div>
           </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">Operations Phase</h3>
-            <ul className="space-y-2 text-slate-700">
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Performance monitoring design</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Optimization recommendations</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Capacity expansion planning</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-600 font-bold">•</span>
-                <span>Technology refresh strategies</span>
-              </li>
-            </ul>
+          <div className="flex gap-4 items-start">
+            <span className="text-orange-600 font-bold text-xl flex-shrink-0">→</span>
+            <div>
+              <h4 className="font-semibold text-slate-900">Future-Ready Architecture</h4>
+              <p className="text-slate-700 text-sm">Designs that accommodate evolving technologies, standards, and capacity requirements over network's 10-15 year lifespan.</p>
+            </div>
+          </div>
+          <div className="flex gap-4 items-start">
+            <span className="text-orange-600 font-bold text-xl flex-shrink-0">→</span>
+            <div>
+              <h4 className="font-semibold text-slate-900">Regulatory & Compliance Navigation</h4>
+              <p className="text-slate-700 text-sm">Expert guidance through international regulations, right-of-way requirements, environmental approvals, and licensing across jurisdictions.</p>
+            </div>
+          </div>
+          <div className="flex gap-4 items-start">
+            <span className="text-orange-600 font-bold text-xl flex-shrink-0">→</span>
+            <div>
+              <h4 className="font-semibold text-slate-900">Comprehensive Documentation</h4>
+              <p className="text-slate-700 text-sm">Complete technical specifications, vendor requirements, implementation roadmaps, and operational procedures for successful deployment.</p>
+            </div>
+          </div>
+          <div className="flex gap-4 items-start">
+            <span className="text-orange-600 font-bold text-xl flex-shrink-0">→</span>
+            <div>
+              <h4 className="font-semibold text-slate-900">Ongoing Support & Optimization</h4>
+              <p className="text-slate-700 text-sm">Deployment oversight, commissioning support, and post-launch optimization ensuring network achieves designed performance and reliability.</p>
+            </div>
+          </div>
+          <div className="flex gap-4 items-start">
+            <span className="text-orange-600 font-bold text-xl flex-shrink-0">→</span>
+            <div>
+              <h4 className="font-semibold text-slate-900">Vendor-Neutral Approach</h4>
+              <p className="text-slate-700 text-sm">Objective equipment recommendations and system architecture independent of vendor relationships, ensuring best value for your investment.</p>
+            </div>
           </div>
         </div>
-      </Section>
+      </ServiceSection>
 
-      {/* Case Studies */}
-      <Section className="bg-gradient-to-br from-green-50 to-blue-50">
-        <SectionHeading
-          title="CASE STUDY EXAMPLES"
-          centered={true}
-        />
-        <div className="max-w-4xl mx-auto mt-12 space-y-8">
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h3 className="text-xl font-bold text-slate-900 mb-3">National Carrier Backbone Expansion</h3>
-            <p className="text-slate-700">Designed 4,500 km coherent 400G backbone network across 12 major cities, delivering 9.6 Tbps capacity with 99.999% availability and diverse routing.</p>
-          </div>
-
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Multi-Data Center Interconnect</h3>
-            <p className="text-slate-700">Engineered 200G DCI network connecting 8 hyperscale data centers across 1,200 km with sub-2ms latency for real-time replication and distributed computing.</p>
-          </div>
-
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Regional ISP Network Upgrade</h3>
-            <p className="text-slate-700">Migrated legacy 10G DWDM system to flexible grid 200G architecture, quadrupling capacity while reducing cost-per-bit by 65%.</p>
-          </div>
-
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h3 className="text-xl font-bold text-slate-900 mb-3">International Corridor Design</h3>
-            <p className="text-slate-700">Planned 2,800 km ultra-longhaul C+L band system delivering 15 Tbps between submarine cable landing stations with alien wavelength support.</p>
-          </div>
-        </div>
-      </Section>
-
-      {/* FAQs */}
-      <Section className="bg-white">
-        <SectionHeading
-          title="FREQUENTLY ASKED QUESTIONS"
-          centered={true}
-        />
-        <div className="max-w-3xl mx-auto mt-12 space-y-6">
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="font-bold text-slate-900 mb-2">Q: What's the typical timeline for optical network design projects?</h3>
-            <p className="text-slate-700">A: Projects range from 4-16 weeks depending on network complexity, geographic scope, and level of detail required.</p>
-          </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="font-bold text-slate-900 mb-2">Q: What's the difference between metro, regional, and longhaul?</h3>
-            <p className="text-slate-700">A: Metro networks serve urban areas up to 80 km, regional networks span 80-600 km, longhaul covers 600-2,500 km, and ultra-longhaul extends beyond 2,500 km.</p>
-          </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="font-bold text-slate-900 mb-2">Q: Can you design networks using existing fiber infrastructure?</h3>
-            <p className="text-slate-700">A: Yes, we specialize in both greenfield designs and brownfield upgrades leveraging existing fiber assets.</p>
-          </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="font-bold text-slate-900 mb-2">Q: Do you support submarine cable integration?</h3>
-            <p className="text-slate-700">A: Yes, we design terrestrial networks that interface with submarine cable systems at landing stations.</p>
-          </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="font-bold text-slate-900 mb-2">Q: What capacity can modern optical networks support?</h3>
-            <p className="text-slate-700">A: Current technology supports 100-800G per wavelength, with 96+ wavelengths per fiber, achieving 25+ Tbps per fiber pair in C+L band systems.</p>
-          </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-lg">
-            <h3 className="font-bold text-slate-900 mb-2">Q: How do you ensure network redundancy?</h3>
-            <p className="text-slate-700">A: We design diverse routing, implement protection switching, specify redundant equipment, and plan geographic diversity to meet your availability targets.</p>
-          </div>
-        </div>
-      </Section>
-
-      {/* Get Started CTA */}
-      <Section className="bg-gradient-to-br from-green-600 to-blue-600 text-white py-32">
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-4xl font-bold mb-6">Ready to Build Next-Generation Optical Infrastructure?</h2>
-          <p className="text-xl mb-12">
-            Contact us today for complimentary feasibility assessment, network capacity analysis, route and topology recommendations, project scoping and quotation, and technical consultation with our optical engineering team.
+      <Section className="bg-white relative py-16">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-4xl font-bold text-slate-900 mb-6">Ready to Transform Your Optical Infrastructure?</h2>
+          <p className="text-lg text-slate-600 mb-8">
+            Contact us today for network planning, feasibility studies, system design, regulatory support, and full implementation services for your long-haul optical network.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact">
-              <Button size="lg" className="text-green-600 hover:bg-gray-50 shadow-lg hover:shadow-xl px-8 py-4 text-lg font-semibold">
-                Contact Us <ArrowRight className="w-5 h-5" />
-              </Button>
-            </Link>
-            <button
-              onClick={() => alert('Proposal request submitted. Our team will contact you within 24 hours with customized options.')}
-              className="px-8 py-4 text-lg font-semibold rounded-lg bg-white text-green-600 hover:bg-gray-50 active:scale-95 shadow-md hover:shadow-lg transition-all inline-flex items-center justify-center gap-2"
-            >
-              Request Proposal <ArrowRight className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => alert('Scheduling consultation. Select your preferred time slot below.')}
-              className="px-8 py-4 text-lg font-semibold rounded-lg bg-white text-green-600 hover:bg-gray-50 active:scale-95 shadow-md hover:shadow-lg transition-all inline-flex items-center justify-center gap-2"
-            >
-              Schedule Consultation <ArrowRight className="w-5 h-5" />
-            </button>
-          </div>
+          <Link to="/contact">
+            <Button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-lg font-semibold shadow-lg transition-all">
+              Request a Consultation <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
+          </Link>
         </div>
       </Section>
 
-      {/* Download Resources */}
-      <Section className="bg-white">
-        <SectionHeading
-          title="DOWNLOAD RESOURCES"
-          centered={true}
-        />
-        <div className="max-w-4xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <button
-            onClick={() => alert('White Paper: "Planning High-Capacity Optical Networks" - Download starting...')}
-            className="p-8 bg-gradient-to-br from-green-50 to-blue-50 rounded-lg hover:shadow-lg transition-shadow text-left cursor-pointer"
-          >
-            <h3 className="font-bold text-slate-900 mb-2">📄 White Paper</h3>
-            <p className="text-slate-700">"Planning High-Capacity Optical Networks"</p>
-          </button>
-
-          <button
-            onClick={() => alert('Guide: "DWDM System Design Best Practices" - Download starting...')}
-            className="p-8 bg-gradient-to-br from-green-50 to-blue-50 rounded-lg hover:shadow-lg transition-shadow text-left cursor-pointer"
-          >
-            <h3 className="font-bold text-slate-900 mb-2">📋 Guide</h3>
-            <p className="text-slate-700">"DWDM System Design Best Practices"</p>
-          </button>
-
-          <button
-            onClick={() => alert('Checklist: "Longhaul Network Planning Considerations" - Download starting...')}
-            className="p-8 bg-gradient-to-br from-green-50 to-blue-50 rounded-lg hover:shadow-lg transition-shadow text-left cursor-pointer"
-          >
-            <h3 className="font-bold text-slate-900 mb-2">✓ Checklist</h3>
-            <p className="text-slate-700">"Longhaul Network Planning Considerations"</p>
-          </button>
-
-          <button
-            onClick={() => alert('Case Studies: "Successful Optical Network Deployments" - Download starting...')}
-            className="p-8 bg-gradient-to-br from-green-50 to-blue-50 rounded-lg hover:shadow-lg transition-shadow text-left cursor-pointer"
-          >
-            <h3 className="font-bold text-slate-900 mb-2">📊 Case Studies</h3>
-            <p className="text-slate-700">"Successful Optical Network Deployments"</p>
-          </button>
-        </div>
-      </Section>
-
-      {/* Contact Info Footer */}
-      <Section className="bg-gradient-to-br from-green-50 to-blue-50">
-        <SectionHeading
-          title="Let's Talk"
-          subtitle="Optical Network Excellence"
-          centered={true}
-        />
-        <div className="max-w-3xl mx-auto mt-12">
-          <p className="text-lg text-slate-700 text-center mb-8">
-            If you are planning, upgrading, or operating a long-haul optical transport network, we can support your engineering and planning objectives.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <a href="mailto:hello@spirolink.com" className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center">
-              <Mail className="w-12 h-12 text-green-600 mx-auto mb-4" />
-              <h3 className="font-bold text-slate-900 mb-2">Email</h3>
-              <p className="text-green-600 hover:text-green-700 font-medium">hello@spirolink.com</p>
-            </a>
-
-            <a href="tel:+15551234567" className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center">
-              <Phone className="w-12 h-12 text-green-600 mx-auto mb-4" />
-              <h3 className="font-bold text-slate-900 mb-2">Phone</h3>
-              <p className="text-green-600 hover:text-green-700 font-medium">(555) 123-4567</p>
-            </a>
-          </div>
-        </div>
-      </Section>
+      <CTA
+        title="Ready to Design Your Long-Haul Optical Network?"
+        description="Contact us for network planning, feasibility studies, system design, equipment selection, regulatory support, and implementation services"
+      />
     </>
   );
 }
-
-// END: Long-Haul Optical Network Planning Page
 
