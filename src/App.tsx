@@ -3,6 +3,7 @@ import { I18nProvider } from './i18n/I18nProvider';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import Chatbot from './components/Chatbot';
+import NetworkBackground from './components/NetworkBackground';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import PonFtth from './pages/PonFtth';
@@ -18,7 +19,8 @@ export default function App() {
   return (
     <I18nProvider>
       <BrowserRouter>
-        <div className="flex flex-col min-h-screen">
+        <NetworkBackground />
+        <div className="flex flex-col min-h-screen relative z-[5]">
           <Header />
           <main className="flex-grow pt-16">
             <Routes>

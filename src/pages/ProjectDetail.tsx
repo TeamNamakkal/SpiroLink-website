@@ -3,7 +3,6 @@ import { ArrowLeft } from 'lucide-react';
 import { Section } from '../components/ui/Section';
 import { Card, CardContent } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
-import { useI18n } from '../i18n/I18nProvider';
 
 // Mock project data matching the Projects page
 const mockProjects = [
@@ -69,48 +68,53 @@ export default function ProjectDetail() {
 
   if (!project) {
     return (
-      <Section className="min-h-screen py-12 text-center">
-        <h1 className="text-4xl font-bold text-slate-900 mb-4">Project Not Found</h1>
-        <p className="text-slate-600 mb-6">The project you're looking for doesn't exist.</p>
-        <Link to="/projects">
-          <Button>Back to Projects</Button>
-        </Link>
+      <Section className="bg-gradient-to-br from-slate-900 to-slate-800 py-40 min-h-screen relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 via-blue-500/10 to-green-500/10 pointer-events-none" />
+        <div className="text-center relative z-10">
+          <h1 className="text-6xl font-bold text-white mb-4">Project Not Found</h1>
+          <p className="text-slate-300 mb-6">The project you're looking for doesn't exist.</p>
+          <Link to="/projects">
+            <Button className="bg-green-600 hover:bg-green-700 text-white">Back to Projects</Button>
+          </Link>
+        </div>
       </Section>
     );
   }
 
   return (
     <>
-      <Section className="bg-gradient-to-br from-green-50 to-blue-50 py-12">
-        <Link to="/projects" className="flex items-center gap-2 text-green-600 hover:text-green-700 mb-6 font-medium">
-          <ArrowLeft className="w-5 h-5" />
-          Back to Projects
-        </Link>
-        <h1 className="text-5xl font-bold text-slate-900 mb-4">{project.title}</h1>
+      <Section className="bg-gradient-to-br from-slate-900 to-slate-800 py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 via-blue-500/10 to-green-500/10 pointer-events-none" />
+        <div className="relative z-10">
+          <Link to="/projects" className="flex items-center gap-2 text-green-400 hover:text-green-300 mb-6 font-medium">
+            <ArrowLeft className="w-5 h-5" />
+            Back to Projects
+          </Link>
+          <h1 className="text-6xl md:text-7xl font-bold text-white mb-4 bg-gradient-to-r from-green-300 via-blue-300 to-green-300 bg-clip-text text-transparent">{project.title}</h1>
+          {project.image_url && (
+            <img
+              src={project.image_url}
+              alt={project.title}
+              className="w-full h-96 object-cover rounded-lg mt-8 shadow-2xl"
+            />
+          )}
+        </div>
       </Section>
 
       <Section className="bg-white py-12">
-        {project.image_url && (
-          <img
-            src={project.image_url}
-            alt={project.title}
-            className="w-full h-96 object-cover rounded-lg mb-8 shadow-lg"
-          />
-        )}
-
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
             <h2 className="text-3xl font-bold text-slate-900 mb-4">Project Overview</h2>
             <p className="text-lg text-slate-700 mb-8">{project.description}</p>
 
-            <Card className="mb-8">
+            <Card className="mb-8 border border-green-200 shadow-md hover:shadow-lg transition-shadow">
               <CardContent>
                 <h3 className="text-2xl font-bold text-slate-900 mb-3">The Challenge</h3>
                 <p className="text-slate-700">{project.problem_statement}</p>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="border border-blue-200 shadow-md hover:shadow-lg transition-shadow">
               <CardContent>
                 <h3 className="text-2xl font-bold text-slate-900 mb-3">Our Solution</h3>
                 <p className="text-slate-700">{project.solution}</p>

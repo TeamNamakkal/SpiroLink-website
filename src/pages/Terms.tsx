@@ -1,16 +1,17 @@
 import { Section } from '../components/ui/Section';
-import { useI18n } from '../i18n/I18nProvider';
 
 export default function Terms() {
-  const { t } = useI18n();
   return (
     <>
-      <Section className="bg-gradient-to-br from-green-50 to-blue-50 py-20">
-        <h1 className="text-5xl font-bold text-slate-900 mb-6">Terms & Conditions</h1>
-        <p className="text-lg text-slate-700">Last updated: December 2025</p>
+      <Section className="bg-gradient-to-br from-slate-900 to-slate-800 py-32 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 via-rose-500/10 to-pink-500/10 pointer-events-none" />
+        <div className="relative z-10">
+          <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 bg-gradient-to-r from-pink-300 via-rose-300 to-pink-300 bg-clip-text text-transparent">Terms & Conditions</h1>
+          <p className="text-lg text-slate-300">Last updated: December 2025</p>
+        </div>
       </Section>
 
-      <Section className="bg-white prose prose-slate max-w-none">
+      <Section className="bg-gradient-to-br from-slate-50 to-white prose prose-slate max-w-none">
         <div className="max-w-4xl space-y-8">
           <div>
             <h2 className="text-3xl font-bold text-slate-900 mb-4">1. Terms</h2>

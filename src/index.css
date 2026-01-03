@@ -1,3 +1,180 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Card Animation */
+@keyframes slideUp {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 3D Rotation Animations */
+@keyframes rotate3dX {
+  0% {
+    transform: perspective(1200px) rotateX(0deg) rotateY(2deg) rotateZ(0deg);
+  }
+  50% {
+    transform: perspective(1200px) rotateX(3deg) rotateY(-2deg) rotateZ(1deg);
+  }
+  100% {
+    transform: perspective(1200px) rotateX(0deg) rotateY(2deg) rotateZ(0deg);
+  }
+}
+
+@keyframes rotate3dY {
+  0% {
+    transform: perspective(1200px) rotateX(-2deg) rotateY(0deg) rotateZ(0deg);
+  }
+  50% {
+    transform: perspective(1200px) rotateX(2deg) rotateY(3deg) rotateZ(-1deg);
+  }
+  100% {
+    transform: perspective(1200px) rotateX(-2deg) rotateY(0deg) rotateZ(0deg);
+  }
+}
+
+@keyframes rotate3dZ {
+  0% {
+    transform: perspective(1200px) rotateX(1deg) rotateY(-1deg) rotateZ(0deg);
+  }
+  50% {
+    transform: perspective(1200px) rotateX(-1deg) rotateY(2deg) rotateZ(2deg);
+  }
+  100% {
+    transform: perspective(1200px) rotateX(1deg) rotateY(-1deg) rotateZ(0deg);
+  }
+}
+
+/* Smooth Horizontal Scrolling Animation - Slow & Professional */
+@keyframes slideLeftRight {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes cardFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes cardGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2), 0 0 60px rgba(100, 200, 255, 0.1);
+  }
+}
+
+.slide-left-right {
+  animation: slideLeftRight 50s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+
+/* Floating card effect */
+.group {
+  animation: cardFloat 4s ease-in-out infinite;
+}
+
+/* Enhanced group hover for all cards */
+.group:hover {
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+}
+
+/* Staggered animation delays */
+.animate-card-1 {
+  animation: slideUp 3s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.animate-card-2 {
+  animation: slideUp 3s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+.animate-card-3 {
+  animation: slideUp 3s ease-in-out infinite;
+  animation-delay: 0.4s;
+}
+
+.animate-card-4 {
+  animation: slideUp 3s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+.animate-card-5 {
+  animation: slideUp 3s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+.animate-card-6 {
+  animation: slideUp 3s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.animate-card-10 {
+  animation: slideUp 3s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+/* 3D Rotation Card Classes */
+.rotate-3d-1 {
+  animation: rotate3dX 6s ease-in-out infinite;
+  animation-delay: 0s;
+  transform-style: preserve-3d;
+}
+
+.rotate-3d-2 {
+  animation: rotate3dY 6s ease-in-out infinite;
+  animation-delay: 0.3s;
+  transform-style: preserve-3d;
+}
+
+.rotate-3d-3 {
+  animation: rotate3dZ 6s ease-in-out infinite;
+  animation-delay: 0.6s;
+  transform-style: preserve-3d;
+}
+
+.rotate-3d-4 {
+  animation: rotate3dX 6s ease-in-out infinite;
+  animation-delay: 0.9s;
+  transform-style: preserve-3d;
+}
+
+.rotate-3d-5 {
+  animation: rotate3dY 6s ease-in-out infinite;
+  animation-delay: 1.2s;
+  transform-style: preserve-3d;
+}
+
+/* Glow effects */
+.card-glow {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.card-glow:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}

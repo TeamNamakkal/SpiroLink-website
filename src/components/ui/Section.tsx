@@ -18,13 +18,14 @@ interface SectionHeadingProps {
   title: string;
   subtitle?: string;
   centered?: boolean;
+  dark?: boolean;
 }
 
-export function SectionHeading({ title, subtitle, centered = true }: SectionHeadingProps) {
+export function SectionHeading({ title, subtitle, centered = true, dark = false }: SectionHeadingProps) {
   return (
     <div className={`mb-12 ${centered ? 'text-center' : ''}`}>
-      <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">{title}</h2>
-      {subtitle && <p className="text-xl text-slate-600 max-w-2xl">{subtitle}</p>}
+      <h2 className={`text-4xl md:text-5xl font-bold ${dark ? 'text-white' : 'text-slate-900'} mb-4`}>{title}</h2>
+      {subtitle && <p className={`text-xl ${dark ? 'text-slate-300' : 'text-slate-600'} max-w-2xl`}>{subtitle}</p>}
     </div>
   );
 }
