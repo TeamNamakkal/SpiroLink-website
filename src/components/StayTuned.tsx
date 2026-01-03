@@ -54,7 +54,7 @@ const projects: Project[] = [
 export default function Rotating3DDashboard() {
   const [rotation, setRotation] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const rotationSpeed = 0.2; // degrees per frame
+  const rotationSpeed = 0.2;
 
   useEffect(() => {
     let animationFrame: number;
@@ -67,10 +67,10 @@ export default function Rotating3DDashboard() {
   }, []);
 
   const total = projects.length;
-  const radius = 180; // distance from center
+  const radius = 180;
 
   return (
-    <div className="relative flex flex-col items-center justify-center bg-slate-900 min-h-[400px] p-4 perspective-1000 overflow-hidden">
+    <div className="relative flex items-center justify-center bg-slate-900 min-h-[400px] p-4 perspective-1000 overflow-hidden">
       <div
         ref={containerRef}
         className="relative w-full max-w-3xl h-[380px] flex items-center justify-center"
@@ -82,37 +82,42 @@ export default function Rotating3DDashboard() {
           const x = radius * Math.sin(rad);
           const z = radius * Math.cos(rad);
 
-          const scale = z > 0 ? 1 + z / 1000 : 0.7 + (z + radius) / (2 * radius);
-
-          const opacity = z > 0 ? 1 : 0.4;
+          const scale = z > 0 ? 1 + z / 1000 : 0.75;
+          const opacity = z > 0 ? 1 : 0.45;
 
           return (
             <div
               key={index}
-              className={`absolute w-72 bg-white rounded-3xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105`}
+              className="absolute w-72 bg-white rounded-3xl shadow-xl overflow-hidden"
               style={{
                 transform: `translateX(${x}px) translateZ(${z}px) scale(${scale})`,
                 opacity,
                 zIndex: Math.round(z),
                 boxShadow:
                   z > 0
-                    ? "0 0 20px rgba(16, 185, 129, 0.6), 0 0 40px rgba(16, 185, 129, 0.3)"
-                    : "0 0 10px rgba(0,0,0,0.2)",
-                border: "2px solid transparent",
-                backgroundClip: "padding-box",
+                    ? "0 0 22px rgba(16,185,129,0.65), 0 0 45px rgba(16,185,129,0.35)"
+                    : "0 0 10px rgba(0,0,0,0.25)",
                 animation: "glow 2s ease-in-out infinite alternate",
               }}
             >
-              {/* Project Image */}
-              <div className="w-full h-36 relative">
-                <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-                <div className="absolute top-0 left-0 w-full h-full bg-black/25"></div>
-                <div className="absolute top-2 left-2 text-white text-sm font-semibold">{project.subtitle}</div>
+              {/* Image */}
+              <div className="relative w-full h-36">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/25" />
+                <div className="absolute top-2 left-2 text-white text-sm font-semibold">
+                  {project.subtitle}
+                </div>
               </div>
 
-              {/* Project Content */}
+              {/* Content */}
               <div className="p-4 text-center">
-                <h2 className="text-lg font-bold text-slate-900 mb-1">{project.title}</h2>
+                <h2 className="text-lg font-bold text-slate-900 mb-1">
+                  {project.title}
+                </h2>
                 <ul className="text-left text-slate-700 list-disc list-inside space-y-1 max-h-24 overflow-y-auto text-sm">
                   {project.details.map((item, idx) => (
                     <li key={idx}>{item}</li>
@@ -120,8 +125,8 @@ export default function Rotating3DDashboard() {
                 </ul>
               </div>
 
-              {/* Sparkle */}
-              <div className="absolute top-2 right-2 w-7 h-7 bg-green-100 text-green-600 rounded-full flex items-center justify-center animate-bounce">
+              {/* Icon */}
+              <div className="absolute top-2 right-2 w-7 h-7 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
                 <Sparkles className="w-4 h-4" />
               </div>
             </div>
@@ -131,9 +136,8 @@ export default function Rotating3DDashboard() {
 
       <style>{`
         @keyframes glow {
-          0% { box-shadow: 0 0 10px rgba(16, 185, 129, 0.6), 0 0 20px rgba(16, 185, 129, 0.3); }
-          50% { box-shadow: 0 0 15px rgba(16, 185, 129, 0.8), 0 0 30px rgba(16, 185, 129, 0.5); }
-          100% { box-shadow: 0 0 10px rgba(16, 185, 129, 0.6), 0 0 20px rgba(16, 185, 129, 0.3); }
+          0% { box-shadow: 0 0 10px rgba(16,185,129,0.6), 0 0 20px rgba(16,185,129,0.3); }
+          100% { box-shadow: 0 0 18px rgba(16,185,129,0.8), 0 0 36px rgba(16,185,129,0.5); }
         }
       `}</style>
     </div>
