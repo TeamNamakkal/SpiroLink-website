@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './Header.module.css';
 import MegaMenu from './MegaMenu';
 import MobileMenu from './MobileMenu';
 import { CountrySelector } from './CountrySelector';
 import { LanguageSelector } from './LanguageSelector';
 import { useI18n } from '../i18n/I18nProvider';
+import { useAuth } from '../contexts/AuthContext';
+import { logout } from '../lib/auth';
 
 interface NavItem {
   label: string;
@@ -23,6 +25,8 @@ const navItems: NavItem[] = [
 
 export function Header() {
   const { t } = useI18n();
+  const { user, loading } = useAuth();
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -212,13 +216,36 @@ export function Header() {
             {/* Country Selector */}
             <CountrySelector />
 
-            {/* Sign In */}
-            <button
-              className="hidden md:flex text-white text-sm font-medium hover:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
-              aria-label={t('signIn')}
-            >
-              {t('signIn')}
-            </button>
+            {/* Sign In / User Menu */}
+            {!loading && (
+              <>
+                {user ? (
+                  <div className="hidden md:flex items-center gap-3">
+                    <span className="text-white text-sm font-medium truncate max-w-[150px]">
+                      {user.email}
+                    </span>
+                    <button
+                      onClick={async () => {
+                        await logout();
+                        navigate('/');
+                      }}
+                      className="text-white text-sm font-medium hover:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 px-3 py-1.5 rounded hover:bg-white/10"
+                      aria-label={t('signOut') || 'Sign Out'}
+                    >
+                      {t('signOut') || 'Sign Out'}
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => navigate('/signin')}
+                    className="hidden md:flex text-white text-sm font-medium hover:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 px-3 py-1.5 rounded hover:bg-white/10"
+                    aria-label={t('signIn')}
+                  >
+                    {t('signIn')}
+                  </button>
+                )}
+              </>
+            )}
 
             {/* Mobile Menu Button */}
             <button

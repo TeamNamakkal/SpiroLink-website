@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './Header.module.css';
+import { useAuth } from '../contexts/AuthContext';
+import { logout } from '../lib/auth';
 
 interface NavItem {
   label: string;
@@ -16,6 +18,8 @@ interface MobileMenuProps {
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navItems }) => {
   const menuRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
+  const { user, loading } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -144,17 +148,47 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navItems }) =>
               Language: IND
             </button>
 
-            <button
-              onClick={onClose}
-              className={`w-full text-left text-white text-sm font-medium py-3 px-4 rounded-lg hover:bg-gray-900 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 ${
-                styles.mobileMenuItem
-              }`}
-              style={{
-                animationDelay: isOpen ? `${(navItems.length + 2) * 0.05}s` : '0s',
-              }}
-            >
-              Sign in
-            </button>
+            {!loading && (
+              <>
+                {user ? (
+                  <>
+                    <div className="text-white text-sm font-medium py-3 px-4 truncate">
+                      {user.email}
+                    </div>
+                    <button
+                      onClick={async () => {
+                        await logout();
+                        navigate('/');
+                        onClose();
+                      }}
+                      className={`w-full text-left text-white text-sm font-medium py-3 px-4 rounded-lg hover:bg-gray-900 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 ${
+                        styles.mobileMenuItem
+                      }`}
+                      style={{
+                        animationDelay: isOpen ? `${(navItems.length + 2) * 0.05}s` : '0s',
+                      }}
+                    >
+                      Sign Out
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    onClick={() => {
+                      navigate('/signin');
+                      onClose();
+                    }}
+                    className={`w-full text-left text-white text-sm font-medium py-3 px-4 rounded-lg hover:bg-gray-900 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 ${
+                      styles.mobileMenuItem
+                    }`}
+                    style={{
+                      animationDelay: isOpen ? `${(navItems.length + 2) * 0.05}s` : '0s',
+                    }}
+                  >
+                    Sign In
+                  </button>
+                )}
+              </>
+            )}
           </div>
         </div>
       </nav>
