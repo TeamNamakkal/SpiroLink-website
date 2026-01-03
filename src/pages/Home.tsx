@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from 'react';
 import { Button } from '../components/ui/Button';
 import { Section, SectionHeading } from '../components/ui/Section';
 import { useI18n } from '../i18n/I18nProvider';
+import { useAuth } from '../contexts/AuthContext';
 import StayTuned from '../components/StayTuned';
 
 const rotate3dClasses = ['rotate-3d-1', 'rotate-3d-2', 'rotate-3d-3', 'rotate-3d-4', 'rotate-3d-5'];
@@ -48,6 +49,7 @@ const useScrollAnimation = () => {
 
 export default function Home() {
   const { t } = useI18n();
+  const { user } = useAuth();
   const ponRef = useScrollAnimation();
   const microwaveRef = useScrollAnimation();
   const opticalRef = useScrollAnimation();
@@ -71,16 +73,33 @@ export default function Home() {
               {t('homeHeroDescription')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Link to="/services">
-                <Button className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-3 rounded-lg font-semibold shadow-lg hover:shadow-green-500/50 transition-all">
-                  {t('exploreOurServices')} <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-              </Link>
-              <Link to="/contact">
-                <Button className="border-2 border-green-400/50 text-green-300 hover:bg-green-400/10 px-8 py-3 rounded-lg font-semibold transition-all">
-                  {t('getInTouch')}
-                </Button>
-              </Link>
+              {user ? (
+                <>
+                  <Link to="/dashboard">
+                    <Button className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-8 py-3 rounded-lg font-semibold shadow-lg hover:shadow-blue-500/50 transition-all">
+                      {t('dashboard') || 'Go to Dashboard'} <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </Link>
+                  <Link to="/services">
+                    <Button className="border-2 border-green-400/50 text-green-300 hover:bg-green-400/10 px-8 py-3 rounded-lg font-semibold transition-all">
+                      {t('exploreOurServices') || 'Explore Services'} <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link to="/services">
+                    <Button className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-3 rounded-lg font-semibold shadow-lg hover:shadow-green-500/50 transition-all">
+                      {t('exploreOurServices')} <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </Link>
+                  <Link to="/contact">
+                    <Button className="border-2 border-green-400/50 text-green-300 hover:bg-green-400/10 px-8 py-3 rounded-lg font-semibold transition-all">
+                      {t('getInTouch')}
+                    </Button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
           <div className="hidden md:block relative">

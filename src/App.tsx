@@ -1,6 +1,6 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { I18nProvider } from './i18n/I18nProvider';
-import { AuthProvider } from './contexts/AuthContext';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import Chatbot from './components/Chatbot';
@@ -17,6 +17,33 @@ import Resources from './pages/Resources';
 import Contact from './pages/Contact';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
+import Dashboard from './pages/Dashboard';
+
+// Protected Route Component
+interface ProtectedRouteProps {
+  children: React.ReactNode;
+}
+
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return <Navigate to="/signin" replace />;
+  }
+
+  return <>{children}</>;
+};
 
 export default function App() {
   return (
@@ -31,6 +58,7 @@ export default function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/signin" element={<SignIn />} />
                 <Route path="/signup" element={<SignUp />} />
+                <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/pon-ftth" element={<PonFtth />} />
                 <Route path="/microwave-network" element={<MicrowaveNetwork />} />

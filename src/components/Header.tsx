@@ -221,6 +221,13 @@ export function Header() {
               <>
                 {user ? (
                   <div className="hidden md:flex items-center gap-3">
+                    <Link
+                      to="/dashboard"
+                      className="text-white text-sm font-medium hover:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 px-3 py-1.5 rounded hover:bg-white/10"
+                      aria-label="Go to Dashboard"
+                    >
+                      Dashboard
+                    </Link>
                     <span className="text-white text-sm font-medium truncate max-w-[150px]">
                       {user.email}
                     </span>
