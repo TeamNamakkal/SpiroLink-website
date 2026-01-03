@@ -4,11 +4,8 @@ import { Section, SectionHeading } from '../components/ui/Section';
 import { Button } from '../components/ui/Button';
 import { useI18n } from '../i18n/I18nProvider';
 
-type Status = 'idle' | 'loading' | 'success' | 'error';
-
 export default function Contact() {
   const { t } = useI18n();
-
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,13 +13,10 @@ export default function Contact() {
     message: '',
     serviceType: 'general',
   });
-
-  const [status, setStatus] = useState<Status>('idle');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -32,35 +26,32 @@ export default function Contact() {
     setStatus('loading');
     setErrorMessage('');
 
-    // Basic validation
     if (!formData.name || !formData.email || !formData.message) {
-      setErrorMessage(
-        t('contactFormErrorRequired') || 'Please fill in all required fields'
-      );
+      setErrorMessage(t('contactFormErrorRequired') || 'Please fill in all required fields');
       setStatus('error');
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
-      setErrorMessage(
-        t('contactFormErrorEmail') || 'Please enter a valid email'
-      );
+      setErrorMessage(t('contactFormErrorEmail') || 'Please enter a valid email');
       setStatus('error');
       return;
     }
 
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/contact`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      // Determine API URL - use local backend in development
+      const backendUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://localhost:5001'
+        : 'https://spirolink-web-backend.onrender.com';
+
+      const response = await fetch(`${backendUrl}/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
       const data = await response.json();
 
@@ -69,20 +60,16 @@ export default function Contact() {
       }
 
       setStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        message: '',
-        serviceType: 'general',
-      });
-
+      setFormData({ name: '', email: '', phone: '', message: '', serviceType: 'general' });
+      
+      // Log success
+      console.log('✅ Message sent successfully:', formData);
+      
       setTimeout(() => setStatus('idle'), 5000);
     } catch (err) {
-      console.error(err);
+      console.error('❌ Error sending email:', err);
       setErrorMessage(
-        t('contactFormErrorSubmit') ||
-          'Failed to send message. Please try again.'
+        err instanceof Error ? err.message : (t('contactFormErrorSubmit') || 'Failed to send message. Please try again.')
       );
       setStatus('error');
     }
@@ -90,134 +77,183 @@ export default function Contact() {
 
   return (
     <>
-      {/* HERO */}
-      <Section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-40">
-        <h1 className="text-6xl font-bold text-white mb-6">
-          {t('contactPageTitle')}
-        </h1>
-        <p className="text-xl text-slate-300">
-          {t('contactPageDescription')}
-        </p>
-      </Section>
-
-      {/* CONTACT INFO */}
-      <Section className="bg-white">
-        <SectionHeading
-          title="Contact Information"
-          subtitle="Multiple ways to reach us"
-          centered
-        />
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-          <InfoCard icon={Mail} title="Email" value="contact@spirolink.com" />
-          <InfoCard icon={Phone} title="Phone" value="+1 (617) 680-4300" />
-          <InfoCard
-            icon={MapPin}
-            title="Office"
-            value="Plano, TX, USA"
-          />
+      <Section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-40 overflow-hidden relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-cyan-500/10 to-blue-500/10 pointer-events-none" />
+        <div className="relative z-10">
+          <div className="inline-block px-4 py-2 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full border border-blue-400/30 text-sm font-semibold text-blue-300 mb-6">
+            💬 Get in Touch
+          </div>
+          <h1 className="text-6xl md:text-7xl font-bold text-white leading-tight bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent mb-6">
+            {t('contactPageTitle')}
+          </h1>
+          <p className="text-xl text-slate-300 leading-relaxed max-w-3xl">
+            {t('contactPageDescription')}
+          </p>
         </div>
       </Section>
 
-      {/* FORM */}
-      <Section className="bg-slate-900 text-white">
-        <SectionHeading
-          title="Send us a Message"
-          subtitle="We'll respond within 24 hours"
-          centered
-          dark
-        />
+      <Section className="bg-white">
+        <SectionHeading title="Contact Information" subtitle="Multiple ways to reach us" centered={true} />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
+          {[
+            {
+              icon: Mail,
+              title: 'Email',
+              detail: 'contact@spirolink.com',
+              link: 'mailto:contact@spirolink.com',
+              color: 'from-blue-50'
+            },
+            {
+              icon: Phone,
+              title: 'Phone',
+              detail: '+1 (617) 680-4300',
+              link: 'tel:+15551234567',
+              color: 'from-cyan-50'
+            },
+            {
+              icon: MapPin,
+              title: 'Office',
+              detail: '9300 coit RD,APT 214,Plano,TX-75025',
+              link: '#',
+              color: 'from-purple-50'
+            },
+          ].map((contact, i) => (
+            <div key={i} className="group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className={`relative p-8 bg-gradient-to-br ${contact.color} to-slate-100 rounded-xl border border-slate-200 hover:border-blue-400/30 text-center transition-all duration-300 h-full flex flex-col items-center hover:shadow-lg hover:-translate-y-1`}>
+                <contact.icon className="w-12 h-12 text-blue-600 mb-4" />
+                <h3 className="font-bold text-slate-900 mb-2">{contact.title}</h3>
+                <a
+                  href={contact.link}
+                  className="text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                >
+                  {contact.detail}
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
 
+      <Section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+        <SectionHeading title="Send us a Message" subtitle="We'll respond within 24 hours" centered={true} dark={true} />
         <div className="max-w-2xl mx-auto mt-12">
           <form onSubmit={handleSubmit} className="space-y-6">
-            <input
-              name="name"
-              placeholder="Name *"
-              value={formData.name}
-              onChange={handleChange}
-              className="input"
-              required
-            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-semibold text-white mb-3">
+                  {t('contactFormNameLabel')} *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                  placeholder={t('contactFormNamePlaceholder')}
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-semibold text-white mb-3">
+                  {t('contactFormEmailLabel')} *
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                  placeholder={t('contactFormEmailPlaceholder')}
+                  required
+                />
+              </div>
+            </div>
 
-            <input
-              name="email"
-              type="email"
-              placeholder="Email *"
-              value={formData.email}
-              onChange={handleChange}
-              className="input"
-              required
-            />
+            <div>
+              <label htmlFor="phone" className="block text-sm font-semibold text-white mb-3">
+                {t('contactFormPhoneLabel')}
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                placeholder={t('contactFormPhonePlaceholder')}
+              />
+            </div>
 
-            <input
-              name="phone"
-              placeholder="Phone"
-              value={formData.phone}
-              onChange={handleChange}
-              className="input"
-            />
+            <div>
+              <label htmlFor="serviceType" className="block text-sm font-semibold text-white mb-3">
+                {t('contactFormServiceLabel')} *
+              </label>
+              <select
+                id="serviceType"
+                name="serviceType"
+                value={formData.serviceType}
+                onChange={handleChange}
+                className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all cursor-pointer"
+              >
+                <option value="general">General Inquiry</option>
+                <option value="pon-ftth">PON & FTTH</option>
+                <option value="microwave">Microwave Network</option>
+                <option value="optical">Optical Long Haul</option>
+                <option value="wifi">Wi-Fi Network</option>
+                <option value="consultation">Consultation</option>
+                <option value="quote">Request Quote</option>
+              </select>
+            </div>
 
-            <select
-              name="serviceType"
-              value={formData.serviceType}
-              onChange={handleChange}
-              className="input"
-            >
-              <option value="general">General Inquiry</option>
-              <option value="pon-ftth">PON & FTTH</option>
-              <option value="microwave">Microwave</option>
-              <option value="optical">Optical Long Haul</option>
-              <option value="wifi">Wi-Fi Network</option>
-              <option value="quote">Request Quote</option>
-            </select>
-
-            <textarea
-              name="message"
-              placeholder="Message *"
-              rows={6}
-              value={formData.message}
-              onChange={handleChange}
-              className="input"
-              required
-            />
+            <div>
+              <label htmlFor="message" className="block text-sm font-semibold text-white mb-3">
+                Message *
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows={6}
+                className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none transition-all"
+                placeholder={t('contactFormMessagePlaceholder')}
+                required
+              ></textarea>
+            </div>
 
             {status === 'success' && (
-              <p className="text-green-400">
-                Message sent successfully!
-              </p>
+              <div className="p-4 bg-green-100 text-green-700 rounded-lg">
+                {t('contactFormSuccessMessage')}
+              </div>
             )}
 
             {status === 'error' && (
-              <p className="text-red-400">{errorMessage}</p>
+              <div className="p-4 bg-red-100 text-red-700 rounded-lg">{errorMessage}</div>
             )}
 
-            <Button type="submit" disabled={status === 'loading'} size="lg">
+            <Button
+              type="submit"
+              disabled={status === 'loading'}
+              className="w-full"
+              size="lg"
+            >
               {status === 'loading' ? 'Sending...' : 'Send Message'}
             </Button>
           </form>
         </div>
       </Section>
-    </>
-  );
-}
 
-/* ===============================
-   INFO CARD COMPONENT
-================================ */
-function InfoCard({
-  icon: Icon,
-  title,
-  value,
-}: {
-  icon: any;
-  title: string;
-  value: string;
-}) {
-  return (
-    <div className="p-6 border rounded-xl text-center">
-      <Icon className="w-10 h-10 mx-auto text-blue-600 mb-4" />
-      <h3 className="font-bold">{title}</h3>
-      <p className="text-slate-600">{value}</p>
-    </div>
+      <Section className="bg-white">
+        <SectionHeading title="Response Commitment" centered={true} />
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-slate-600 mb-4">
+            We typically respond to all inquiries within 24 hours during business days. For urgent matters, please call our office directly.
+          </p>
+        </div>
+      </Section>
+    </>
   );
 }

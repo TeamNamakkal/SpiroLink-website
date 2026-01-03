@@ -28,12 +28,10 @@ const openai = new OpenAI({
 });
 
 /* ===============================
-   EMAIL (OUTLOOK / MICROSOFT)
+   EMAIL (GMAIL)
 ================================ */
 const transporter = nodemailer.createTransport({
-  host: "smtp.office365.com",
-  port: 587,
-  secure: false,
+  service: 'gmail',
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASSWORD,
@@ -116,7 +114,7 @@ app.post("/contact", async (req, res) => {
     // Email to company
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
+      to: 'contact@spirolink.com',
       subject: `New Contact Form - ${serviceType || "General"}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -126,6 +124,8 @@ app.post("/contact", async (req, res) => {
         <p><strong>Service:</strong> ${serviceType || "N/A"}</p>
         <p><strong>Message:</strong></p>
         <p>${message.replace(/\n/g, "<br>")}</p>
+        <hr>
+        <p><em>Reply to: ${email}</em></p>
       `,
     });
 
