@@ -115,11 +115,17 @@ export default function Resources() {
 
   return (
     <>
-      {/* START: PON & FTTH MODULE - RESOURCES PAGE */}
-      <Section className="bg-gradient-to-br from-green-50 to-blue-50 py-32">
-        <div className="text-center max-w-3xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">Resources & Tools</h1>
-          <p className="text-xl text-slate-700">
+      {/* START: Resources Page - Modern Premium Design */}
+      <Section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-40 overflow-hidden relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-amber-500/10 pointer-events-none" />
+        <div className="relative z-10 text-center max-w-3xl mx-auto">
+          <div className="inline-block px-4 py-2 bg-gradient-to-r from-amber-500/20 to-orange-500/20 rounded-full border border-amber-400/30 text-sm font-semibold text-amber-300 mb-6">
+            📚 Knowledge & Tools
+          </div>
+          <h1 className="text-6xl md:text-7xl font-bold text-white leading-tight bg-gradient-to-r from-amber-400 via-orange-400 to-amber-400 bg-clip-text text-transparent mb-6">
+            Resources & Tools
+          </h1>
+          <p className="text-xl text-slate-300 leading-relaxed">
             Download essential guides, tools, and documentation for broadband infrastructure planning and deployment
           </p>
         </div>
@@ -131,27 +137,28 @@ export default function Resources() {
           subtitle="Essential tools and guides for network planning"
           centered={true}
         />
-        <div className="max-w-4xl mx-auto mt-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="max-w-5xl mx-auto mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {downloadItems.map((item: DownloadItem) => (
               <div
                 key={item.id}
-                className="bg-gradient-to-br from-green-50 to-blue-50 border border-green-200 rounded-lg p-6 hover:shadow-lg transition-shadow"
+                className="group relative overflow-hidden"
               >
-                <div className="flex items-start justify-between mb-3">
-                  <span className="text-3xl">{item.icon}</span>
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-orange-500/10 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative p-8 bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl border border-slate-200 hover:border-amber-400/50 transition-all duration-300 h-full flex flex-col hover:shadow-lg hover:-translate-y-1">
+                  <div className="text-5xl mb-4">{item.icon}</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-slate-600 text-sm mb-6 leading-relaxed flex-grow">{item.description}</p>
+                  <button
+                    onClick={() => handleDownloadClick(item)}
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-semibold rounded-lg transition-all shadow-md hover:shadow-lg"
+                  >
+                    <Download className="w-5 h-5" />
+                    Download
+                  </button>
                 </div>
-                <h3 className="text-lg font-semibold text-slate-900 mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-slate-600 text-sm mb-4">{item.description}</p>
-                <button
-                  onClick={() => handleDownloadClick(item)}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-colors"
-                >
-                  <Download className="w-4 h-4" />
-                  Download
-                </button>
               </div>
             ))}
           </div>
@@ -159,66 +166,69 @@ export default function Resources() {
       </Section>
       {/* END: PON & FTTH MODULE - RESOURCES PAGE */}
 
-      {/* Email Gate Modal */}
+      {/* Email Gate Modal - Premium Design */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg shadow-2xl max-w-md w-full p-8">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-bold text-slate-900">Download File</h2>
-              <button
-                onClick={handleCloseModal}
-                className="text-slate-400 hover:text-slate-600 transition-colors"
-              >
-                <X className="w-6 h-6" />
-              </button>
+        <div className="fixed inset-0 bg-gradient-to-br from-black/50 to-black/70 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 overflow-hidden relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-amber-50 to-orange-50 pointer-events-none" />
+            <div className="relative">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold text-slate-900">Download Resource</h2>
+                <button
+                  onClick={handleCloseModal}
+                  className="text-slate-400 hover:text-slate-600 transition-colors p-2 hover:bg-slate-100 rounded-lg"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+
+              <p className="text-slate-600 mb-6 leading-relaxed">
+                Enter your email to download <span className="font-bold text-slate-900">{selectedFile?.title}</span>
+              </p>
+
+              <div className="mb-6">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-semibold text-slate-700 mb-3"
+                >
+                  Email Address
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    setEmailError('');
+                  }}
+                  onKeyPress={handleKeyPress}
+                  className="w-full px-4 py-3 border-2 border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+                />
+                {emailError && (
+                  <p className="text-red-600 text-sm mt-2 font-medium">{emailError}</p>
+                )}
+              </div>
+
+              <div className="flex gap-3">
+                <button
+                  onClick={handleConfirmDownload}
+                  className="flex-1 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-bold py-3 rounded-lg transition-all shadow-lg hover:shadow-amber-500/50"
+                >
+                  Download Now
+                </button>
+                <button
+                  onClick={handleCloseModal}
+                  className="flex-1 bg-slate-200 hover:bg-slate-300 text-slate-900 font-semibold py-3 rounded-lg transition-colors"
+                >
+                  Cancel
+                </button>
+              </div>
+
+              <p className="text-slate-500 text-xs mt-6 text-center leading-relaxed">
+                We respect your privacy. Your email will only be used to track resource downloads.
+              </p>
             </div>
-
-            <p className="text-slate-600 mb-6">
-              Enter your email to download <span className="font-semibold">{selectedFile?.title}</span>
-            </p>
-
-            <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block text-sm font-semibold text-slate-700 mb-2"
-              >
-                Email Address
-              </label>
-              <input
-                id="email"
-                type="email"
-                placeholder="you@example.com"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                  setEmailError('');
-                }}
-                onKeyPress={handleKeyPress}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-              />
-              {emailError && (
-                <p className="text-red-600 text-sm mt-2">{emailError}</p>
-              )}
-            </div>
-
-            <div className="flex gap-3">
-              <button
-                onClick={handleConfirmDownload}
-                className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-lg transition-colors"
-              >
-                Download
-              </button>
-              <button
-                onClick={handleCloseModal}
-                className="flex-1 bg-slate-200 hover:bg-slate-300 text-slate-900 font-semibold py-2 rounded-lg transition-colors"
-              >
-                Cancel
-              </button>
-            </div>
-
-            <p className="text-slate-500 text-xs mt-4 text-center">
-              We respect your privacy. Your email will only be used to track resource downloads and send occasional updates.
-            </p>
           </div>
         </div>
       )}

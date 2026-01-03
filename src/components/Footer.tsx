@@ -1,10 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Leaf, Mail, Phone, MapPin, Linkedin, Twitter, Github } from 'lucide-react';
 import { ShareButton } from './ShareButton';
-import { useI18n } from '../i18n/I18nProvider';
 
 export function Footer() {
-  const { t } = useI18n();
   const currentYear = new Date().getFullYear();
 
   return (

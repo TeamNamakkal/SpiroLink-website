@@ -58,60 +58,71 @@ export default function Contact() {
 
   return (
     <>
-      <Section className="bg-gradient-to-br from-green-50 to-blue-50 py-32">
-        <div className="max-w-3xl">
-          <h1 className="text-5xl font-bold text-slate-900 mb-6">{t('contactPageTitle')}</h1>
-          <p className="text-xl text-slate-700">
+      <Section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-40 overflow-hidden relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-cyan-500/10 to-blue-500/10 pointer-events-none" />
+        <div className="relative z-10">
+          <div className="inline-block px-4 py-2 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full border border-blue-400/30 text-sm font-semibold text-blue-300 mb-6">
+            💬 Get in Touch
+          </div>
+          <h1 className="text-6xl md:text-7xl font-bold text-white leading-tight bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent mb-6">
+            {t('contactPageTitle')}
+          </h1>
+          <p className="text-xl text-slate-300 leading-relaxed max-w-3xl">
             {t('contactPageDescription')}
           </p>
         </div>
       </Section>
 
       <Section className="bg-white">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+        <SectionHeading title="Contact Information" subtitle="Multiple ways to reach us" centered={true} />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
           {[
             {
               icon: Mail,
-              title: t('contactEmailLabel'),
+              title: 'Email',
               detail: 'hello@spirolink.com',
               link: 'mailto:hello@spirolink.com',
+              color: 'from-blue-50'
             },
             {
               icon: Phone,
-              title: t('contactPhoneLabel'),
+              title: 'Phone',
               detail: '(555) 123-4567',
               link: 'tel:+15551234567',
+              color: 'from-cyan-50'
             },
             {
               icon: MapPin,
-              title: t('contactOfficeLabel'),
+              title: 'Office',
               detail: 'Namakkal, Tamil Nadu',
               link: '#',
+              color: 'from-purple-50'
             },
           ].map((contact, i) => (
-            <Card key={i}>
-              <CardContent className="text-center">
-                <contact.icon className="w-12 h-12 text-green-600 mx-auto mb-4" />
-                <h3 className="font-semibold text-slate-900 mb-2">{contact.title}</h3>
+            <div key={i} className="group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className={`relative p-8 bg-gradient-to-br ${contact.color} to-slate-100 rounded-xl border border-slate-200 hover:border-blue-400/30 text-center transition-all duration-300 h-full flex flex-col items-center hover:shadow-lg hover:-translate-y-1`}>
+                <contact.icon className="w-12 h-12 text-blue-600 mb-4" />
+                <h3 className="font-bold text-slate-900 mb-2">{contact.title}</h3>
                 <a
                   href={contact.link}
-                  className="text-green-600 hover:text-green-700 font-medium"
+                  className="text-blue-600 hover:text-blue-700 font-medium transition-colors"
                 >
                   {contact.detail}
                 </a>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
       </Section>
 
-      <Section className="bg-slate-50">
-        <SectionHeading title={t('contactFormTitle')} centered={true} />
-        <div className="max-w-2xl mx-auto">
+      <Section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+        <SectionHeading title="Send us a Message" subtitle="We'll respond within 24 hours" centered={true} dark={true} />
+        <div className="max-w-2xl mx-auto mt-12">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-slate-900 mb-2">
+                <label htmlFor="name" className="block text-sm font-semibold text-white mb-3">
                   {t('contactFormNameLabel')} *
                 </label>
                 <input
@@ -120,13 +131,13 @@ export default function Contact() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent outline-none"
+                  className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                   placeholder={t('contactFormNamePlaceholder')}
                   required
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-slate-900 mb-2">
+                <label htmlFor="email" className="block text-sm font-semibold text-white mb-3">
                   {t('contactFormEmailLabel')} *
                 </label>
                 <input
@@ -135,7 +146,7 @@ export default function Contact() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent outline-none"
+                  className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                   placeholder={t('contactFormEmailPlaceholder')}
                   required
                 />
@@ -143,7 +154,7 @@ export default function Contact() {
             </div>
 
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-slate-900 mb-2">
+              <label htmlFor="phone" className="block text-sm font-semibold text-white mb-3">
                 {t('contactFormPhoneLabel')}
               </label>
               <input
@@ -152,13 +163,13 @@ export default function Contact() {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent outline-none"
+                className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                 placeholder={t('contactFormPhonePlaceholder')}
               />
             </div>
 
             <div>
-              <label htmlFor="serviceType" className="block text-sm font-medium text-slate-900 mb-2">
+              <label htmlFor="serviceType" className="block text-sm font-semibold text-white mb-3">
                 {t('contactFormServiceLabel')} *
               </label>
               <select
@@ -166,21 +177,21 @@ export default function Contact() {
                 name="serviceType"
                 value={formData.serviceType}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent outline-none"
+                className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all cursor-pointer"
               >
-                <option value="general">{t('contactFormServiceGeneral')}</option>
-                <option value="pon-ftth">{t('contactFormServicePonFtth')}</option>
-                <option value="microwave">{t('contactFormServiceMicrowave')}</option>
-                <option value="optical">{t('contactFormServiceOptical')}</option>
-                <option value="wifi">{t('contactFormServiceWifi')}</option>
-                <option value="consultation">{t('contactFormServiceConsultation')}</option>
-                <option value="quote">{t('contactFormServiceQuote')}</option>
+                <option value="general">General Inquiry</option>
+                <option value="pon-ftth">PON & FTTH</option>
+                <option value="microwave">Microwave Network</option>
+                <option value="optical">Optical Long Haul</option>
+                <option value="wifi">Wi-Fi Network</option>
+                <option value="consultation">Consultation</option>
+                <option value="quote">Request Quote</option>
               </select>
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-slate-900 mb-2">
-                {t('contactFormMessageLabel')} *
+              <label htmlFor="message" className="block text-sm font-semibold text-white mb-3">
+                Message *
               </label>
               <textarea
                 id="message"
@@ -188,7 +199,7 @@ export default function Contact() {
                 value={formData.message}
                 onChange={handleChange}
                 rows={6}
-                className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent outline-none resize-none"
+                className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none transition-all"
                 placeholder={t('contactFormMessagePlaceholder')}
                 required
               ></textarea>
@@ -210,17 +221,17 @@ export default function Contact() {
               className="w-full"
               size="lg"
             >
-              {status === 'loading' ? t('contactFormSending') : t('contactFormSubmitBtn')}
+              {status === 'loading' ? 'Sending...' : 'Send Message'}
             </Button>
           </form>
         </div>
       </Section>
 
       <Section className="bg-white">
-        <SectionHeading title={t('contactResponseTimeTitle')} centered={true} />
+        <SectionHeading title="Response Commitment" centered={true} />
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-slate-600 mb-4">
-            {t('contactResponseTimeMessage')}
+            We typically respond to all inquiries within 24 hours during business days. For urgent matters, please call our office directly.
           </p>
         </div>
       </Section>
