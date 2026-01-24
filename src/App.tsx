@@ -4,7 +4,6 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import Chatbot from './components/Chatbot';
-import NetworkBackground from './components/NetworkBackground';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import Home from './pages/Home';
@@ -50,7 +49,6 @@ export default function App() {
     <I18nProvider>
       <AuthProvider>
         <BrowserRouter>
-          <NetworkBackground />
           <div className="flex flex-col min-h-screen relative z-[5]">
             <Header />
             <main className="flex-grow pt-16">
