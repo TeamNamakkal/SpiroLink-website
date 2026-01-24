@@ -9,8 +9,8 @@ export default function WifiNetwork() {
   return (
     <>
       <ServiceHero
-        title="Enterprise Wi-Fi Network Design Services"
-        description="Professional wireless network planning delivering predictable performance, scalability, and operational reliability for organizations of all sizes"
+        title="Wi-Fi That Performs Under Real Load, Not Just on a Floor Plan"
+        description="Modern Wi-Fi is no longer a convenience layer. It is core access infrastructure for business-critical applications, real-time operations, IoT, and user experience at scale. We design enterprise Wi-Fi networks that stay stable under real interference, real device density, and real roaming behavior—so performance remains predictable as your environment changes."
         badge="Enterprise Wi-Fi Infrastructure"
         badgeIcon="📶"
         themeColor="cyan"
@@ -18,46 +18,46 @@ export default function WifiNetwork() {
 
       <Section className="bg-white relative py-16">
         <SectionHeading
-          title="Enterprise Wi-Fi Network Design"
-          subtitle="Professional Wireless Infrastructure Planning"
+          title="Wi-Fi Networks: Engineered, Not Assumed"
+          subtitle="The Reality of Modern Wireless Infrastructure"
           centered={true}
         />
         <div className="max-w-3xl mx-auto mt-8">
           <p className="text-slate-700 text-lg leading-relaxed mb-8">
-            We design Wi-Fi networks that perform consistently under real load, real interference, and real 
-            usage patterns. Our approach integrates RF engineering, network architecture, security, and 
-            operational resilience into comprehensive designs that meet your specific requirements.
+            Wi-Fi networks are expected to behave like wired networks—always on, low-latency, and secure—yet they operate in an RF environment that is constantly changing.
+          </p>
+          <p className="text-slate-700 text-lg leading-relaxed mb-8">
+            Client devices, neighboring networks, building materials, and interference sources shift continuously, which is why Wi-Fi performance degrades even when hardware is new.
+          </p>
+          <p className="text-slate-700 text-lg leading-relaxed mb-8">
+            Many Wi-Fi deployments are built around coverage assumptions instead of capacity, airtime efficiency, and security architecture. The result is congestion, unstable roaming, inconsistent user experience, and redesign costs that typically appear after go-live.
           </p>
           <p className="text-slate-700 text-lg leading-relaxed">
-            Whether supporting corporate campuses, healthcare facilities, educational institutions, 
-            hospitality venues, manufacturing environments, or public spaces, we deliver reliable wireless 
-            infrastructure that scales with your business needs.
+            At SpiroLink, we plan Wi-Fi as an engineered access system—RF design, capacity modeling, security policy, and operational readiness—so networks remain reliable under real-world usage.
           </p>
         </div>
       </Section>
 
-      <ServiceSection title="Core Services" subtitle="Technical Expertise" isDark={false} themeColor="cyan">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <ServiceCard 
-            icon="📡"
-            title="Enterprise Wi-Fi Network Design"
-            description="Site surveys, RF coverage planning, AP placement optimization, channel and power planning, controller architecture, roaming and handoff optimization"
-          />
-          <ServiceCard 
-            icon="⚡"
-            title="Wi-Fi 6/6E/7 Planning"
-            description="802.11ax implementation, 6 GHz spectrum planning, Wi-Fi 7 readiness, OFDMA and MU-MIMO optimization, Target Wake Time for IoT, WPA3 security"
-          />
-          <ServiceCard 
-            icon="🔒"
-            title="Network Security & Policy Design"
-            description="Secure SSID architecture, WPA3-Enterprise, 802.1X authentication, guest network isolation, role-based access control, compliance planning"
-          />
-          <ServiceCard 
-            icon="📊"
-            title="Wi-Fi Performance & Migration"
-            description="RF interference analysis, spectrum management, application performance monitoring, legacy system assessment, phased deployment planning, ROI analysis"
-          />
+      <ServiceSection title="Real-World Pain Points" subtitle="Why Wi-Fi Often Fails" isDark={false} themeColor="cyan">
+        <div className="max-w-4xl mx-auto space-y-3">
+          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-cyan-500">
+            <p className="text-slate-700"><span className="font-semibold">Airtime Contention Over Signal Strength:</span> Most Wi-Fi problems are not caused by weak signal—they are caused by airtime contention, poor channel reuse, and unmanaged interference.</p>
+          </div>
+          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-cyan-500">
+            <p className="text-slate-700"><span className="font-semibold">High-Density Failures:</span> High user density environments fail when coverage planning ignores capacity and throughput per cell.</p>
+          </div>
+          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-cyan-500">
+            <p className="text-slate-700"><span className="font-semibold">Roaming Instability:</span> Roaming issues often come from inconsistent RF boundaries, incorrect minimum data rates, and poorly tuned 802.11k/v/r behavior.</p>
+          </div>
+          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-cyan-500">
+            <p className="text-slate-700"><span className="font-semibold">Security Gaps:</span> Security gaps appear when SSID sprawl replaces segmentation and when guest, IoT, and corporate traffic share the same trust boundary.</p>
+          </div>
+          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-cyan-500">
+            <p className="text-slate-700"><span className="font-semibold">Interference Underestimation:</span> Performance becomes unpredictable when RF planning ignores interference such as neighboring APs, Bluetooth/IoT noise, microwaves, forklifts, and reflective layouts.</p>
+          </div>
+          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-cyan-500">
+            <p className="text-slate-700"><span className="font-semibold">Post-Launch Costs:</span> Redesign becomes expensive because Wi-Fi failures usually surface after operations begin.</p>
+          </div>
         </div>
       </ServiceSection>
 
@@ -65,12 +65,12 @@ export default function WifiNetwork() {
         <div className="mt-12 overflow-hidden">
           <div className="flex gap-6 slide-left-right">
             {[
-              { title: "Corporate & Enterprise", desc: "Headquarters, regional offices, multi-floor buildings, open office layouts, and distributed campus environments supporting BYOD.", color: "from-cyan-50 to-blue-50", border: "border-cyan-200" },
-              { title: "Healthcare Facilities", desc: "Hospitals, medical centers, clinics, and medical campuses supporting clinical applications, medical devices, and RTLS systems.", color: "from-blue-50 to-sky-50", border: "border-blue-200" },
-              { title: "Education Institutions", desc: "K-12 schools, colleges, universities, libraries, and research facilities enabling digital learning and 1:1 device programs.", color: "from-sky-50 to-cyan-50", border: "border-sky-200" },
-              { title: "Hospitality & Tourism", desc: "Hotels, resorts, casinos, theme parks, and restaurants delivering seamless guest experiences and operational efficiency.", color: "from-cyan-50 to-indigo-50", border: "border-cyan-200" },
-              { title: "Retail & Commercial", desc: "Retail stores, shopping malls, restaurants, and commercial buildings supporting point-of-sale and customer engagement.", color: "from-indigo-50 to-blue-50", border: "border-indigo-200" },
-              { title: "Manufacturing & Warehousing", desc: "Factories, distribution centers, and logistics facilities supporting mobile devices, AGVs, and industrial IoT systems.", color: "from-slate-100 to-slate-200", border: "border-slate-300" }
+              { title: "Corporate & Enterprise", desc: "Offices often perform well on day one, then degrade as meeting rooms, video calls, and hybrid work increase. We design Wi-Fi that remains stable across floors and density.", color: "from-cyan-50 to-blue-50", border: "border-cyan-200" },
+              { title: "Healthcare Facilities", desc: "Clinical networks require reliability, mobility, and strong segmentation. We design Wi-Fi that supports medical devices and operations without tolerance for instability.", color: "from-blue-50 to-sky-50", border: "border-blue-200" },
+              { title: "Education Institutions", desc: "Schools and campuses experience extreme concurrency and fast roaming. We engineer Wi-Fi for device density and airtime efficiency.", color: "from-sky-50 to-cyan-50", border: "border-sky-200" },
+              { title: "Hospitality & Tourism", desc: "Guest Wi-Fi defines experience. We design consistent roaming and stable performance while isolating guest traffic from operations.", color: "from-cyan-50 to-indigo-50", border: "border-cyan-200" },
+              { title: "Manufacturing & Warehousing", desc: "Industrial environments create reflections and interference. We design Wi-Fi that supports scanners, tablets, AGVs, and IoT reliably.", color: "from-indigo-50 to-blue-50", border: "border-indigo-200" },
+              { title: "Public Venues & High-Density Spaces", desc: "High-density environments fail when designed for coverage instead of contention. We design Wi-Fi that controls airtime and channel reuse under peak load.", color: "from-slate-100 to-slate-200", border: "border-slate-300" }
             ].map((item, idx) => (
               <div key={idx} className={`group relative ${getRotateClass(idx)} flex-shrink-0 w-80`}>
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-sky-500/10 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -84,17 +84,14 @@ export default function WifiNetwork() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Why Choose Our Wi-Fi Planning Services" subtitle="What Sets Us Apart" isDark themeColor="cyan">
+      <ServiceSection title="The SpiroLink Advantage" subtitle="How We Design Wi-Fi Networks" isDark themeColor="cyan">
         <div className="max-w-3xl mx-auto space-y-4">
           {[
-            { title: 'RF Engineering Excellence', desc: 'Deep expertise in radio frequency design, propagation modeling, and interference mitigation' },
-            { title: 'Latest Technology Expertise', desc: 'Certified in Wi-Fi 6/6E/7 design and implementation best practices' },
-            { title: 'Vendor-Neutral Approach', desc: 'Objective recommendations across all major enterprise Wi-Fi platforms' },
-            { title: 'High-Density Specialization', desc: 'Proven track record designing networks supporting thousands of concurrent users' },
-            { title: 'Security-First Design', desc: 'Comprehensive security architecture integrated from initial planning' },
-            { title: 'Predictive Accuracy', desc: 'Advanced modeling tools ensuring design meets real-world performance requirements' },
-            { title: 'Future-Proof Architecture', desc: 'Scalable designs accommodating growth and technology evolution' },
-            { title: 'Comprehensive Documentation', desc: 'Detailed deliverables enabling seamless implementation and management' },
+            { title: 'Capacity-First RF Design', desc: 'We design for airtime and throughput, not just RSSI.' },
+            { title: 'Roaming That Works Across Real Clients', desc: 'RF boundaries and minimum rate strategies tuned for mixed client environments.' },
+            { title: 'Security Architecture Built In', desc: 'Segmentation, SSID strategy, and WPA3/802.1X planned from day one.' },
+            { title: 'Predictive + Validation Discipline', desc: 'Predictive design validated against real conditions with documentation.' },
+            { title: 'Vendor-Neutral by Principle', desc: 'Design driven by RF reality and operational goals, not vendor defaults.' },
           ].map((item, idx) => (
             <div key={idx} className="flex gap-4 bg-slate-800/50 p-4 rounded-lg">
               <span className="font-bold text-xl flex-shrink-0" style={{color: '#0C94CE'}}>✓</span>
@@ -107,38 +104,38 @@ export default function WifiNetwork() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Our Design Approach" subtitle="Structured Process for Reliable Results" themeColor="cyan">
+      <ServiceSection title="Wi-Fi Technical Insights" subtitle="Key Concepts That Drive Better Design" themeColor="cyan">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {[
             {
               step: '1',
-              title: 'Requirements Analysis',
-              description: 'Understanding your coverage areas, user density, application requirements, security policies, and budget parameters.'
+              title: 'Signal Strength Isn\'t the Main Performance Metric',
+              description: 'Wi-Fi performance is limited by airtime utilization, not RSSI.'
             },
             {
               step: '2',
-              title: 'Site Survey & Assessment',
-              description: 'Conducting predictive and active site surveys including RF measurements, interference analysis, and building assessment.'
+              title: 'Co-Channel Interference Is Often Self-Inflicted',
+              description: 'Too many APs on the same channel increases contention.'
             },
             {
               step: '3',
-              title: 'RF Design & Modeling',
-              description: 'Creating detailed heat maps, AP placement plans, channel assignments, and interference mitigation strategies.'
+              title: '2.4 GHz Often Hurts More Than It Helps',
+              description: 'Limited channels cause congestion and sticky clients.'
             },
             {
               step: '4',
-              title: 'Network Architecture',
-              description: 'Designing controller placement, management systems, authentication infrastructure, and network segmentation.'
+              title: 'Roaming Failures Come From Basic Rate Strategy',
+              description: 'Incorrect minimum rates cause late roaming and call drops.'
             },
             {
               step: '5',
-              title: 'Security Planning',
-              description: 'Implementing authentication methods, encryption standards, and compliance requirements for your industry.'
+              title: '6 GHz Isn\'t Automatically Better',
+              description: 'Without client strategy, 5 GHz remains overloaded.'
             },
             {
               step: '6',
-              title: 'Documentation & Implementation',
-              description: 'Delivering comprehensive design packages, equipment specifications, and validation procedures.'
+              title: 'DFS Channels Can Cause Instability',
+              description: 'Radar events trigger forced channel changes.'
             },
           ].map((phase, idx) => (
             <div key={idx} className="bg-slate-50 p-6 rounded-lg">
@@ -156,99 +153,49 @@ export default function WifiNetwork() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Technical Capabilities" subtitle="Advanced Wireless Engineering" isDark={false} themeColor="cyan">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
-            <h3 className="font-bold text-slate-900 mb-3">Wi-Fi Standards & Technologies</h3>
-            <ul className="space-y-2 text-slate-700 text-sm">
-              <li>• Wi-Fi 7 (802.11be): 46 Gbps, 320 MHz channels</li>
-              <li>• Wi-Fi 6E (802.11ax 6GHz): Clean spectrum, reduced interference</li>
-              <li>• Wi-Fi 6 (802.11ax): OFDMA, MU-MIMO, TWT</li>
-              <li>• Frequency bands: 2.4 GHz, 5 GHz, 6 GHz</li>
-            </ul>
-          </div>
-
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
-            <h3 className="font-bold text-slate-900 mb-3">Advanced Features & Protocols</h3>
-            <ul className="space-y-2 text-slate-700 text-sm">
-              <li>• Fast roaming (802.11r, k, v)</li>
-              <li>• Band steering and client steering</li>
-              <li>• WPA3-Enterprise (802.1X/EAP)</li>
-              <li>• Enhanced Open (OWE)</li>
-            </ul>
-          </div>
-
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
-            <h3 className="font-bold text-slate-900 mb-3">Coverage & Capacity Planning</h3>
-            <ul className="space-y-2 text-slate-700 text-sm">
-              <li>• Indoor office environments</li>
-              <li>• Outdoor campus areas</li>
-              <li>• Warehouse and industrial spaces</li>
-              <li>• Concurrent user calculations</li>
-            </ul>
-          </div>
-
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200">
-            <h3 className="font-bold text-slate-900 mb-3">Network Architectures</h3>
-            <ul className="space-y-2 text-slate-700 text-sm">
-              <li>• Centralized controller architecture</li>
-              <li>• Cloud-managed Wi-Fi solutions</li>
-              <li>• Distributed/autonomous architecture</li>
-              <li>• Scalability for growth</li>
-            </ul>
-          </div>
+      <ServiceSection title="Validate Your Wi-Fi Design Before Users Do It for You" subtitle="Thinking-First Approach" isDark={false} themeColor="cyan">
+        <div className="max-w-3xl mx-auto mt-8">
+          <p className="text-slate-700 text-lg leading-relaxed mb-6">
+            Most Wi-Fi problems appear only after go-live when downtime is not an option.
+          </p>
+          <p className="text-slate-700 text-lg leading-relaxed">
+            If you are planning a new deployment, upgrading to Wi-Fi 6E/7, or troubleshooting instability, we can help validate RF design, capacity assumptions, segmentation, and roaming behavior before changes are locked in.
+          </p>
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Design Deliverables" subtitle="Complete Documentation for Implementation" themeColor="cyan">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-slate-50 p-6 rounded-lg">
-              <h3 className="font-bold text-slate-900 mb-3">Site Survey & Analysis Reports</h3>
-              <ul className="space-y-2 text-slate-700 text-sm">
-                <li>• RF coverage heat maps</li>
-                <li>• Signal strength analysis</li>
-                <li>• Interference assessment</li>
-                <li>• Spectrum analysis results</li>
-              </ul>
-            </div>
-
-            <div className="bg-slate-50 p-6 rounded-lg">
-              <h3 className="font-bold text-slate-900 mb-3">Network Design Documentation</h3>
-              <ul className="space-y-2 text-slate-700 text-sm">
-                <li>• Network architecture diagrams</li>
-                <li>• AP placement plans with coordinates</li>
-                <li>• Channel and power assignment tables</li>
-                <li>• Controller specifications</li>
-              </ul>
-            </div>
-
-            <div className="bg-slate-50 p-6 rounded-lg">
-              <h3 className="font-bold text-slate-900 mb-3">Equipment & Implementation</h3>
-              <ul className="space-y-2 text-slate-700 text-sm">
-                <li>• Bill of materials with part numbers</li>
-                <li>• Equipment specifications</li>
-                <li>• Power and cabling requirements</li>
-                <li>• Installation guidelines</li>
-              </ul>
-            </div>
-
-            <div className="bg-slate-50 p-6 rounded-lg">
-              <h3 className="font-bold text-slate-900 mb-3">Validation & Support</h3>
-              <ul className="space-y-2 text-slate-700 text-sm">
-                <li>• Post-deployment validation survey</li>
-                <li>• Performance testing criteria</li>
-                <li>• Acceptance procedures</li>
-                <li>• Capacity expansion planning</li>
-              </ul>
-            </div>
+      <ServiceSection title="Wi-Fi FAQ" subtitle="Common Questions About Our Approach" isDark={false} themeColor="cyan">
+        <div className="max-w-3xl mx-auto space-y-4">
+          <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-2">Do you only design, or also install?</h3>
+            <p className="text-slate-700">We focus on planning and design, with implementation-ready documentation.</p>
+          </div>
+          <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-2">Do you perform predictive and active surveys?</h3>
+            <p className="text-slate-700">Yes. Predictive for planning, active for validation.</p>
+          </div>
+          <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-2">Can you design for voice and real-time applications?</h3>
+            <p className="text-slate-700">Yes. QoS, airtime planning, and roaming tuning are included.</p>
+          </div>
+          <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-2">Can guest and IoT be secured properly?</h3>
+            <p className="text-slate-700">Yes. Segmentation and access control without SSID sprawl.</p>
+          </div>
+          <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-2">Do you support cloud-managed and controller-based Wi-Fi?</h3>
+            <p className="text-slate-700">Yes. Cloud, on-prem, and hybrid architectures.</p>
+          </div>
+          <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+            <h3 className="font-bold text-slate-900 mb-2">Why does Wi-Fi feel worse after adding APs?</h3>
+            <p className="text-slate-700">Co-channel interference and poor channel reuse planning.</p>
           </div>
         </div>
       </ServiceSection>
 
       <CTA
-        title="Transform Your Wireless Infrastructure"
-        description="Contact us for site surveys, RF design, security planning, equipment recommendations, and full implementation support"
+        title="Start a Technical Discussion"
+        description="Request a Design / Survey Review or discuss your Wi-Fi planning needs with our team"
       />
     </>
   );
