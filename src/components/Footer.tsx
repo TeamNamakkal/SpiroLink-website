@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Linkedin, Twitter, Github } from 'lucide-react';
-import { ShareButton } from './ShareButton';
 
 const PRIMARY_COLOR = '#0C94CE';
 
@@ -87,7 +86,6 @@ export function Footer() {
               © {currentYear} SPIROLINK. All rights reserved.
             </p>
               <div className="flex gap-4 items-center">
-                <ShareButton />
               <a
                 href="#"
                 className="text-gray-400 transition"

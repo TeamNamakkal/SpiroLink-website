@@ -117,12 +117,12 @@ export default function Resources() {
     <>
       {/* START: Resources Page - Modern Premium Design */}
       <Section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-40 overflow-hidden relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-amber-500/10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-sky-500/10 to-cyan-500/10 pointer-events-none" />
         <div className="relative z-10 text-center max-w-3xl mx-auto">
-          <div className="inline-block px-4 py-2 bg-gradient-to-r from-amber-500/20 to-orange-500/20 rounded-full border border-amber-400/30 text-sm font-semibold text-amber-300 mb-6">
+          <div className="inline-block px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-sky-500/20 rounded-full border border-cyan-400/30 text-sm font-semibold text-cyan-300 mb-6">
             📚 Knowledge & Tools
           </div>
-          <h1 className="text-6xl md:text-7xl font-bold text-white leading-tight bg-gradient-to-r from-amber-400 via-orange-400 to-amber-400 bg-clip-text text-transparent mb-6">
+          <h1 className="text-6xl md:text-7xl font-bold text-white leading-tight bg-gradient-to-r from-cyan-400 via-sky-400 to-cyan-400 bg-clip-text text-transparent mb-6">
             Resources & Tools
           </h1>
           <p className="text-xl text-slate-300 leading-relaxed">
@@ -144,8 +144,8 @@ export default function Resources() {
                 key={item.id}
                 className="group relative overflow-hidden"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-orange-500/10 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="relative p-8 bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl border border-slate-200 hover:border-amber-400/50 transition-all duration-300 h-full flex flex-col hover:shadow-lg hover:-translate-y-1">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-sky-500/10 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative p-8 bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl border border-slate-200 hover:border-cyan-400/50 transition-all duration-300 h-full flex flex-col hover:shadow-lg hover:-translate-y-1">
                   <div className="text-5xl mb-4">{item.icon}</div>
                   <h3 className="text-xl font-bold text-slate-900 mb-3">
                     {item.title}
@@ -153,7 +153,10 @@ export default function Resources() {
                   <p className="text-slate-600 text-sm mb-6 leading-relaxed flex-grow">{item.description}</p>
                   <button
                     onClick={() => handleDownloadClick(item)}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-semibold rounded-lg transition-all shadow-md hover:shadow-lg"
+                    className="inline-flex items-center gap-2 px-6 py-3 text-white font-semibold rounded-lg transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                    style={{ backgroundColor: '#0C94CE' }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0a7aa0'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#0C94CE'}
                   >
                     <Download className="w-5 h-5" />
                     Download
@@ -170,7 +173,7 @@ export default function Resources() {
       {showModal && (
         <div className="fixed inset-0 bg-gradient-to-br from-black/50 to-black/70 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
           <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 overflow-hidden relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-50 to-orange-50 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-50 to-sky-50 pointer-events-none" />
             <div className="relative">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-bold text-slate-900">Download Resource</h2>
@@ -203,7 +206,8 @@ export default function Resources() {
                     setEmailError('');
                   }}
                   onKeyPress={handleKeyPress}
-                  className="w-full px-4 py-3 border-2 border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 border-2 border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent transition-all"
+                  style={{ '--tw-ring-color': '#0C94CE' } as any}
                 />
                 {emailError && (
                   <p className="text-red-600 text-sm mt-2 font-medium">{emailError}</p>
@@ -213,7 +217,10 @@ export default function Resources() {
               <div className="flex gap-3">
                 <button
                   onClick={handleConfirmDownload}
-                  className="flex-1 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-bold py-3 rounded-lg transition-all shadow-lg hover:shadow-amber-500/50"
+                  className="flex-1 text-white font-bold py-3 rounded-lg transition-all shadow-lg"
+                  style={{ backgroundColor: '#0C94CE', boxShadow: '0 10px 15px -3px rgba(12, 148, 206, 0.3)' }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0a7aa0'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#0C94CE'}
                 >
                   Download Now
                 </button>

@@ -198,6 +198,14 @@ function EricImageSlider() {
 
 export default function Home() {
   const { t } = useI18n();
+  const [showBrochures, setShowBrochures] = useState(false);
+
+  const brochures = [
+    { name: '01.Microwave Services.pdf', label: 'Microwave Services' },
+    { name: '02. Optical Design Services.pdf', label: 'Optical Design Services' },
+    { name: '03.FTTH Design Service.pdf', label: 'FTTH Design Services' },
+    { name: '04.WiFi network Design.pdf', label: 'WiFi Network Design' },
+  ];
 
   return (
     <>
@@ -225,7 +233,51 @@ export default function Home() {
             <div className="mt-8 flex flex-col sm:flex-row gap-4 sm:gap-6 text-slate-600 text-sm">
               <button className="hover:text-slate-900 transition-colors">Schedule Consultation</button>
               <span className="hidden sm:block text-slate-400">|</span>
-              <button className="hover:text-slate-900 transition-colors">Brochure</button>
+              <div className="relative" onMouseEnter={() => setShowBrochures(true)} onMouseLeave={() => setShowBrochures(false)}>
+                <button
+                  onClick={() => setShowBrochures(!showBrochures)}
+                  className={`relative text-sm font-medium py-2 px-1 transition-colors duration-200 flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 ${
+                    showBrochures ? 'text-slate-900' : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  Brochure
+                  <svg
+                    className={`w-3 h-3 transition-transform duration-300 ${
+                      showBrochures ? 'rotate-180' : ''
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                    />
+                  </svg>
+                  <div className="absolute bottom-[-4px] left-0 right-0 h-[2px] bg-slate-900" style={{
+                    transform: showBrochures ? 'scaleX(1)' : 'scaleX(0)',
+                    transformOrigin: 'center',
+                    transition: 'transform 0.3s ease'
+                  }} />
+                </button>
+                {showBrochures && (
+                  <div className="absolute top-full left-0 mt-2 bg-white border border-slate-200 rounded-lg shadow-lg z-20 min-w-max">
+                    {brochures.map((brochure) => (
+                      <a
+                        key={brochure.name}
+                        href={`/brochures/${brochure.name}`}
+                        download
+                        className="block px-4 py-2 text-slate-900 hover:bg-slate-100 text-sm transition-colors first:rounded-t-lg last:rounded-b-lg"
+                      >
+                        {brochure.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
               <span className="hidden sm:block text-slate-400">|</span>
               <button className="hover:text-slate-900 transition-colors">Case Study</button>
             </div>

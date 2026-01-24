@@ -78,12 +78,12 @@ export default function Contact() {
   return (
     <>
       <Section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-40 overflow-hidden relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-sky-500/10 via-blue-500/10 to-sky-500/10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-sky-500/10 to-cyan-500/10 pointer-events-none" />
         <div className="relative z-10">
-          <div className="inline-block px-4 py-2 bg-gradient-to-r from-sky-500/20 to-blue-500/20 rounded-full border border-sky-400/30 text-sm font-semibold text-sky-300 mb-6">
+          <div className="inline-block px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-sky-500/20 rounded-full border border-cyan-400/30 text-sm font-semibold text-cyan-300 mb-6">
             💬 Get in Touch
           </div>
-          <h1 className="text-6xl md:text-7xl font-bold text-white leading-tight bg-gradient-to-r from-sky-400 via-blue-400 to-sky-400 bg-clip-text text-transparent mb-6">
+          <h1 className="text-6xl md:text-7xl font-bold text-white leading-tight bg-gradient-to-r from-cyan-400 via-sky-400 to-cyan-400 bg-clip-text text-transparent mb-6">
             {t('contactPageTitle')}
           </h1>
           <p className="text-xl text-slate-300 leading-relaxed max-w-3xl">
@@ -101,31 +101,34 @@ export default function Contact() {
               title: 'Email',
               detail: 'contact@spirolink.com',
               link: 'mailto:contact@spirolink.com',
-              color: 'from-blue-50'
+              color: 'from-cyan-50'
             },
             {
               icon: Phone,
               title: 'Phone',
               detail: '+1 (617) 680-4300',
               link: 'tel:+15551234567',
-              color: 'from-cyan-50'
+              color: 'from-sky-50'
             },
             {
               icon: MapPin,
               title: 'Office',
               detail: '9300 coit RD,APT 214,Plano,TX-75025',
               link: '#',
-              color: 'from-purple-50'
+              color: 'from-cyan-50'
             },
           ].map((contact, i) => (
             <div key={i} className="group relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className={`relative p-8 bg-gradient-to-br ${contact.color} to-slate-100 rounded-xl border border-slate-200 hover:border-blue-400/30 text-center transition-all duration-300 h-full flex flex-col items-center hover:shadow-lg hover:-translate-y-1`}>
-                <contact.icon className="w-12 h-12 text-blue-600 mb-4" />
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-sky-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className={`relative p-8 bg-gradient-to-br ${contact.color} to-slate-100 rounded-xl border border-slate-200 hover:border-cyan-400/30 text-center transition-all duration-300 h-full flex flex-col items-center hover:shadow-lg hover:-translate-y-1`}>
+                <contact.icon className="w-12 h-12 mb-4" style={{ color: '#0C94CE' }} />
                 <h3 className="font-bold text-slate-900 mb-2">{contact.title}</h3>
                 <a
                   href={contact.link}
-                  className="text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                  className="font-medium transition-colors"
+                  style={{ color: '#0C94CE' }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#0a7aa0'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = '#0C94CE'}
                 >
                   {contact.detail}
                 </a>
@@ -150,9 +153,10 @@ export default function Contact() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-sky-500 focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:border-transparent outline-none transition-all"
                   placeholder={t('contactFormNamePlaceholder')}
                   required
+                  style={{ '--tw-ring-color': '#0C94CE' } as any}
                 />
               </div>
               <div>
@@ -165,9 +169,10 @@ export default function Contact() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-sky-500 focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:border-transparent outline-none transition-all"
                   placeholder={t('contactFormEmailPlaceholder')}
                   required
+                  style={{ '--tw-ring-color': '#0C94CE' } as any}
                 />
               </div>
             </div>
@@ -218,9 +223,10 @@ export default function Contact() {
                 value={formData.message}
                 onChange={handleChange}
                 rows={6}
-                className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-sky-500 focus:border-transparent outline-none resize-none transition-all"
+                className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:border-transparent outline-none resize-none transition-all"
                 placeholder={t('contactFormMessagePlaceholder')}
                 required
+                style={{ '--tw-ring-color': '#0C94CE' } as any}
               ></textarea>
             </div>
 
