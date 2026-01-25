@@ -120,17 +120,14 @@ export function Header() {
           <div className="flex items-center flex-shrink-0">
             <Link
               to="/"
-              className="flex items-center gap-3 hover:opacity-80 transition-opacity focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 rounded px-0 py-1"
+              className="flex items-center gap-3 hover:opacity-90 transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 rounded px-0 py-1"
               aria-label="SPIROLINK Home"
             >
               <img 
                 src="/assets/downloads/logo.png" 
                 alt="SPIROLINK" 
-                className="h-10 w-auto"
+                className="h-14 w-auto object-contain"
               />
-              <span className="text-xl font-semibold text-gray-900 whitespace-nowrap">
-                SPIROLINK
-              </span>
             </Link>
           </div>
 
@@ -149,7 +146,7 @@ export function Header() {
                     <button
                       onClick={() => setActiveMenu(activeMenu === item.label ? null : item.label)}
                       onKeyDown={(e) => (handleMenuItemClick(e, item.label), handleMenuItemKeyDown(e, item.label))}
-                      className={`navItem relative text-gray-700 text-sm font-medium leading-tight py-2 px-1 transition-colors duration-200 hover:text-blue-600 focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 flex items-center gap-1 ${
+                      className={`navItem relative text-gray-700 text-sm font-medium leading-tight py-2 px-3 transition-all duration-200 hover:text-blue-600 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 rounded flex items-center gap-1 ${
                         styles.navItem
                       }`}
                       aria-expanded={activeMenu === item.label}
@@ -177,7 +174,7 @@ export function Header() {
                   ) : (
                     <Link
                       to={item.href}
-                      className={`navItem relative text-gray-700 text-sm font-medium leading-tight py-2 px-1 transition-colors duration-200 hover:text-blue-600 focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 flex items-center gap-1 block ${
+                      className={`navItem relative text-gray-700 text-sm font-medium leading-tight py-2 px-3 transition-all duration-200 hover:text-blue-600 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 rounded flex items-center gap-1 block ${
                         styles.navItem
                       }`}
                     >

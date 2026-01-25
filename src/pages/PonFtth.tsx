@@ -211,7 +211,7 @@ export default function PonFtth() {
 
       <Section className="bg-white relative py-16">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-slate-900 mb-6">Ready for Your FTTH Network?</h2>
+          <h2 className="text-3xl font-bold text-slate-900 mb-6">Ready for Your FTTH Network?</h2>
           <p className="text-lg text-slate-600 mb-8">
             Contact us today for network planning, technology selection, detailed design, feasibility analysis, and full implementation support for your PON and FTTH initiative.
           </p>

@@ -67,7 +67,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navItems }) =>
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 text-white hover:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+          className="absolute top-4 right-4 p-2 text-white hover:opacity-60 transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded"
           aria-label="Close menu"
         >
           <svg
@@ -98,7 +98,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navItems }) =>
                 <Link
                   to={item.href}
                   onClick={onClose}
-                  className="block text-white text-base font-medium py-3 px-4 rounded-lg hover:bg-gray-900 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+                  className="block text-white text-base font-medium py-3 px-4 rounded-lg hover:bg-gray-800 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
                   role="menuitem"
                 >
                   {item.label}
@@ -112,7 +112,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navItems }) =>
           <div className="space-y-4">
             <button
               onClick={onClose}
-              className={`w-full flex items-center gap-3 text-white text-sm font-medium py-3 px-4 rounded-lg hover:bg-gray-900 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 ${
+              className={`w-full flex items-center gap-3 text-white text-sm font-medium py-3 px-4 rounded-lg hover:bg-gray-800 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 ${
                 styles.mobileMenuItem
               }`}
               style={{
@@ -138,7 +138,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navItems }) =>
 
             <button
               onClick={onClose}
-              className={`w-full text-left text-white text-sm font-medium py-3 px-4 rounded-lg hover:bg-gray-900 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 ${
+              className={`w-full text-left text-white text-sm font-medium py-3 px-4 rounded-lg hover:bg-gray-800 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 ${
                 styles.mobileMenuItem
               }`}
               style={{

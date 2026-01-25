@@ -83,7 +83,7 @@ export default function Contact() {
           <div className="inline-block px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-sky-500/20 rounded-full border border-cyan-400/30 text-sm font-semibold text-cyan-300 mb-6">
             💬 Get in Touch
           </div>
-          <h1 className="text-6xl md:text-7xl font-bold text-white leading-tight bg-gradient-to-r from-cyan-400 via-sky-400 to-cyan-400 bg-clip-text text-transparent mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight bg-gradient-to-r from-cyan-400 via-sky-400 to-cyan-400 bg-clip-text text-transparent mb-6">
             {t('contactPageTitle')}
           </h1>
           <p className="text-xl text-slate-300 leading-relaxed max-w-3xl">
@@ -94,7 +94,7 @@ export default function Contact() {
 
       <Section className="bg-white">
         <SectionHeading title="Contact Information" subtitle="Multiple ways to reach us" centered={true} />
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-16">
           {[
             {
               icon: Mail,
@@ -120,7 +120,7 @@ export default function Contact() {
           ].map((contact, i) => (
             <div key={i} className="group relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-sky-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className={`relative p-8 bg-gradient-to-br ${contact.color} to-slate-100 rounded-xl border border-slate-200 hover:border-cyan-400/30 text-center transition-all duration-300 h-full flex flex-col items-center hover:shadow-lg hover:-translate-y-1`}>
+              <div className={`relative p-8 bg-gradient-to-br ${contact.color} to-slate-100 rounded-xl border border-slate-200 hover:border-sky-400/50 text-center transition-all duration-300 h-full flex flex-col items-center hover:shadow-md hover:-translate-y-0.5`}>
                 <contact.icon className="w-12 h-12 mb-4" style={{ color: '#0C94CE' }} />
                 <h3 className="font-bold text-slate-900 mb-2">{contact.title}</h3>
                 <a
@@ -140,11 +140,11 @@ export default function Contact() {
 
       <Section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white">
         <SectionHeading title="Send us a Message" subtitle="We'll respond within 24 hours" centered={true} dark={true} />
-        <div className="max-w-2xl mx-auto mt-12">
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="max-w-2xl mx-auto mt-16">
+          <form onSubmit={handleSubmit} className="space-y-7">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-semibold text-white mb-3">
+                <label htmlFor="name" className="block text-sm font-semibold text-white mb-2.5 tracking-tight">
                   {t('contactFormNameLabel')} *
                 </label>
                 <input
@@ -153,14 +153,14 @@ export default function Contact() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none transition-all duration-200"
                   placeholder={t('contactFormNamePlaceholder')}
                   required
                   style={{ '--tw-ring-color': '#0C94CE' } as any}
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-white mb-3">
+                <label htmlFor="email" className="block text-sm font-semibold text-white mb-2.5 tracking-tight">
                   {t('contactFormEmailLabel')} *
                 </label>
                 <input
@@ -169,7 +169,7 @@ export default function Contact() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none transition-all duration-200"
                   placeholder={t('contactFormEmailPlaceholder')}
                   required
                   style={{ '--tw-ring-color': '#0C94CE' } as any}
@@ -178,7 +178,7 @@ export default function Contact() {
             </div>
 
             <div>
-              <label htmlFor="phone" className="block text-sm font-semibold text-white mb-3">
+              <label htmlFor="phone" className="block text-sm font-semibold text-white mb-2.5 tracking-tight">
                 {t('contactFormPhoneLabel')}
               </label>
               <input
@@ -193,7 +193,7 @@ export default function Contact() {
             </div>
 
             <div>
-              <label htmlFor="serviceType" className="block text-sm font-semibold text-white mb-3">
+              <label htmlFor="serviceType" className="block text-sm font-semibold text-white mb-2.5 tracking-tight">
                 {t('contactFormServiceLabel')} *
               </label>
               <select

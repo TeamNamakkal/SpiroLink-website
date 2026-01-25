@@ -122,7 +122,7 @@ export default function Resources() {
           <div className="inline-block px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-sky-500/20 rounded-full border border-cyan-400/30 text-sm font-semibold text-cyan-300 mb-6">
             📚 Knowledge & Tools
           </div>
-          <h1 className="text-6xl md:text-7xl font-bold text-white leading-tight bg-gradient-to-r from-cyan-400 via-sky-400 to-cyan-400 bg-clip-text text-transparent mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight bg-gradient-to-r from-cyan-400 via-sky-400 to-cyan-400 bg-clip-text text-transparent mb-6">
             Resources & Tools
           </h1>
           <p className="text-xl text-slate-300 leading-relaxed">

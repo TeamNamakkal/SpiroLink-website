@@ -47,7 +47,7 @@ export default function Services() {
         <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h1 className="text-4xl font-bold text-gray-900 mb-2">
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">
                 Welcome, {user?.email?.split('@')[0]}!
               </h1>
               <p className="text-gray-600">
