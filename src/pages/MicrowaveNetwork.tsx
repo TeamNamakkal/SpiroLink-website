@@ -251,7 +251,7 @@ export default function MicrowaveNetwork() {
 
       <Section className="bg-white relative py-16">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-slate-900 mb-6">Ready for Your Microwave Network Solution?</h2>
+          <h2 className="text-3xl font-bold text-slate-900 mb-6">Ready for Your Microwave Network Solution?</h2>
           <p className="text-lg text-slate-600 mb-8">
             Contact us today for path analysis, link design, equipment recommendations, regulatory support, and full implementation services.
           </p>

@@ -90,7 +90,7 @@ export default function ProjectDetail() {
             <ArrowLeft className="w-5 h-5" />
             Back to Projects
           </Link>
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-4 bg-gradient-to-r from-sky-300 via-blue-300 to-sky-300 bg-clip-text text-transparent">{project.title}</h1>
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 bg-gradient-to-r from-sky-300 via-blue-300 to-sky-300 bg-clip-text text-transparent">{project.title}</h1>
           {project.image_url && (
             <img
               src={project.image_url}
