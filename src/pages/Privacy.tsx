@@ -3,11 +3,11 @@
 export default function Privacy() {
   return (
     <>
-      <Section className="bg-gradient-to-br from-slate-900 to-slate-800 py-32 relative overflow-hidden">
+      <Section className="bg-gradient-to-br from-slate-900 to-slate-800 py-40 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 via-amber-500/10 to-yellow-500/10 pointer-events-none" />
         <div className="relative z-10">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 bg-gradient-to-r from-yellow-300 via-amber-300 to-yellow-300 bg-clip-text text-transparent">Privacy Policy</h1>
-          <p className="text-lg text-slate-300">Last updated: December 2024</p>
+          <h1 className="text-5xl md:text-6xl font-bold leading-tight text-white mb-6 bg-gradient-to-r from-yellow-300 via-amber-300 to-yellow-300 bg-clip-text text-transparent">Privacy Policy</h1>
+          <p className="text-base text-slate-300 tracking-tight">Last updated: December 2024</p>
         </div>
       </Section>
 

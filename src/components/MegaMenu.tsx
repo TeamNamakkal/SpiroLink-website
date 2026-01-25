@@ -48,18 +48,18 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ itemLabel, isOpen }) => {
       aria-label="Services submenu"
     >
       <div className="p-6">
-        <div className="space-y-4">
+        <div className="space-y-3">
           {services.map((service, index) => (
             <Link
               key={index}
               to={service.href}
-              className="block p-4 border border-gray-200 rounded-lg hover:border-blue-400 hover:bg-blue-50 transition-all duration-200 no-wrap"
+              className="block p-4 border border-gray-200 rounded-lg hover:border-sky-400/50 hover:bg-sky-50 transition-all duration-200 no-wrap"
               role="menuitem"
             >
-              <h3 className="text-gray-900 text-sm font-bold mb-1 whitespace-nowrap overflow-hidden text-ellipsis">
+              <h3 className="text-gray-900 text-sm font-bold mb-1.5 whitespace-nowrap overflow-hidden text-ellipsis tracking-tight">
                 {service.title}
               </h3>
-              <p className="text-gray-600 text-xs leading-snug line-clamp-2">
+              <p className="text-gray-600 text-xs leading-relaxed line-clamp-2">
                 {service.description}
               </p>
             </Link>

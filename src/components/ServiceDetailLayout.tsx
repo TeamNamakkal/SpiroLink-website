@@ -70,13 +70,13 @@ export function ServiceHero({ title, description, badge, badgeIcon, themeColor }
     <Section className={`bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-40 overflow-hidden relative`}>
       <div className={`absolute inset-0 bg-gradient-to-r ${theme.gradient} pointer-events-none`} />
       <div className="relative z-10">
-        <div className={`inline-block px-4 py-2 bg-gradient-to-r ${theme.badge} rounded-full border ${theme.badgeBorder} text-sm font-semibold ${theme.badgeText} mb-6`}>
+        <div className={`inline-block px-4 py-2 bg-gradient-to-r ${theme.badge} rounded-full border ${theme.badgeBorder} text-sm font-semibold ${theme.badgeText} mb-6 tracking-tight`}>
           {badgeIcon} {badge}
         </div>
-        <h1 className={`text-6xl md:text-7xl font-bold text-white leading-tight bg-gradient-to-r ${theme.text} bg-clip-text text-transparent mb-6`}>
+        <h1 className={`text-5xl md:text-6xl font-bold leading-tight text-white bg-gradient-to-r ${theme.text} bg-clip-text text-transparent mb-6`}>
           {title}
         </h1>
-        <p className="text-xl text-slate-300 leading-relaxed max-w-3xl">
+        <p className="text-lg text-slate-300 leading-relaxed max-w-3xl\">
           {description}
         </p>
       </div>
@@ -94,7 +94,7 @@ export function ServiceSection({ title, subtitle, isDark = false, themeColor = '
         centered={true}
         dark={isDark}
       />
-      <div className="mt-12">
+      <div className="mt-16">
         {children}
       </div>
     </Section>
@@ -146,10 +146,10 @@ export function CTA({ title, description }: { title: string; description: string
     <Section className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-40 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-sky-500/10 via-blue-500/10 to-sky-500/10 pointer-events-none" />
       <div className="text-center max-w-4xl mx-auto relative z-10">
-        <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-sky-300 via-blue-300 to-sky-300 bg-clip-text text-transparent">
+        <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-8 bg-gradient-to-r from-sky-300 via-blue-300 to-sky-300 bg-clip-text text-transparent">
           {title}
         </h2>
-        <p className="text-xl md:text-2xl mb-12 text-sky-100 leading-relaxed">
+        <p className="text-lg md:text-xl mb-12 text-sky-100 leading-relaxed">
           {description}
         </p>
       </div>

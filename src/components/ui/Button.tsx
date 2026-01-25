@@ -16,14 +16,14 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    'font-semibold rounded-lg transition-all duration-300 inline-flex items-center justify-center gap-2 hover:shadow-lg active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2';
+    'font-semibold rounded-lg transition-all duration-300 inline-flex items-center justify-center gap-2 hover:shadow-lg active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 tracking-tight';
 
   const variantStyles = {
     primary:
-      'bg-sky-500 text-white hover:bg-sky-600 focus-visible:outline-sky-500 shadow-md',
+      'bg-sky-500 text-white hover:bg-sky-600 hover:shadow-lg focus-visible:outline-sky-500 shadow-md active:shadow-sm',
     secondary:
-      'bg-slate-600 text-white hover:bg-slate-700 focus-visible:outline-slate-500 shadow-md',
-    outline: 'border-2 border-sky-500 text-sky-600 hover:bg-sky-50 focus-visible:outline-sky-500',
+      'bg-slate-600 text-white hover:bg-slate-700 hover:shadow-md focus-visible:outline-slate-600 shadow-sm active:shadow-none',
+    outline: 'border-2 border-sky-500 text-sky-600 hover:bg-sky-50 hover:border-sky-600 focus-visible:outline-sky-500 transition-all',
   };
 
   const sizeStyles = {

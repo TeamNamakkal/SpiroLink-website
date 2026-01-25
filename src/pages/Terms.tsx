@@ -3,11 +3,11 @@ import { Section } from '../components/ui/Section';
 export default function Terms() {
   return (
     <>
-      <Section className="bg-gradient-to-br from-slate-900 to-slate-800 py-32 relative overflow-hidden">
+      <Section className="bg-gradient-to-br from-slate-900 to-slate-800 py-40 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 via-rose-500/10 to-pink-500/10 pointer-events-none" />
         <div className="relative z-10">
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 bg-gradient-to-r from-pink-300 via-rose-300 to-pink-300 bg-clip-text text-transparent">Terms & Conditions</h1>
-          <p className="text-lg text-slate-300">Last updated: December 2025</p>
+          <h1 className="text-5xl md:text-6xl font-bold leading-tight text-white mb-6 bg-gradient-to-r from-pink-300 via-rose-300 to-pink-300 bg-clip-text text-transparent">Terms & Conditions</h1>
+          <p className="text-base text-slate-300 tracking-tight">Last updated: December 2025</p>
         </div>
       </Section>
 

@@ -211,13 +211,13 @@ export default function Home() {
     <>
       <div style={{ position: 'relative', zIndex: 10 }}>
       {/* SPIROLINK Hero - Original Design */}
-      <Section className="bg-gradient-to-br from-green-50 to-blue-50 py-32">
+      <Section className="bg-gradient-to-br from-green-50 to-blue-50 py-36">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold leading-tight text-slate-900 mb-6\">
               {t('homeHeroTitle')}
             </h1>
-            <p className="text-xl text-slate-700 mb-8">
+            <p className="text-lg text-slate-700 mb-8 leading-relaxed\">
               {t('homeHeroDescription')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
