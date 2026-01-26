@@ -1,6 +1,6 @@
 
 import { Section, SectionHeading } from '../components/ui/Section';
-import { ServiceHero, ServiceSection, ServiceCard, CTA } from '../components/ServiceDetailLayout';
+import { ServiceHero, ServiceSection, CTA } from '../components/ServiceDetailLayout';
 
 const rotate3dClasses = ['rotate-3d-1', 'rotate-3d-2', 'rotate-3d-3', 'rotate-3d-4', 'rotate-3d-5'];
 const getRotateClass = (idx: number) => rotate3dClasses[idx % rotate3dClasses.length];
