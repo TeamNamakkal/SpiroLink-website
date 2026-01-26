@@ -39,6 +39,11 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ itemLabel, isOpen }) => {
       description: 'Enterprise-grade connectivity for remote properties',
       href: '/remote-property-connectivity',
     },
+    {
+      title: 'Engineering Communication & Networking Labs',
+      description: 'Industry-grade labs for engineering institutions',
+      href: '/engineering-communication-labs',
+    },
   ];
 
   return (
