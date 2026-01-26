@@ -39,22 +39,22 @@ export default function OpticalLongHaul() {
 
       <ServiceSection title="Why Optical Networks Become Risky Over Time" subtitle="Hidden Constraints That Surface Later" isDark={false}>
         <div className="max-w-4xl mx-auto space-y-3">
-          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-orange-500">
+          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-blue-500">
             <p className="text-slate-700"><span className="font-semibold">Initial Turn-Up Success Masks Long-Term Issues:</span> Optical networks often perform well at initial turn-up, but hidden constraints surface as traffic grows and spans are extended.</p>
           </div>
-          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-orange-500">
+          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-blue-500">
             <p className="text-slate-700"><span className="font-semibold">Loss Budgets Are Gradually Consumed:</span> Loss budgets are gradually consumed by splices, connectors, fiber aging, and undocumented changes, leaving little margin for future expansion.</p>
           </div>
-          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-orange-500">
+          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-blue-500">
             <p className="text-slate-700"><span className="font-semibold">OSNR Degradation Is Underestimated:</span> OSNR degradation is frequently underestimated, especially when adding higher-order modulation formats or increasing channel counts.</p>
           </div>
-          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-orange-500">
+          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-blue-500">
             <p className="text-slate-700"><span className="font-semibold">Amplification Strategies Don't Scale:</span> Amplification strategies that work for early deployments often fail to scale cleanly as wavelengths, distances, or bands are added.</p>
           </div>
-          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-orange-500">
+          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-blue-500">
             <p className="text-slate-700"><span className="font-semibold">Documentation Drift Causes Operational Risk:</span> Poor or outdated documentation makes troubleshooting slow and risky years after deployment, when original design assumptions are no longer visible.</p>
           </div>
-          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-orange-500">
+          <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-blue-500">
             <p className="text-slate-700"><span className="font-semibold">Redesign Costs Mount Quickly:</span> Because fiber infrastructure is permanent, correcting design shortcomings later becomes costly, disruptive, and operationally complex.</p>
           </div>
         </div>
@@ -65,12 +65,12 @@ export default function OpticalLongHaul() {
           <div className="col-span-full overflow-x-hidden">
             <div className="flex gap-6 slide-left-right">
               {[
-                { title: "Telecommunications & Mobile Operators", desc: "National and regional optical backbones must scale continuously while supporting strict availability targets. We design long-haul and metro optical transport that accommodates traffic growth, new wavelengths, and evolving modulation without forcing disruptive redesigns later.", icon: "📡", color: "from-orange-50 to-red-50", border: "border-orange-200" },
-                { title: "Internet Service Providers (ISPs)", desc: "ISPs rely on optical backbone networks to expand coverage, peer efficiently, and support rising bandwidth demand. We design fiber and DWDM systems that scale predictably, helping ISPs grow capacity without eroding margins or operational stability.", icon: "🌐", color: "from-amber-50 to-orange-50", border: "border-amber-200" },
-                { title: "Data Center & Cloud Operators", desc: "Inter–data center connectivity demands high capacity, low latency, and absolute predictability. We design optical transport for DCI environments that supports large-scale replication, cloud interconnection, and future capacity upgrades without compromising performance.", icon: "🏢", color: "from-yellow-50 to-amber-50", border: "border-yellow-200" },
-                { title: "Enterprise & Corporate Networks", desc: "Large enterprises depend on private optical networks for mission-critical applications across multiple sites. We design resilient optical transport that balances security, capacity, and long-term operational simplicity as enterprise needs evolve.", icon: "💼", color: "from-orange-50 to-yellow-50", border: "border-orange-200" },
-                { title: "Utilities & Critical Infrastructure", desc: "Optical networks supporting power grids, pipelines, and control systems must operate continuously under harsh conditions. We design transport networks with resilience and margin built in, ensuring critical services remain connected even as infrastructure ages.", icon: "⚡", color: "from-red-50 to-orange-50", border: "border-red-200" },
-                { title: "Research, Education & Public Sector", desc: "Research and public-sector networks demand high-capacity connectivity for collaboration, data movement, and national infrastructure. We design optical systems that support sustained growth and long service lifecycles, not short-term capacity spikes.", icon: "🔬", color: "from-rose-50 to-red-50", border: "border-rose-200" }
+                { title: "Telecommunications & Mobile Operators", desc: "National and regional optical backbones must scale continuously while supporting strict availability targets. We design long-haul and metro optical transport that accommodates traffic growth, new wavelengths, and evolving modulation without forcing disruptive redesigns later.", icon: "📡", color: "from-blue-50 to-cyan-50", border: "border-blue-200" },
+                { title: "Internet Service Providers (ISPs)", desc: "ISPs rely on optical backbone networks to expand coverage, peer efficiently, and support rising bandwidth demand. We design fiber and DWDM systems that scale predictably, helping ISPs grow capacity without eroding margins or operational stability.", icon: "🌐", color: "from-cyan-50 to-sky-50", border: "border-cyan-200" },
+                { title: "Data Center & Cloud Operators", desc: "Inter–data center connectivity demands high capacity, low latency, and absolute predictability. We design optical transport for DCI environments that supports large-scale replication, cloud interconnection, and future capacity upgrades without compromising performance.", icon: "🏢", color: "from-sky-50 to-blue-50", border: "border-sky-200" },
+                { title: "Enterprise & Corporate Networks", desc: "Large enterprises depend on private optical networks for mission-critical applications across multiple sites. We design resilient optical transport that balances security, capacity, and long-term operational simplicity as enterprise needs evolve.", icon: "💼", color: "from-blue-50 to-indigo-50", border: "border-blue-200" },
+                { title: "Utilities & Critical Infrastructure", desc: "Optical networks supporting power grids, pipelines, and control systems must operate continuously under harsh conditions. We design transport networks with resilience and margin built in, ensuring critical services remain connected even as infrastructure ages.", icon: "⚡", color: "from-indigo-50 to-cyan-50", border: "border-indigo-200" },
+                { title: "Research, Education & Public Sector", desc: "Research and public-sector networks demand high-capacity connectivity for collaboration, data movement, and national infrastructure. We design optical systems that support sustained growth and long service lifecycles, not short-term capacity spikes.", icon: "🔬", color: "from-cyan-50 to-indigo-50", border: "border-cyan-200" }
               ].map((item, idx) => (
                 <div key={idx} className={`group relative ${getRotateClass(idx)} flex-shrink-0 w-80`}>
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-sky-500/10 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
