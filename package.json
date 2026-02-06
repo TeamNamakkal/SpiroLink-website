@@ -5,9 +5,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
-    "dev:frontend": "vite",
-    "dev:backend": "cd chatbot-backend && npm run dev",
+    "dev": "vite",
+    "dev:unified": "node server.js",
     "build": "npm run build:frontend && npm run install:backend",
     "build:frontend": "vite build --outDir frontend/dist",
     "install:backend": "cd chatbot-backend && npm install",

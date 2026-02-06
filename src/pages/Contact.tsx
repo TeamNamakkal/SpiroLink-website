@@ -40,12 +40,8 @@ export default function Contact() {
     }
 
     try {
-      // Determine API URL - use local backend in development
-      const backendUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-        ? 'http://localhost:5001'
-        : 'https://spirolink-web-backend-2.onrender.com';
-
-      const response = await fetch(`${backendUrl}/contact`, {
+      // Use relative path for unified deployment
+      const response = await fetch(`/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
