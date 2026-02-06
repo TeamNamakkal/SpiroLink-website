@@ -73,7 +73,7 @@ if (process.env.RESEND_API_KEY) {
 /* ===============================
    HEALTH CHECK
 ================================ */
-app.get("/health", (req, res) => {
+app.get("/api/health", (req, res) => {
   res.json({
     status: "OK",
     backend: "SPIROLINK",
@@ -86,7 +86,7 @@ app.get("/health", (req, res) => {
 /* ===============================
    CHAT ENDPOINT
 ================================ */
-app.post("/chat", async (req, res) => {
+app.post("/api/chat", async (req, res) => {
   try {
     const { message } = req.body;
 
@@ -133,7 +133,7 @@ app.post("/chat", async (req, res) => {
 /* ===============================
    CONTACT FORM (EMAIL)
 ================================ */
-app.post("/contact", async (req, res) => {
+app.post("/api/contact", async (req, res) => {
   try {
     if (!emailService) {
       return res.status(503).json({
@@ -271,9 +271,10 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log("====================================");
   console.log("🚀 SPIROLINK Backend Running");
-  console.log(`🌍 Port: ${PORT}`);
-  console.log("📨 POST /contact");
-  console.log("💬 POST /chat");
-  console.log("❤️  GET /health");
+  console.log("🌍 Port: " + PORT);
+  console.log("📍 API Endpoints:");
+  console.log("  GET  /api/health");
+  console.log("  POST /api/chat");
+  console.log("  POST /api/contact");
   console.log("====================================");
 });
