@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FTTH/PON Network Design Services - Technical Brochure | SpiroLink Network Engineering</title>
+    <style>
+        /* Print and Screen Optimized Styles */
+        @media print {
+            .no-print { display: none; }
+            body { margin: 0; }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .brochure-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .download-bar {
+            background: #003d82;
+            color: white;
+            padding: 15px 40px;
+            text-align: right;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .download-btn {
+            background: #00a651;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        
+        .download-btn:hover {
+            background: #008a43;
+        }
+        
+        /* Cover Page - WHITE BACKGROUND */
+        .cover-page {
+            height: 11in;
+            background: white;
+            color: #003d82;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 40px;
+            page-break-after: always;
+            border-bottom: 5px solid #00a651;
+        }
+        
+        .cover-page h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #003d82;
+        }
+        
+        .cover-page h2 {
+            font-size: 28px;
+            margin-bottom: 40px;
+            font-weight: 400;
+            color: #0066cc;
+        }
+        
+        .cover-page .tagline {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 40px auto;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .cover-logo {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #003d82 0%, #0066cc 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: 700;
+        }
+        
+        .company-info {
+            margin-top: 60px;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        /* Content Pages */
+        .page {
+            padding: 60px 80px;
+            min-height: 10in;
+            page-break-after: always;
+        }
+        
+        .page:last-of-type {
+            page-break-after: auto;
+        }
+        
+        h2 {
+            color: #003d82;
+            font-size: 32px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #00a651;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            color: #0066cc;
+            font-size: 22px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        h4 {
+            color: #003d82;
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .methodology-box {
+            background: #f8f9fa;
+            border-left: 4px solid #00a651;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .deliverable-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .deliverable-item {
+            background: #f0f7ff;
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 3px solid #0066cc;
+        }
+        
+        .deliverable-item strong {
+            color: #003d82;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th {
+            background: #003d82;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .standards-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .standard-badge {
+            background: #e8f4f8;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 600;
+            color: #003d82;
+            font-size: 14px;
+        }
+        
+        .highlight-box {
+            background: #fff9e6;
+            border-left: 4px solid #ffa500;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 40px 80px;
+            text-align: center;
+            border-top: 3px solid #00a651;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+            text-align: left;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 15px;
+        }
+        
+        .icon {
+            color: #0066cc;
+            font-size: 24px;
+            width: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .page {
+                padding: 40px 30px;
+            }
+            
+            .deliverable-grid,
+            .standards-list,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cover-page h1 {
+                font-size: 36px;
+            }
+            
+            .cover-page h2 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Download Bar (hidden when printing) -->
+    <div class="download-bar no-print">
+        <a href="#" class="download-btn" onclick="window.print(); return false;">📄 Download PDF</a>
+    </div>
+    
+    <div class="brochure-container">
+        
+        <!-- COVER PAGE - WHITE BACKGROUND -->
+        <div class="cover-page">
+            <div class="cover-logo">SL</div>
+            
+            <h1>FTTH/PON NETWORK DESIGN</h1>
+            <h2>Technical Capabilities & Methodologies</h2>
+            
+            <div class="tagline">
+                Professional fiber-to-the-home and passive optical network engineering services from service area analysis through construction-ready documentation. Delivering scalable, cost-effective fiber access network designs for telecommunications operators, municipalities, electric cooperatives, and BEAD-funded broadband projects.
+            </div>
+            
+            <div class="company-info">
+                <strong>SpiroLink Network Engineering</strong><br>
+                Plano, Texas<br>
+                Professional Microwave & Optical Network Engineering
+            </div>
+        </div>
+        
+        <!-- PAGE 1: EXECUTIVE SUMMARY & SCOPE -->
+        <div class="page">
+            <h2>Executive Summary</h2>
+            
+            <p>SpiroLink Network Engineering provides comprehensive FTTH/PON network design and engineering services for fiber access network deployments. Our team brings practical experience from telecommunications equipment manufacturers and fiber network operators, delivering outside plant (OSP) designs, optical distribution network (ODN) engineering, and construction-ready documentation that supports efficient deployment and long-term network scalability.</p>
+            
+            <p>This technical brochure outlines our fiber network design methodologies, PON technology expertise, and deliverables for FTTH projects ranging from rural broadband initiatives to dense urban deployments.</p>
+            
+            <h3>Service Scope</h3>
+            
+            <p>Our FTTH/PON network design services cover the complete project lifecycle:</p>
+            
+            <ul>
+                <li><strong>Network Planning & Architecture</strong> – Service area analysis, topology design, central office planning, capacity dimensioning</li>
+                <li><strong>PON Technology Design</strong> – GPON/XGS-PON/NG-PON2 system engineering, wavelength planning, technology migration strategies</li>
+                <li><strong>ODN Engineering</strong> – Fiber route design, splitter placement, optical budgets, splice schedules</li>
+                <li><strong>GIS-Based Design</strong> – Route optimization, customer mapping, asset inventory, construction phasing</li>
+                <li><strong>Business Planning</strong> – Cost modeling, grant application support, financial analysis, ROI projections</li>
+                <li><strong>Construction Documentation</strong> – Build-ready drawings, specifications, contractor packages, quality control procedures</li>
+            </ul>
+            
+            <h3>Technical Capabilities</h3>
+            
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Capability Range</th>
+                </tr>
+                <tr>
+                    <td>PON Technologies</td>
+                    <td>GPON, XG-PON, XGS-PON, NG-PON2, EPON, 10G-EPON, 25G/50G PON</td>
+                </tr>
+                <tr>
+                    <td>Split Ratios</td>
+                    <td>1:4, 1:8, 1:16, 1:32, 1:64, 1:128 (single and cascaded)</td>
+                </tr>
+                <tr>
+                    <td>Downstream Capacity</td>
+                    <td>2.5 Gbps (GPON), 10 Gbps (XGS-PON), 40+ Gbps (NG-PON2)</td>
+                </tr>
+                <tr>
+                    <td>Reach</td>
+                    <td>Up to 20 km (GPON), 40 km extended reach, 60+ km with amplification</td>
+                </tr>
+                <tr>
+                    <td>Network Scale</td>
+                    <td>100 homes to 100,000+ homes passed</td>
+                </tr>
+                <tr>
+                    <td>Deployment Types</td>
+                    <td>Aerial, underground, buried, MDU, business parks</td>
+                </tr>
+            </table>
+            
+            <h3>Application Areas</h3>
+            
+            <ul>
+                <li><strong>Telecommunications Operators</strong> – Incumbent carriers, competitive providers, fiber overbuilders</li>
+                <li><strong>Municipal Broadband</strong> – City-owned networks, public-private partnerships, BEAD-funded projects</li>
+                <li><strong>Electric Cooperatives</strong> – Utility-owned fiber networks leveraging existing pole infrastructure</li>
+                <li><strong>Rural Broadband Initiatives</strong> – RDOF, ReConnect, state broadband grants, underserved area deployments</li>
+                <li><strong>Master-Planned Communities</strong> – New residential developments, planned unit developments (PUDs)</li>
+                <li><strong>Multi-Dwelling Units</strong> – Apartment complexes, condominiums, student housing</li>
+            </ul>
+        </div>
+        
+        <!-- PAGE 2: DESIGN METHODOLOGY -->
+        <div class="page">
+            <h2>Engineering Methodology</h2>
+            
+            <p>Our FTTH network design process follows proven workflows optimized for cost-effective deployment and operational efficiency. Each phase produces construction-ready deliverables.</p>
+            
+            <h3>Phase 1: Service Area Analysis & Demand Planning</h3>
+            
+            <div class="methodology-box">
+                <h4>Activities:</h4>
+                <ul>
+                    <li><strong>Market Assessment</strong> – Demographic analysis, household income levels, competitive landscape, broadband availability gaps</li>
+                    <li><strong>Customer Mapping</strong> – GIS-based address point geocoding, building footprint analysis, parcel data integration</li>
+                    <li><strong>Density Analysis</strong> – Homes per route mile calculation, cluster identification, service area prioritization</li>
+                    <li><strong>Demand Forecasting</strong> – Take-rate assumptions (typical 40-60% residential, 70-90% MDU), penetration modeling, service tier mix</li>
+                    <li><strong>Capacity Planning</strong> – Bandwidth per subscriber (100 Mbps to multi-gigabit), peak hour traffic modeling, oversubscription ratios (20:1 to 50:1 typical)</li>
+                </ul>
+                
+                <h4>Tools Used:</h4>
+                <ul>
+                    <li>QGIS / ArcGIS for geospatial analysis and mapping</li>
+                    <li>US Census data, parcel databases, address point datasets</li>
+                    <li>Google Earth Pro for preliminary route visualization</li>
+                    <li>Financial modeling tools (Excel, custom calculators)</li>
+                </ul>
+                
+                <h4>Deliverables:</h4>
+                <ul>
+                    <li>Service area maps with home counts and density heat maps</li>
+                    <li>Subscriber forecast models (5-year and 10-year)</li>
+                    <li>Network capacity requirements</li>
+                    <li>Service area prioritization and phasing recommendations</li>
+                </ul>
+            </div>
+            
+            <h3>Phase 2: Network Architecture & PON Technology Selection</h3>
+            
+            <div class="methodology-box">
+                <h4>Topology Design:</h4>
+                <ul>
+                    <li><strong>Centralized Architecture</strong> – Single central office (CO), suitable for serving areas within 20 km radius, lowest equipment cost</li>
+                    <li><strong>Distributed Architecture</strong> – Multiple hub sites/cabinets, extends reach, reduces feeder fiber counts, higher equipment cost</li>
+                    <li><strong>Hybrid Architecture</strong> – Combination approach balancing reach and cost, typical for mixed urban/suburban/rural areas</li>
+                </ul>
+                
+                <h4>PON Technology Selection:</h4>
+                <table>
+                    <tr>
+                        <th>Technology</th>
+                        <th>Downstream</th>
+                        <th>Upstream</th>
+                        <th>Use Case</th>
+                    </tr>
+                    <tr>
+                        <td><strong>GPON</strong></td>
+                        <td>2.5 Gbps</td>
+                        <td>1.25 Gbps</td>
+                        <td>Residential, legacy systems, cost-optimized</td>
+                    </tr>
+                    <tr>
+                        <td><strong>XGS-PON</strong></td>
+                        <td>10 Gbps</td>
+                        <td>10 Gbps</td>
+                        <td>Multi-gigabit services, future-proof, symmetrical</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NG-PON2</strong></td>
+                        <td>40+ Gbps</td>
+                        <td>10+ Gbps</td>
+                        <td>Ultra-high capacity, wavelength multiplexing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Combo PON</strong></td>
+                        <td>GPON + XGS-PON</td>
+                        <td>-</td>
+                        <td>Migration strategy, backward compatibility</td>
+                    </tr>
+                </table>
+                
+                <h4>Split Strategy:</h4>
+                <ul>
+                    <li><strong>Single-Stage Splitting</strong> – One splitter location (1:32 or 1:64 typical), simplest design, best loss budget</li>
+                    <li><strong>Cascaded Splitting</strong> – Two-stage (1:4 + 1:8 = 1:32), flexible drop terminal placement, enables gradual build-out</li>
+                    <li><strong>Centralized vs. Distributed Splits</strong> – CO-based splitters (minimizes OSP), field splitters (reduces feeder fiber)</li>
+                </ul>
+                
+                <h4>Deliverables:</h4>
+                <ul>
+                    <li>Network architecture diagrams (logical and physical)</li>
+                    <li>PON technology recommendation with justification</li>
+                    <li>Split ratio strategy and splitter placement approach</li>
+                    <li>Central office / hub site preliminary layouts</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- PAGE 3: ODN ENGINEERING & OPTICAL BUDGETS -->
+        <div class="page">
+            <h3>Phase 3: Optical Distribution Network (ODN) Engineering</h3>
+            
+            <p>Detailed fiber route design and optical budget engineering ensuring network performance within ITU-T specifications.</p>
+            
+            <div class="methodology-box">
+                <h4>Fiber Route Design:</h4>
+                <ul>
+                    <li><strong>Feeder Network</strong> – Central office to fiber distribution hub (FDH), high fiber count cables (144F to 864F), backbone infrastructure</li>
+                    <li><strong>Distribution Network</strong> – FDH to network access points (NAPs), medium fiber count (12F to 144F), serves neighborhoods/clusters</li>
+                    <li><strong>Drop Network</strong> – NAP to customer premises, low fiber count (1F, 2F, 4F), final connection to ONT</li>
+                </ul>
+                
+                <h4>Route Optimization:</h4>
+                <ul>
+                    <li><strong>Aerial Routes</strong> – Utility pole attachments, make-ready analysis, NESC clearance compliance, pole loading calculations</li>
+                    <li><strong>Underground Routes</strong> – Conduit systems, duct banks, existing telecom infrastructure utilization, vault locations</li>
+                    <li><strong>Buried Routes</strong> – Direct burial (rural areas), trenching vs. plowing, depth requirements (minimum 24-36 inches)</li>
+                    <li><strong>MDU Designs</strong> – Riser cables, horizontal distribution, inside plant, demarcation points</li>
+                </ul>
+                
+                <h4>Splitter Placement:</h4>
+                <ul>
+                    <li><strong>Fiber Distribution Hub (FDH)</strong> – Pole-mounted or pedestal, primary splitter location (1:4, 1:8), serves multiple NAPs</li>
+                    <li><strong>Network Access Point (NAP)</strong> – Secondary splitter location (1:4, 1:8), serves 4-16 homes, drop terminal interface</li>
+                    <li><strong>Centralized Splitters (CO)</strong> – All splitting in central office, maximum flexibility, highest feeder fiber count</li>
+                </ul>
+            </div>
+            
+            <h3>Phase 4: Optical Link Budget Engineering</h3>
+            
+            <div class="methodology-box">
+                <h4>Loss Budget Components:</h4>
+                <ul>
+                    <li><strong>Fiber Attenuation</strong> – ITU-T G.652.D fiber: 0.35 dB/km @ 1310nm, 0.25 dB/km @ 1490nm, 0.22 dB/km @ 1550nm</li>
+                    <li><strong>Splitter Loss</strong> – 1:2 (3.5 dB), 1:4 (7 dB), 1:8 (10.5 dB), 1:16 (14 dB), 1:32 (17.5 dB), 1:64 (21 dB)</li>
+                    <li><strong>Splice Loss</strong> – Fusion splice: 0.05-0.1 dB per splice, mechanical splice: 0.1-0.3 dB</li>
+                    <li><strong>Connector Loss</strong> – SC/APC, LC/APC connectors: 0.3-0.5 dB per mated pair</li>
+                </ul>
+                
+                <h4>Link Budget Calculation Example (GPON, 1:32 Split, 20 km):</h4>
+                <table>
+                    <tr>
+                        <th>Component</th>
+                        <th>Loss (dB)</th>
+                    </tr>
+                    <tr>
+                        <td>OLT transmit power (minimum)</td>
+                        <td>+3 dBm</td>
+                    </tr>
+                    <tr>
+                        <td>Fiber attenuation (20 km × 0.25 dB/km)</td>
+                        <td>-5.0 dB</td>
+                    </tr>
+                    <tr>
+                        <td>1:32 splitter loss</td>
+                        <td>-17.5 dB</td>
+                    </tr>
+                    <tr>
+                        <td>Connectors (4 pairs × 0.5 dB)</td>
+                        <td>-2.0 dB</td>
+                    </tr>
+                    <tr>
+                        <td>Splices (10 splices × 0.1 dB)</td>
+                        <td>-1.0 dB</td>
+                    </tr>
+                    <tr>
+                        <td>System margin (aging, repair)</td>
+                        <td>-3.0 dB</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Received power at ONT</strong></td>
+                        <td><strong>-25.5 dBm</strong></td>
+                    </tr>
+                    <tr>
+                        <td>ONT receiver sensitivity (GPON Class B+)</td>
+                        <td>-28 dBm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Link margin</strong></td>
+                        <td><strong>+2.5 dB ✓</strong></td>
+                    </tr>
+                </table>
+                
+                <h4>Design Criteria:</h4>
+                <ul>
+                    <li><strong>GPON</strong> – Class B+ (28 dB budget), Class C+ (32 dB budget) for extended reach</li>
+                    <li><strong>XGS-PON</strong> – N1 (29 dB), N2 (31 dB), E1 (33 dB), E2 (35 dB) optical budgets</li>
+                    <li><strong>Minimum Margin</strong> – 2-3 dB after all losses and aging (ensures 20+ year operation)</li>
+                    <li><strong>Wavelength Coexistence</strong> – GPON + XGS-PON on same fiber (1490/1577 nm downstream, 1310 nm upstream)</li>
+                </ul>
+                
+                <h4>Deliverables:</h4>
+                <ul>
+                    <li>Optical link budget spreadsheets (best/worst case scenarios)</li>
+                    <li>Fiber route drawings with distances and fiber counts</li>
+                    <li>Splitter location maps with configurations</li>
+                    <li>Splice schedule and documentation templates</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- PAGE 4: DELIVERABLES & BUSINESS PLANNING -->
+        <div class="page">
+            <h2>Project Deliverables</h2>
+            
+            <p>Every FTTH/PON network design project includes construction-ready documentation suitable for contractor bidding, permitting, and network deployment.</p>
+            
+            <h3>Core Design Package</h3>
+            
+            <div class="deliverable-grid">
+                <div class="deliverable-item">
+                    <strong>Network Architecture Diagrams</strong>
+                    Logical topology, physical layout, central office design, equipment placement
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Service Area Maps</strong>
+                    GIS-based mapping with home counts, density analysis, phasing boundaries
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Fiber Route Engineering</strong>
+                    Detailed route drawings (aerial/underground), fiber counts by segment, splice points
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Splitter Location Plans</strong>
+                    FDH and NAP placements, splitter configurations, serving area assignments
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Optical Link Budgets</strong>
+                    End-to-end loss calculations, margin analysis, worst-case scenarios
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Equipment Specifications</strong>
+                    OLT, ONT, splitters, fiber cables, cabinets, complete BOM with part numbers
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Splice Schedules</strong>
+                    Splice point locations, fiber assignments, color codes, documentation templates
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Construction Specifications</strong>
+                    Installation standards, make-ready requirements, quality control procedures
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Capital Cost Estimates</strong>
+                    Detailed line-item budgets, cost per home passed/connected, total project cost
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Financial Pro Forma</strong>
+                    Revenue projections, OpEx estimates, ROI analysis, grant funding alignment
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>GIS Database</strong>
+                    Interactive mapping, route layers, equipment inventory, construction tracking
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Implementation Plan</strong>
+                    Phasing strategy, deployment schedule, contractor SOW, acceptance testing
+                </div>
+            </div>
+            
+            <h3>Business Planning & Grant Support</h3>
+            
+            <p>For BEAD-funded projects and grant-dependent deployments, we provide comprehensive business planning documentation:</p>
+            
+            <div class="methodology-box">
+                <h4>Financial Analysis:</h4>
+                <ul>
+                    <li><strong>Capital Expenditure (CapEx) Modeling</strong> – Material costs, labor rates, construction methods, contingency allowances</li>
+                    <li><strong>Operational Expenditure (OpEx) Projections</strong> – Network operations, customer support, maintenance, utilities, backhaul</li>
+                    <li><strong>Revenue Forecasting</strong> – Subscriber adoption curves, ARPU (average revenue per user), service tier mix, wholesale revenue</li>
+                    <li><strong>Return on Investment</strong> – Payback period, NPV (net present value), IRR (internal rate of return), sensitivity analysis</li>
+                </ul>
+                
+                <h4>Grant Application Support:</h4>
+                <ul>
+                    <li><strong>BEAD Program</strong> – Extremely High Cost Per Location Threshold (EHCPLT) calculations, project area maps, technical approach documentation</li>
+                    <li><strong>RDOF / ReConnect</strong> – Engineering designs aligned with program requirements, cost estimates, deployment timelines</li>
+                    <li><strong>State Broadband Grants</strong> – Customized documentation for state-specific programs (CAF, CARES Act, infrastructure bills)</li>
+                </ul>
+                
+                <h4>Cost Benchmarks:</h4>
+                <ul>
+                    <li><strong>Cost Per Home Passed</strong> – Rural aerial: $1,500-$3,000, Rural underground: $3,000-$6,000, Urban aerial: $800-$1,500, Dense MDU: $400-$800</li>
+                    <li><strong>Cost Per Home Connected</strong> – Including drop, ONT, installation: +$300-$800 per connection</li>
+                    <li><strong>Network Electronics</strong> – OLT port cost: $50-$150 per subscriber, ONT equipment: $100-$300 per unit</li>
+                </ul>
+            </div>
+            
+            <h2>GIS-Based Design & Asset Management</h2>
+            
+            <p>All designs are built in GIS platforms enabling construction management and long-term asset tracking:</p>
+            
+            <ul>
+                <li><strong>Interactive Mapping</strong> – Web-based GIS portal for stakeholders, construction crews, operations teams</li>
+                <li><strong>Route Optimization</strong> – Automated least-cost path analysis, make-ready identification, phasing boundaries</li>
+                <li><strong>Construction Tracking</strong> – Field data collection, as-built updates, completion status, quality control</li>
+                <li><strong>Network Inventory</strong> – Fiber strands, splice points, equipment locations, customer connections</li>
+                <li><strong>Operations Support</strong> – Trouble ticketing integration, outage analysis, capacity planning, future expansion</li>
+            </ul>
+        </div>
+        
+        <!-- PAGE 5: STANDARDS & ENGAGEMENT MODEL -->
+        <div class="page">
+            <h2>Standards & Compliance</h2>
+            
+            <p>All designs comply with international standards and industry best practices:</p>
+            
+            <h4>PON Standards (ITU-T)</h4>
+            <div class="standards-list">
+                <div class="standard-badge">G.984 (GPON)</div>
+                <div class="standard-badge">G.987 (XG-PON)</div>
+                <div class="standard-badge">G.9807 (XGS-PON)</div>
+                <div class="standard-badge">G.989 (NG-PON2)</div>
+                <div class="standard-badge">G.652.D Fiber</div>
+                <div class="standard-badge">G.671 Splicing</div>
+            </div>
+            
+            <h4>Installation Standards</h4>
+            <ul>
+                <li><strong>NESC (National Electrical Safety Code)</strong> – Pole attachments, clearances, loading</li>
+                <li><strong>NEC (National Electrical Code)</strong> – Inside plant, building entrance, grounding</li>
+                <li><strong>ANSI/TIA-758</strong> – Customer premises cabling standards</li>
+                <li><strong>Telcordia GR-771</strong> – Generic Requirements for GPON systems</li>
+                <li><strong>BICSI Standards</strong> – Outside plant design and installation</li>
+            </ul>
+            
+            <h4>Testing & Acceptance Standards</h4>
+            <ul>
+                <li><strong>IEC 61280</strong> – Fiber optic communication subsystem test procedures</li>
+                <li><strong>TIA-455</strong> – Fiber optic test procedures (FOTP)</li>
+                <li><strong>OTDR Testing</strong> – Per TIA/EIA-526-7 and IEC 61746-1</li>
+            </ul>
+            
+            <h2>Design Tools & Software</h2>
+            
+            <h3>Network Planning</h3>
+            <ul>
+                <li><strong>GIS Platforms</strong> – QGIS (open-source), ArcGIS (Esri), industry-specific fiber planning tools</li>
+                <li><strong>Fiber Design Software</strong> – 3-GIS, IQGeo, FOND (Fiber Optic Network Design)</li>
+                <li><strong>Google Earth Pro</strong> – Preliminary route planning and visualization</li>
+            </ul>
+            
+            <h3>Optical Engineering</h3>
+            <ul>
+                <li><strong>Link Budget Calculators</strong> – Custom Excel models with ITU-T compliance</li>
+                <li><strong>Splitter Optimization Tools</strong> – Algorithm-based splitter placement for optimal cost/performance</li>
+            </ul>
+            
+            <h3>Business Planning</h3>
+            <ul>
+                <li><strong>Financial Modeling</strong> – Excel-based pro forma with sensitivity analysis</li>
+                <li><strong>Grant Compliance Tools</strong> – BEAD eligibility calculators, cost threshold analysis</li>
+            </ul>
+            
+            <h2>Engagement Model</h2>
+            
+            <h3>Typical Project Timeline</h3>
+            
+            <table>
+                <tr>
+                    <th>Phase</th>
+                    <th>Duration</th>
+                    <th>Key Milestones</th>
+                </tr>
+                <tr>
+                    <td>Service Area Analysis</td>
+                    <td>1-2 weeks</td>
+                    <td>GIS mapping, home counts, demand forecast</td>
+                </tr>
+                <tr>
+                    <td>Network Architecture</td>
+                    <td>1-2 weeks</td>
+                    <td>Topology design, PON technology selection, split strategy</td>
+                </tr>
+                <tr>
+                    <td>ODN Route Design</td>
+                    <td>3-6 weeks</td>
+                    <td>Detailed route engineering, splitter placement, fiber counts</td>
+                </tr>
+                <tr>
+                    <td>Optical Budgets & Specs</td>
+                    <td>1-2 weeks</td>
+                    <td>Link budgets, equipment specifications, splice schedules</td>
+                </tr>
+                <tr>
+                    <td>Business Planning</td>
+                    <td>1-2 weeks</td>
+                    <td>Cost estimates, financial pro forma, grant documentation</td>
+                </tr>
+                <tr>
+                    <td>Documentation & Review</td>
+                    <td>1-2 weeks</td>
+                    <td>Construction drawings, contractor packages, final deliverables</td>
+                </tr>
+            </table>
+            
+            <p><em>Timeline scales with network size. Small project (500 homes): 6-8 weeks. Large deployment (10,000+ homes): 12-20 weeks design phase.</em></p>
+            
+            <h3>Service Options</h3>
+            
+            <h4>Design-Only Services</h4>
+            <p>Complete FTTH network engineering and construction documentation for client-managed procurement and deployment. Suitable for organizations with existing construction teams or established contractor relationships.</p>
+            
+            <h4>Design + Grant Support</h4>
+            <p>Network design services plus comprehensive grant application documentation for BEAD, RDOF, ReConnect, or state broadband programs. Includes cost modeling, technical narratives, and compliance verification.</p>
+            
+            <h4>Design-Build Support</h4>
+            <p>Network design with ongoing support during construction including contractor evaluation, quality assurance inspections, design modifications, and as-built documentation updates.</p>
+            
+            <div style="background: #f0f7ff; padding: 30px; border-radius: 8px; border-left: 4px solid #0066cc; margin: 30px 0;">
+                <h4 style="margin-top: 0; color: #003d82;">Ready to Start Your FTTH Project?</h4>
+                <p style="margin-bottom: 20px;">We offer a complimentary initial consultation to review your fiber network requirements.</p>
+                
+                <p><strong>What to Prepare:</strong></p>
+                <ul style="margin-bottom: 0;">
+                    <li>Service area boundaries and address/parcel data</li>
+                    <li>Existing infrastructure information (poles, conduit, etc.)</li>
+                    <li>Target subscriber counts and service objectives</li>
+                    <li>Grant funding programs (if applicable)</li>
+                    <li>Timeline and budget considerations</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- FOOTER / CONTACT PAGE -->
+        <div class="footer">
+            <h2 style="border: none; color: #003d82; margin-bottom: 30px;">Contact SpiroLink Network Engineering</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="icon">📞</div>
+                    <div>
+                        <strong>Phone</strong><br>
+                        +1 (617) 680-4300<br>
+                        Monday - Friday, 9 AM - 6 PM CT
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">✉️</div>
+                    <div>
+                        <strong>Email</strong><br>
+                        n.surendran@spirolink.com<br>
+                        Response within 24 business hours
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">🌐</div>
+                    <div>
+                        <strong>Website</strong><br>
+                        www.spirolink.com<br>
+                        Online project inquiry form available
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">📍</div>
+                    <div>
+                        <strong>Location</strong><br>
+                        Plano, Texas<br>
+                        Serving clients nationwide
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid #ddd;">
+                <p style="margin: 0; color: #666; font-size: 14px;">
+                    <strong>SpiroLink Network Engineering</strong> | Professional Microwave & Optical Network Engineering Services<br>
+                    © 2025 SpiroLink Network Engineering. All rights reserved.
+                </p>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

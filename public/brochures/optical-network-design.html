@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optical Network Design Services - Technical Brochure | SpiroLink Network Engineering</title>
+    <style>
+        /* Print and Screen Optimized Styles */
+        @media print {
+            .no-print { display: none; }
+            body { margin: 0; }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .brochure-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .download-bar {
+            background: #003d82;
+            color: white;
+            padding: 15px 40px;
+            text-align: right;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .download-btn {
+            background: #00a651;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        
+        .download-btn:hover {
+            background: #008a43;
+        }
+        
+        /* Cover Page */
+        .cover-page {
+            height: 11in;
+            background: linear-gradient(135deg, #003d82 0%, #0066cc 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 40px;
+            page-break-after: always;
+        }
+        
+        .cover-page h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .cover-page h2 {
+            font-size: 28px;
+            margin-bottom: 40px;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+        
+        .cover-page .tagline {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 40px auto;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+        
+        .company-info {
+            margin-top: 60px;
+            font-size: 16px;
+        }
+        
+        /* Content Pages */
+        .page {
+            padding: 60px 80px;
+            min-height: 10in;
+            page-break-after: always;
+        }
+        
+        .page:last-of-type {
+            page-break-after: auto;
+        }
+        
+        h2 {
+            color: #003d82;
+            font-size: 32px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #00a651;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            color: #0066cc;
+            font-size: 22px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        h4 {
+            color: #003d82;
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .methodology-box {
+            background: #f8f9fa;
+            border-left: 4px solid #00a651;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .deliverable-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .deliverable-item {
+            background: #f0f7ff;
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 3px solid #0066cc;
+        }
+        
+        .deliverable-item strong {
+            color: #003d82;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th {
+            background: #003d82;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .standards-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .standard-badge {
+            background: #e8f4f8;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 600;
+            color: #003d82;
+            font-size: 14px;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 40px 80px;
+            text-align: center;
+            border-top: 3px solid #00a651;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+            text-align: left;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 15px;
+        }
+        
+        .icon {
+            color: #0066cc;
+            font-size: 24px;
+            width: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .page {
+                padding: 40px 30px;
+            }
+            
+            .deliverable-grid,
+            .standards-list,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cover-page h1 {
+                font-size: 36px;
+            }
+            
+            .cover-page h2 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Download Bar (hidden when printing) -->
+    <div class="download-bar no-print">
+        <a href="#" class="download-btn" onclick="window.print(); return false;">📄 Download PDF</a>
+    </div>
+    
+    <div class="brochure-container">
+        
+        <!-- COVER PAGE -->
+        <div class="cover-page">
+            <h1>OPTICAL NETWORK DESIGN</h1>
+            <h2>Technical Capabilities & Methodologies</h2>
+            
+            <div class="tagline">
+                Professional optical network engineering services from initial planning through commissioning. Delivering reliable, high-capacity fiber optic solutions for terrestrial and submarine applications with industry-leading standards compliance.
+            </div>
+            
+            <div class="company-info">
+                <strong>SpiroLink Network Engineering</strong><br>
+                Plano, Texas<br>
+                Professional Microwave & Optical Network Engineering
+            </div>
+        </div>
+        
+        <!-- PAGE 1: EXECUTIVE SUMMARY & SCOPE -->
+        <div class="page">
+            <h2>Executive Summary</h2>
+            
+            <p>SpiroLink Network Engineering provides comprehensive optical network design and engineering services for telecommunications operators, utilities, enterprises, and government organizations. Our team brings extensive industry experience from leading equipment manufacturers and network operators, applying proven methodologies to deliver reliable, cost-effective fiber optic connectivity solutions.</p>
+            
+            <p>This technical brochure outlines our engineering approach, methodologies, tools, and deliverables for optical network design projects.</p>
+            
+            <h3>Service Scope</h3>
+            
+            <p>Our optical network design services encompass the complete project lifecycle:</p>
+            
+            <ul>
+                <li><strong>Network Planning & Topology Design</strong> – Requirements analysis, route selection, network architecture</li>
+                <li><strong>Optical Engineering</strong> – Path analysis, link budget calculations, fiber specifications, optical performance modeling</li>
+                <li><strong>Regulatory Compliance</strong> – Environmental permits, right-of-way coordination, regulatory documentation</li>
+                <li><strong>Technical Documentation</strong> – Design packages, specifications, installation guides</li>
+                <li><strong>Implementation Support</strong> – Vendor evaluation, installation oversight, commissioning</li>
+            </ul>
+            
+            <h3>Technical Capabilities</h3>
+            
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Capability Range</th>
+                </tr>
+                <tr>
+                    <td>Fiber Types</td>
+                    <td>Single-mode (G.652/G.655/G.657), Multi-mode (OM3/OM4)</td>
+                </tr>
+                <tr>
+                    <td>Link Capacity</td>
+                    <td>10 Gbps to 800+ Gbps (coherent technologies)</td>
+                </tr>
+                <tr>
+                    <td>Link Distance</td>
+                    <td>Regional to long-haul (2000+ km achievable)</td>
+                </tr>
+                <tr>
+                    <td>Network Architectures</td>
+                    <td>Point-to-point, ring, mesh, metropolitan area networks</td>
+                </tr>
+                <tr>
+                    <td>Standards Compliance</td>
+                    <td>ITU-T G.600 series, IEC 60793, IEEE 802.3</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- PAGE 2: DESIGN METHODOLOGY -->
+        <div class="page">
+            <h2>Engineering Methodology</h2>
+            
+            <p>Our design process follows industry best practices and proven workflows developed through hundreds of successful deployments. Each project phase includes defined inputs, activities, and deliverables.</p>
+            
+            <h3>Phase 1: Requirements Analysis & Route Assessment</h3>
+            
+            <div class="methodology-box">
+                <h4>Activities:</h4>
+                <ul>
+                    <li><strong>Requirements Gathering</strong> – Bandwidth needs, latency requirements, availability targets, growth projections</li>
+                    <li><strong>Route Surveys</strong> – Physical site inspection, conduit assessment, underground/aerial routing options</li>
+                    <li><strong>GIS Analysis</strong> – Route mapping, terrain profiling, right-of-way identification</li>
+                    <li><strong>Regulatory Review</strong> – Environmental permits, excavation requirements, fiber crossing regulations</li>
+                </ul>
+                
+                <h4>Tools Used:</h4>
+                <ul>
+                    <li>QGIS / ArcGIS for geospatial analysis</li>
+                    <li>Google Earth Pro for preliminary route visualization</li>
+                    <li>Route profiling and conduit assessment software</li>
+                    <li>Cable management planning tools</li>
+                </ul>
+                
+                <h4>Deliverables:</h4>
+                <ul>
+                    <li>Route assessment report with photos and GPS coordinates</li>
+                    <li>Preliminary feasibility analysis</li>
+                    <li>Environmental and permitting requirements summary</li>
+                </ul>
+            </div>
+            
+            <h3>Phase 2: Optical Link Design</h3>
+            
+            <div class="methodology-box">
+                <h4>Activities:</h4>
+                <ul>
+                    <li><strong>Fiber Route Profiling</strong> – Distance measurements, splice point identification, loss budget analysis</li>
+                    <li><strong>Link Budget Calculations</strong> – Received optical power analysis, signal-to-noise ratio assessment, chromatic dispersion modeling</li>
+                    <li><strong>Wavelength Planning</strong> – Channel assignment, wavelength division multiplexing optimization</li>
+                    <li><strong>Equipment Selection</strong> – Transceiver and amplifier specification based on performance requirements</li>
+                    <li><strong>Availability Modeling</strong> – Fault recovery analysis, redundancy design, restoration time calculations</li>
+                </ul>
+                
+                <h4>Tools Used:</h4>
+                <ul>
+                    <li><strong>VPItransmissionMaker</strong> – Advanced optical system simulation</li>
+                    <li>Optiwave OptiSystem for optical design validation</li>
+                    <li>Cisco ONT for network-wide optical planning</li>
+                    <li>Custom Excel calculators for link budget verification</li>
+                </ul>
+                
+                <h4>Design Criteria:</h4>
+                <ul>
+                    <li>Maximum insertion loss per km based on fiber type</li>
+                    <li>Chromatic dispersion compensation within acceptable limits</li>
+                    <li>Signal quality: BER ≤ 10⁻¹² for long-haul systems</li>
+                    <li>Optical signal-to-noise ratio: ≥ 15 dB minimum</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- PAGE 3: ROUTE PLANNING & REGULATORY -->
+        <div class="page">
+            <h3>Phase 3: Route Planning & Regulatory</h3>
+            
+            <div class="methodology-box">
+                <h4>Activities:</h4>
+                <ul>
+                    <li><strong>Route Optimization</strong> – Conduit reuse analysis, cost-effective routing, minimizing splices</li>
+                    <li><strong>Fiber Assignment</strong> – Fiber type selection, count optimization, reserve fiber provisioning</li>
+                    <li><strong>Environmental Compliance</strong> – Wetland permits, environmental impact assessment, wildlife protection</li>
+                    <li><strong>Right-of-Way Coordination</strong> – Utility coordination, municipal approvals, property owner agreements</li>
+                </ul>
+                
+                <h4>Regulatory Standards:</h4>
+                <div class="standards-list">
+                    <div class="standard-badge">ITU-T G.650</div>
+                    <div class="standard-badge">ITU-T G.652/G.655</div>
+                    <div class="standard-badge">IEC 60793</div>
+                    <div class="standard-badge">IEEE 802.3</div>
+                    <div class="standard-badge">FCC Part 90</div>
+                    <div class="standard-badge">NECA/ANSI standards</div>
+                </div>
+                
+                <h4>Deliverables:</h4>
+                <ul>
+                    <li>Detailed route design with GPS coordinates</li>
+                    <li>Fiber specification and count documentation</li>
+                    <li>Permits and environmental compliance documents</li>
+                    <li>Right-of-way agreements and utility coordination records</li>
+                </ul>
+            </div>
+            
+            <h3>Phase 4: Network Design & Documentation</h3>
+            
+            <div class="methodology-box">
+                <h4>Activities:</h4>
+                <ul>
+                    <li><strong>Network Topology Design</strong> – Logical and physical architecture, restoration design, traffic engineering</li>
+                    <li><strong>Equipment Specifications</strong> – Transceiver, amplifier, ROADM, and accessory specifications</li>
+                    <li><strong>Installation Planning</strong> – Conduit requirements, splice enclosure placement, terminal room design</li>
+                    <li><strong>Quality Assurance</strong> – Design review, peer verification, standards compliance check</li>
+                </ul>
+                
+                <h4>Documentation Standards:</h4>
+                <ul>
+                    <li>All drawings in industry-standard CAD formats (DWG, PDF)</li>
+                    <li>Bill of materials with manufacturer part numbers</li>
+                    <li>Cable routing and splice schedules</li>
+                    <li>Comprehensive optical calculations package</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- PAGE 4: DELIVERABLES -->
+        <div class="page">
+            <h2>Project Deliverables</h2>
+            
+            <p>Every optical network design project includes a comprehensive documentation package suitable for procurement, permitting, and installation activities.</p>
+            
+            <h3>Core Design Package</h3>
+            
+            <div class="deliverable-grid">
+                <div class="deliverable-item">
+                    <strong>Network Topology Diagrams</strong>
+                    Logical and physical network layouts showing all sites, fiber routes, and connectivity
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Link Budget Reports</strong>
+                    Detailed optical calculations for each link including power levels, dispersion, and margin analysis
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Route Design Plans</strong>
+                    Detailed fiber routing with GPS coordinates, conduit utilization, and splice point locations
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Wavelength Plan</strong>
+                    Channel assignments, WDM optimization, and spectral efficiency analysis
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Equipment Specifications</strong>
+                    Complete bill of materials with part numbers, quantities, and technical specifications
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Installation Drawings</strong>
+                    Terminal room layouts, splice enclosure details, fiber management design
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Regulatory Documents</strong>
+                    Permits, environmental assessments, utility coordination letters
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Testing Procedures</strong>
+                    Commissioning test plans, acceptance criteria, performance verification methods
+                </div>
+            </div>
+            
+            <h3>Optional Deliverables</h3>
+            
+            <ul>
+                <li><strong>Vendor RFQ Packages</strong> – Pre-qualified equipment lists with technical specifications for competitive bidding</li>
+                <li><strong>Installation Supervision</strong> – On-site support during cable installation and splicing</li>
+                <li><strong>Commissioning Support</strong> – Performance testing, optimization, and acceptance documentation</li>
+                <li><strong>As-Built Documentation</strong> – Updated drawings reflecting final installed configuration</li>
+                <li><strong>Operations & Maintenance Plans</strong> – Preventive maintenance schedules, spare parts recommendations, troubleshooting guides</li>
+            </ul>
+            
+            <h3>Documentation Formats</h3>
+            
+            <table>
+                <tr>
+                    <th>Document Type</th>
+                    <th>Format</th>
+                </tr>
+                <tr>
+                    <td>Network Diagrams</td>
+                    <td>AutoCAD (DWG), PDF, Visio (VSD)</td>
+                </tr>
+                <tr>
+                    <td>Link Budget Reports</td>
+                    <td>PDF, Excel (with formulas for client verification)</td>
+                </tr>
+                <tr>
+                    <td>Route Plans</td>
+                    <td>PDF, KMZ (Google Earth), GIS shape files</td>
+                </tr>
+                <tr>
+                    <td>Equipment Lists</td>
+                    <td>Excel, PDF</td>
+                </tr>
+                <tr>
+                    <td>GIS Data</td>
+                    <td>Shapefile, KML/KMZ, GeoJSON</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- PAGE 5: TOOLS, STANDARDS & EXPERTISE -->
+        <div class="page">
+            <h2>Tools & Software</h2>
+            
+            <h3>Optical Design & Simulation</h3>
+            <ul>
+                <li><strong>VPItransmissionMaker</strong> – Industry-leading optical system simulation and design</li>
+                <li><strong>Optiwave OptiSystem</strong> – Advanced optical network design and validation</li>
+                <li><strong>Vendor-Specific Tools</strong> – Cisco ONT, Juniper design tools, equipment manufacturer simulators</li>
+            </ul>
+            
+            <h3>GIS & Route Analysis</h3>
+            <ul>
+                <li><strong>QGIS</strong> – Open-source geospatial analysis and mapping</li>
+                <li><strong>Google Earth Pro</strong> – Site visualization and preliminary route analysis</li>
+                <li><strong>Route Planning Software</strong> – Conduit tracing and cost estimation tools</li>
+            </ul>
+            
+            <h3>Network Management</h3>
+            <ul>
+                <li><strong>Optical Network Planning Tools</strong> – Ciena, ADTRAN planning software</li>
+                <li><strong>GNS3</strong> – Network topology simulation and traffic modeling</li>
+            </ul>
+            
+            <h3>Testing & Validation</h3>
+            <ul>
+                <li><strong>Viavi ONXk</strong> – Field optical network testing and validation</li>
+                <li><strong>Exfo inspection tools</strong> – Fiber condition assessment and documentation</li>
+            </ul>
+            
+            <h2>Standards & Compliance</h2>
+            
+            <p>All designs comply with applicable industry standards and regulatory requirements:</p>
+            
+            <h4>International Standards</h4>
+            <ul>
+                <li><strong>ITU-T G.600 Series</strong> – Optical fiber and cable specifications</li>
+                <li><strong>ITU-T G.650</strong> – Fiber optic interface code</li>
+                <li><strong>ITU-T G.652/G.655</strong> – Single-mode fiber specifications</li>
+                <li><strong>ITU-T G.975</strong> – Forward error correction for submarine systems</li>
+            </ul>
+            
+            <h4>Industry Standards</h4>
+            <ul>
+                <li><strong>IEC 60793</strong> – Optical fiber cables and systems</li>
+                <li><strong>IEEE 802.3</strong> – Ethernet standards for optical transport</li>
+                <li><strong>NECA/ANSI Standards</strong> – Optical fiber installation best practices</li>
+            </ul>
+            
+            <h4>Regulatory</h4>
+            <ul>
+                <li><strong>FCC Part 90</strong> – Private land mobile radio services</li>
+                <li><strong>Environmental compliance</strong> – State and local permitting requirements</li>
+            </ul>
+            
+            <h2>Team Expertise</h2>
+            
+            <p>SpiroLink's engineering team brings practical industry experience from leading organizations:</p>
+            
+            <ul>
+                <li><strong>Telecommunications Equipment Manufacturers</strong> – Ciena, ADTRAN, Juniper optical systems engineering</li>
+                <li><strong>Network Operators</strong> – Long-haul and metropolitan optical network design and optimization</li>
+                <li><strong>Submarine Cable Operators</strong> – Experience with ultra-long-distance optical systems</li>
+                <li><strong>Regulatory Experience</strong> – Environmental permitting and utility coordination</li>
+            </ul>
+            
+            <p>Our team holds relevant industry certifications and maintains ongoing professional development in emerging optical technologies and regulatory changes.</p>
+        </div>
+        
+        <!-- PAGE 6: ENGAGEMENT MODEL & CONTACT -->
+        <div class="page">
+            <h2>Engagement Model</h2>
+            
+            <h3>Typical Project Timeline</h3>
+            
+            <table>
+                <tr>
+                    <th>Phase</th>
+                    <th>Duration</th>
+                    <th>Key Milestones</th>
+                </tr>
+                <tr>
+                    <td>Requirements & Route Assessment</td>
+                    <td>2-3 weeks</td>
+                    <td>Route surveys complete, feasibility confirmed</td>
+                </tr>
+                <tr>
+                    <td>Optical Link Design</td>
+                    <td>2-3 weeks</td>
+                    <td>Link budgets, route profiles, equipment selection</td>
+                </tr>
+                <tr>
+                    <td>Route Planning & Regulatory</td>
+                    <td>3-6 weeks</td>
+                    <td>Permitting complete, right-of-way secured</td>
+                </tr>
+                <tr>
+                    <td>Documentation & Review</td>
+                    <td>1-2 weeks</td>
+                    <td>Complete design package delivered</td>
+                </tr>
+                <tr>
+                    <td>Implementation Support (Optional)</td>
+                    <td>Ongoing</td>
+                    <td>Installation oversight, commissioning, optimization</td>
+                </tr>
+            </table>
+            
+            <p><em>Timeline varies based on project scope, route complexity, regulatory requirements, and client review cycles. Rush projects can be accommodated with adjusted timelines.</em></p>
+            
+            <h3>Service Options</h3>
+            
+            <h4>Design-Only Services</h4>
+            <p>Complete engineering design package with all documentation for client-managed procurement and installation. Ideal for organizations with existing installation capabilities or preferred contractors.</p>
+            
+            <h4>Design-Build Support</h4>
+            <p>Design services plus ongoing support during procurement, installation, and commissioning phases. We provide vendor evaluation, installation supervision, and performance verification.</p>
+            
+            <h4>Turnkey Solutions</h4>
+            <p>End-to-end project delivery including design, equipment procurement, installation management, and commissioning. Single point of accountability from concept to operational handoff.</p>
+            
+            <h3>Geographic Coverage</h3>
+            
+            <p>SpiroLink provides optical network design services throughout the United States and internationally with project experience in:</p>
+            
+            <ul>
+                <li>Metropolitan area networks and data center interconnect</li>
+                <li>Long-haul terrestrial fiber routes</li>
+                <li>Submarine cable system design</li>
+                <li>International projects (consulting basis)</li>
+            </ul>
+            
+            <h2>Next Steps</h2>
+            
+            <p>To discuss your optical network requirements, please contact us:</p>
+            
+            <div style="background: #f0f7ff; padding: 30px; border-radius: 8px; border-left: 4px solid #0066cc; margin: 30px 0;">
+                <h4 style="margin-top: 0; color: #003d82;">Ready to Start Your Project?</h4>
+                <p style="margin-bottom: 20px;">We offer a complimentary initial consultation to review your connectivity requirements and discuss potential solutions.</p>
+                
+                <p><strong>What to Prepare:</strong></p>
+                <ul style="margin-bottom: 0;">
+                    <li>Network endpoints (addresses or GPS coordinates)</li>
+                    <li>Bandwidth and latency requirements</li>
+                    <li>Timeline and budget considerations</li>
+                    <li>Any existing infrastructure or constraints</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- FOOTER / CONTACT PAGE -->
+        <div class="footer">
+            <h2 style="border: none; color: #003d82; margin-bottom: 30px;">Contact SpiroLink Network Engineering</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="icon">📞</div>
+                    <div>
+                        <strong>Phone</strong><br>
+                        [Your Phone Number]<br>
+                        Monday - Friday, 9 AM - 6 PM CT
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">✉️</div>
+                    <div>
+                        <strong>Email</strong><br>
+                        [Your Email Address]<br>
+                        Response within 24 business hours
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">🌐</div>
+                    <div>
+                        <strong>Website</strong><br>
+                        www.spirolinknetworks.com<br>
+                        Online project inquiry form available
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">📍</div>
+                    <div>
+                        <strong>Location</strong><br>
+                        Plano, Texas<br>
+                        Serving clients nationwide
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid #ddd;">
+                <p style="margin: 0; color: #666; font-size: 14px;">
+                    <strong>SpiroLink Network Engineering</strong> | Professional Microwave & Optical Network Engineering Services<br>
+                    © 2025 SpiroLink Network Engineering. All rights reserved.
+                </p>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

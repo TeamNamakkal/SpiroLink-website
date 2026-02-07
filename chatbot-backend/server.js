@@ -4,6 +4,9 @@ import dotenv from "dotenv";
 import OpenAI from "openai";
 import { Resend } from "resend";
 import nodemailer from "nodemailer";
+import Razorpay from "razorpay";
+import Stripe from "stripe";
+import crypto from "crypto";
 
 dotenv.config();
 
@@ -68,6 +71,38 @@ if (process.env.RESEND_API_KEY) {
   console.warn("   SMTP_PORT: " + (process.env.SMTP_PORT ? "✅" : "MISSING"));
   console.warn("   SMTP_USER: " + (process.env.SMTP_USER ? "✅" : "MISSING"));
   console.warn("   SMTP_PASS: " + (process.env.SMTP_PASS ? "✅" : "MISSING"));
+}
+
+/* ===============================
+   RAZORPAY INITIALIZATION
+================================ */
+let razorpayInstance = null;
+
+if (process.env.RAZORPAY_KEY_ID && process.env.RAZORPAY_KEY_SECRET) {
+  razorpayInstance = new Razorpay({
+    key_id: process.env.RAZORPAY_KEY_ID,
+    key_secret: process.env.RAZORPAY_KEY_SECRET,
+  });
+  console.log("✅ Razorpay initialized");
+  console.log(`   Key ID: ${process.env.RAZORPAY_KEY_ID.substring(0, 10)}...`);
+} else {
+  console.warn("⚠️  Razorpay credentials not configured");
+  console.warn("   RAZORPAY_KEY_ID: " + (process.env.RAZORPAY_KEY_ID ? "✅" : "MISSING"));
+  console.warn("   RAZORPAY_KEY_SECRET: " + (process.env.RAZORPAY_KEY_SECRET ? "✅" : "MISSING"));
+}
+
+/* ===============================
+   STRIPE INITIALIZATION
+================================ */
+let stripeInstance = null;
+
+if (process.env.STRIPE_SECRET_KEY) {
+  stripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY);
+  console.log("✅ Stripe initialized");
+  console.log(`   Secret Key: ${process.env.STRIPE_SECRET_KEY.substring(0, 10)}...`);
+} else {
+  console.warn("⚠️  Stripe credentials not configured");
+  console.warn("   STRIPE_SECRET_KEY: " + (process.env.STRIPE_SECRET_KEY ? "✅" : "MISSING"));
 }
 
 /* ===============================
@@ -256,6 +291,365 @@ app.post("/api/contact", async (req, res) => {
 });
 
 /* ===============================
+   PAYMENT ENDPOINTS
+================================ */
+
+// Create Order
+app.post("/api/payment/create-order", async (req, res) => {
+  try {
+    if (!razorpayInstance) {
+      return res.status(503).json({
+        success: false,
+        error: "Payment service not configured",
+      });
+    }
+
+    const { amount, currency, receipt, customer, description } = req.body;
+
+    if (!amount || !currency || !receipt) {
+      return res.status(400).json({
+        success: false,
+        error: "Missing required fields: amount, currency, receipt",
+      });
+    }
+
+    if (amount < 100) {
+      return res.status(400).json({
+        success: false,
+        error: "Minimum amount is 100 paise (₹1)",
+      });
+    }
+
+    const orderData = {
+      amount,
+      currency,
+      receipt,
+      notes: {
+        customer_name: customer?.name || "Guest",
+        customer_email: customer?.email || "noreply@spirolink.com",
+        customer_contact: customer?.contact || "",
+        description: description || "SPIROLINK Service Payment",
+      },
+    };
+
+    const order = await razorpayInstance.orders.create(orderData);
+
+    console.log(`✅ Payment order created: ${order.id}`);
+
+    res.json({
+      success: true,
+      id: order.id,
+      amount: order.amount,
+      currency: order.currency,
+      receipt: order.receipt,
+      customer_id: order.customer_id || null,
+    });
+  } catch (error) {
+    console.error("❌ Order creation error:", error);
+    res.status(500).json({
+      success: false,
+      error: "Failed to create payment order: " + error.message,
+    });
+  }
+});
+
+// Verify Payment
+app.post("/api/payment/verify-payment", async (req, res) => {
+  try {
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+
+    if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
+      return res.status(400).json({
+        success: false,
+        error: "Missing payment verification details",
+      });
+    }
+
+    // Verify signature
+    const body = razorpay_order_id + "|" + razorpay_payment_id;
+    const expectedSignature = crypto
+      .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
+      .update(body)
+      .digest("hex");
+
+    if (expectedSignature !== razorpay_signature) {
+      console.warn(`❌ Payment signature mismatch for order: ${razorpay_order_id}`);
+      return res.status(400).json({
+        success: false,
+        error: "Payment signature verification failed",
+      });
+    }
+
+    // Fetch payment details to get order details
+    const payment = await razorpayInstance.payments.fetch(razorpay_payment_id);
+
+    console.log(`✅ Payment verified successfully: ${razorpay_payment_id}`);
+    console.log(`   Order: ${razorpay_order_id}`);
+    console.log(`   Amount: ₹${payment.amount / 100}`);
+    console.log(`   Status: ${payment.status}`);
+
+    // Send confirmation email
+    if (payment.notes && payment.notes.customer_email && emailService) {
+      const customerName = payment.notes.customer_name || "Customer";
+      const customerEmail = payment.notes.customer_email;
+      const amount = payment.amount / 100;
+
+      const emailHtml = `
+        <h2>Payment Confirmed!</h2>
+        <p>Hello ${customerName},</p>
+        <p>Your payment has been successfully processed and confirmed in real-time.</p>
+        <br>
+        <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px;">
+          <p><strong>Transaction Details:</strong></p>
+          <p>Amount: ₹${amount}</p>
+          <p>Payment ID: ${razorpay_payment_id}</p>
+          <p>Order ID: ${razorpay_order_id}</p>
+          <p>Status: Confirmed</p>
+          <p>Time: ${new Date().toLocaleString()}</p>
+        </div>
+        <br>
+        <p>Thank you for choosing SPIROLINK!</p>
+        <p>If you have any questions, please contact us at contact@spirolink.com</p>
+        <br>
+        <p>Regards,<br>SPIROLINK Team</p>
+      `;
+
+      if (emailService === "resend") {
+        const resend = new Resend(process.env.RESEND_API_KEY);
+        await resend.emails.send({
+          from: "SPIROLINK <onboarding@resend.dev>",
+          to: customerEmail,
+          subject: `Payment Confirmed - ₹${amount} - SPIROLINK`,
+          html: emailHtml,
+        });
+        console.log(`✅ Payment confirmation email sent via Resend`);
+      } else if (emailService === "smtp") {
+        await mailTransporter.sendMail({
+          from: `"SPIROLINK" <${process.env.SMTP_USER}>`,
+          to: customerEmail,
+          subject: `Payment Confirmed - ₹${amount} - SPIROLINK`,
+          html: emailHtml,
+        });
+        console.log(`✅ Payment confirmation email sent via SMTP`);
+      }
+    }
+
+    res.json({
+      success: true,
+      message: "Payment verified successfully",
+      payment_id: razorpay_payment_id,
+      order_id: razorpay_order_id,
+      amount: payment.amount / 100,
+      currency: payment.currency,
+      status: payment.status,
+      method: payment.method,
+    });
+  } catch (error) {
+    console.error("❌ Payment verification error:", error);
+    res.status(500).json({
+      success: false,
+      error: "Failed to verify payment: " + error.message,
+    });
+  }
+});
+
+// Get Payment Status
+app.get("/api/payment/status/:payment_id", async (req, res) => {
+  try {
+    if (!razorpayInstance) {
+      return res.status(503).json({
+        success: false,
+        error: "Payment service not configured",
+      });
+    }
+
+    const { payment_id } = req.params;
+
+    const payment = await razorpayInstance.payments.fetch(payment_id);
+
+    res.json({
+      success: true,
+      payment_id: payment.id,
+      amount: payment.amount / 100,
+      currency: payment.currency,
+      status: payment.status,
+      method: payment.method,
+      created_at: new Date(payment.created_at * 1000).toISOString(),
+    });
+  } catch (error) {
+    console.error("❌ Payment status error:", error);
+    res.status(500).json({
+      success: false,
+      error: "Failed to fetch payment status: " + error.message,
+    });
+  }
+});
+
+/* ===============================
+   STRIPE PAYMENT ENDPOINTS
+================================ */
+
+// Create Payment Intent
+app.post("/api/payment/stripe/create-intent", async (req, res) => {
+  try {
+    if (!stripeInstance) {
+      return res.status(503).json({
+        success: false,
+        error: "Stripe payment service not configured",
+      });
+    }
+
+    const { amount, currency, customer, description } = req.body;
+
+    if (!amount || !currency) {
+      return res.status(400).json({
+        success: false,
+        error: "Missing required fields: amount, currency",
+      });
+    }
+
+    if (amount < 1) {
+      return res.status(400).json({
+        success: false,
+        error: "Minimum amount is $1",
+      });
+    }
+
+    // Amount must be in cents for Stripe
+    const amountInCents = Math.round(amount * 100);
+
+    const intentData = {
+      amount: amountInCents,
+      currency: currency.toLowerCase(),
+      payment_method_types: ["card"],
+      metadata: {
+        customer_name: customer?.name || "Guest",
+        customer_email: customer?.email || "noreply@spirolink.com",
+        customer_contact: customer?.contact || "",
+        description: description || "SPIROLINK Service Payment",
+      },
+    };
+
+    if (customer?.email) {
+      intentData.receipt_email = customer.email;
+    }
+
+    const paymentIntent = await stripeInstance.paymentIntents.create(intentData);
+
+    console.log(`✅ Stripe payment intent created: ${paymentIntent.id}`);
+
+    res.json({
+      success: true,
+      clientSecret: paymentIntent.client_secret,
+      paymentIntentId: paymentIntent.id,
+      amount: paymentIntent.amount / 100,
+      currency: paymentIntent.currency,
+    });
+  } catch (error) {
+    console.error("❌ Stripe payment intent error:", error);
+    res.status(500).json({
+      success: false,
+      error: "Failed to create payment intent: " + error.message,
+    });
+  }
+});
+
+// Verify Stripe Payment
+app.post("/api/payment/stripe/verify-payment", async (req, res) => {
+  try {
+    if (!stripeInstance) {
+      return res.status(503).json({
+        success: false,
+        error: "Stripe payment service not configured",
+      });
+    }
+
+    const { paymentIntentId } = req.body;
+
+    if (!paymentIntentId) {
+      return res.status(400).json({
+        success: false,
+        error: "Missing payment intent ID",
+      });
+    }
+
+    // Retrieve payment intent
+    const paymentIntent = await stripeInstance.paymentIntents.retrieve(paymentIntentId);
+
+    if (paymentIntent.status !== "succeeded") {
+      return res.status(400).json({
+        success: false,
+        error: `Payment not completed. Status: ${paymentIntent.status}`,
+      });
+    }
+
+    console.log(`✅ Stripe payment verified successfully: ${paymentIntentId}`);
+    console.log(`   Amount: $${paymentIntent.amount / 100}`);
+    console.log(`   Status: ${paymentIntent.status}`);
+
+    // Send confirmation email
+    const customerEmail = paymentIntent.metadata?.customer_email;
+    const customerName = paymentIntent.metadata?.customer_name || "Customer";
+    const amount = paymentIntent.amount / 100;
+
+    if (customerEmail && emailService) {
+      const emailHtml = `
+        <h2>Payment Confirmed!</h2>
+        <p>Hello ${customerName},</p>
+        <p>Your payment has been successfully processed and confirmed in real-time.</p>
+        <br>
+        <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px;">
+          <p><strong>Transaction Details:</strong></p>
+          <p>Amount: $${amount}</p>
+          <p>Payment Intent ID: ${paymentIntentId}</p>
+          <p>Status: Confirmed</p>
+          <p>Time: ${new Date().toLocaleString()}</p>
+        </div>
+        <br>
+        <p>Thank you for choosing SPIROLINK!</p>
+        <p>If you have any questions, please contact us at contact@spirolink.com</p>
+        <br>
+        <p>Regards,<br>SPIROLINK Team</p>
+      `;
+
+      if (emailService === "resend") {
+        const resend = new Resend(process.env.RESEND_API_KEY);
+        await resend.emails.send({
+          from: "SPIROLINK <onboarding@resend.dev>",
+          to: customerEmail,
+          subject: `Payment Confirmed - $${amount} - SPIROLINK`,
+          html: emailHtml,
+        });
+        console.log(`✅ Payment confirmation email sent via Resend`);
+      } else if (emailService === "smtp") {
+        await mailTransporter.sendMail({
+          from: `"SPIROLINK" <${process.env.SMTP_USER}>`,
+          to: customerEmail,
+          subject: `Payment Confirmed - $${amount} - SPIROLINK`,
+          html: emailHtml,
+        });
+        console.log(`✅ Payment confirmation email sent via SMTP`);
+      }
+    }
+
+    res.json({
+      success: true,
+      message: "Payment verified successfully",
+      paymentIntentId: paymentIntent.id,
+      amount: paymentIntent.amount / 100,
+      currency: paymentIntent.currency.toUpperCase(),
+      status: paymentIntent.status,
+    });
+  } catch (error) {
+    console.error("❌ Stripe payment verification error:", error);
+    res.status(500).json({
+      success: false,
+      error: "Failed to verify payment: " + error.message,
+    });
+  }
+});
+
+/* ===============================
    404 HANDLER
 ================================ */
 app.use((req, res) => {
@@ -276,5 +670,10 @@ app.listen(PORT, () => {
   console.log("  GET  /api/health");
   console.log("  POST /api/chat");
   console.log("  POST /api/contact");
+  console.log("  POST /api/payment/create-order");
+  console.log("  POST /api/payment/verify-payment");
+  console.log("  GET  /api/payment/status/:payment_id");
+  console.log("  POST /api/payment/stripe/create-intent");
+  console.log("  POST /api/payment/stripe/verify-payment");
   console.log("====================================");
 });

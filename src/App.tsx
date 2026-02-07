@@ -19,6 +19,7 @@ import Contact from './pages/Contact';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Dashboard from './pages/Dashboard';
+import Payment from './pages/Payment';
 
 // Protected Route Component
 interface ProtectedRouteProps {
@@ -60,6 +61,7 @@ export default function App() {
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
                 <Route path="/services" element={<Services />} />
+                <Route path="/payment" element={<Payment />} />
                 <Route path="/pon-ftth" element={<PonFtth />} />
                 <Route path="/microwave-network" element={<MicrowaveNetwork />} />
                 <Route path="/optical-long-haul" element={<OpticalLongHaul />} />

@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microwave Network Design Services - Technical Brochure | SpiroLink Network Engineering</title>
+    <style>
+        /* Print and Screen Optimized Styles */
+        @media print {
+            .no-print { display: none; }
+            body { margin: 0; }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .brochure-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .download-bar {
+            background: #003d82;
+            color: white;
+            padding: 15px 40px;
+            text-align: right;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .download-btn {
+            background: #00a651;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        
+        .download-btn:hover {
+            background: #008a43;
+        }
+        
+        /* Cover Page */
+        .cover-page {
+            height: 11in;
+            background: linear-gradient(135deg, #003d82 0%, #0066cc 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 40px;
+            page-break-after: always;
+        }
+        
+        .cover-page h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .cover-page h2 {
+            font-size: 28px;
+            margin-bottom: 40px;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+        
+        .cover-page .tagline {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 40px auto;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+        
+        .company-info {
+            margin-top: 60px;
+            font-size: 16px;
+        }
+        
+        /* Content Pages */
+        .page {
+            padding: 60px 80px;
+            min-height: 10in;
+            page-break-after: always;
+        }
+        
+        .page:last-of-type {
+            page-break-after: auto;
+        }
+        
+        h2 {
+            color: #003d82;
+            font-size: 32px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #00a651;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            color: #0066cc;
+            font-size: 22px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        h4 {
+            color: #003d82;
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .methodology-box {
+            background: #f8f9fa;
+            border-left: 4px solid #00a651;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .deliverable-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .deliverable-item {
+            background: #f0f7ff;
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 3px solid #0066cc;
+        }
+        
+        .deliverable-item strong {
+            color: #003d82;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th {
+            background: #003d82;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .standards-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .standard-badge {
+            background: #e8f4f8;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 600;
+            color: #003d82;
+            font-size: 14px;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 40px 80px;
+            text-align: center;
+            border-top: 3px solid #00a651;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+            text-align: left;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 15px;
+        }
+        
+        .icon {
+            color: #0066cc;
+            font-size: 24px;
+            width: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .page {
+                padding: 40px 30px;
+            }
+            
+            .deliverable-grid,
+            .standards-list,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cover-page h1 {
+                font-size: 36px;
+            }
+            
+            .cover-page h2 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Download Bar (hidden when printing) -->
+    <div class="download-bar no-print">
+        <a href="#" class="download-btn" onclick="window.print(); return false;">📄 Download PDF</a>
+    </div>
+    
+    <div class="brochure-container">
+        
+        <!-- COVER PAGE -->
+        <div class="cover-page">
+            <h1>MICROWAVE NETWORK DESIGN</h1>
+            <h2>Technical Capabilities & Methodologies</h2>
+            
+            <div class="tagline">
+                Professional microwave network engineering services from initial planning through commissioning. Delivering reliable, high-capacity point-to-point and point-to-multipoint wireless solutions across licensed and unlicensed spectrum bands.
+            </div>
+            
+            <div class="company-info">
+                <strong>SpiroLink Network Engineering</strong><br>
+                Plano, Texas<br>
+                Professional Microwave & Optical Network Engineering
+            </div>
+        </div>
+        
+        <!-- PAGE 1: EXECUTIVE SUMMARY & SCOPE -->
+        <div class="page">
+            <h2>Executive Summary</h2>
+            
+            <p>SpiroLink Network Engineering provides comprehensive microwave network design and engineering services for telecommunications operators, utilities, enterprises, and government organizations. Our team brings extensive industry experience from leading equipment manufacturers and network operators, applying proven methodologies to deliver reliable, cost-effective wireless connectivity solutions.</p>
+            
+            <p>This technical brochure outlines our engineering approach, methodologies, tools, and deliverables for microwave network design projects.</p>
+            
+            <h3>Service Scope</h3>
+            
+            <p>Our microwave network design services encompass the complete project lifecycle:</p>
+            
+            <ul>
+                <li><strong>Network Planning & Topology Design</strong> – Requirements analysis, site selection, network architecture</li>
+                <li><strong>RF Engineering</strong> – Path analysis, link budget calculations, frequency planning, interference mitigation</li>
+                <li><strong>Regulatory Compliance</strong> – Frequency licensing, coordination, regulatory documentation</li>
+                <li><strong>Technical Documentation</strong> – Design packages, specifications, installation guides</li>
+                <li><strong>Implementation Support</strong> – Vendor evaluation, installation oversight, commissioning</li>
+            </ul>
+            
+            <h3>Technical Capabilities</h3>
+            
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Capability Range</th>
+                </tr>
+                <tr>
+                    <td>Frequency Bands</td>
+                    <td>6 GHz to 86 GHz (licensed and unlicensed)</td>
+                </tr>
+                <tr>
+                    <td>Link Capacity</td>
+                    <td>10 Mbps to multi-gigabit (40+ Gbps achievable)</td>
+                </tr>
+                <tr>
+                    <td>Link Distance</td>
+                    <td>500 meters to 150+ km (band and topology dependent)</td>
+                </tr>
+                <tr>
+                    <td>Network Architectures</td>
+                    <td>Point-to-point, point-to-multipoint, ring, mesh</td>
+                </tr>
+                <tr>
+                    <td>Standards Compliance</td>
+                    <td>ITU-R, ETSI, FCC Part 101, IEEE 802.11</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- PAGE 2: DESIGN METHODOLOGY -->
+        <div class="page">
+            <h2>Engineering Methodology</h2>
+            
+            <p>Our design process follows industry best practices and proven workflows developed through hundreds of successful deployments. Each project phase includes defined inputs, activities, and deliverables.</p>
+            
+            <h3>Phase 1: Requirements Analysis & Site Assessment</h3>
+            
+            <div class="methodology-box">
+                <h4>Activities:</h4>
+                <ul>
+                    <li><strong>Requirements Gathering</strong> – Bandwidth needs, latency requirements, availability targets, growth projections</li>
+                    <li><strong>Site Surveys</strong> – Physical site inspection, mounting structure assessment, power availability, ground conditions</li>
+                    <li><strong>GIS Analysis</strong> – Terrain modeling, viewshed analysis, preliminary line-of-sight verification</li>
+                    <li><strong>Regulatory Review</strong> – Spectrum availability, licensing requirements, coordination obligations</li>
+                </ul>
+                
+                <h4>Tools Used:</h4>
+                <ul>
+                    <li>QGIS / ArcGIS for geospatial analysis</li>
+                    <li>Google Earth Pro for preliminary path visualization</li>
+                    <li>SRTM/USGS terrain databases (1-arc second resolution)</li>
+                    <li>Spectrum analyzer for interference assessment</li>
+                </ul>
+                
+                <h4>Deliverables:</h4>
+                <ul>
+                    <li>Site assessment report with photos and GPS coordinates</li>
+                    <li>Preliminary feasibility analysis</li>
+                    <li>Spectrum availability report</li>
+                </ul>
+            </div>
+            
+            <h3>Phase 2: RF Link Design</h3>
+            
+            <div class="methodology-box">
+                <h4>Activities:</h4>
+                <ul>
+                    <li><strong>Path Profile Analysis</strong> – Detailed terrain profiling, Fresnel zone clearance verification (60% minimum), obstacle identification</li>
+                    <li><strong>Link Budget Calculations</strong> – Received signal level (RSL) analysis, fade margin assessment (minimum 20 dB for 99.9% availability), weather impact modeling</li>
+                    <li><strong>Frequency Planning</strong> – Channel assignment, interference analysis, frequency reuse optimization</li>
+                    <li><strong>Equipment Selection</strong> – Radio and antenna specification based on performance requirements</li>
+                    <li><strong>Availability Modeling</strong> – ITU-R P.530 rain fade analysis, multi-path fading assessment, composite availability calculation</li>
+                </ul>
+                
+                <h4>Tools Used:</h4>
+                <ul>
+                    <li><strong>Pathloss 5.0</strong> – Primary link design and path profiling tool</li>
+                    <li>Radio Mobile for propagation modeling</li>
+                    <li>LinkPlanner (Cambium) for equipment-specific designs</li>
+                    <li>LINKPlanner (UBNT) for unlicensed band solutions</li>
+                    <li>Custom Excel calculators for link budget verification</li>
+                </ul>
+                
+                <h4>Design Criteria:</h4>
+                <ul>
+                    <li>Minimum 60% first Fresnel zone clearance (80% preferred)</li>
+                    <li>Fade margin: 20-30 dB for 99.9% availability, 35+ dB for 99.99%</li>
+                    <li>Maximum rain rate: ITU-R Zone K (heavy rain regions)</li>
+                    <li>Antenna discrimination: >40 dB for interference mitigation</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- PAGE 3: FREQUENCY PLANNING & REGULATORY -->
+        <div class="page">
+            <h3>Phase 3: Frequency Planning & Regulatory</h3>
+            
+            <div class="methodology-box">
+                <h4>Activities:</h4>
+                <ul>
+                    <li><strong>Spectrum Analysis</strong> – Existing user identification, interference potential assessment, frequency coordination zone mapping</li>
+                    <li><strong>Channel Assignment</strong> – Optimal frequency selection, polarization diversity application, frequency reuse planning</li>
+                    <li><strong>Coordination</strong> – FCC Universal Licensing System (ULS) coordination, incumbent user notification, international coordination (where applicable)</li>
+                    <li><strong>License Applications</strong> – FCC Form 601 preparation, technical exhibits, supporting documentation</li>
+                </ul>
+                
+                <h4>Regulatory Standards:</h4>
+                <div class="standards-list">
+                    <div class="standard-badge">FCC Part 101</div>
+                    <div class="standard-badge">ITU-R F.382</div>
+                    <div class="standard-badge">ITU-R F.746</div>
+                    <div class="standard-badge">ETSI EN 302</div>
+                    <div class="standard-badge">FCC Part 15</div>
+                    <div class="standard-badge">IEEE 802.11</div>
+                </div>
+                
+                <h4>Deliverables:</h4>
+                <ul>
+                    <li>Frequency assignment plan with channel map</li>
+                    <li>FCC license applications (Form 601) ready for submission</li>
+                    <li>Coordination documentation and correspondence logs</li>
+                    <li>Interference analysis reports</li>
+                </ul>
+            </div>
+            
+            <h3>Phase 4: Network Design & Documentation</h3>
+            
+            <div class="methodology-box">
+                <h4>Activities:</h4>
+                <ul>
+                    <li><strong>Network Topology Design</strong> – Logical and physical network architecture, redundancy design, traffic routing optimization</li>
+                    <li><strong>Equipment Specifications</strong> – Detailed radio, antenna, mounting hardware, and accessory specifications</li>
+                    <li><strong>Installation Planning</strong> – Mounting structure requirements, cable routing, grounding and surge protection, power requirements</li>
+                    <li><strong>Quality Assurance</strong> – Design review, peer verification, standards compliance check</li>
+                </ul>
+                
+                <h4>Documentation Standards:</h4>
+                <ul>
+                    <li>All drawings in industry-standard CAD formats (DWG, PDF)</li>
+                    <li>Bill of materials with manufacturer part numbers</li>
+                    <li>Installation specifications following TIA-222 (tower standards)</li>
+                    <li>Comprehensive design calculations package</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- PAGE 4: DELIVERABLES -->
+        <div class="page">
+            <h2>Project Deliverables</h2>
+            
+            <p>Every microwave network design project includes a comprehensive documentation package suitable for procurement, permitting, and installation activities.</p>
+            
+            <h3>Core Design Package</h3>
+            
+            <div class="deliverable-grid">
+                <div class="deliverable-item">
+                    <strong>Network Topology Diagrams</strong>
+                    Logical and physical network layouts showing all sites, links, and connectivity
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Link Budget Reports</strong>
+                    Detailed calculations for each link including RSL, fade margin, and availability predictions
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Path Profile Analysis</strong>
+                    Terrain profiles with Fresnel zone clearance, obstacle identification, and antenna height recommendations
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Frequency Plan</strong>
+                    Channel assignments, frequency coordination documentation, interference analysis
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Equipment Specifications</strong>
+                    Complete bill of materials with part numbers, quantities, and technical specifications
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Installation Drawings</strong>
+                    Mounting details, antenna pointing angles (azimuth, elevation, polarization), cable routing
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Regulatory Documents</strong>
+                    License applications, coordination letters, compliance certifications
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Testing Procedures</strong>
+                    Commissioning test plans, acceptance criteria, performance verification methods
+                </div>
+            </div>
+            
+            <h3>Optional Deliverables</h3>
+            
+            <ul>
+                <li><strong>Vendor RFQ Packages</strong> – Pre-qualified equipment lists with technical specifications for competitive bidding</li>
+                <li><strong>Installation Supervision</strong> – On-site support during antenna installation and alignment</li>
+                <li><strong>Commissioning Support</strong> – Performance testing, optimization, and acceptance documentation</li>
+                <li><strong>As-Built Documentation</strong> – Updated drawings reflecting final installed configuration</li>
+                <li><strong>Operations & Maintenance Plans</strong> – Preventive maintenance schedules, spare parts recommendations, troubleshooting guides</li>
+            </ul>
+            
+            <h3>Documentation Formats</h3>
+            
+            <table>
+                <tr>
+                    <th>Document Type</th>
+                    <th>Format</th>
+                </tr>
+                <tr>
+                    <td>Network Diagrams</td>
+                    <td>AutoCAD (DWG), PDF, Visio (VSD)</td>
+                </tr>
+                <tr>
+                    <td>Link Budget Reports</td>
+                    <td>PDF, Excel (with formulas for client verification)</td>
+                </tr>
+                <tr>
+                    <td>Path Profiles</td>
+                    <td>PDF, KMZ (Google Earth), Pathloss project files</td>
+                </tr>
+                <tr>
+                    <td>Equipment Lists</td>
+                    <td>Excel, PDF</td>
+                </tr>
+                <tr>
+                    <td>GIS Data</td>
+                    <td>Shapefile, KML/KMZ, GeoJSON</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- PAGE 5: TOOLS, STANDARDS & EXPERTISE -->
+        <div class="page">
+            <h2>Tools & Software</h2>
+            
+            <h3>RF Design & Planning</h3>
+            <ul>
+                <li><strong>Pathloss 5.0</strong> – Industry-standard microwave path profiling and link budget analysis</li>
+                <li><strong>Radio Mobile</strong> – Propagation modeling and coverage prediction</li>
+                <li><strong>Vendor-Specific Tools</strong> – LinkPlanner (Cambium), LINKPlanner (Ubiquiti), Network Planner (Ericsson)</li>
+            </ul>
+            
+            <h3>GIS & Terrain Analysis</h3>
+            <ul>
+                <li><strong>QGIS</strong> – Open-source geospatial analysis and mapping</li>
+                <li><strong>Google Earth Pro</strong> – Site visualization and preliminary path analysis</li>
+                <li><strong>SRTM/USGS Terrain Data</strong> – High-resolution elevation models (1-arc second or better)</li>
+            </ul>
+            
+            <h3>Spectrum Analysis</h3>
+            <ul>
+                <li><strong>Keysight/Rohde & Schwarz Spectrum Analyzers</strong> – Field measurements for interference assessment</li>
+                <li><strong>FCC ULS Database</strong> – Licensed user coordination and frequency availability</li>
+            </ul>
+            
+            <h3>Network Simulation</h3>
+            <ul>
+                <li><strong>GNS3</strong> – Network topology simulation and traffic modeling</li>
+                <li><strong>Ekahau</strong> – Wireless network planning (unlicensed bands)</li>
+            </ul>
+            
+            <h2>Standards & Compliance</h2>
+            
+            <p>All designs comply with applicable industry standards and regulatory requirements:</p>
+            
+            <h4>International Standards</h4>
+            <ul>
+                <li><strong>ITU-R P.530</strong> – Propagation data and prediction methods for terrestrial line-of-sight systems</li>
+                <li><strong>ITU-R F.382</strong> – Radio-frequency channel arrangements for fixed wireless systems</li>
+                <li><strong>ITU-R F.746</strong> – Radio-frequency arrangements for systems in the fixed service</li>
+                <li><strong>ETSI EN 302 217</strong> – Fixed Radio Systems (European compliance)</li>
+            </ul>
+            
+            <h4>US Regulatory</h4>
+            <ul>
+                <li><strong>FCC Part 101</strong> – Fixed Microwave Services (licensed bands)</li>
+                <li><strong>FCC Part 15</strong> – Unlicensed ISM band operations</li>
+                <li><strong>TIA-222</strong> – Structural Standards for Antenna Supporting Structures</li>
+            </ul>
+            
+            <h4>Wireless Standards</h4>
+            <ul>
+                <li><strong>IEEE 802.11</strong> – Wireless LAN (WiFi 4/5/6 for unlicensed PtP)</li>
+                <li><strong>IEEE 802.16</strong> – WiMAX (where applicable)</li>
+            </ul>
+            
+            <h2>Team Expertise</h2>
+            
+            <p>SpiroLink's engineering team brings practical industry experience from leading organizations:</p>
+            
+            <ul>
+                <li><strong>Telecommunications Equipment Manufacturers</strong> – Ericsson, Nokia microwave systems engineering</li>
+                <li><strong>Mobile Network Operators</strong> – 4G/5G backhaul network design and optimization</li>
+                <li><strong>Utility Companies</strong> – Critical infrastructure SCADA and grid monitoring networks</li>
+                <li><strong>Regulatory Experience</strong> – FCC frequency coordination and licensing across multiple bands</li>
+            </ul>
+            
+            <p>Our team holds relevant industry certifications and maintains ongoing professional development in emerging technologies and regulatory changes.</p>
+        </div>
+        
+        <!-- PAGE 6: ENGAGEMENT MODEL & CONTACT -->
+        <div class="page">
+            <h2>Engagement Model</h2>
+            
+            <h3>Typical Project Timeline</h3>
+            
+            <table>
+                <tr>
+                    <th>Phase</th>
+                    <th>Duration</th>
+                    <th>Key Milestones</th>
+                </tr>
+                <tr>
+                    <td>Requirements & Site Assessment</td>
+                    <td>1-2 weeks</td>
+                    <td>Site surveys complete, feasibility confirmed</td>
+                </tr>
+                <tr>
+                    <td>RF Design & Link Engineering</td>
+                    <td>2-3 weeks</td>
+                    <td>Link budgets, path profiles, equipment selection</td>
+                </tr>
+                <tr>
+                    <td>Frequency Planning & Licensing</td>
+                    <td>2-4 weeks</td>
+                    <td>Coordination complete, applications submitted</td>
+                </tr>
+                <tr>
+                    <td>Documentation & Review</td>
+                    <td>1-2 weeks</td>
+                    <td>Complete design package delivered</td>
+                </tr>
+                <tr>
+                    <td>Implementation Support (Optional)</td>
+                    <td>Ongoing</td>
+                    <td>Installation oversight, commissioning, optimization</td>
+                </tr>
+            </table>
+            
+            <p><em>Timeline varies based on project scope, number of links, regulatory complexity, and client review cycles. Rush projects can be accommodated with adjusted timelines.</em></p>
+            
+            <h3>Service Options</h3>
+            
+            <h4>Design-Only Services</h4>
+            <p>Complete engineering design package with all documentation for client-managed procurement and installation. Ideal for organizations with existing installation capabilities or preferred contractors.</p>
+            
+            <h4>Design-Build Support</h4>
+            <p>Design services plus ongoing support during procurement, installation, and commissioning phases. We provide vendor evaluation, installation supervision, and performance verification.</p>
+            
+            <h4>Turnkey Solutions</h4>
+            <p>End-to-end project delivery including design, equipment procurement, installation management, and commissioning. Single point of accountability from concept to operational handoff.</p>
+            
+            <h3>Geographic Coverage</h3>
+            
+            <p>SpiroLink provides microwave network design services throughout the United States with project experience in:</p>
+            
+            <ul>
+                <li>Urban and suburban telecommunications networks</li>
+                <li>Rural and remote connectivity solutions</li>
+                <li>Cross-border coordination (US-Canada, US-Mexico)</li>
+                <li>International projects (consulting basis)</li>
+            </ul>
+            
+            <h2>Next Steps</h2>
+            
+            <p>To discuss your microwave network requirements, please contact us:</p>
+            
+            <div style="background: #f0f7ff; padding: 30px; border-radius: 8px; border-left: 4px solid #0066cc; margin: 30px 0;">
+                <h4 style="margin-top: 0; color: #003d82;">Ready to Start Your Project?</h4>
+                <p style="margin-bottom: 20px;">We offer a complimentary initial consultation to review your connectivity requirements and discuss potential solutions.</p>
+                
+                <p><strong>What to Prepare:</strong></p>
+                <ul style="margin-bottom: 0;">
+                    <li>Site locations (addresses or GPS coordinates)</li>
+                    <li>Bandwidth and latency requirements</li>
+                    <li>Timeline and budget considerations</li>
+                    <li>Any existing infrastructure or constraints</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- FOOTER / CONTACT PAGE -->
+        <div class="footer">
+            <h2 style="border: none; color: #003d82; margin-bottom: 30px;">Contact SpiroLink Network Engineering</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="icon">📞</div>
+                    <div>
+                        <strong>Phone</strong><br>
+                        [Your Phone Number]<br>
+                        Monday - Friday, 9 AM - 6 PM CT
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">✉️</div>
+                    <div>
+                        <strong>Email</strong><br>
+                        [Your Email Address]<br>
+                        Response within 24 business hours
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">🌐</div>
+                    <div>
+                        <strong>Website</strong><br>
+                        www.spirolinknetworks.com<br>
+                        Online project inquiry form available
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">📍</div>
+                    <div>
+                        <strong>Location</strong><br>
+                        Plano, Texas<br>
+                        Serving clients nationwide
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid #ddd;">
+                <p style="margin: 0; color: #666; font-size: 14px;">
+                    <strong>SpiroLink Network Engineering</strong> | Professional Microwave & Optical Network Engineering Services<br>
+                    © 2025 SpiroLink Network Engineering. All rights reserved.
+                </p>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiFi Network Design Services - Technical Brochure | SpiroLink Network Engineering</title>
+    <style>
+        /* Print and Screen Optimized Styles */
+        @media print {
+            .no-print { display: none; }
+            body { margin: 0; }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .brochure-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .download-bar {
+            background: #003d82;
+            color: white;
+            padding: 15px 40px;
+            text-align: right;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .download-btn {
+            background: #00a651;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        
+        .download-btn:hover {
+            background: #008a43;
+        }
+        
+        /* Cover Page - WHITE BACKGROUND */
+        .cover-page {
+            height: 11in;
+            background: white;
+            color: #003d82;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 40px;
+            page-break-after: always;
+            border-bottom: 5px solid #00a651;
+        }
+        
+        .cover-page h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #003d82;
+        }
+        
+        .cover-page h2 {
+            font-size: 28px;
+            margin-bottom: 40px;
+            font-weight: 400;
+            color: #0066cc;
+        }
+        
+        .cover-page .tagline {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 40px auto;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .cover-logo {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #003d82 0%, #0066cc 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: 700;
+        }
+        
+        .company-info {
+            margin-top: 60px;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        /* Content Pages */
+        .page {
+            padding: 60px 80px;
+            min-height: 10in;
+            page-break-after: always;
+        }
+        
+        .page:last-of-type {
+            page-break-after: auto;
+        }
+        
+        h2 {
+            color: #003d82;
+            font-size: 32px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #00a651;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            color: #0066cc;
+            font-size: 22px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        h4 {
+            color: #003d82;
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .methodology-box {
+            background: #f8f9fa;
+            border-left: 4px solid #00a651;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .deliverable-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .deliverable-item {
+            background: #f0f7ff;
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 3px solid #0066cc;
+        }
+        
+        .deliverable-item strong {
+            color: #003d82;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th {
+            background: #003d82;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .standards-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .standard-badge {
+            background: #e8f4f8;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 600;
+            color: #003d82;
+            font-size: 14px;
+        }
+        
+        .highlight-box {
+            background: #fff9e6;
+            border-left: 4px solid #ffa500;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 40px 80px;
+            text-align: center;
+            border-top: 3px solid #00a651;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+            text-align: left;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 15px;
+        }
+        
+        .icon {
+            color: #0066cc;
+            font-size: 24px;
+            width: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .page {
+                padding: 40px 30px;
+            }
+            
+            .deliverable-grid,
+            .standards-list,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cover-page h1 {
+                font-size: 36px;
+            }
+            
+            .cover-page h2 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Download Bar (hidden when printing) -->
+    <div class="download-bar no-print">
+        <a href="#" class="download-btn" onclick="window.print(); return false;">📄 Download PDF</a>
+    </div>
+    
+    <div class="brochure-container">
+        
+        <!-- COVER PAGE - WHITE BACKGROUND -->
+        <div class="cover-page">
+            <div class="cover-logo">SL</div>
+            
+            <h1>WiFi NETWORK DESIGN</h1>
+            <h2>Technical Capabilities & Methodologies</h2>
+            
+            <div class="tagline">
+                Professional enterprise WiFi network engineering services from RF site surveys through deployment validation. Delivering high-performance, secure wireless solutions for enterprises, healthcare, hospitality, education, and specialized environments using WiFi 6/6E/7 technologies.
+            </div>
+            
+            <div class="company-info">
+                <strong>SpiroLink Network Engineering</strong><br>
+                Plano, Texas<br>
+                Professional Microwave & Optical Network Engineering
+            </div>
+        </div>
+        
+        <!-- PAGE 1: EXECUTIVE SUMMARY & SCOPE -->
+        <div class="page">
+            <h2>Executive Summary</h2>
+            
+            <p>SpiroLink Network Engineering provides comprehensive WiFi network design and RF engineering services for enterprise wireless deployments. Our team applies proven methodologies developed through stadium, healthcare, hospitality, and enterprise campus projects, delivering predictive site surveys, RF coverage optimization, and network architecture designs that meet capacity, performance, and security requirements.</p>
+            
+            <p>This technical brochure outlines our RF engineering approach, site survey methodologies, design tools, and deliverables for wireless network projects.</p>
+            
+            <h3>Service Scope</h3>
+            
+            <p>Our WiFi network design services encompass end-to-end wireless project lifecycle:</p>
+            
+            <ul>
+                <li><strong>Site Surveys</strong> – Predictive (pre-deployment) and active (validation) RF surveys, spectrum analysis, interference assessment</li>
+                <li><strong>RF Design & Modeling</strong> – Coverage heat maps, capacity planning, channel optimization, power levels, roaming design</li>
+                <li><strong>Network Architecture</strong> – Controller placement, management systems, authentication infrastructure, network segmentation</li>
+                <li><strong>Security Planning</strong> – WPA3 implementation, 802.1X authentication, guest isolation, compliance (HIPAA, PCI-DSS)</li>
+                <li><strong>WiFi 6/6E/7 Planning</strong> – Next-generation wireless design, 6 GHz spectrum planning, OFDMA/MU-MIMO optimization</li>
+                <li><strong>Validation & Optimization</strong> – Post-deployment surveys, performance testing, fine-tuning recommendations</li>
+            </ul>
+            
+            <h3>Technical Capabilities</h3>
+            
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Capability Range</th>
+                </tr>
+                <tr>
+                    <td>WiFi Standards</td>
+                    <td>802.11ac (WiFi 5), 802.11ax (WiFi 6/6E), 802.11be (WiFi 7)</td>
+                </tr>
+                <tr>
+                    <td>Frequency Bands</td>
+                    <td>2.4 GHz, 5 GHz, 6 GHz (WiFi 6E/7)</td>
+                </tr>
+                <tr>
+                    <td>Data Rates</td>
+                    <td>Up to 9.6 Gbps (WiFi 6), 46 Gbps (WiFi 7)</td>
+                </tr>
+                <tr>
+                    <td>User Density</td>
+                    <td>High-density environments (stadiums, conference centers, campuses)</td>
+                </tr>
+                <tr>
+                    <td>Coverage Area</td>
+                    <td>Single room to multi-building campuses, indoor and outdoor</td>
+                </tr>
+                <tr>
+                    <td>Deployment Models</td>
+                    <td>Controller-based, cloud-managed, SD-WAN integrated</td>
+                </tr>
+            </table>
+            
+            <h3>Application Areas</h3>
+            
+            <ul>
+                <li><strong>Enterprise Campus</strong> – Office buildings, multi-tenant facilities, corporate headquarters</li>
+                <li><strong>Healthcare</strong> – Hospitals, clinics, medical devices, RTLS (Real-Time Location Systems)</li>
+                <li><strong>Hospitality</strong> – Hotels, resorts, convention centers, cruise ships</li>
+                <li><strong>Education</strong> – Universities, K-12 schools, libraries, student housing</li>
+                <li><strong>Retail</strong> – Stores, shopping centers, point-of-sale systems, inventory management</li>
+                <li><strong>Manufacturing</strong> – Warehouses, production floors, IoT device connectivity</li>
+                <li><strong>Public Venues</strong> – Stadiums, arenas, airports, convention centers</li>
+            </ul>
+        </div>
+        
+        <!-- PAGE 2: SITE SURVEY METHODOLOGY -->
+        <div class="page">
+            <h2>Site Survey Methodology</h2>
+            
+            <p>Professional RF site surveys are the foundation of successful wireless deployments. Our multi-phase survey approach ensures designs meet coverage, capacity, and performance requirements.</p>
+            
+            <h3>Survey Type 1: Predictive Site Survey</h3>
+            
+            <div class="methodology-box">
+                <h4>Purpose:</h4>
+                <p>Pre-deployment RF modeling to determine AP quantities, placement, and preliminary channel plan before equipment procurement.</p>
+                
+                <h4>Activities:</h4>
+                <ul>
+                    <li><strong>Floor Plan Analysis</strong> – Building blueprints imported into RF planning software, scaled and calibrated</li>
+                    <li><strong>Material Assessment</strong> – Attenuation values assigned to walls, doors, windows, metal studs, concrete (typical: drywall 3 dB, concrete block 8 dB, metal 20+ dB)</li>
+                    <li><strong>Requirements Mapping</strong> – Coverage areas defined, capacity zones identified, performance targets set</li>
+                    <li><strong>AP Placement Modeling</strong> – Virtual AP placement, power levels, antenna patterns, coverage predictions</li>
+                    <li><strong>Coverage Heat Maps</strong> – Signal strength (RSSI), signal-to-noise ratio (SNR), data rate predictions</li>
+                </ul>
+                
+                <h4>Tools Used:</h4>
+                <ul>
+                    <li><strong>Ekahau AI Pro</strong> – Industry-leading WiFi planning and site survey platform</li>
+                    <li>AP manufacturer planning tools (Aruba Visual RF, Cisco Prime, Ubiquiti Design Center)</li>
+                </ul>
+                
+                <h4>Deliverables:</h4>
+                <ul>
+                    <li>Predictive coverage heat maps (signal strength, SNR, channel overlap)</li>
+                    <li>AP placement recommendations with mounting heights</li>
+                    <li>Preliminary channel and power plan</li>
+                    <li>Equipment bill of materials</li>
+                </ul>
+            </div>
+            
+            <h3>Survey Type 2: Passive Site Survey</h3>
+            
+            <div class="methodology-box">
+                <h4>Purpose:</h4>
+                <p>Measure existing RF environment before deployment or assess current network performance for optimization.</p>
+                
+                <h4>Activities:</h4>
+                <ul>
+                    <li><strong>RF Spectrum Analysis</strong> – 2.4 GHz and 5 GHz spectrum scanning for interference sources (neighboring WiFi, Bluetooth, microwave ovens, wireless cameras)</li>
+                    <li><strong>Signal Strength Mapping</strong> – Walk survey measuring RSSI from existing or temporary APs</li>
+                    <li><strong>Channel Utilization</strong> – Airtime usage, co-channel interference, adjacent channel interference</li>
+                    <li><strong>Rogue AP Detection</strong> – Unauthorized access points and security threats</li>
+                </ul>
+                
+                <h4>Deliverables:</h4>
+                <ul>
+                    <li>Spectrum analysis reports identifying interference sources</li>
+                    <li>Coverage heat maps showing signal quality</li>
+                    <li>Channel utilization analysis</li>
+                    <li>Rogue AP identification and locations</li>
+                </ul>
+            </div>
+            
+            <h3>Survey Type 3: Active Site Survey</h3>
+            
+            <div class="methodology-box">
+                <h4>Purpose:</h4>
+                <p>Post-deployment validation measuring actual network performance from client perspective.</p>
+                
+                <h4>Activities:</h4>
+                <ul>
+                    <li><strong>Association Testing</strong> – Client device connectivity at various locations</li>
+                    <li><strong>Throughput Measurement</strong> – iPerf tests measuring TCP/UDP throughput, latency, jitter, packet loss</li>
+                    <li><strong>Roaming Validation</strong> – Client handoff behavior between APs, roaming thresholds verification</li>
+                    <li><strong>Application Testing</strong> – Voice (VoIP), video (streaming), data application performance</li>
+                </ul>
+                
+                <h4>Performance Criteria:</h4>
+                <ul>
+                    <li>Coverage: Minimum -67 dBm RSSI, -70 dBm for voice applications</li>
+                    <li>SNR: Minimum 25 dB (general), 30+ dB (high-density areas)</li>
+                    <li>Throughput: >50 Mbps per client (typical), >100 Mbps (WiFi 6 high-performance)</li>
+                    <li>Roaming: <50ms handoff time (voice/video applications)</li>
+                </ul>
+                
+                <h4>Deliverables:</h4>
+                <ul>
+                    <li>Actual vs. predicted coverage comparison</li>
+                    <li>Throughput heat maps</li>
+                    <li>Roaming performance analysis</li>
+                    <li>Application performance reports</li>
+                    <li>Optimization recommendations</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- PAGE 3: RF DESIGN & NETWORK ARCHITECTURE -->
+        <div class="page">
+            <h2>RF Design Engineering</h2>
+            
+            <p>Detailed RF engineering ensures optimal coverage, capacity, and performance while minimizing interference and cost.</p>
+            
+            <h3>Coverage Optimization</h3>
+            
+            <div class="methodology-box">
+                <h4>Design Principles:</h4>
+                <ul>
+                    <li><strong>Signal Strength Targets</strong> – Minimum -67 dBm for data, -65 dBm for voice, overlap zones at -75 dBm for seamless roaming</li>
+                    <li><strong>AP Density</strong> – Coverage-driven (1 AP per 2,000-5,000 sq ft typical office) vs. capacity-driven (1 AP per 25-50 users high-density)</li>
+                    <li><strong>Power Levels</strong> – Balanced to avoid over-coverage and excessive co-channel interference (typical 8-17 dBm transmit power)</li>
+                    <li><strong>Antenna Selection</strong> – Omnidirectional (typical office), directional (long corridors, outdoor), downtilt for high ceilings</li>
+                </ul>
+            </div>
+            
+            <h3>Channel Planning</h3>
+            
+            <div class="methodology-box">
+                <h4>Frequency Band Strategies:</h4>
+                <ul>
+                    <li><strong>2.4 GHz</strong> – 3 non-overlapping channels (1, 6, 11), legacy device support, IoT connectivity, avoid in high-density environments</li>
+                    <li><strong>5 GHz</strong> – Up to 25 non-overlapping channels (UNII-1, UNII-2, UNII-3), primary band for high-performance clients</li>
+                    <li><strong>6 GHz (WiFi 6E)</strong> – 59 channels (20 MHz), 29 channels (40 MHz), 14 channels (80 MHz), 7 channels (160 MHz), clean spectrum with no legacy interference</li>
+                </ul>
+                
+                <h4>Channel Assignment:</h4>
+                <ul>
+                    <li><strong>Manual Planning</strong> – Fixed channel assignments for stable environments, reuse pattern design (1-6-11 for 2.4 GHz, every 4th channel for 5 GHz 20 MHz)</li>
+                    <li><strong>Dynamic Assignment (RRM)</strong> – Automatic Radio Resource Management adjusting channels based on interference, suitable for changing environments</li>
+                    <li><strong>DFS Channels</strong> – Utilize Dynamic Frequency Selection channels (52-144) in 5 GHz for additional capacity, radar detection compliance</li>
+                </ul>
+            </div>
+            
+            <h3>Capacity Planning</h3>
+            
+            <div class="methodology-box">
+                <h4>User Density Analysis:</h4>
+                <ul>
+                    <li><strong>Client Count per AP</strong> – Typical office: 25-30 clients, high-density: 50-75 clients with WiFi 6 OFDMA/MU-MIMO</li>
+                    <li><strong>Bandwidth per User</strong> – Light usage: 1-2 Mbps, typical: 5-10 Mbps, high-definition video: 20-50 Mbps</li>
+                    <li><strong>Concurrent Usage</strong> – Percentage of clients active simultaneously (office 30-50%, conference room 100%, stadium 70-90%)</li>
+                </ul>
+                
+                <h4>WiFi 6/6E Optimization:</h4>
+                <ul>
+                    <li><strong>OFDMA</strong> – Orthogonal Frequency Division Multiple Access for efficient multi-user support, divides channels into resource units (RUs)</li>
+                    <li><strong>MU-MIMO</strong> – Multi-User MIMO supporting 8x8 simultaneous streams (WiFi 6), 16x16 (WiFi 7)</li>
+                    <li><strong>Band Steering</strong> – Client steering from 2.4 GHz to 5/6 GHz for better performance</li>
+                    <li><strong>Load Balancing</strong> – Distributing clients across APs to prevent single AP overload</li>
+                </ul>
+            </div>
+            
+            <h2>Network Architecture Design</h2>
+            
+            <h3>Controller & Management</h3>
+            
+            <div class="methodology-box">
+                <h4>Deployment Models:</h4>
+                <ul>
+                    <li><strong>Hardware Controller</strong> – On-premise appliance, suitable for large enterprises, full local control</li>
+                    <li><strong>Virtual Controller</strong> – VM-based, flexible scaling, integration with virtualized infrastructure</li>
+                    <li><strong>Cloud-Managed</strong> – SaaS platform (Meraki, Aruba Central, UniFi Cloud), simplified management, multi-site visibility</li>
+                </ul>
+                
+                <h4>Network Segmentation:</h4>
+                <ul>
+                    <li><strong>SSID Architecture</strong> – Corporate (WPA3-Enterprise, 802.1X authentication), Guest (isolated, captive portal), IoT (separate VLAN, restricted access), Voice (QoS priority)</li>
+                    <li><strong>VLAN Design</strong> – Per-SSID VLAN assignment, dynamic VLAN based on 802.1X attributes, firewall policies between segments</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- PAGE 4: DELIVERABLES & TOOLS -->
+        <div class="page">
+            <h2>Project Deliverables</h2>
+            
+            <p>Every WiFi network design project includes comprehensive technical documentation suitable for equipment procurement, installation, and network commissioning.</p>
+            
+            <h3>Core Design Package</h3>
+            
+            <div class="deliverable-grid">
+                <div class="deliverable-item">
+                    <strong>Site Survey Reports</strong>
+                    Predictive and active survey results, RF heat maps, spectrum analysis, coverage validation
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>AP Placement Plans</strong>
+                    Floor plans with AP locations, mounting heights, antenna orientations, cabling requirements
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Coverage Heat Maps</strong>
+                    Signal strength (RSSI), SNR, data rate predictions, channel overlap analysis
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Channel & Power Plans</strong>
+                    Channel assignments per AP, transmit power levels, RRM configuration guidelines
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Network Architecture Diagrams</strong>
+                    Logical topology, controller placement, VLAN architecture, authentication flow
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Equipment Specifications</strong>
+                    AP models by location, controller sizing, PoE requirements, switch port counts
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Security Configuration</strong>
+                    SSID design, authentication methods, encryption standards, guest isolation, firewall rules
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>QoS Policies</strong>
+                    Traffic prioritization, DSCP markings, bandwidth allocation, application visibility
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Configuration Templates</strong>
+                    AP configuration scripts, controller policies, automation templates
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Testing Procedures</strong>
+                    Validation survey methodology, performance benchmarks, acceptance criteria
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Bill of Materials</strong>
+                    Complete BOM with part numbers, quantities, vendor options, cost estimates
+                </div>
+                
+                <div class="deliverable-item">
+                    <strong>Implementation Guide</strong>
+                    Installation standards, mounting instructions, commissioning checklist, validation process
+                </div>
+            </div>
+            
+            <h3>Optional Deliverables</h3>
+            
+            <ul>
+                <li><strong>Post-Deployment Validation</strong> – Active site surveys verifying coverage, throughput, roaming performance</li>
+                <li><strong>Optimization Reports</strong> – Fine-tuning recommendations, channel adjustments, power optimization</li>
+                <li><strong>Ongoing Monitoring Design</strong> – Network analytics platforms, alerting thresholds, performance baselines</li>
+                <li><strong>Capacity Expansion Roadmap</strong> – Future growth planning, AP addition locations, controller scaling</li>
+            </ul>
+            
+            <h2>Tools & Software</h2>
+            
+            <h3>RF Planning & Site Survey</h3>
+            <ul>
+                <li><strong>Ekahau AI Pro</strong> – Professional WiFi planning, predictive surveys, active validation surveys</li>
+                <li><strong>NetAlly AirMagnet</strong> – WiFi analysis, spectrum analysis, troubleshooting</li>
+                <li><strong>WiFi Explorer Pro</strong> – macOS WiFi analysis and spectrum scanning</li>
+                <li><strong>Vendor Tools</strong> – Aruba Visual RF, Cisco Prime Infrastructure, UniFi Design Center</li>
+            </ul>
+            
+            <h3>Spectrum Analysis</h3>
+            <ul>
+                <li><strong>Wi-Spy (MetaGeek)</strong> – 2.4/5 GHz spectrum analyzer for interference detection</li>
+                <li><strong>Ekahau Sidekick</strong> – Integrated spectrum analyzer with site survey capabilities</li>
+            </ul>
+            
+            <h3>Performance Testing</h3>
+            <ul>
+                <li><strong>iPerf3</strong> – Network throughput, latency, jitter, packet loss testing</li>
+                <li><strong>Wireshark</strong> – Packet capture and protocol analysis for troubleshooting</li>
+            </ul>
+            
+            <h2>Standards & Compliance</h2>
+            
+            <h4>WiFi Standards (IEEE 802.11)</h4>
+            <div class="standards-list">
+                <div class="standard-badge">802.11a/b/g</div>
+                <div class="standard-badge">802.11n (WiFi 4)</div>
+                <div class="standard-badge">802.11ac (WiFi 5)</div>
+                <div class="standard-badge">802.11ax (WiFi 6/6E)</div>
+                <div class="standard-badge">802.11be (WiFi 7)</div>
+                <div class="standard-badge">802.11k/r/v</div>
+            </div>
+            
+            <h4>Security Standards</h4>
+            <ul>
+                <li><strong>WPA3-Personal/Enterprise</strong> – Latest WiFi security with SAE authentication, 192-bit encryption mode</li>
+                <li><strong>802.1X</strong> – Port-based network access control with RADIUS authentication</li>
+                <li><strong>802.11w</strong> – Management frame protection preventing deauthentication attacks</li>
+            </ul>
+            
+            <h4>Industry Compliance</h4>
+            <ul>
+                <li><strong>HIPAA</strong> – Healthcare wireless security and privacy requirements</li>
+                <li><strong>PCI-DSS</strong> – Payment card industry data security standards</li>
+                <li><strong>GDPR</strong> – Guest network data privacy compliance</li>
+            </ul>
+        </div>
+        
+        <!-- PAGE 5: SPECIALIZED SOLUTIONS & ENGAGEMENT -->
+        <div class="page">
+            <h2>Specialized WiFi Solutions</h2>
+            
+            <h3>Healthcare WiFi Networks</h3>
+            
+            <div class="methodology-box">
+                <h4>Unique Requirements:</h4>
+                <ul>
+                    <li><strong>Medical Device Connectivity</strong> – Infusion pumps, patient monitors, wireless EKG, imaging equipment</li>
+                    <li><strong>RTLS (Real-Time Location Systems)</strong> – Asset tracking, patient tracking, staff duress badges</li>
+                    <li><strong>Infection Control</strong> – Sealed APs for cleanroom environments, antimicrobial coatings</li>
+                    <li><strong>HIPAA Compliance</strong> – Encrypted communications, audit logging, secure guest isolation</li>
+                </ul>
+                
+                <h4>Design Considerations:</h4>
+                <ul>
+                    <li>Dense AP placement for RTLS accuracy (6-12 ft location precision requires 3-4 APs visibility)</li>
+                    <li>Dedicated medical device SSID with QoS priority</li>
+                    <li>RF containment preventing signal leakage outside facility</li>
+                </ul>
+            </div>
+            
+            <h3>High-Density Venue WiFi</h3>
+            
+            <div class="methodology-box">
+                <h4>Applications:</h4>
+                <ul>
+                    <li>Stadiums and arenas (10,000+ concurrent users)</li>
+                    <li>Convention centers and conference facilities</li>
+                    <li>Airports and transportation hubs</li>
+                </ul>
+                
+                <h4>Design Strategies:</h4>
+                <ul>
+                    <li><strong>High AP Density</strong> – 1 AP per 50-100 users, directional antennas limiting coverage area</li>
+                    <li><strong>Minimize Channel Width</strong> – 20 MHz channels maximizing channel count in 5 GHz</li>
+                    <li><strong>Load Balancing</strong> – Client steering preventing single AP overload</li>
+                    <li><strong>Capacity Planning</strong> – User behavior analysis (social media, streaming, ticketing apps)</li>
+                </ul>
+            </div>
+            
+            <h3>Outdoor & Harsh Environment</h3>
+            
+            <div class="methodology-box">
+                <h4>Environmental Considerations:</h4>
+                <ul>
+                    <li><strong>Weather Resistance</strong> – IP67-rated APs, operating temperature -40°C to +65°C</li>
+                    <li><strong>Mounting Solutions</strong> – Pole mounts, wall mounts, under-eave installations</li>
+                    <li><strong>Power Delivery</strong> – PoE++ (802.3bt) for outdoor APs, surge protection</li>
+                    <li><strong>Coverage Patterns</strong> – Long-range antennas (up to 1,000 ft), directional for point-to-point links</li>
+                </ul>
+                
+                <h4>Applications:</h4>
+                <ul>
+                    <li>Campus quad and outdoor gathering spaces</li>
+                    <li>Manufacturing facilities and warehouses</li>
+                    <li>Parking lots and loading docks</li>
+                    <li>Marina and waterfront properties</li>
+                </ul>
+            </div>
+            
+            <h2>Engagement Model</h2>
+            
+            <h3>Typical Project Timeline</h3>
+            
+            <table>
+                <tr>
+                    <th>Phase</th>
+                    <th>Duration</th>
+                    <th>Key Milestones</th>
+                </tr>
+                <tr>
+                    <td>Requirements & Planning</td>
+                    <td>1 week</td>
+                    <td>Requirements gathered, floor plans acquired</td>
+                </tr>
+                <tr>
+                    <td>Predictive Site Survey</td>
+                    <td>1-2 weeks</td>
+                    <td>RF modeling complete, AP placement designed</td>
+                </tr>
+                <tr>
+                    <td>Passive Survey (if needed)</td>
+                    <td>1 week</td>
+                    <td>Existing RF environment assessed</td>
+                </tr>
+                <tr>
+                    <td>Design Documentation</td>
+                    <td>1-2 weeks</td>
+                    <td>Complete design package delivered</td>
+                </tr>
+                <tr>
+                    <td>Installation (Client/Contractor)</td>
+                    <td>Varies</td>
+                    <td>APs installed, cabling complete, controller configured</td>
+                </tr>
+                <tr>
+                    <td>Validation Survey</td>
+                    <td>1 week</td>
+                    <td>Active survey, performance testing, optimization</td>
+                </tr>
+            </table>
+            
+            <p><em>Timeline scales with facility size. Small office (10-20 APs): 3-4 weeks total. Large campus (200+ APs): 8-12 weeks design phase.</em></p>
+            
+            <h3>Service Options</h3>
+            
+            <h4>Design-Only Services</h4>
+            <p>Predictive site survey, RF design, and complete documentation for client-managed installation. Suitable for organizations with in-house installation capabilities.</p>
+            
+            <h4>Design + Validation</h4>
+            <p>Design services plus post-deployment validation survey and optimization. We verify installed network meets performance requirements and provide tuning recommendations.</p>
+            
+            <h4>Full Service (Design, Install, Validate)</h4>
+            <p>End-to-end project delivery including design, equipment procurement support, installation oversight, and performance validation. Single point of accountability from planning through acceptance.</p>
+            
+            <div style="background: #f0f7ff; padding: 30px; border-radius: 8px; border-left: 4px solid #0066cc; margin: 30px 0;">
+                <h4 style="margin-top: 0; color: #003d82;">Ready to Start Your Project?</h4>
+                <p style="margin-bottom: 20px;">We offer a complimentary initial consultation to review your wireless requirements.</p>
+                
+                <p><strong>What to Prepare:</strong></p>
+                <ul style="margin-bottom: 0;">
+                    <li>Facility floor plans (CAD, PDF, or image files)</li>
+                    <li>Coverage areas and user density estimates</li>
+                    <li>Application requirements (voice, video, data)</li>
+                    <li>Security and compliance needs</li>
+                    <li>Timeline and budget considerations</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- FOOTER / CONTACT PAGE -->
+        <div class="footer">
+            <h2 style="border: none; color: #003d82; margin-bottom: 30px;">Contact SpiroLink Network Engineering</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="icon">📞</div>
+                    <div>
+                        <strong>Phone</strong><br>
+                        +1 (617) 680-4300<br>
+                        Monday - Friday, 9 AM - 6 PM CT
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">✉️</div>
+                    <div>
+                        <strong>Email</strong><br>
+                        n.surendran@spirolink.com<br>
+                        Response within 24 business hours
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">🌐</div>
+                    <div>
+                        <strong>Website</strong><br>
+                        www.spirolink.com<br>
+                        Online project inquiry form available
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">📍</div>
+                    <div>
+                        <strong>Location</strong><br>
+                        Plano, Texas<br>
+                        Serving clients nationwide
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid #ddd;">
+                <p style="margin: 0; color: #666; font-size: 14px;">
+                    <strong>SpiroLink Network Engineering</strong> | Professional Microwave & Optical Network Engineering Services<br>
+                    © 2025 SpiroLink Network Engineering. All rights reserved.
+                </p>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

@@ -21,6 +21,7 @@ const navItems: NavItem[] = [
   { label: 'Services', href: '/services', translationKey: 'services' },
   { label: 'Resources', href: '/resources', translationKey: 'resources' },
   { label: 'Contact', href: '/contact', translationKey: 'contact' },
+  { label: 'Payment', href: '/payment', translationKey: 'payment' },
 ];
 
 export function Header() {
