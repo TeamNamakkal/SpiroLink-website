@@ -55,7 +55,7 @@ export default function MicrowaveNetwork() {
         title="When Networks Can't Wait for Fiber, We Engineer Certainty."
         description="We design carrier-grade microwave networks for environments where fiber is delayed, impractical, or financially uncertain. We treat our customers as partners and approach every network as if we own its outcome."
         badge="Wireless Networks"
-        badgeIcon="📡"
+        badgeIcon=""
         themeColor="cyan"
       />
 

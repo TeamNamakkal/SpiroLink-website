@@ -11,7 +11,7 @@ export default function EngineeringCommunicationLabs() {
         title="Industry-Grade Communication & Networking Labs for Engineering Institutions"
         description="Bridging Classroom Theory with Real-World Engineering Practice. The future engineer must build and operate real-world communication systems, not just understand them. We design and deploy industry-grade laboratories that give students hands-on exposure and industry-ready skills."
         badge="Engineering Communication & Networking Labs"
-        badgeIcon="🔬"
+        badgeIcon=""
         themeColor="cyan"
       />
 

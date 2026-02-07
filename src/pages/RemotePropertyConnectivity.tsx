@@ -11,7 +11,7 @@ export default function RemotePropertyConnectivity() {
         title="Enterprise-Grade Connectivity for Properties Traditional ISPs Won't Serve"
         description="Reliable, high-speed connectivity for wedding venues, resorts, ranches, and remote properties—engineered as one integrated system"
         badge="Remote Property Connectivity Solutions"
-        badgeIcon="🏘️"
+        badgeIcon=""
         themeColor="cyan"
       />
 

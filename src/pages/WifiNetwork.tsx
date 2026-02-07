@@ -12,7 +12,7 @@ export default function WifiNetwork() {
         title="Wi-Fi That Performs Under Real Load, Not Just on a Floor Plan"
         description="Modern Wi-Fi is no longer a convenience layer. It is core access infrastructure for business-critical applications, real-time operations, IoT, and user experience at scale. We design enterprise Wi-Fi networks that stay stable under real interference, real device density, and real roaming behavior—so performance remains predictable as your environment changes."
         badge="Enterprise Wi-Fi Infrastructure"
-        badgeIcon="📶"
+        badgeIcon=""
         themeColor="cyan"
       />
 

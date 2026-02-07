@@ -11,7 +11,7 @@ export default function PonFtth() {
         title="FTTH Networks Must Be Planned for Growth, Not Just Coverage"
         description="Once fiber is in the ground, design mistakes are difficult and costly to correct. Short-term planning around splits, take-rates, or technology choices often limits flexibility as demand increases. We plan FTTH networks that remain operationally stable and financially viable as subscriber density, bandwidth, and services evolve."
         badge="FTTH Network Planning"
-        badgeIcon="🌐"
+        badgeIcon=""
         themeColor="cyan"
       />
 

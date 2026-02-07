@@ -14,7 +14,7 @@ export default function OpticalLongHaul() {
         title="Optical Networks Designed to Perform Long After Day One"
         description="Optical networks are built to last decades, but many are designed only for initial turn-up. We design long-haul and backbone optical systems with margins, scale, and operational reality in mind—so they continue to perform as traffic, distances, and complexity grow."
         badge="Long-Haul Optical Infrastructure"
-        badgeIcon="🌍"
+        badgeIcon=""
         themeColor="cyan"
       />
 
