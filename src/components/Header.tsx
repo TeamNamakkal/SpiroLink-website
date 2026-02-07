@@ -7,7 +7,6 @@ import { CountrySelector } from './CountrySelector';
 import { LanguageSelector } from './LanguageSelector';
 import { useI18n } from '../i18n/I18nProvider';
 import { useAuth } from '../contexts/AuthContext';
-import { logout } from '../lib/auth';
 
 interface NavItem {
   label: string;
@@ -26,7 +25,7 @@ const navItems: NavItem[] = [
 
 export function Header() {
   const { t } = useI18n();
-  const { user, loading } = useAuth();
+  const { user, loading, logout } = useAuth();
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -228,8 +227,8 @@ export function Header() {
                       {user.email}
                     </span>
                     <button
-                      onClick={async () => {
-                        await logout();
+                      onClick={() => {
+                        logout();
                         navigate('/');
                       }}
                       className="text-gray-700 text-sm font-medium hover:text-blue-600 transition-colors focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 px-3 py-1.5 rounded hover:bg-gray-100"

@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './Header.module.css';
 import { useAuth } from '../contexts/AuthContext';
-import { logout } from '../lib/auth';
 
 interface NavItem {
   label: string;
@@ -18,7 +17,7 @@ interface MobileMenuProps {
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navItems }) => {
   const menuRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
-  const { user, loading } = useAuth();
+  const { user, loading, logout } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -156,8 +155,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navItems }) =>
                       {user.email}
                     </div>
                     <button
-                      onClick={async () => {
-                        await logout();
+                      onClick={() => {
+                        logout();
                         navigate('/');
                         onClose();
                       }}
