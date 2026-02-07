@@ -7,6 +7,8 @@ import nodemailer from 'nodemailer';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import fs from 'fs';
+import * as usersDb from './chatbot-backend/db/users.js';
+import { initializeDatabase } from './chatbot-backend/config/initDb.js';
 
 dotenv.config();
 
@@ -85,6 +87,186 @@ app.get('/api/health', (req, res) => {
     openaiConfigured: !!process.env.OPENAI_API_KEY,
     emailService: emailService || 'not configured',
   });
+});
+
+/* ===============================
+   AUTHENTICATION ENDPOINTS
+================================ */
+
+// Sign Up - Create new user account
+app.post("/api/auth/signup", async (req, res) => {
+  try {
+    const { email, username, password, first_name, last_name, phone, country, company_name } = req.body;
+
+    // Validation
+    if (!email || !username || !password) {
+      return res.status(400).json({
+        success: false,
+        error: "Email, username, and password are required"
+      });
+    }
+
+    // Check if user already exists
+    const existingEmail = await usersDb.getUserByEmail(email);
+    if (existingEmail) {
+      return res.status(409).json({
+        success: false,
+        error: "Email already registered"
+      });
+    }
+
+    const existingUsername = await usersDb.getUserByUsername(username);
+    if (existingUsername) {
+      return res.status(409).json({
+        success: false,
+        error: "Username already taken"
+      });
+    }
+
+    // Create user
+    const newUser = await usersDb.createUser({
+      email,
+      username,
+      password,
+      first_name,
+      last_name,
+      phone,
+      country,
+      company_name
+    });
+
+    res.status(201).json({
+      success: true,
+      message: "Account created successfully",
+      user: newUser
+    });
+  } catch (error) {
+    console.error("Sign up error:", error);
+    res.status(500).json({
+      success: false,
+      error: error.message || "Sign up failed"
+    });
+  }
+});
+
+// Sign In - Verify user credentials
+app.post("/api/auth/signin", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Validation
+    if (!email || !password) {
+      return res.status(400).json({
+        success: false,
+        error: "Email and password are required"
+      });
+    }
+
+    // Get user by email
+    const user = await usersDb.getUserByEmail(email);
+    if (!user) {
+      return res.status(401).json({
+        success: false,
+        error: "Invalid email or password"
+      });
+    }
+
+    // Verify password
+    const isPasswordValid = usersDb.verifyPassword(password, user.password_hash);
+    if (!isPasswordValid) {
+      return res.status(401).json({
+        success: false,
+        error: "Invalid email or password"
+      });
+    }
+
+    // Check if account is active
+    if (!user.is_active) {
+      return res.status(403).json({
+        success: false,
+        error: "Account has been deactivated"
+      });
+    }
+
+    // Update last login
+    await usersDb.updateLastLogin(user.id);
+
+    res.json({
+      success: true,
+      message: "Sign in successful",
+      user: {
+        id: user.id,
+        email: user.email,
+        username: user.username,
+        first_name: user.first_name,
+        last_name: user.last_name,
+        full_name: user.full_name,
+        is_verified: user.is_verified
+      }
+    });
+  } catch (error) {
+    console.error("Sign in error:", error);
+    res.status(500).json({
+      success: false,
+      error: error.message || "Sign in failed"
+    });
+  }
+});
+
+// Get user profile by ID
+app.get("/api/auth/profile/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const user = await usersDb.getUserById(userId);
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        error: "User not found"
+      });
+    }
+
+    res.json({
+      success: true,
+      user
+    });
+  } catch (error) {
+    console.error("Profile fetch error:", error);
+    res.status(500).json({
+      success: false,
+      error: error.message || "Failed to fetch profile"
+    });
+  }
+});
+
+// Update user profile
+app.put("/api/auth/profile/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const { first_name, last_name, phone, company_name, country, bio, profile_picture } = req.body;
+
+    const updatedUser = await usersDb.updateUserProfile(userId, {
+      first_name,
+      last_name,
+      phone,
+      company_name,
+      country,
+      bio,
+      profile_picture
+    });
+
+    res.json({
+      success: true,
+      message: "Profile updated successfully",
+      user: updatedUser
+    });
+  } catch (error) {
+    console.error("Profile update error:", error);
+    res.status(500).json({
+      success: false,
+      error: error.message || "Failed to update profile"
+    });
+  }
 });
 
 // Chat endpoint
@@ -264,14 +446,27 @@ app.use((err, req, res, next) => {
 /* ===============================
    START SERVER
 ================================ */
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log('\n====================================');
   console.log('🚀 SPIROLINK - Unified Service');
   console.log(`🌍 Port: ${PORT}`);
   console.log(`📁 Frontend: ${frontendDistPath}`);
+  
+  // Initialize database
+  try {
+    await initializeDatabase();
+    console.log('✅ Database initialized');
+  } catch (err) {
+    console.error('❌ Database initialization error:', err.message);
+  }
+  
   console.log('====================================');
   console.log('\n📍 API Endpoints:');
   console.log('  GET  /api/health');
+  console.log('  POST /api/auth/signup');
+  console.log('  POST /api/auth/signin');
+  console.log('  GET  /api/auth/profile/:userId');
+  console.log('  PUT  /api/auth/profile/:userId');
   console.log('  POST /api/chat');
   console.log('  POST /api/contact');
   console.log('  GET  /* (Frontend Routes)');
