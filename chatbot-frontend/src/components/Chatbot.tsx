@@ -57,7 +57,7 @@ export const Chatbot: React.FC = () => {
 
     try {
       // ✅ Use your Render backend URL from .env
-      const backendURL = import.meta.env.VITE_API_URL || 'https://spirolink-web-backend-1.onrender.com';
+      const backendURL = '/api';
       const response = await fetch(`${backendURL}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import OpenAI from "openai";
 import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
 dotenv.config();
 
@@ -28,24 +29,56 @@ const openai = new OpenAI({
 });
 
 /* ===============================
-   EMAIL (RESEND API)
+   EMAIL SERVICE (RESEND or SMTP)
 ================================ */
-if (!process.env.RESEND_API_KEY) {
-  console.error("❌ RESEND_API_KEY missing");
-  process.exit(1);
-}
+let emailService = null;
+let mailTransporter = null;
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+if (process.env.RESEND_API_KEY) {
+  console.log("✅ Email service initialized with Resend");
+  console.log(`   API Key: ${process.env.RESEND_API_KEY.substring(0, 10)}...`);
+  emailService = "resend";
+} else if (
+  process.env.SMTP_HOST &&
+  process.env.SMTP_PORT &&
+  process.env.SMTP_USER &&
+  process.env.SMTP_PASS
+) {
+  console.log("✅ Email transporter initialized with SMTP");
+  console.log(`   Service: ${process.env.SMTP_SERVICE || "custom"}`);
+  console.log(`   Host: ${process.env.SMTP_HOST}`);
+  console.log(`   Port: ${process.env.SMTP_PORT}`);
+  console.log(`   Secure: ${process.env.SMTP_SECURE === "true"}`);
+  console.log(`   User: ${process.env.SMTP_USER}`);
+
+  mailTransporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT),
+    secure: process.env.SMTP_SECURE === "true",
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  });
+
+  emailService = "smtp";
+} else {
+  console.warn("⚠️  SMTP credentials not fully configured - email functionality disabled");
+  console.warn("   SMTP_HOST: " + (process.env.SMTP_HOST ? "✅" : "MISSING"));
+  console.warn("   SMTP_PORT: " + (process.env.SMTP_PORT ? "✅" : "MISSING"));
+  console.warn("   SMTP_USER: " + (process.env.SMTP_USER ? "✅" : "MISSING"));
+  console.warn("   SMTP_PASS: " + (process.env.SMTP_PASS ? "✅" : "MISSING"));
+}
 
 /* ===============================
    HEALTH CHECK
 ================================ */
-app.get("/health", (req, res) => {
+app.get("/api/health", (req, res) => {
   res.json({
     status: "OK",
     backend: "SPIROLINK",
-    emailService: "resend",
-    emailConfigured: !!process.env.RESEND_API_KEY,
+    emailService: emailService || "none",
+    emailConfigured: !!emailService,
     openaiConfigured: !!process.env.OPENAI_API_KEY,
   });
 });
@@ -53,7 +86,7 @@ app.get("/health", (req, res) => {
 /* ===============================
    CHAT ENDPOINT
 ================================ */
-app.post("/chat", async (req, res) => {
+app.post("/api/chat", async (req, res) => {
   try {
     const { message } = req.body;
 
@@ -98,10 +131,17 @@ app.post("/chat", async (req, res) => {
 });
 
 /* ===============================
-   CONTACT FORM (EMAIL via RESEND)
+   CONTACT FORM (EMAIL)
 ================================ */
-app.post("/contact", async (req, res) => {
+app.post("/api/contact", async (req, res) => {
   try {
+    if (!emailService) {
+      return res.status(503).json({
+        success: false,
+        error: "Email service not configured",
+      });
+    }
+
     const { name, email, phone, serviceType, message } = req.body;
 
     if (!name || !email || !message) {
@@ -113,12 +153,55 @@ app.post("/contact", async (req, res) => {
 
     console.log(`📧 Sending contact form from ${email}...`);
 
-    // Email to company
-    const companyEmailResponse = await resend.emails.send({
-      from: "onboarding@resend.dev",
-      to: "contact@spirolink.com",
-      subject: `New Contact Form - ${serviceType || "General"}`,
-      html: `
+    if (emailService === "resend") {
+      // Resend email
+      const resend = new Resend(process.env.RESEND_API_KEY);
+
+      // Email to company
+      const companyEmailResponse = await resend.emails.send({
+        from: "onboarding@resend.dev",
+        to: "contact@spirolink.com",
+        subject: `New Contact Form - ${serviceType || "General"}`,
+        html: `
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone || "N/A"}</p>
+          <p><strong>Service:</strong> ${serviceType || "N/A"}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message.replace(/\n/g, "<br>")}</p>
+          <hr>
+          <p><em>Reply to: ${email}</em></p>
+        `,
+      });
+
+      console.log(`✅ Company email sent:`, companyEmailResponse);
+
+      // Confirmation email to user
+      const userEmailResponse = await resend.emails.send({
+        from: "onboarding@resend.dev",
+        to: email,
+        subject: "We received your message - SPIROLINK",
+        html: `
+          <h3>Hello ${name},</h3>
+          <p>Thank you for contacting SPIROLINK.</p>
+          <p>We have received your message and will get back to you shortly.</p>
+          <br>
+          <p>Regards,<br>SPIROLINK Team</p>
+        `,
+      });
+
+      console.log(`✅ User confirmation email sent:`, userEmailResponse);
+
+      res.json({
+        success: true,
+        message: "Email sent successfully",
+        companyEmail: companyEmailResponse,
+        userEmail: userEmailResponse,
+      });
+    } else if (emailService === "smtp") {
+      // SMTP email
+      const companyEmailHtml = `
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
@@ -128,33 +211,41 @@ app.post("/contact", async (req, res) => {
         <p>${message.replace(/\n/g, "<br>")}</p>
         <hr>
         <p><em>Reply to: ${email}</em></p>
-      `,
-    });
+      `;
 
-    console.log(`✅ Company email sent:`, companyEmailResponse);
-
-    // Confirmation email to user
-    const userEmailResponse = await resend.emails.send({
-      from: "onboarding@resend.dev",
-      to: email,
-      subject: "We received your message - SPIROLINK",
-      html: `
+      const userEmailHtml = `
         <h3>Hello ${name},</h3>
         <p>Thank you for contacting SPIROLINK.</p>
         <p>We have received your message and will get back to you shortly.</p>
         <br>
         <p>Regards,<br>SPIROLINK Team</p>
-      `,
-    });
+      `;
 
-    console.log(`✅ User confirmation email sent:`, userEmailResponse);
+      // Send email to company
+      await mailTransporter.sendMail({
+        from: `"SPIROLINK" <${process.env.SMTP_USER}>`,
+        to: "contact@spirolink.com",
+        subject: `New Contact Form - ${serviceType || "General"}`,
+        html: companyEmailHtml,
+      });
 
-    res.json({
-      success: true,
-      message: "Email sent successfully",
-      companyEmail: companyEmailResponse,
-      userEmail: userEmailResponse,
-    });
+      console.log(`✅ Company email sent via SMTP`);
+
+      // Send confirmation email to user
+      await mailTransporter.sendMail({
+        from: `"SPIROLINK" <${process.env.SMTP_USER}>`,
+        to: email,
+        subject: "We received your message - SPIROLINK",
+        html: userEmailHtml,
+      });
+
+      console.log(`✅ User confirmation email sent via SMTP`);
+
+      res.json({
+        success: true,
+        message: "Email sent successfully",
+      });
+    }
   } catch (error) {
     console.error("❌ Email error:", error);
     res.status(500).json({
@@ -180,9 +271,10 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log("====================================");
   console.log("🚀 SPIROLINK Backend Running");
-  console.log(`🌍 Port: ${PORT}`);
-  console.log("📨 POST /contact");
-  console.log("💬 POST /chat");
-  console.log("❤️  GET /health");
+  console.log("🌍 Port: " + PORT);
+  console.log("📍 API Endpoints:");
+  console.log("  GET  /api/health");
+  console.log("  POST /api/chat");
+  console.log("  POST /api/contact");
   console.log("====================================");
 });

@@ -94,9 +94,9 @@ export default function Chatbot() {
     setError(null);
 
     try {
-      // Call backend API
+      // Call backend API using relative path
      const response = await fetch(
-  'https://spirolink-web-backend-2.onrender.com/chat',
+  '/api/chat',
   {
     method: 'POST',
     headers: {
