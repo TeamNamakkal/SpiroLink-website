@@ -135,9 +135,58 @@ router.get('/stripe/session/:sessionId', async (req, res) => {
   try {
     const { sessionId } = req.params;
 
-    const payment = await paymentsDb.getPaymentByStripeSession(sessionId);
+    let payment = await paymentsDb.getPaymentByStripeSession(sessionId);
     if (!payment) {
       return res.status(404).json({ error: 'Payment not found for session' });
+    }
+
+    // If webhook didn't update status, verify with Stripe (best-effort)
+    if (payment.status !== 'succeeded') {
+      try {
+        const session = await stripe.checkout.sessions.retrieve(sessionId, {
+          expand: ['payment_intent'],
+        });
+
+        const paymentIntentId =
+          typeof session.payment_intent === 'string'
+            ? session.payment_intent
+            : session.payment_intent?.id || null;
+
+        const isPaid =
+          session.payment_status === 'paid' ||
+          (typeof session.payment_intent !== 'string' && session.payment_intent?.status === 'succeeded');
+
+        if (isPaid) {
+          if (paymentIntentId) {
+            await paymentsDb.updateStripePaymentIntentForPayment(payment.id, paymentIntentId);
+          }
+
+          payment =
+            (await paymentsDb.updatePaymentStatus(payment.id, 'succeeded', paymentIntentId || session.id)) || payment;
+
+          // Send confirmation email (best-effort)
+          try {
+            const service_type =
+              payment?.metadata?.service_type ||
+              payment?.metadata?.serviceType ||
+              payment.description ||
+              'Service';
+
+            await sendPaymentConfirmation({
+              email: payment.user_email,
+              name: payment.user_name,
+              amount: payment.amount,
+              service_type,
+              transaction_id: payment.transaction_id || paymentIntentId || session.id,
+              payment_id: payment.id,
+            });
+          } catch (emailError) {
+            console.error('⚠️  Failed to send confirmation email (session verify):', emailError.message);
+          }
+        }
+      } catch (verifyError) {
+        console.warn('⚠️  Stripe session verification failed:', verifyError.message);
+      }
     }
 
     const service_type = payment?.metadata?.service_type || payment?.metadata?.serviceType || payment.description || null;

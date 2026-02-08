@@ -139,7 +139,7 @@ Keep this email for your records.
   try {
     if (emailService.type === 'resend') {
       await emailService.client.emails.send({
-        from: process.env.RESEND_FROM_EMAIL || 'noreply@spirolink.com',
+        from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
         to: email,
         subject: 'Payment Confirmation - SPIROLINK',
         html: htmlContent,
