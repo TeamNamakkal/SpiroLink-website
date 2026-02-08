@@ -14,7 +14,7 @@ const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
  */
 router.post('/stripe/create-intent', async (req, res) => {
   try {
-    const { email, name, serviceType, amount, userId } = req.body;
+    const { email, name, serviceType, amount } = req.body;
 
     if (!email || !name || !serviceType || !amount) {
       return res.status(400).json({ 
@@ -26,15 +26,15 @@ router.post('/stripe/create-intent', async (req, res) => {
       return res.status(400).json({ error: 'Amount must be at least $1' });
     }
 
-    // Create unique payment ID
-    const payment_id = `spiro_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    // Create a human-friendly reference (stored in Stripe + metadata)
+    const payment_ref = `spiro_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
     // Create Stripe Session for checkout
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'payment',
       customer_email: email,
-      client_reference_id: payment_id,
+      client_reference_id: payment_ref,
       success_url: `https://spirolink-website.onrender.com/payment-success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `https://spirolink-website.onrender.com/payment-cancel`,
       line_items: [
@@ -56,40 +56,39 @@ router.post('/stripe/create-intent', async (req, res) => {
         },
       ],
       metadata: {
-        payment_id,
+        payment_ref,
         service_type: serviceType,
         customer_name: name,
         customer_email: email,
-        user_id: userId || 'guest',
       },
     });
 
     // Store payment in database
     const paymentRecord = await paymentsDb.createPayment({
-      payment_id,
-      user_id: userId || null,
       email,
       name,
       service_type: serviceType,
       amount: parseFloat(amount),
-      currency: 'usd',
+      currency: 'USD',
       stripe_session_id: session.id,
+      stripe_payment_intent_id: session.payment_intent || null,
       metadata: {
+        payment_ref,
+        service_type: serviceType,
         created_at: new Date().toISOString(),
-      }
+      },
     });
 
     console.log(`✅ Stripe session created:`, {
       session_id: session.id,
-      payment_id,
+      payment_id: paymentRecord.id,
       amount: `$${amount}`,
       customer: email
     });
 
     res.json({
       sessionId: session.id,
-      paymentId: payment_id,
-      clientSecret: session.client_secret,
+      paymentId: paymentRecord.id,
     });
   } catch (error) {
     console.error('❌ Error creating payment intent:', error.message);
@@ -110,12 +109,14 @@ router.get('/status/:paymentId', async (req, res) => {
       return res.status(404).json({ error: 'Payment not found' });
     }
 
+    const service_type = payment?.metadata?.service_type || payment?.metadata?.serviceType || null;
+
     res.json({
-      payment_id: payment.payment_id,
+      payment_id: payment.id,
       status: payment.status,
       amount: payment.amount,
-      service_type: payment.service_type,
-      email: payment.email,
+      service_type,
+      email: payment.user_email,
       created_at: payment.created_at,
       updated_at: payment.updated_at,
       transaction_id: payment.transaction_id,
@@ -157,29 +158,30 @@ router.post('/stripe/webhook', express.raw({type: 'application/json'}), async (r
 
         const payment = await paymentsDb.getPaymentByStripeSession(session.id);
         if (payment) {
+          if (session.payment_intent) {
+            await paymentsDb.updateStripePaymentIntentForPayment(payment.id, session.payment_intent);
+          }
+
           // Update payment status to succeeded
-          const updatedPayment = await paymentsDb.updatePaymentStatus(
-            payment.payment_id,
-            'succeeded',
-            session.payment_intent
-          );
+          await paymentsDb.updatePaymentStatus(payment.id, 'succeeded', session.payment_intent || null);
 
           // Send confirmation email
           try {
+            const service_type = payment?.metadata?.service_type || payment?.metadata?.serviceType || payment.description || 'Service';
             await sendPaymentConfirmation({
-              email: payment.email,
-              name: payment.name,
+              email: payment.user_email,
+              name: payment.user_name,
               amount: payment.amount,
-              service_type: payment.service_type,
-              transaction_id: session.payment_intent,
-              payment_id: payment.payment_id,
+              service_type,
+              transaction_id: session.payment_intent || session.id,
+              payment_id: payment.id,
             });
-            console.log(`✅ Confirmation email sent to ${payment.email}`);
+            console.log(`✅ Confirmation email sent to ${payment.user_email}`);
           } catch (emailError) {
             console.error('⚠️  Failed to send confirmation email:', emailError.message);
           }
 
-          console.log(`✅ Payment succeeded for ${payment.email}: $${payment.amount}`);
+          console.log(`✅ Payment succeeded for ${payment.user_email}: $${payment.amount}`);
         }
         break;
       }
@@ -191,7 +193,7 @@ router.post('/stripe/webhook', express.raw({type: 'application/json'}), async (r
         const payment = await paymentsDb.getPaymentByStripeIntent(charge.payment_intent);
         if (payment && payment.status !== 'succeeded') {
           await paymentsDb.updatePaymentStatus(
-            payment.payment_id,
+            payment.id,
             'succeeded',
             charge.id
           );
@@ -206,11 +208,11 @@ router.post('/stripe/webhook', express.raw({type: 'application/json'}), async (r
         const payment = await paymentsDb.getPaymentByStripeIntent(charge.payment_intent);
         if (payment) {
           await paymentsDb.updatePaymentStatus(
-            payment.payment_id,
+            payment.id,
             'failed',
             charge.id
           );
-          console.log(`❌ Payment failed for ${payment.email}`);
+          console.log(`❌ Payment failed for ${payment.user_email}`);
         }
         break;
       }
@@ -222,7 +224,7 @@ router.post('/stripe/webhook', express.raw({type: 'application/json'}), async (r
         const payment = await paymentsDb.getPaymentByStripeIntent(intent.id);
         if (payment && payment.status === 'pending') {
           await paymentsDb.updatePaymentStatus(
-            payment.payment_id,
+            payment.id,
             'processing',
             intent.id
           );
@@ -237,7 +239,7 @@ router.post('/stripe/webhook', express.raw({type: 'application/json'}), async (r
         const payment = await paymentsDb.getPaymentByStripeIntent(intent.id);
         if (payment) {
           await paymentsDb.updatePaymentStatus(
-            payment.payment_id,
+            payment.id,
             'failed',
             intent.id
           );
