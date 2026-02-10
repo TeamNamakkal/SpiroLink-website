@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import OpenAI from 'openai';
 import { Resend } from 'resend';
 import nodemailer from 'nodemailer';
+import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import fs from 'fs';
@@ -345,6 +346,9 @@ app.post('/api/chat', async (req, res) => {
 // Contact form endpoint
 app.post('/api/contact', async (req, res) => {
   try {
+    // Correlate logs for this request without storing personal data long-term
+    const requestId = req.headers['x-request-id'] || crypto.randomUUID();
+
     if (!emailService) {
       return res.status(503).json({
         success: false,
@@ -354,6 +358,9 @@ app.post('/api/contact', async (req, res) => {
 
     const { name, email, phone, serviceType, message } = req.body;
 
+    // Basic validation (backend must not trust the frontend)
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     if (!name || !email || !message) {
       return res.status(400).json({
         success: false,
@@ -361,23 +368,51 @@ app.post('/api/contact', async (req, res) => {
       });
     }
 
-    console.log(`📧 Processing contact form from ${email}...`);
+    if (!emailRegex.test(String(email))) {
+      return res.status(400).json({
+        success: false,
+        error: 'A valid email is required',
+      });
+    }
 
-    const emailSubject = `New Contact Form - ${serviceType || 'General'}`;
+    // Verified sender for Resend (must match your verified domain)
+    // Verified sender (Resend domain spirolink.com must be verified)
+    const FROM_EMAIL = 'SpiroLink <contact@spirolink.com>';
+    // Admin/company recipient (configure in env for production)
+    const ADMIN_EMAIL = process.env.COMPANY_EMAIL || process.env.ADMIN_EMAIL || 'contact@spirolink.com';
+
+    // Escape user-provided values to avoid HTML injection in emails
+    const escapeHtml = (value) =>
+      String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+
+    const safeName = escapeHtml(name);
+    const safeEmail = String(email).trim().toLowerCase();
+    const safePhone = phone ? escapeHtml(phone) : 'N/A';
+    const safeServiceType = escapeHtml(serviceType || 'General');
+    const safeMessageHtml = escapeHtml(message).replace(/\n/g, '<br>');
+
+    console.log(`📧 [${requestId}] Processing contact form submission`);
+
+    const emailSubject = `New Contact Form - ${safeServiceType}`;
     const companyEmailHtml = `
       <h2>New Contact Form Submission</h2>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
-      <p><strong>Service:</strong> ${serviceType || 'N/A'}</p>
+      <p><strong>Name:</strong> ${safeName}</p>
+      <p><strong>Email:</strong> ${escapeHtml(safeEmail)}</p>
+      <p><strong>Phone:</strong> ${safePhone}</p>
+      <p><strong>Service:</strong> ${safeServiceType}</p>
       <p><strong>Message:</strong></p>
-      <p>${message.replace(/\n/g, '<br>')}</p>
+      <p>${safeMessageHtml}</p>
       <hr>
-      <p><em>Reply to: ${email}</em></p>
+      <p><em>Reply to: ${escapeHtml(safeEmail)}</em></p>
     `;
 
     const userEmailHtml = `
-      <h3>Hello ${name},</h3>
+      <h3>Hello ${safeName},</h3>
       <p>Thank you for contacting SPIROLINK.</p>
       <p>We have received your message and will get back to you shortly.</p>
       <br>
@@ -386,41 +421,47 @@ app.post('/api/contact', async (req, res) => {
 
     // Send via appropriate service
     if (emailService === 'resend') {
-      // Company email via Resend
-      await resend.emails.send({
-        from: 'onboarding@resend.dev',
-        to: 'contact@spirolink.com',
-        subject: emailSubject,
-        html: companyEmailHtml,
-      });
-      console.log('✅ Company email sent via Resend');
+      // Send BOTH emails, and only return success after BOTH complete
+      await Promise.all([
+        // Admin notification email
+        resend.emails.send({
+          from: FROM_EMAIL,
+          to: ADMIN_EMAIL,
+          // So you can reply directly to the user from the admin email
+          replyTo: safeEmail,
+          subject: emailSubject,
+          html: companyEmailHtml,
+        }),
+        // User confirmation email (sent to the email provided in req.body.email)
+        resend.emails.send({
+          from: FROM_EMAIL,
+          to: safeEmail,
+          subject: 'We received your message - SPIROLINK',
+          html: userEmailHtml,
+        }),
+      ]);
 
-      // Confirmation to user via Resend
-      await resend.emails.send({
-        from: 'onboarding@resend.dev',
-        to: email,
-        subject: 'We received your message - SPIROLINK',
-        html: userEmailHtml,
-      });
-      console.log('✅ User confirmation sent via Resend');
+      console.log(`✅ [${requestId}] Admin + user emails sent via Resend`);
     } else if (emailService === 'smtp') {
-      // Company email via SMTP
-      await smtpTransporter.sendMail({
-        from: `"SPIROLINK" <${process.env.SMTP_USER}>`,
-        to: 'contact@spirolink.com',
-        subject: emailSubject,
-        html: companyEmailHtml,
-      });
-      console.log('✅ Company email sent via SMTP');
+      // SMTP fallback (kept for local/dev). Note: FROM_EMAIL must be allowed by your SMTP provider.
+      const smtpFrom = process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER;
+      await Promise.all([
+        smtpTransporter.sendMail({
+          from: `"SPIROLINK" <${smtpFrom}>`,
+          to: ADMIN_EMAIL,
+          replyTo: safeEmail,
+          subject: emailSubject,
+          html: companyEmailHtml,
+        }),
+        smtpTransporter.sendMail({
+          from: `"SPIROLINK" <${smtpFrom}>`,
+          to: safeEmail,
+          subject: 'We received your message - SPIROLINK',
+          html: userEmailHtml,
+        }),
+      ]);
 
-      // Confirmation to user via SMTP
-      await smtpTransporter.sendMail({
-        from: `"SPIROLINK" <${process.env.SMTP_USER}>`,
-        to: email,
-        subject: 'We received your message - SPIROLINK',
-        html: userEmailHtml,
-      });
-      console.log('✅ User confirmation sent via SMTP');
+      console.log(`✅ [${requestId}] Admin + user emails sent via SMTP`);
     }
 
     res.json({
@@ -428,7 +469,7 @@ app.post('/api/contact', async (req, res) => {
       message: 'Email sent successfully',
     });
   } catch (error) {
-    console.error('❌ Email error:', error.message);
+    console.error('❌ Email error:', error);
     res.status(500).json({
       success: false,
       error: 'Failed to send email: ' + error.message,

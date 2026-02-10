@@ -43,7 +43,6 @@ let mailTransporter = null;
 
 if (process.env.RESEND_API_KEY) {
   console.log("✅ Email service initialized with Resend");
-  console.log(`   API Key: ${process.env.RESEND_API_KEY.substring(0, 10)}...`);
   emailService = "resend";
 } else if (
   process.env.SMTP_HOST &&
@@ -387,127 +386,9 @@ app.post("/api/chat", async (req, res) => {
 /* ===============================
    CONTACT FORM (EMAIL)
 ================================ */
-app.post("/api/contact", async (req, res) => {
-  try {
-    if (!emailService) {
-      return res.status(503).json({
-        success: false,
-        error: "Email service not configured",
-      });
-    }
-
-    const { name, email, phone, serviceType, message } = req.body;
-
-    if (!name || !email || !message) {
-      return res.status(400).json({
-        success: false,
-        error: "Name, email, and message are required",
-      });
-    }
-
-    console.log(`📧 Sending contact form from ${email}...`);
-
-    if (emailService === "resend") {
-      // Resend email
-      const resend = new Resend(process.env.RESEND_API_KEY);
-
-      // Email to company
-      const companyEmailResponse = await resend.emails.send({
-        from: "onboarding@resend.dev",
-        to: "contact@spirolink.com",
-        subject: `New Contact Form - ${serviceType || "General"}`,
-        html: `
-          <h2>New Contact Form Submission</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Phone:</strong> ${phone || "N/A"}</p>
-          <p><strong>Service:</strong> ${serviceType || "N/A"}</p>
-          <p><strong>Message:</strong></p>
-          <p>${message.replace(/\n/g, "<br>")}</p>
-          <hr>
-          <p><em>Reply to: ${email}</em></p>
-        `,
-      });
-
-      console.log(`✅ Company email sent:`, companyEmailResponse);
-
-      // Confirmation email to user
-      const userEmailResponse = await resend.emails.send({
-        from: "onboarding@resend.dev",
-        to: email,
-        subject: "We received your message - SPIROLINK",
-        html: `
-          <h3>Hello ${name},</h3>
-          <p>Thank you for contacting SPIROLINK.</p>
-          <p>We have received your message and will get back to you shortly.</p>
-          <br>
-          <p>Regards,<br>SPIROLINK Team</p>
-        `,
-      });
-
-      console.log(`✅ User confirmation email sent:`, userEmailResponse);
-
-      res.json({
-        success: true,
-        message: "Email sent successfully",
-        companyEmail: companyEmailResponse,
-        userEmail: userEmailResponse,
-      });
-    } else if (emailService === "smtp") {
-      // SMTP email
-      const companyEmailHtml = `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || "N/A"}</p>
-        <p><strong>Service:</strong> ${serviceType || "N/A"}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, "<br>")}</p>
-        <hr>
-        <p><em>Reply to: ${email}</em></p>
-      `;
-
-      const userEmailHtml = `
-        <h3>Hello ${name},</h3>
-        <p>Thank you for contacting SPIROLINK.</p>
-        <p>We have received your message and will get back to you shortly.</p>
-        <br>
-        <p>Regards,<br>SPIROLINK Team</p>
-      `;
-
-      // Send email to company
-      await mailTransporter.sendMail({
-        from: `"SPIROLINK" <${process.env.SMTP_USER}>`,
-        to: "contact@spirolink.com",
-        subject: `New Contact Form - ${serviceType || "General"}`,
-        html: companyEmailHtml,
-      });
-
-      console.log(`✅ Company email sent via SMTP`);
-
-      // Send confirmation email to user
-      await mailTransporter.sendMail({
-        from: `"SPIROLINK" <${process.env.SMTP_USER}>`,
-        to: email,
-        subject: "We received your message - SPIROLINK",
-        html: userEmailHtml,
-      });
-
-      console.log(`✅ User confirmation email sent via SMTP`);
-
-      res.json({
-        success: true,
-        message: "Email sent successfully",
-      });
-    }
-  } catch (error) {
-    console.error("❌ Email error:", error);
-    res.status(500).json({
-      success: false,
-      error: "Failed to send email: " + error.message,
-    });
-  }
-});
+// NOTE: In production we deploy the unified service (root server.js) which serves the frontend
+// and handles /api/contact. Keeping a second /api/contact implementation here increases the
+// chance of deploying the wrong service and breaking relative `/api/*` calls.
 
 /* ===============================
    PAYMENT ENDPOINTS
@@ -545,7 +426,8 @@ app.post("/api/payment/create-order", async (req, res) => {
       receipt,
       notes: {
         customer_name: customer?.name || "Guest",
-        customer_email: customer?.email || "noreply@spirolink.com",
+        // IMPORTANT: only use the user-provided email; don't default to a company/Gmail address
+        customer_email: customer?.email ? String(customer.email).trim().toLowerCase() : "",
         customer_contact: customer?.contact || "",
         description: description || "SPIROLINK Service Payment",
       },
@@ -635,12 +517,25 @@ app.post("/api/payment/verify-payment", async (req, res) => {
 
       if (emailService === "resend") {
         const resend = new Resend(process.env.RESEND_API_KEY);
-        await resend.emails.send({
-          from: "SPIROLINK <onboarding@resend.dev>",
-          to: customerEmail,
-          subject: `Payment Confirmed - ₹${amount} - SPIROLINK`,
-          html: emailHtml,
-        });
+        const adminEmail =
+          process.env.COMPANY_EMAIL || process.env.ADMIN_EMAIL || "contact@spirolink.com";
+
+        // Send BOTH emails: user receipt + admin notification
+        await Promise.all([
+          resend.emails.send({
+            from: "SpiroLink <contact@spirolink.com>",
+            to: customerEmail,
+            subject: `Payment Confirmed - ₹${amount} - SPIROLINK`,
+            html: emailHtml,
+          }),
+          resend.emails.send({
+            from: "SpiroLink <contact@spirolink.com>",
+            to: adminEmail,
+            replyTo: customerEmail,
+            subject: `Payment Confirmed (Admin Copy) - ₹${amount} - SPIROLINK`,
+            html: emailHtml,
+          }),
+        ]);
         console.log(`✅ Payment confirmation email sent via Resend`);
       } else if (emailService === "smtp") {
         await mailTransporter.sendMail({
@@ -743,7 +638,8 @@ app.post("/api/payment/stripe/create-intent", async (req, res) => {
       payment_method_types: ["card"],
       metadata: {
         customer_name: customer?.name || "Guest",
-        customer_email: customer?.email || "noreply@spirolink.com",
+        // IMPORTANT: only use the user-provided email; don't default to a company/Gmail address
+        customer_email: customer?.email ? String(customer.email).trim().toLowerCase() : "",
         customer_contact: customer?.contact || "",
         description: description || "SPIROLINK Service Payment",
       },
@@ -833,12 +729,25 @@ app.post("/api/payment/stripe/verify-payment", async (req, res) => {
 
       if (emailService === "resend") {
         const resend = new Resend(process.env.RESEND_API_KEY);
-        await resend.emails.send({
-          from: "SPIROLINK <onboarding@resend.dev>",
-          to: customerEmail,
-          subject: `Payment Confirmed - $${amount} - SPIROLINK`,
-          html: emailHtml,
-        });
+        const adminEmail =
+          process.env.COMPANY_EMAIL || process.env.ADMIN_EMAIL || "contact@spirolink.com";
+
+        // Send BOTH emails: user receipt + admin notification
+        await Promise.all([
+          resend.emails.send({
+            from: "SpiroLink <contact@spirolink.com>",
+            to: customerEmail,
+            subject: `Payment Confirmed - $${amount} - SPIROLINK`,
+            html: emailHtml,
+          }),
+          resend.emails.send({
+            from: "SpiroLink <contact@spirolink.com>",
+            to: adminEmail,
+            replyTo: customerEmail,
+            subject: `Payment Confirmed (Admin Copy) - $${amount} - SPIROLINK`,
+            html: emailHtml,
+          }),
+        ]);
         console.log(`✅ Payment confirmation email sent via Resend`);
       } else if (emailService === "smtp") {
         await mailTransporter.sendMail({

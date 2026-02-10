@@ -3,6 +3,12 @@ import { Resend } from 'resend';
 
 let emailService = null;
 
+// Verified sender for Resend (must match your verified domain)
+const RESEND_FROM = 'SpiroLink <contact@spirolink.com>';
+
+// Admin/company recipient for notifications
+const ADMIN_EMAIL = process.env.COMPANY_EMAIL || process.env.ADMIN_EMAIL || 'contact@spirolink.com';
+
 /**
  * Initialize email service (Resend or SMTP)
  */
@@ -138,21 +144,48 @@ Keep this email for your records.
 
   try {
     if (emailService.type === 'resend') {
-      await emailService.client.emails.send({
-        from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
-        to: email,
-        subject: 'Payment Confirmation - SPIROLINK',
-        html: htmlContent,
-        text: textContent,
-      });
+      // Send BOTH emails: user receipt + admin notification
+      await Promise.all([
+        emailService.client.emails.send({
+          // Always send from the verified domain sender
+          from: RESEND_FROM,
+          to: email,
+          subject: 'Payment Confirmation - SPIROLINK',
+          html: htmlContent,
+          text: textContent,
+        }),
+        emailService.client.emails.send({
+          from: RESEND_FROM,
+          to: ADMIN_EMAIL,
+          // So you can reply directly to the user from the admin email
+          replyTo: email,
+          subject: 'Payment Confirmation (Admin Copy) - SPIROLINK',
+          html: htmlContent,
+          text: textContent,
+        }),
+      ]);
     } else if (emailService.type === 'smtp') {
-      await emailService.client.sendMail({
-        from: process.env.SMTP_FROM_EMAIL || 'noreply@spirolink.com',
-        to: email,
-        subject: 'Payment Confirmation - SPIROLINK',
-        html: htmlContent,
-        text: textContent,
-      });
+      const smtpFrom = process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER;
+
+      // Send BOTH emails: user receipt + admin notification
+      await Promise.all([
+        emailService.client.sendMail({
+          // SMTP sender must be allowed by your SMTP provider
+          from: smtpFrom,
+          to: email,
+          subject: 'Payment Confirmation - SPIROLINK',
+          html: htmlContent,
+          text: textContent,
+        }),
+        emailService.client.sendMail({
+          from: smtpFrom,
+          to: ADMIN_EMAIL,
+          replyTo: email,
+          subject: 'Payment Confirmation (Admin Copy) - SPIROLINK',
+          html: htmlContent,
+          text: textContent,
+        }),
+      ]);
     }
 
     console.log(`✅ Confirmation email sent to ${email}`);
@@ -212,7 +245,7 @@ export const sendPaymentFailedEmail = async (paymentData) => {
   try {
     if (emailService.type === 'resend') {
       await emailService.client.emails.send({
-        from: process.env.RESEND_FROM_EMAIL || 'noreply@spirolink.com',
+        from: RESEND_FROM,
         to: email,
         subject: 'Payment Failed - SPIROLINK',
         html: htmlContent,

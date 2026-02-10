@@ -95,8 +95,8 @@ Key Settings:
   DATABASE_URL=postgresql://spirolink_user:StrongPassword123%21%40%23@localhost:5432/theepan
   PORT=5001
   NODE_ENV=development
-  OPENAI_API_KEY=sk-proj-H2AWjEif-cZmCCI2lnp60SJYF8dLnEkYP...
-  RESEND_API_KEY=re_GrMtkvDt_M7AcDGJgZ44QXUbWAsmwHu3G
+  OPENAI_API_KEY=sk-proj_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...
+  RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ⚠️  Note: Razorpay and Stripe credentials not configured (optional for now)
 

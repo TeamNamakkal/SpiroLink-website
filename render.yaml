@@ -1,30 +1,33 @@
 services:
   - type: web
-    name: spirolink-backend
-    env: node
-    rootDir: ./chatbot-backend
-    buildCommand: npm ci
-    startCommand: npm start
-    envVars:
-      - key: NODE_ENV
-        value: production
-      - key: PORT
-        value: 5001
-      - key: DATABASE_URL
-        sync: false
-      - key: OPENAI_API_KEY
-        sync: false
-      - key: RESEND_API_KEY
-        sync: false
-
-  - type: web
-    name: spirolink-frontend
-    env: node
-    rootDir: ./
-    buildCommand: npm ci && npm run build
-    startCommand: npm run preview
-    envVars:
-      - key: NODE_ENV
-        value: production
+    # Single unified service:
+    # - Builds the Vite frontend into frontend/dist
+    # - Serves frontend/dist from Express
+    # - Handles /api/* routes (including /api/contact)
+    - type: web
+      name: spirolink-unified
+      env: node
+      rootDir: ./
+      buildCommand: npm ci && npm run build
+      startCommand: npm start
+      envVars:
+        - key: NODE_ENV
+          value: production
+        # Vite is a devDependency; ensure it is installed for `vite build`
+        - key: NPM_CONFIG_PRODUCTION
+          value: "false"
+        - key: PORT
+          value: 10000
+        - key: DATABASE_URL
+          sync: false
+        - key: OPENAI_API_KEY
+          sync: false
+        - key: RESEND_API_KEY
+          sync: false
+        - key: ADMIN_EMAIL
+          value: contact@spirolink.com
+        - key: COMPANY_EMAIL
+          value: contact@spirolink.com
+        value: "false"
       - key: VITE_API_URL
         value: https://spirolink-backend.onrender.com
