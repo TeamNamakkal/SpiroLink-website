@@ -230,7 +230,7 @@ export default function Home() {
                 <Button variant="outline">{t('getInTouch')}</Button>
               </Link>
             </div>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 sm:gap-6 text-slate-600 text-sm">
+            <div className="mt-8 flex flex-col items-start sm:flex-row sm:items-center gap-4 sm:gap-6 text-slate-600 text-sm">
               <button className="hover:text-slate-900 transition-colors">Schedule Consultation</button>
               <span className="hidden sm:block text-slate-400">|</span>
               <div className="relative" onMouseEnter={() => setShowBrochures(true)} onMouseLeave={() => setShowBrochures(false)}>
