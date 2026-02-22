@@ -63,12 +63,12 @@ export function CountryAwareComponent() {
 
   useEffect(() => {
     // Get from localStorage whenever it changes
-    const stored = localStorage.getItem('spirolink_country');
+    const stored = localStorage.getItem('nodalwire_country');
     if (stored) setCountry(stored);
 
     // Listen for storage changes (for multi-tab support)
     const handleStorage = () => {
-      const updated = localStorage.getItem('spirolink_country');
+      const updated = localStorage.getItem('nodalwire_country');
       if (updated) setCountry(updated);
     };
 
@@ -93,7 +93,7 @@ export function GlobalAwareComponent() {
   const [country, setCountry] = useState('IN');
 
   useEffect(() => {
-    const stored = localStorage.getItem('spirolink_country');
+    const stored = localStorage.getItem('nodalwire_country');
     if (stored) setCountry(stored);
   }, []);
 
@@ -110,8 +110,8 @@ export function GlobalAwareComponent() {
 // 5. LOCALSTORAGE KEYS
 // ============================================================================
 
-const LANGUAGE_STORAGE_KEY = 'spirolink_language'; // Set in I18nProvider.tsx
-const COUNTRY_STORAGE_KEY = 'spirolink_country';   // Set in CountrySelector.tsx
+const LANGUAGE_STORAGE_KEY = 'nodalwire_language'; // Set in I18nProvider.tsx
+const COUNTRY_STORAGE_KEY = 'nodalwire_country';   // Set in CountrySelector.tsx
 
 // These persist across page refreshes and browser sessions
 

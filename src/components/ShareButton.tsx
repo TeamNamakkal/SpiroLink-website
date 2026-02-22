@@ -4,7 +4,7 @@ import { Share2, Facebook, Twitter, Linkedin, Mail, Link2, X } from 'lucide-reac
 export function ShareButton() {
   const [isOpen, setIsOpen] = useState(false);
   const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
-  const pageTitle = typeof document !== 'undefined' ? document.title : 'SPIROLINK';
+  const pageTitle = typeof document !== 'undefined' ? document.title : 'NODALWIRE';
 
   const shareLinks = {
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`,

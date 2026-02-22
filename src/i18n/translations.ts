@@ -29,7 +29,7 @@ export const translations = {
 
     // Home Page
     homeHeroTitle: 'Innovative & Sustainable Digital Solutions',
-    homeHeroDescription: 'SPIROLINK transforms your vision into powerful digital products. We build modern, scalable solutions that drive growth and efficiency.',
+    homeHeroDescription: 'NODALWIRE transforms your vision into powerful digital products. We build modern, scalable solutions that drive growth and efficiency.',
     
     // Home - PON & FTTH Section
     homePoNFtthTitle: 'PON & FTTH Network Planning Services',
@@ -79,7 +79,7 @@ export const translations = {
     homeWifiDesignDesc: 'Site surveys, RF coverage planning, AP placement, channel planning, roaming optimization',
 
     // Home - Why Choose Section
-    homeWhyChooseTitle: 'Why Choose SPIROLINK',
+    homeWhyChooseTitle: 'Why Choose NODALWIRE',
     homeWhyChooseSubtitle: 'Expert Solutions',
     homeInnovativeTitle: '⚡ Innovative Approach',
     homeInnovativeDesc: 'Cutting-edge technology paired with strategic thinking to solve complex network challenges.',
@@ -97,7 +97,7 @@ export const translations = {
     homeTechnicalDiscussion: '✓ Technical discussions with our engineering team',
     homeContactUsBtn: 'Contact Us',
     homeRequestQuoteBtn: 'Request a Quote',
-    homeQuoteComingSoon: 'Request a Quote functionality coming soon. Contact us directly at hello@spirolink.com',
+    homeQuoteComingSoon: 'Request a Quote functionality coming soon. Contact us directly at hello@nodalwire.com',
 
     // Services Page
     servicesPageTitle: 'Our Services',
@@ -109,7 +109,7 @@ export const translations = {
     servicesPoNFtthViewCompleteBtn: 'View Complete Technical Details',
 
     // Services - Microwave
-    servicesMicrowaveIntro: 'Microwave networks are a proven, high-reliability communication solution for environments where fiber is unavailable, delayed, cost-prohibitive, or operationally risky. At SpiroLink, we design carrier-grade microwave networks that deliver high availability, predictable performance, and long-term operational resilience across diverse industries.',
+    servicesMicrowaveIntro: 'Microwave networks are a proven, high-reliability communication solution for environments where fiber is unavailable, delayed, cost-prohibitive, or operationally risky. At NodalWire, we design carrier-grade microwave networks that deliver high availability, predictable performance, and long-term operational resilience across diverse industries.',
     servicesMicrowaveIntro2: 'Our approach goes beyond individual radio links. We design end-to-end microwave systems that integrate seamlessly with fiber, IP/MPLS, and enterprise networks—ensuring reliability, scalability, and sustainability.',
     servicesMicrowaveCoreAreas: 'Core Service Areas:',
     servicesMicrowavePlanningTitle: 'Network Planning & Design:',
@@ -151,7 +151,7 @@ export const translations = {
     contactEmail: 'Email',
     contactPhone: 'Phone',
     contactOffice: 'Office',
-    contactEmailAddress: 'hello@spirolink.com',
+    contactEmailAddress: 'hello@nodalwire.com',
     contactPhoneNumber: '(555) 123-4567',
     contactOfficeLocation: 'Namakkal, Tamil Nadu',
     contactFormTitle: 'Send us a Message',
@@ -205,7 +205,7 @@ export const translations = {
     footerCopyright: 'All rights reserved.',
 
     // About Page
-    aboutPageTitle: 'About SPIROLINK',
+    aboutPageTitle: 'About NODALWIRE',
     aboutComingSoon: 'Coming Soon',
     aboutDescription: 'We\'re currently working on sharing our story. Stay tuned for more information about our team, mission, and values!',
 
@@ -259,7 +259,7 @@ export const translations = {
 
     // Home Page
     homeHeroTitle: 'नवीन और टिकाऊ डिजिटल समाधान',
-    homeHeroDescription: 'SPIROLINK आपकी दृष्टि को शक्तिशाली डिजिटल उत्पादों में बदल देता है। हम आधुनिक, स्केलेबल समाधान बनाते हैं जो विकास और दक्षता चलाते हैं।',
+    homeHeroDescription: 'NODALWIRE आपकी दृष्टि को शक्तिशाली डिजिटल उत्पादों में बदल देता है। हम आधुनिक, स्केलेबल समाधान बनाते हैं जो विकास और दक्षता चलाते हैं।',
     
     // Home - PON & FTTH Section
     homePoNFtthTitle: 'PON और FTTH नेटवर्क योजना सेवाएं',
@@ -309,7 +309,7 @@ export const translations = {
     homeWifiDesignDesc: 'साइट सर्वे, RF कवरेज योजना, AP प्लेसमेंट, चैनल योजना, रोमिंग अनुकूलन',
 
     // Home - Why Choose Section
-    homeWhyChooseTitle: 'SPIROLINK को क्यों चुनें',
+    homeWhyChooseTitle: 'NODALWIRE को क्यों चुनें',
     homeWhyChooseSubtitle: 'विशेषज्ञ समाधान',
     homeInnovativeTitle: '⚡ नवीन दृष्टिकोण',
     homeInnovativeDesc: 'अत्याधुनिक तकनीक जटिल नेटवर्क चुनौतियों को हल करने के लिए रणनीतिक सोच के साथ युग्मित।',
@@ -327,7 +327,7 @@ export const translations = {
     homeTechnicalDiscussion: '✓ हमारी इंजीनियरिंग टीम के साथ तकनीकी चर्चाएं',
     homeContactUsBtn: 'हमसे संपर्क करें',
     homeRequestQuoteBtn: 'उद्धरण का अनुरोध करें',
-    homeQuoteComingSoon: 'उद्धरण अनुरोध कार्यक्षमता शीघ्र आएगी। सीधे hello@spirolink.com पर हमसे संपर्क करें',
+    homeQuoteComingSoon: 'उद्धरण अनुरोध कार्यक्षमता शीघ्र आएगी। सीधे hello@nodalwire.com पर हमसे संपर्क करें',
 
     // Services Page
     servicesPageTitle: 'हमारी सेवाएं',
@@ -339,7 +339,7 @@ export const translations = {
     servicesPoNFtthViewCompleteBtn: 'पूर्ण तकनीकी विवरण देखें',
 
     // Services - Microwave
-    servicesMicrowaveIntro: 'माइक्रोवेव नेटवर्क उन वातावरणों के लिए एक सिद्ध, उच्च-विश्वसनीयता संचार समाधान है जहां फाइबर अनुपलब्ध, विलंबित, लागत-प्रतिबंधित या परिचालनात्मक रूप से जोखिम भरा है। SpiroLink पर, हम कैरियर-ग्रेड माइक्रोवेव नेटवर्क डिजाइन करते हैं जो विविध उद्योगों में उच्च उपलब्धता, पूर्वानुमानित प्रदर्शन और दीर्घकालीन परिचालनात्मक लचीलापन प्रदान करते हैं।',
+    servicesMicrowaveIntro: 'माइक्रोवेव नेटवर्क उन वातावरणों के लिए एक सिद्ध, उच्च-विश्वसनीयता संचार समाधान है जहां फाइबर अनुपलब्ध, विलंबित, लागत-प्रतिबंधित या परिचालनात्मक रूप से जोखिम भरा है। NodalWire पर, हम कैरियर-ग्रेड माइक्रोवेव नेटवर्क डिजाइन करते हैं जो विविध उद्योगों में उच्च उपलब्धता, पूर्वानुमानित प्रदर्शन और दीर्घकालीन परिचालनात्मक लचीलापन प्रदान करते हैं।',
     servicesMicrowaveIntro2: 'हमारा दृष्टिकोण व्यक्तिगत रेडियो लिंक से परे जाता है। हम एंड-टू-एंड माइक्रोवेव सिस्टम डिजाइन करते हैं जो फाइबर, IP/MPLS और एंटरप्राइज नेटवर्क के साथ निर्बाध रूप से एकीकृत होते हैं।',
     servicesMicrowaveCoreAreas: 'मुख्य सेवा क्षेत्र:',
     servicesMicrowavePlanningTitle: 'नेटवर्क योजना और डिजाइन:',
@@ -381,7 +381,7 @@ export const translations = {
     contactEmail: 'ईमेल',
     contactPhone: 'फोन',
     contactOffice: 'कार्यालय',
-    contactEmailAddress: 'hello@spirolink.com',
+    contactEmailAddress: 'hello@nodalwire.com',
     contactPhoneNumber: '(555) 123-4567',
     contactOfficeLocation: 'नामक्कल, तमिल नाडु',
     contactFormTitle: 'हमें एक संदेश भेजें',
@@ -435,7 +435,7 @@ export const translations = {
     footerCopyright: 'सर्वाधिकार सुरक्षित।',
 
     // About Page
-    aboutPageTitle: 'SPIROLINK के बारे में',
+    aboutPageTitle: 'NODALWIRE के बारे में',
     aboutComingSoon: 'जल्द आ रहा है',
     aboutDescription: 'हम अपनी कहानी साझा करने पर काम कर रहे हैं। अपनी टीम, मिशन और मूल्यों के बारे में अधिक जानकारी के लिए बने रहें!',
 
@@ -489,7 +489,7 @@ export const translations = {
 
     // Home Page
     homeHeroTitle: 'Soluciones digitales innovadoras y sostenibles',
-    homeHeroDescription: 'SPIROLINK transforma tu visión en productos digitales poderosos. Creamos soluciones modernas y escalables que impulsan el crecimiento y la eficiencia.',
+    homeHeroDescription: 'NODALWIRE transforma tu visión en productos digitales poderosos. Creamos soluciones modernas y escalables que impulsan el crecimiento y la eficiencia.',
     
     // Home - PON & FTTH Section
     homePoNFtthTitle: 'Servicios de planificación de redes PON y FTTH',
@@ -539,7 +539,7 @@ export const translations = {
     homeWifiDesignDesc: 'Encuestas de sitio, planificación de cobertura RF, ubicación de AP, planificación de canal, optimización de itinerancia',
 
     // Home - Why Choose Section
-    homeWhyChooseTitle: 'Por qué elegir SPIROLINK',
+    homeWhyChooseTitle: 'Por qué elegir NODALWIRE',
     homeWhyChooseSubtitle: 'Soluciones expertas',
     homeInnovativeTitle: '⚡ Enfoque innovador',
     homeInnovativeDesc: 'Tecnología de punta combinada con pensamiento estratégico para resolver desafíos complejos de red.',
@@ -557,7 +557,7 @@ export const translations = {
     homeTechnicalDiscussion: '✓ Discusiones técnicas con nuestro equipo de ingeniería',
     homeContactUsBtn: 'Contáctanos',
     homeRequestQuoteBtn: 'Solicitar presupuesto',
-    homeQuoteComingSoon: 'La funcionalidad de solicitud de presupuesto próximamente. Contáctanos directamente en hello@spirolink.com',
+    homeQuoteComingSoon: 'La funcionalidad de solicitud de presupuesto próximamente. Contáctanos directamente en hello@nodalwire.com',
 
     // Services Page
     servicesPageTitle: 'Nuestros servicios',
@@ -569,7 +569,7 @@ export const translations = {
     servicesPoNFtthViewCompleteBtn: 'Ver detalles técnicos completos',
 
     // Services - Microwave
-    servicesMicrowaveIntro: 'Las redes de microondas son una solución de comunicación probada y de alta confiabilidad para entornos donde la fibra no está disponible, es costosa o operacionalmente riesgosa. En SpiroLink, diseñamos redes de microondas de calidad de operador que ofrecen alta disponibilidad, rendimiento predecible y resiliencia operacional a largo plazo.',
+    servicesMicrowaveIntro: 'Las redes de microondas son una solución de comunicación probada y de alta confiabilidad para entornos donde la fibra no está disponible, es costosa o operacionalmente riesgosa. En NodalWire, diseñamos redes de microondas de calidad de operador que ofrecen alta disponibilidad, rendimiento predecible y resiliencia operacional a largo plazo.',
     servicesMicrowaveIntro2: 'Nuestro enfoque va más allá de enlaces de radio individuales. Diseñamos sistemas de microondas de extremo a extremo que se integran perfectamente con fibra, IP/MPLS y redes empresariales.',
     servicesMicrowaveCoreAreas: 'Áreas de servicio principal:',
     servicesMicrowavePlanningTitle: 'Planificación y diseño de redes:',
@@ -611,7 +611,7 @@ export const translations = {
     contactEmail: 'Correo electrónico',
     contactPhone: 'Teléfono',
     contactOffice: 'Oficina',
-    contactEmailAddress: 'hello@spirolink.com',
+    contactEmailAddress: 'hello@nodalwire.com',
     contactPhoneNumber: '(555) 123-4567',
     contactOfficeLocation: 'Namakkal, Tamil Nadu',
     contactFormTitle: 'Envíanos un mensaje',
@@ -665,7 +665,7 @@ export const translations = {
     footerCopyright: 'Todos los derechos reservados.',
 
     // About Page
-    aboutPageTitle: 'Acerca de SPIROLINK',
+    aboutPageTitle: 'Acerca de NODALWIRE',
     aboutComingSoon: 'Próximamente',
     aboutDescription: '¡Estamos trabajando en compartir nuestra historia! Espera más información sobre nuestro equipo, misión y valores.',
 
@@ -719,7 +719,7 @@ export const translations = {
 
     // Home Page
     homeHeroTitle: 'Solutions numériques innovantes et durables',
-    homeHeroDescription: 'SPIROLINK transforme votre vision en produits numériques puissants. Nous créons des solutions modernes et évolutives qui stimulent la croissance et l\'efficacité.',
+    homeHeroDescription: 'NODALWIRE transforme votre vision en produits numériques puissants. Nous créons des solutions modernes et évolutives qui stimulent la croissance et l\'efficacité.',
     
     // Home - PON & FTTH Section
     homePoNFtthTitle: 'Services de planification de réseaux PON et FTTH',
@@ -769,7 +769,7 @@ export const translations = {
     homeWifiDesignDesc: 'Études de site, planification de couverture RF, placement d\'AP, planification de canaux, optimisation de l\'itinérance',
 
     // Home - Why Choose Section
-    homeWhyChooseTitle: 'Pourquoi choisir SPIROLINK',
+    homeWhyChooseTitle: 'Pourquoi choisir NODALWIRE',
     homeWhyChooseSubtitle: 'Solutions expertes',
     homeInnovativeTitle: '⚡ Approche innovante',
     homeInnovativeDesc: 'Technologie de pointe associée à une pensée stratégique pour résoudre les défis complexes des réseaux.',
@@ -787,7 +787,7 @@ export const translations = {
     homeTechnicalDiscussion: '✓ Discussions techniques avec notre équipe d\'ingénierie',
     homeContactUsBtn: 'Nous contacter',
     homeRequestQuoteBtn: 'Demander un devis',
-    homeQuoteComingSoon: 'La fonctionnalité de demande de devis arrive bientôt. Contactez-nous directement à hello@spirolink.com',
+    homeQuoteComingSoon: 'La fonctionnalité de demande de devis arrive bientôt. Contactez-nous directement à hello@nodalwire.com',
 
     // Services Page
     servicesPageTitle: 'Nos services',
@@ -799,7 +799,7 @@ export const translations = {
     servicesPoNFtthViewCompleteBtn: 'Voir les détails techniques complets',
 
     // Services - Microwave
-    servicesMicrowaveIntro: 'Les réseaux micro-ondes sont une solution de communication fiable et éprouvée pour les environnements où la fibre n\'est pas disponible, est retardée ou trop coûteuse. Chez SpiroLink, nous concevons des réseaux micro-ondes de qualité opérateur qui offrent une haute disponibilité, des performances prévisibles et une résilience opérationnelle à long terme.',
+    servicesMicrowaveIntro: 'Les réseaux micro-ondes sont une solution de communication fiable et éprouvée pour les environnements où la fibre n\'est pas disponible, est retardée ou trop coûteuse. Chez NodalWire, nous concevons des réseaux micro-ondes de qualité opérateur qui offrent une haute disponibilité, des performances prévisibles et une résilience opérationnelle à long terme.',
     servicesMicrowaveIntro2: 'Notre approche va au-delà des liaisons radio individuelles. Nous concevons des systèmes micro-ondes de bout en bout qui s\'intègrent parfaitement avec la fibre, les réseaux IP/MPLS et d\'entreprise.',
     servicesMicrowaveCoreAreas: 'Domaines d\'activité principaux:',
     servicesMicrowavePlanningTitle: 'Planification et conception de réseaux:',
@@ -841,7 +841,7 @@ export const translations = {
     contactEmail: 'E-mail',
     contactPhone: 'Téléphone',
     contactOffice: 'Bureau',
-    contactEmailAddress: 'hello@spirolink.com',
+    contactEmailAddress: 'hello@nodalwire.com',
     contactPhoneNumber: '(555) 123-4567',
     contactOfficeLocation: 'Namakkal, Tamil Nadu',
     contactFormTitle: 'Envoyez-nous un message',
@@ -895,7 +895,7 @@ export const translations = {
     footerCopyright: 'Tous les droits sont réservés.',
 
     // About Page
-    aboutPageTitle: 'À propos de SPIROLINK',
+    aboutPageTitle: 'À propos de NODALWIRE',
     aboutComingSoon: 'À venir',
     aboutDescription: 'Nous travaillons actuellement pour partager notre histoire. Restez à l\'écoute pour plus d\'informations sur notre équipe, notre mission et nos valeurs!',
 
@@ -973,7 +973,7 @@ export const translations = {
     selectLanguage: 'Sprache wählen',
     selectCountry: 'Land wählen',
     homeHeroTitle: 'Innovative und nachhaltige digitale Lösungen',
-    homeHeroDescription: 'SPIROLINK verwandelt Ihre Vision in leistungsstarke digitale Produkte. Wir erstellen moderne, skalierbare Lösungen, die Wachstum und Effizienz fördern.',
+    homeHeroDescription: 'NODALWIRE verwandelt Ihre Vision in leistungsstarke digitale Produkte. Wir erstellen moderne, skalierbare Lösungen, die Wachstum und Effizienz fördern.',
     homePoNFtthTitle: 'Planungsdienste für PON- und FTTH-Netze',
     homePoNFtthSubtitle: 'Technische Exzellenz',
     homePoNFtthNetworkPlanningTitle: 'FTTH-Netzwerkplanung:',
@@ -1013,7 +1013,7 @@ export const translations = {
     homeWifiSubtitle: 'Exzellenz in der drahtlosen Zugriffsinfrastruktur',
     homeWifiDesignTitle: 'Design von Unternehmens-Wi-Fi-Netzwerken:',
     homeWifiDesignDesc: 'Standortuntersuchungen, RF-Abdeckungsplanung, AP-Platzierung, Kanalplanung, Roaming-Optimierung',
-    homeWhyChooseTitle: 'Warum SPIROLINK wählen',
+    homeWhyChooseTitle: 'Warum NODALWIRE wählen',
     homeWhyChooseSubtitle: 'Expertenlösungen',
     homeInnovativeTitle: '⚡ Innovativer Ansatz',
     homeInnovativeDesc: 'Spitzentechnologie kombiniert mit strategischem Denken zur Lösung komplexer Netzwerk-Herausforderungen.',
@@ -1029,13 +1029,13 @@ export const translations = {
     homeTechnicalDiscussion: '✓ Technische Diskussionen mit unserem Engineeringteam',
     homeContactUsBtn: 'Kontaktieren Sie uns',
     homeRequestQuoteBtn: 'Angebot anfordern',
-    homeQuoteComingSoon: 'Angebotsfunktion kommt bald. Kontaktieren Sie uns direkt unter hello@spirolink.com',
+    homeQuoteComingSoon: 'Angebotsfunktion kommt bald. Kontaktieren Sie uns direkt unter hello@nodalwire.com',
     servicesPageTitle: 'Unsere Dienstleistungen',
     servicesPageDescription: 'Umfassende Lösungen für Faser- und Mikrowellennetzwerk-Planung und digitale Transformation',
     servicesPoNFtthIntro: 'Wir bieten umfassende Engineeringdienstleistungen zum Entwerfen, Skalieren und Aktualisieren von Fasernetzen. Unser Fachwissen umfasst FTTH-Netzwerkplanung, PON-Technologie-Design, ODN-Engineering, Kapazitätsplanung und Netzwerk-Migrationsstrategien.',
     servicesPoNFtthCoreAreas: 'Kernservicebereiche:',
     servicesPoNFtthViewCompleteBtn: 'Vollständige technische Details anzeigen',
-    servicesMicrowaveIntro: 'Mikrowellennetze sind eine bewährte, hochzuverlässige Kommunikationslösung für Umgebungen, in denen Fasern nicht verfügbar, verzögert, zu teuer oder betrieblich riskant sind. Bei SpiroLink entwerfen wir Carrier-Grade-Mikrowellennetze, die hohe Verfügbarkeit, vorhersehbare Leistung und langfristige betriebliche Widerstandsfähigkeit bieten.',
+    servicesMicrowaveIntro: 'Mikrowellennetze sind eine bewährte, hochzuverlässige Kommunikationslösung für Umgebungen, in denen Fasern nicht verfügbar, verzögert, zu teuer oder betrieblich riskant sind. Bei NodalWire entwerfen wir Carrier-Grade-Mikrowellennetze, die hohe Verfügbarkeit, vorhersehbare Leistung und langfristige betriebliche Widerstandsfähigkeit bieten.',
     servicesMicrowaveIntro2: 'Unser Ansatz geht über einzelne Radioverbindungen hinaus. Wir entwerfen End-to-End-Mikrowellensysteme, die sich nahtlos in Faser-, IP/MPLS- und Unternehmensnetze integrieren.',
     servicesMicrowaveCoreAreas: 'Kernservicebereiche:',
     servicesMicrowavePlanningTitle: 'Netzwerkplanung und -design:',
@@ -1071,7 +1071,7 @@ export const translations = {
     contactEmail: 'E-mail',
     contactPhone: 'Telefon',
     contactOffice: 'Büro',
-    contactEmailAddress: 'hello@spirolink.com',
+    contactEmailAddress: 'hello@nodalwire.com',
     contactPhoneNumber: '(555) 123-4567',
     contactOfficeLocation: 'Namakkal, Tamil Nadu',
     contactFormTitle: 'Senden Sie uns eine Nachricht',
@@ -1125,7 +1125,7 @@ export const translations = {
     footerCopyright: 'Alle Rechte vorbehalten.',
 
     // About Page
-    aboutPageTitle: 'Über SPIROLINK',
+    aboutPageTitle: 'Über NODALWIRE',
     aboutComingSoon: 'Kommt bald',
     aboutDescription: 'Wir arbeiten daran, unsere Geschichte zu teilen. Bleiben Sie dran für weitere Informationen über unser Team, unsere Mission und unsere Werte!',
 
@@ -1176,7 +1176,7 @@ export const translations = {
     selectLanguage: 'Selecione Idioma',
     selectCountry: 'Selecione País',
     homeHeroTitle: 'Soluções Digitais Inovadoras e Sustentáveis',
-    homeHeroDescription: 'SPIROLINK transforma sua visão em produtos digitais poderosos. Criamos soluções modernas e escaláveis que impulsionam crescimento e eficiência.',
+    homeHeroDescription: 'NODALWIRE transforma sua visão em produtos digitais poderosos. Criamos soluções modernas e escaláveis que impulsionam crescimento e eficiência.',
     homePoNFtthTitle: 'Serviços de Planejamento de Redes PON e FTTH',
     homePoNFtthSubtitle: 'Excelência Técnica',
     homePoNFtthNetworkPlanningTitle: 'Planejamento de Redes FTTH:',
@@ -1216,7 +1216,7 @@ export const translations = {
     homeWifiSubtitle: 'Excelência em Infraestrutura de Acesso Sem Fio',
     homeWifiDesignTitle: 'Design de Rede Wi-Fi Empresarial:',
     homeWifiDesignDesc: 'Pesquisas de local, planejamento de cobertura RF, posicionamento de AP, planejamento de canal, otimização de roaming',
-    homeWhyChooseTitle: 'Por que Escolher SPIROLINK',
+    homeWhyChooseTitle: 'Por que Escolher NODALWIRE',
     homeWhyChooseSubtitle: 'Soluções Especializadas',
     homeInnovativeTitle: '⚡ Abordagem Inovadora',
     homeInnovativeDesc: 'Tecnologia de ponta combinada com pensamento estratégico para resolver desafios complexos de rede.',
@@ -1232,13 +1232,13 @@ export const translations = {
     homeTechnicalDiscussion: '✓ Discussões técnicas com nossa equipe de engenharia',
     homeContactUsBtn: 'Entre em contato conosco',
     homeRequestQuoteBtn: 'Solicitar Orçamento',
-    homeQuoteComingSoon: 'A funcionalidade de solicitar orçamento em breve. Entre em contato conosco diretamente em hello@spirolink.com',
+    homeQuoteComingSoon: 'A funcionalidade de solicitar orçamento em breve. Entre em contato conosco diretamente em hello@nodalwire.com',
     servicesPageTitle: 'Nossos Serviços',
     servicesPageDescription: 'Soluções abrangentes para planejamento de redes de fibra e microondas e transformação digital',
     servicesPoNFtthIntro: 'Fornecemos serviços de engenharia abrangentes para projetar, escalar e atualizar redes de acesso por fibra. Nossa expertise abrange planejamento de redes FTTH, design de tecnologia PON, engenharia ODN, planejamento de capacidade e estratégias de migração de redes.',
     servicesPoNFtthCoreAreas: 'Áreas de Serviço Principal:',
     servicesPoNFtthViewCompleteBtn: 'Ver Detalhes Técnicos Completos',
-    servicesMicrowaveIntro: 'Redes de microondas são uma solução de comunicação confiável e comprovada para ambientes onde a fibra não está disponível, é atrasada ou muito cara. Na SpiroLink, projetamos redes de microondas de qualidade operadora que oferecem alta disponibilidade, desempenho previsível e resiliência operacional de longo prazo.',
+    servicesMicrowaveIntro: 'Redes de microondas são uma solução de comunicação confiável e comprovada para ambientes onde a fibra não está disponível, é atrasada ou muito cara. Na NodalWire, projetamos redes de microondas de qualidade operadora que oferecem alta disponibilidade, desempenho previsível e resiliência operacional de longo prazo.',
     servicesMicrowaveIntro2: 'Nossa abordagem vai além de links de rádio individuais. Projetamos sistemas de microondas de ponta a ponta que se integram perfeitamente com fibra, redes IP/MPLS e empresariais.',
     servicesMicrowaveCoreAreas: 'Áreas de Serviço Principal:',
     servicesMicrowavePlanningTitle: 'Planejamento e Design de Rede:',
@@ -1274,7 +1274,7 @@ export const translations = {
     contactEmail: 'Email',
     contactPhone: 'Telefone',
     contactOffice: 'Escritório',
-    contactEmailAddress: 'hello@spirolink.com',
+    contactEmailAddress: 'hello@nodalwire.com',
     contactPhoneNumber: '(555) 123-4567',
     contactOfficeLocation: 'Namakkal, Tamil Nadu',
     contactFormTitle: 'Envie-nos uma mensagem',
@@ -1328,7 +1328,7 @@ export const translations = {
     footerCopyright: 'Todos os direitos reservados.',
 
     // About Page
-    aboutPageTitle: 'Sobre SPIROLINK',
+    aboutPageTitle: 'Sobre NODALWIRE',
     aboutComingSoon: 'Em Breve',
     aboutDescription: 'Estamos trabalhando em compartilhar nossa história. Fique atento para mais informações sobre nossa equipe, missão e valores!',
 
@@ -1379,7 +1379,7 @@ export const translations = {
     selectLanguage: '选择语言',
     selectCountry: '选择国家',
     homeHeroTitle: '创新可持续的数字解决方案',
-    homeHeroDescription: 'SPIROLINK 将您的愿景转变为强大的数字产品。我们创建现代化、可扩展的解决方案，推动增长和效率。',
+    homeHeroDescription: 'NODALWIRE 将您的愿景转变为强大的数字产品。我们创建现代化、可扩展的解决方案，推动增长和效率。',
     homePoNFtthTitle: 'PON 和 FTTH 网络规划服务',
     homePoNFtthSubtitle: '技术卓越',
     homePoNFtthNetworkPlanningTitle: 'FTTH 网络规划：',
@@ -1419,7 +1419,7 @@ export const translations = {
     homeWifiSubtitle: '无线接入基础设施卓越',
     homeWifiDesignTitle: '企业 Wi-Fi 网络设计：',
     homeWifiDesignDesc: '现场勘察、RF 覆盖规划、AP 放置、频道规划、漫游优化',
-    homeWhyChooseTitle: '为什么选择 SPIROLINK',
+    homeWhyChooseTitle: '为什么选择 NODALWIRE',
     homeWhyChooseSubtitle: '专家解决方案',
     homeInnovativeTitle: '⚡ 创新方法',
     homeInnovativeDesc: '尖端技术与战略思维相结合，解决复杂的网络挑战。',
@@ -1435,13 +1435,13 @@ export const translations = {
     homeTechnicalDiscussion: '✓ 与我们工程团队的技术讨论',
     homeContactUsBtn: '与我们联系',
     homeRequestQuoteBtn: '请求报价',
-    homeQuoteComingSoon: '报价请求功能即将推出。请直接通过 hello@spirolink.com 与我们联系',
+    homeQuoteComingSoon: '报价请求功能即将推出。请直接通过 hello@nodalwire.com 与我们联系',
     servicesPageTitle: '我们的服务',
     servicesPageDescription: '光纤和微波网络规划以及数字转型的综合解决方案',
     servicesPoNFtthIntro: '我们为设计、扩展和升级光纤接入网络提供全面的工程服务。我们的专业知识涵盖 FTTH 网络规划、PON 技术设计、ODN 工程、容量规划和网络迁移策略。',
     servicesPoNFtthCoreAreas: '核心服务范围：',
     servicesPoNFtthViewCompleteBtn: '查看完整的技术细节',
-    servicesMicrowaveIntro: '微波网络是光纤不可用、延迟、成本高或运营风险的环境的可靠、久经考验的通信解决方案。在 SpiroLink，我们设计运营商级微波网络，提供高可用性、可预测的性能和长期运营弹性。',
+    servicesMicrowaveIntro: '微波网络是光纤不可用、延迟、成本高或运营风险的环境的可靠、久经考验的通信解决方案。在 NodalWire，我们设计运营商级微波网络，提供高可用性、可预测的性能和长期运营弹性。',
     servicesMicrowaveIntro2: '我们的方法超越了单个无线电链路。我们设计端到端微波系统，与光纤、IP/MPLS 和企业网络无缝集成。',
     servicesMicrowaveCoreAreas: '核心服务范围：',
     servicesMicrowavePlanningTitle: '网络规划和设计：',
@@ -1477,7 +1477,7 @@ export const translations = {
     contactEmail: '电子邮件',
     contactPhone: '电话',
     contactOffice: '办公室',
-    contactEmailAddress: 'hello@spirolink.com',
+    contactEmailAddress: 'hello@nodalwire.com',
     contactPhoneNumber: '(555) 123-4567',
     contactOfficeLocation: '纳马卡尔，泰米尔纳德邦',
     contactFormTitle: '给我们发送消息',
@@ -1531,7 +1531,7 @@ export const translations = {
     selectLanguage: '言語を選択',
     selectCountry: '国を選択',
     homeHeroTitle: '革新的で持続可能なデジタルソリューション',
-    homeHeroDescription: 'SPIROLINKはあなたのビジョンを強力なデジタル製品に変えます。成長と効率を推進する最新のスケーラブルなソリューションを構築します。',
+    homeHeroDescription: 'NODALWIREはあなたのビジョンを強力なデジタル製品に変えます。成長と効率を推進する最新のスケーラブルなソリューションを構築します。',
     homePoNFtthTitle: 'PONおよびFTTHネットワーク計画サービス',
     homePoNFtthSubtitle: '技術的卓越',
     homePoNFtthNetworkPlanningTitle: 'FTTHネットワーク計画：',
@@ -1571,7 +1571,7 @@ export const translations = {
     homeWifiSubtitle: 'ワイヤレスアクセスインフラストラクチャの卓越',
     homeWifiDesignTitle: 'エンタープライズWi-Fi ネットワーク設計：',
     homeWifiDesignDesc: 'サイト調査、RF範囲計画、AP配置、チャネル計画、ローミング最適化',
-    homeWhyChooseTitle: 'SPIROLINKを選ぶ理由',
+    homeWhyChooseTitle: 'NODALWIREを選ぶ理由',
     homeWhyChooseSubtitle: 'エキスパートソリューション',
     homeInnovativeTitle: '⚡ 革新的なアプローチ',
     homeInnovativeDesc: '最先端の技術と戦略的思考を組み合わせて、複雑なネットワークの課題を解決します。',
@@ -1587,13 +1587,13 @@ export const translations = {
     homeTechnicalDiscussion: '✓ エンジニアリングチームとの技術的な議論',
     homeContactUsBtn: 'ご連絡ください',
     homeRequestQuoteBtn: '見積もりをリクエスト',
-    homeQuoteComingSoon: '見積もりリクエスト機能はもうすぐです。hello@spirolink.comで直接お問い合わせください',
+    homeQuoteComingSoon: '見積もりリクエスト機能はもうすぐです。hello@nodalwire.comで直接お問い合わせください',
     servicesPageTitle: 'サービス',
     servicesPageDescription: '光ファイバーおよびマイクロ波ネットワーク計画とデジタル変換の包括的なソリューション',
     servicesPoNFtthIntro: 'ファイバーアクセスネットワークの設計、スケーリング、アップグレードのための包括的なエンジニアリングサービスを提供します。当社の専門知識には、FTTHネットワーク計画、PON技術設計、ODNエンジニアリング、容量計画、ネットワーク移行戦略が含まれます。',
     servicesPoNFtthCoreAreas: 'コアサービス領域：',
     servicesPoNFtthViewCompleteBtn: '完全な技術情報を表示',
-    servicesMicrowaveIntro: 'マイクロ波ネットワークは、光ファイバーが利用できない、遅延、費用効果的でない、または運用上危険な環境向けの、実証済みで信頼性の高い通信ソリューションです。 SpiroLinkでは、高可用性、予測可能なパフォーマンス、長期的な運用復元力を提供するキャリアグレードのマイクロ波ネットワークを設計しています。',
+    servicesMicrowaveIntro: 'マイクロ波ネットワークは、光ファイバーが利用できない、遅延、費用効果的でない、または運用上危険な環境向けの、実証済みで信頼性の高い通信ソリューションです。 NodalWireでは、高可用性、予測可能なパフォーマンス、長期的な運用復元力を提供するキャリアグレードのマイクロ波ネットワークを設計しています。',
     servicesMicrowaveIntro2: 'アプローチは個々の無線リンクを超えています。光ファイバー、IP / MPLS、エンタープライズネットワークとシームレスに統合するエンドツーエンドマイクロ波システムを設計します。',
     servicesMicrowaveCoreAreas: 'コアサービス領域：',
     servicesMicrowavePlanningTitle: 'ネットワーク計画と設計：',
@@ -1629,7 +1629,7 @@ export const translations = {
     contactEmail: 'メール',
     contactPhone: '電話',
     contactOffice: '事務所',
-    contactEmailAddress: 'hello@spirolink.com',
+    contactEmailAddress: 'hello@nodalwire.com',
     contactPhoneNumber: '(555) 123-4567',
     contactOfficeLocation: 'ナマッカル、タミルナドゥ',
     contactFormTitle: 'メッセージを送信',
@@ -1683,7 +1683,7 @@ export const translations = {
     selectLanguage: 'Выбрать язык',
     selectCountry: 'Выбрать страну',
     homeHeroTitle: 'Инновационные и устойчивые цифровые решения',
-    homeHeroDescription: 'SPIROLINK трансформирует вашу идею в мощные цифровые продукты. Мы создаем современные, масштабируемые решения, которые обеспечивают рост и эффективность.',
+    homeHeroDescription: 'NODALWIRE трансформирует вашу идею в мощные цифровые продукты. Мы создаем современные, масштабируемые решения, которые обеспечивают рост и эффективность.',
     homePoNFtthTitle: 'Услуги планирования сетей PON и FTTH',
     homePoNFtthSubtitle: 'Техническое совершенство',
     homePoNFtthNetworkPlanningTitle: 'Планирование сетей FTTH:',
@@ -1723,7 +1723,7 @@ export const translations = {
     homeWifiSubtitle: 'Совершенство инфраструктуры беспроводного доступа',
     homeWifiDesignTitle: 'Проектирование корпоративной сети Wi-Fi:',
     homeWifiDesignDesc: 'Обследование площадок, планирование покрытия RF, размещение AP, планирование каналов, оптимизация роумин',
-    homeWhyChooseTitle: 'Почему выбрать SPIROLINK',
+    homeWhyChooseTitle: 'Почему выбрать NODALWIRE',
     homeWhyChooseSubtitle: 'Экспертные решения',
     homeInnovativeTitle: '⚡ Инновационный подход',
     homeInnovativeDesc: 'Передовые технологии в сочетании со стратегическим мышлением для решения сложных проблем сетей.',
@@ -1739,13 +1739,13 @@ export const translations = {
     homeTechnicalDiscussion: '✓ Технические дискуссии с нашей инженерной командой',
     homeContactUsBtn: 'Свяжитесь с нами',
     homeRequestQuoteBtn: 'Запросить цену',
-    homeQuoteComingSoon: 'Функция запроса цены скоро появится. Свяжитесь с нами напрямую по адресу hello@spirolink.com',
+    homeQuoteComingSoon: 'Функция запроса цены скоро появится. Свяжитесь с нами напрямую по адресу hello@nodalwire.com',
     servicesPageTitle: 'Наши услуги',
     servicesPageDescription: 'Комплексные решения для планирования сетей оптического волокна и микроволновых сетей и цифровой трансформации',
     servicesPoNFtthIntro: 'Мы предоставляем комплексные услуги инженерного проектирования для разработки, масштабирования и обновления сетей доступа по оптическому волокну. Наш опыт включает планирование сетей FTTH, проектирование технологии PON, инженерию ODN, планирование емкости и стратегии миграции сетей.',
     servicesPoNFtthCoreAreas: 'Основные области услуг:',
     servicesPoNFtthViewCompleteBtn: 'Просмотреть полные технические сведения',
-    servicesMicrowaveIntro: 'Микроволновые сети - это надежное, проверенное решение для обеспечения связи в среде, где оптическое волокно недоступно, задержано, дорого или операционно опасно. В SpiroLink мы разрабатываем сети микроволн операторского класса, обеспечивающие высокую доступность, предсказуемую производительность и долгосрочную операционную устойчивость.',
+    servicesMicrowaveIntro: 'Микроволновые сети - это надежное, проверенное решение для обеспечения связи в среде, где оптическое волокно недоступно, задержано, дорого или операционно опасно. В NodalWire мы разрабатываем сети микроволн операторского класса, обеспечивающие высокую доступность, предсказуемую производительность и долгосрочную операционную устойчивость.',
     servicesMicrowaveIntro2: 'Наш подход выходит за рамки отдельных радиоканалов. Мы разрабатываем сквозные системы микроволн, которые беспрепятственно интегрируются с оптическим волокном, сетями IP/MPLS и корпоративными сетями.',
     servicesMicrowaveCoreAreas: 'Основные области услуг:',
     servicesMicrowavePlanningTitle: 'Планирование и проектирование сети:',
@@ -1781,7 +1781,7 @@ export const translations = {
     contactEmail: 'Электронная почта',
     contactPhone: 'Телефон',
     contactOffice: 'Офис',
-    contactEmailAddress: 'hello@spirolink.com',
+    contactEmailAddress: 'hello@nodalwire.com',
     contactPhoneNumber: '(555) 123-4567',
     contactOfficeLocation: 'Намаккал, Тамилнаду',
     contactFormTitle: 'Отправить нам сообщение',
@@ -1835,7 +1835,7 @@ export const translations = {
     selectLanguage: 'Seleziona Lingua',
     selectCountry: 'Seleziona Paese',
     homeHeroTitle: 'Soluzioni Digitali Innovative e Sostenibili',
-    homeHeroDescription: 'SPIROLINK trasforma la tua visione in prodotti digitali potenti. Creiamo soluzioni moderne e scalabili che promuovono crescita ed efficienza.',
+    homeHeroDescription: 'NODALWIRE trasforma la tua visione in prodotti digitali potenti. Creiamo soluzioni moderne e scalabili che promuovono crescita ed efficienza.',
     homePoNFtthTitle: 'Servizi di Pianificazione Reti PON e FTTH',
     homePoNFtthSubtitle: 'Eccellenza Tecnica',
     homePoNFtthNetworkPlanningTitle: 'Pianificazione Reti FTTH:',
@@ -1875,7 +1875,7 @@ export const translations = {
     homeWifiSubtitle: 'Eccellenza Infrastruttura Accesso Wireless',
     homeWifiDesignTitle: 'Design Reti Wi-Fi Aziendali:',
     homeWifiDesignDesc: 'Indagini del sito, pianificazione copertura RF, posizionamento AP, pianificazione canali, ottimizzazione roaming',
-    homeWhyChooseTitle: 'Perché Scegliere SPIROLINK',
+    homeWhyChooseTitle: 'Perché Scegliere NODALWIRE',
     homeWhyChooseSubtitle: 'Soluzioni Esperte',
     homeInnovativeTitle: '⚡ Approccio Innovativo',
     homeInnovativeDesc: 'Tecnologia all\'avanguardia abbinata al pensiero strategico per risolvere le sfide complesse della rete.',
@@ -1891,13 +1891,13 @@ export const translations = {
     homeTechnicalDiscussion: '✓ Discussioni tecniche con il nostro team di ingegneria',
     homeContactUsBtn: 'Contattaci',
     homeRequestQuoteBtn: 'Richiedi Preventivo',
-    homeQuoteComingSoon: 'Funzione richiesta preventivo presto disponibile. Contattaci direttamente su hello@spirolink.com',
+    homeQuoteComingSoon: 'Funzione richiesta preventivo presto disponibile. Contattaci direttamente su hello@nodalwire.com',
     servicesPageTitle: 'I Nostri Servizi',
     servicesPageDescription: 'Soluzioni complete per la pianificazione di reti in fibra e microonde e la trasformazione digitale',
     servicesPoNFtthIntro: 'Forniamo servizi di ingegneria completi per progettare, scalare e aggiornare le reti di accesso in fibra. La nostra esperienza copre la pianificazione delle reti FTTH, il design della tecnologia PON, l\'ingegneria ODN, la pianificazione della capacità e le strategie di migrazione della rete.',
     servicesPoNFtthCoreAreas: 'Aree di Servizio Principali:',
     servicesPoNFtthViewCompleteBtn: 'Visualizza Dettagli Tecnici Completi',
-    servicesMicrowaveIntro: 'Le reti a microonde sono una soluzione di comunicazione collaudata e ad alta affidabilità per ambienti in cui la fibra non è disponibile, è ritardata, non conviene o è rischiosa. SpiroLink progetta reti a microonde di qualità carrier che offrono alta disponibilità, prestazioni prevedibili e resilienza operativa a lungo termine.',
+    servicesMicrowaveIntro: 'Le reti a microonde sono una soluzione di comunicazione collaudata e ad alta affidabilità per ambienti in cui la fibra non è disponibile, è ritardata, non conviene o è rischiosa. NodalWire progetta reti a microonde di qualità carrier che offrono alta disponibilità, prestazioni prevedibili e resilienza operativa a lungo termine.',
     servicesMicrowaveIntro2: 'Il nostro approccio va oltre i singoli collegamenti radio. Progettiamo sistemi a microonde end-to-end che si integrano perfettamente con fibra, reti IP/MPLS e aziendali.',
     servicesMicrowaveCoreAreas: 'Aree di Servizio Principali:',
     servicesMicrowavePlanningTitle: 'Pianificazione e Design Rete:',
@@ -1933,7 +1933,7 @@ export const translations = {
     contactEmail: 'Email',
     contactPhone: 'Telefono',
     contactOffice: 'Ufficio',
-    contactEmailAddress: 'hello@spirolink.com',
+    contactEmailAddress: 'hello@nodalwire.com',
     contactPhoneNumber: '(555) 123-4567',
     contactOfficeLocation: 'Namakkal, Tamil Nadu',
     contactFormTitle: 'Inviaci un Messaggio',
@@ -1987,7 +1987,7 @@ export const translations = {
     selectLanguage: '언어 선택',
     selectCountry: '국가 선택',
     homeHeroTitle: '혁신적이고 지속 가능한 디지털 솔루션',
-    homeHeroDescription: 'SPIROLINK는 귀하의 비전을 강력한 디지털 제품으로 변환합니다. 성장과 효율성을 추진하는 현대적이고 확장 가능한 솔루션을 구축합니다.',
+    homeHeroDescription: 'NODALWIRE는 귀하의 비전을 강력한 디지털 제품으로 변환합니다. 성장과 효율성을 추진하는 현대적이고 확장 가능한 솔루션을 구축합니다.',
     homePoNFtthTitle: 'PON 및 FTTH 네트워크 계획 서비스',
     homePoNFtthSubtitle: '기술적 우수성',
     homePoNFtthNetworkPlanningTitle: 'FTTH 네트워크 계획:',
@@ -2027,7 +2027,7 @@ export const translations = {
     homeWifiSubtitle: '무선 액세스 인프라 우수성',
     homeWifiDesignTitle: '엔터프라이즈 Wi-Fi 네트워크 설계:',
     homeWifiDesignDesc: '사이트 조사, RF 범위 계획, AP 배치, 채널 계획, 로밍 최적화',
-    homeWhyChooseTitle: 'SPIROLINK를 선택하는 이유',
+    homeWhyChooseTitle: 'NODALWIRE를 선택하는 이유',
     homeWhyChooseSubtitle: '전문가 솔루션',
     homeInnovativeTitle: '⚡ 혁신적인 접근 방식',
     homeInnovativeDesc: '복잡한 네트워크 문제를 해결하기 위해 첨단 기술과 전략적 사고를 결합합니다.',
@@ -2043,13 +2043,13 @@ export const translations = {
     homeTechnicalDiscussion: '✓ 엔지니어링 팀과의 기술 토론',
     homeContactUsBtn: '연락하기',
     homeRequestQuoteBtn: '견적 요청',
-    homeQuoteComingSoon: '견적 요청 기능이 곧 출시됩니다. hello@spirolink.com에서 직접 문의하세요',
+    homeQuoteComingSoon: '견적 요청 기능이 곧 출시됩니다. hello@nodalwire.com에서 직접 문의하세요',
     servicesPageTitle: '서비스',
     servicesPageDescription: '광섬유 및 마이크로파 네트워크 계획 및 디지털 변환을 위한 포괄적인 솔루션',
     servicesPoNFtthIntro: '광섬유 액세스 네트워크를 설계, 확장 및 업그레이드하기 위한 포괄적인 엔지니어링 서비스를 제공합니다. 당사의 전문 지식은 FTTH 네트워크 계획, PON 기술 설계, ODN 엔지니어링, 용량 계획 및 네트워크 마이그레이션 전략을 포함합니다.',
     servicesPoNFtthCoreAreas: '핵심 서비스 영역:',
     servicesPoNFtthViewCompleteBtn: '완전한 기술 세부 사항 보기',
-    servicesMicrowaveIntro: '마이크로파 네트워크는 광섬유를 사용할 수 없거나 지연되거나 비용이 많이 들거나 운영상 위험한 환경을 위한 입증된 고신뢰성 통신 솔루션입니다. SpiroLink에서는 높은 가용성, 예측 가능한 성능 및 장기적인 운영 복원력을 제공하는 캐리어급 마이크로파 네트워크를 설계합니다.',
+    servicesMicrowaveIntro: '마이크로파 네트워크는 광섬유를 사용할 수 없거나 지연되거나 비용이 많이 들거나 운영상 위험한 환경을 위한 입증된 고신뢰성 통신 솔루션입니다. NodalWire에서는 높은 가용성, 예측 가능한 성능 및 장기적인 운영 복원력을 제공하는 캐리어급 마이크로파 네트워크를 설계합니다.',
     servicesMicrowaveIntro2: '당사의 접근 방식은 개별 무선 링크를 초과합니다. 광섬유, IP/MPLS 및 엔터프라이즈 네트워크와 원활하게 통합되는 엔드투엔드 마이크로파 시스템을 설계합니다.',
     servicesMicrowaveCoreAreas: '핵심 서비스 영역:',
     servicesMicrowavePlanningTitle: '네트워크 계획 및 설계:',
@@ -2085,7 +2085,7 @@ export const translations = {
     contactEmail: '이메일',
     contactPhone: '전화',
     contactOffice: '사무실',
-    contactEmailAddress: 'hello@spirolink.com',
+    contactEmailAddress: 'hello@nodalwire.com',
     contactPhoneNumber: '(555) 123-4567',
     contactOfficeLocation: '나마칼, 타밀나두',
     contactFormTitle: '메시지 보내기',

@@ -29,7 +29,7 @@ export default function RemotePropertyConnectivity() {
             Traditional providers often will not extend cable or fiber to rural properties, and even when they will, the cost and timeline can be unrealistic. Many owners try quick fixes—extenders, consumer mesh kits, multiple hotspots—but performance becomes inconsistent when the property is large, buildings are spread out, or weekends bring heavy usage. The result is frustration, downtime risk, and reputational damage.
           </p>
           <p className="text-slate-700 text-lg leading-relaxed">
-            SpiroLink delivers complete, property-wide connectivity as one engineered system—reliable internet, building-to-building links, enterprise Wi-Fi, phones, and security—designed to perform under real load and handed over with clear documentation. We use the right mix of technologies based on your location and layout, so the solution feels simple to operate and "just works."
+            NodalWire delivers complete, property-wide connectivity as one engineered system—reliable internet, building-to-building links, enterprise Wi-Fi, phones, and security—designed to perform under real load and handed over with clear documentation. We use the right mix of technologies based on your location and layout, so the solution feels simple to operate and "just works."
           </p>
         </div>
       </Section>
@@ -77,7 +77,7 @@ export default function RemotePropertyConnectivity() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="The SpiroLink Advantage" subtitle="Remote Connectivity" isDark themeColor="cyan">
+      <ServiceSection title="The NodalWire Advantage" subtitle="Remote Connectivity" isDark themeColor="cyan">
         <div className="max-w-3xl mx-auto space-y-4">
           {[
             { title: 'One Integrated System, Not a Stack of Products', desc: 'We combine internet, backhaul, Wi-Fi, segmentation, and security into a single design with one operational owner.' },

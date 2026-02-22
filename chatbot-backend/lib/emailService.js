@@ -159,7 +159,7 @@ Keep this email for your records.
           to: ADMIN_EMAIL,
           // So you can reply directly to the user from the admin email
           replyTo: email,
-          subject: 'Payment Confirmation (Admin Copy) - SPIROLINK',
+          subject: 'Payment Confirmation (Admin Copy) - NODALWIRE',
           html: htmlContent,
           text: textContent,
         }),
@@ -173,7 +173,7 @@ Keep this email for your records.
           // SMTP sender must be allowed by your SMTP provider
           from: smtpFrom,
           to: email,
-          subject: 'Payment Confirmation - SPIROLINK',
+          subject: 'Payment Confirmation - NODALWIRE',
           html: htmlContent,
           text: textContent,
         }),
@@ -181,7 +181,7 @@ Keep this email for your records.
           from: smtpFrom,
           to: ADMIN_EMAIL,
           replyTo: email,
-          subject: 'Payment Confirmation (Admin Copy) - SPIROLINK',
+          subject: 'Payment Confirmation (Admin Copy) - NODALWIRE',
           html: htmlContent,
           text: textContent,
         }),

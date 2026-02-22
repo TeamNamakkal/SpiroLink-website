@@ -33,7 +33,7 @@ export default function WifiNetwork() {
             Many Wi-Fi deployments are built around coverage assumptions instead of capacity, airtime efficiency, and security architecture. The result is congestion, unstable roaming, inconsistent user experience, and redesign costs that typically appear after go-live.
           </p>
           <p className="text-slate-700 text-lg leading-relaxed">
-            At SpiroLink, we plan Wi-Fi as an engineered access system—RF design, capacity modeling, security policy, and operational readiness—so networks remain reliable under real-world usage.
+            At NodalWire, we plan Wi-Fi as an engineered access system—RF design, capacity modeling, security policy, and operational readiness—so networks remain reliable under real-world usage.
           </p>
         </div>
       </Section>
@@ -84,7 +84,7 @@ export default function WifiNetwork() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="The SpiroLink Advantage" subtitle="How We Design Wi-Fi Networks" isDark themeColor="cyan">
+      <ServiceSection title="The NodalWire Advantage" subtitle="How We Design Wi-Fi Networks" isDark themeColor="cyan">
         <div className="max-w-3xl mx-auto space-y-4">
           {[
             { title: 'Capacity-First RF Design', desc: 'We design for airtime and throughput, not just RSSI.' },

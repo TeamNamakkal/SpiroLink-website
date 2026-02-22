@@ -1,5 +1,5 @@
 /**
- * API Client for SPIROLINK Unified Service
+ * API Client for NODALWIRE Unified Service
  * Uses relative paths: /api/...
  * Works on localhost AND production (Render)
  */

@@ -30,7 +30,7 @@ export default function PonFtth() {
               Because the outside plant is permanent, correcting these constraints later often requires costly redesigns, service disruption, or accelerated capital spending.
             </p>
             <p className="text-slate-700 text-lg leading-relaxed">
-              At SpiroLink, we design FTTH networks with growth, economics, and upgrade paths in mind—so the network continues to perform predictably as demand evolves, not just at initial deployment.
+              At NodalWire, we design FTTH networks with growth, economics, and upgrade paths in mind—so the network continues to perform predictably as demand evolves, not just at initial deployment.
             </p>
           </div>
         </div>
@@ -77,7 +77,7 @@ export default function PonFtth() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="The SpiroLink Advantage" subtitle="How We Design FTTH Networks" isDark themeColor="cyan">
+      <ServiceSection title="The NodalWire Advantage" subtitle="How We Design FTTH Networks" isDark themeColor="cyan">
         <div className="max-w-3xl mx-auto space-y-4">
           {[
             { title: 'Designed for Take-Rate Reality', desc: 'We design FTTH networks with realistic adoption curves in mind—not just theoretical coverage targets. This ensures feeder capacity, splits, and aggregation points scale smoothly as subscribers come online.' },

@@ -65,7 +65,7 @@ export default function MicrowaveNetwork() {
             Delays, terrain, permitting, and environmental constraints often slow deployments. In many cases, teams are also unsure whether a large fiber investment will deliver the expected return. Yet the expectation remains unchanged: high availability, predictable performance, and timely delivery.
           </p>
           <p className="text-slate-700 text-lg leading-relaxed mb-6">
-            Whether supporting a 5G rollout, connecting critical infrastructure, or extending networks into remote locations, waiting years or committing to uncertain ROI is rarely an option. At SpiroLink, we help bridge this gap by designing carrier-grade microwave networks that deliver resilience and performance where fiber alone is delayed, impractical, or financially uncertain.
+            Whether supporting a 5G rollout, connecting critical infrastructure, or extending networks into remote locations, waiting years or committing to uncertain ROI is rarely an option. At NodalWire, we help bridge this gap by designing carrier-grade microwave networks that deliver resilience and performance where fiber alone is delayed, impractical, or financially uncertain.
           </p>
         </div>
         <SectionHeading
@@ -150,7 +150,7 @@ export default function MicrowaveNetwork() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="The SpiroLink Advantage" subtitle="How We Design Microwave Networks" themeColor="cyan">
+      <ServiceSection title="The NodalWire Advantage" subtitle="How We Design Microwave Networks" themeColor="cyan">
         <div className="max-w-4xl mx-auto">
           <div className="space-y-6">
             <div className="flex gap-6">

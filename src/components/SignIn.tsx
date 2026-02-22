@@ -36,7 +36,7 @@ const SignIn: React.FC = () => {
       <div className="max-w-md w-full space-y-8 relative z-10">
         {/* Logo/Brand */}
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-sky-600 mb-2">SPIROLINK</h1>
+          <h1 className="text-4xl font-bold text-sky-600 mb-2">NODALWIRE</h1>
           <p className="text-slate-600 text-sm">Connectivity at the Speed of Light</p>
         </div>
 

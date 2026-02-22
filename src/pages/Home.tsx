@@ -210,7 +210,7 @@ export default function Home() {
   return (
     <>
       <div style={{ position: 'relative', zIndex: 10 }}>
-      {/* SPIROLINK Hero - Original Design */}
+      {/* NODALWIRE Hero - Original Design */}
       <Section className="bg-gradient-to-br from-green-50 to-blue-50 py-20 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="mt-0 md:-mt-8">

@@ -184,7 +184,7 @@ export default function Payment() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 px-4 py-12">
       <div className="max-w-[520px] mx-auto bg-white p-8 rounded-xl shadow-lg">
-        <h1 className="text-xl font-semibold mb-2">SPIROLINK – Secure Payment</h1>
+        <h1 className="text-xl font-semibold mb-2">NODALWIRE – Secure Payment</h1>
         <p className="text-sm text-slate-500 mb-7">
           Use this page to make payments for network design, consulting, training, or implementation services.
         </p>
@@ -292,7 +292,7 @@ export default function Payment() {
         </div>
 
         <div className="mt-6 text-xs text-slate-400 text-center">
-          © SPIROLINK – Network Design & Engineering Excellence
+          © NODALWIRE – Network Design & Engineering Excellence
         </div>
       </div>
     </div>

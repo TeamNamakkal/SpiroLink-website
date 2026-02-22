@@ -12,7 +12,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="flex flex-col gap-4">
             <Link to="/" className="flex items-center gap-2 w-fit">
-              <span className="font-bold text-xl">SPIROLINK</span>
+              <span className="font-bold text-xl">NODALWIRE</span>
             </Link>
             <p className="text-gray-400 text-sm">
               Innovative and sustainable digital solutions for modern businesses.
@@ -66,7 +66,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2 text-gray-400">
                 <Mail className="w-4 h-4" />
-                <span>contact@spirolink.com</span>
+                <span>contact@nodalwire.com</span>
               </li>
               <li className="flex items-center gap-2 text-gray-400">
                 <Phone className="w-4 h-4" />
@@ -74,7 +74,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2 text-gray-400">
                 <MapPin className="w-4 h-4 mt-1 flex-shrink-0" />
-                <span>Registered Office: SpiroLink LLC 8 THE GRN STE B DOVER, DE 19901</span>
+                <span>Registered Office: NodalWire LLC 8 THE GRN STE B DOVER, DE 19901</span>
               </li>
             </ul>
           </div>
@@ -83,7 +83,7 @@ export function Footer() {
         <div className="border-t pt-8" style={{ borderColor: '#ffffff40' }}>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
-              © {currentYear} SPIROLINK. All rights reserved.
+              © {currentYear} NODALWIRE. All rights reserved.
             </p>
               <div className="flex gap-4 items-center">
               <a

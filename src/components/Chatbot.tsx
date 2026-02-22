@@ -9,7 +9,7 @@ export default function Chatbot() {
     {
       id: 1,
       role: 'bot',
-      content: 'Hello! 👋 I\'m the SPIROLINK assistant. You can type or click the microphone to speak!',
+      content: 'Hello! 👋 I\'m the NODALWIRE assistant. You can type or click the microphone to speak!',
     },
   ]);
   const [input, setInput] = useState('');
@@ -161,7 +161,7 @@ export default function Chatbot() {
           {/* Header */}
           <div className="text-white p-4 rounded-t-lg flex items-center justify-between" style={{ backgroundColor: PRIMARY_COLOR }}>
             <div>
-              <h3 className="font-bold text-lg">SPIROLINK Assistant</h3>
+              <h3 className="font-bold text-lg">NODALWIRE Assistant</h3>
               <p className="text-xs opacity-90">Powered by ChatGPT</p>
             </div>
             <button

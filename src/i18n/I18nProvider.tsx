@@ -9,7 +9,7 @@ interface I18nContextType {
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined);
 
-const LANGUAGE_STORAGE_KEY = 'spirolink_language';
+const LANGUAGE_STORAGE_KEY = 'nodalwire_language';
 
 export function I18nProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>(() => {

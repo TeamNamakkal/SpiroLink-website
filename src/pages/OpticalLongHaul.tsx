@@ -32,7 +32,7 @@ export default function OpticalLongHaul() {
             Because fiber infrastructure is permanent, correcting these design decisions later becomes expensive, disruptive, and operationally risky.
           </p>
           <p className="text-slate-600 text-lg leading-relaxed">
-            At SpiroLink, we design long-haul optical networks with long-term performance in mind. Our focus is not just on initial turn-up, but on building optical systems that continue to operate predictably as capacity, distance, and complexity increase over time.
+            At NodalWire, we design long-haul optical networks with long-term performance in mind. Our focus is not just on initial turn-up, but on building optical systems that continue to operate predictably as capacity, distance, and complexity increase over time.
           </p>
         </div>
       </Section>
@@ -86,7 +86,7 @@ export default function OpticalLongHaul() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="The SpiroLink Advantage" subtitle="How We Design Optical Networks" themeColor="cyan">
+      <ServiceSection title="The NodalWire Advantage" subtitle="How We Design Optical Networks" themeColor="cyan">
         <div className="max-w-4xl mx-auto">
           <div className="space-y-6">
             <div className="flex gap-6">

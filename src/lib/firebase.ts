@@ -8,9 +8,9 @@ import { getAnalytics } from "firebase/analytics";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyCaYqi5aSIC4-NFfrLZQzosaJi77G8pp44",
-  authDomain: "spirolinkweb.firebaseapp.com",
-  projectId: "spirolinkweb",
-  storageBucket: "spirolinkweb.firebasestorage.app",
+  authDomain: "nodalwireweb.firebaseapp.com",
+  projectId: "nodalwireweb",
+  storageBucket: "nodalwireweb.firebasestorage.app",
   messagingSenderId: "1069212184136",
   appId: "1:1069212184136:web:4e2bbe8557c4d2580a327d",
   measurementId: "G-KBYFFZRRJ7"

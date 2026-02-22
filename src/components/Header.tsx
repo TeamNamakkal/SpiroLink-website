@@ -121,11 +121,11 @@ export function Header() {
             <Link
               to="/"
               className="flex items-center gap-3 hover:opacity-90 transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 rounded px-0 py-1"
-              aria-label="SPIROLINK Home"
+              aria-label="NODALWIRE Home"
             >
               <img 
-                src="/assets/downloads/logo.png" 
-                alt="SPIROLINK" 
+                src="/assets/downloads/logo.png?v=nodalwire" 
+                alt="NODALWIRE" 
                 className="h-14 w-auto object-contain"
               />
             </Link>

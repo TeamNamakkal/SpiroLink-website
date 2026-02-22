@@ -16,7 +16,7 @@ export default function Privacy() {
           <div>
             <h2 className="text-2xl font-bold text-slate-900 mb-4">1. Introduction</h2>
             <p className="text-slate-700 mb-4">
-              SPIROLINK ("we", "our", or "us") operates the spirolink.com website (the
+              NODALWIRE ("we", "our", or "us") operates the nodalwire.com website (the
               "Service"). This page informs you of our policies regarding the collection, use, and
               disclosure of personal data when you use our Service and the choices you have
               associated with that data.
@@ -44,7 +44,7 @@ export default function Privacy() {
 
           <div>
             <h2 className="text-2xl font-bold text-slate-900 mb-4">3. Use of Data</h2>
-            <p className="text-slate-700 mb-4">SPIROLINK uses the collected data for various purposes:</p>
+            <p className="text-slate-700 mb-4">NODALWIRE uses the collected data for various purposes:</p>
             <ul className="list-disc list-inside text-slate-700 space-y-2 ml-4">
               <li>To provide and maintain the Service</li>
               <li>To notify you about changes to our Service</li>
@@ -79,7 +79,7 @@ export default function Privacy() {
             <h2 className="text-2xl font-bold text-slate-900 mb-4">6. Contact Us</h2>
             <p className="text-slate-700">
               If you have any questions about this Privacy Policy, please contact us at
-              hello@spirolink.com
+              hello@nodalwire.com
             </p>
           </div>
         </div>

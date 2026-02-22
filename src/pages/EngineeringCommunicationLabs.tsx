@@ -26,7 +26,7 @@ export default function EngineeringCommunicationLabs() {
             Engineering programs today aim to prepare graduates for real-world technology environments, where communication networks, wireless systems, cloud infrastructure, and automation platforms form the backbone of industry operations. However, bridging theoretical learning with practical engineering exposure requires modern laboratory infrastructure, structured experiments, and industry-aligned training frameworks.
           </p>
           <p className="text-slate-700 text-lg leading-relaxed mb-8">
-            SpiroLink designs and delivers advanced communication and networking laboratories that replicate real industry environments inside academic institutions. We provide not just equipment, but complete learning ecosystems—hardware, software, curriculum, faculty enablement, and ongoing support—so students graduate with hands-on engineering competence, not just academic knowledge.
+            NodalWire designs and delivers advanced communication and networking laboratories that replicate real industry environments inside academic institutions. We provide not just equipment, but complete learning ecosystems—hardware, software, curriculum, faculty enablement, and ongoing support—so students graduate with hands-on engineering competence, not just academic knowledge.
           </p>
           <p className="text-slate-700 text-lg leading-relaxed">
             Our laboratory solutions are engineered to align with current industry practices across telecom, networking, cloud, IoT, cybersecurity, and automation domains, ensuring institutions meet accreditation expectations, improve placement outcomes, and build strong industry partnerships.
@@ -54,7 +54,7 @@ export default function EngineeringCommunicationLabs() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="Where SpiroLink Takes Responsibility" subtitle="Complete Laboratory System Delivery" isDark={false} themeColor="cyan">
+      <ServiceSection title="Where NodalWire Takes Responsibility" subtitle="Complete Laboratory System Delivery" isDark={false} themeColor="cyan">
         <div className="mt-12 overflow-hidden">
           <div className="flex gap-6 slide-left-right">
             {[
@@ -91,7 +91,7 @@ export default function EngineeringCommunicationLabs() {
         </div>
       </ServiceSection>
 
-      <ServiceSection title="The SpiroLink Advantage" subtitle="Engineering Education Labs" isDark themeColor="cyan">
+      <ServiceSection title="The NodalWire Advantage" subtitle="Engineering Education Labs" isDark themeColor="cyan">
         <div className="max-w-3xl mx-auto space-y-4">
           {[
             { title: 'Industry-Embedded Engineering Education', desc: 'We design labs based on real operator, vendor, and enterprise deployments, not textbooks.' },

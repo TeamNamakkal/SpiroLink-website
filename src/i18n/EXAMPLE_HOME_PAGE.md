@@ -17,7 +17,7 @@ export default function HomeExample() {
 
   return (
     <>
-      {/* SPIROLINK Hero - With Internationalization */}
+      {/* NODALWIRE Hero - With Internationalization */}
       <Section className="bg-gradient-to-br from-green-50 to-blue-50 py-32">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
@@ -31,7 +31,7 @@ export default function HomeExample() {
             {/* Then use: {t('heroTitle')} */}
 
             <p className="text-xl text-slate-700 mb-8">
-              SPIROLINK transforms your vision into powerful digital products. We build modern,
+              NODALWIRE transforms your vision into powerful digital products. We build modern,
               scalable solutions that drive growth and efficiency.
             </p>
             
@@ -109,6 +109,6 @@ export default function HomeExample() {
  *    <div dir={language === 'ar' ? 'rtl' : 'ltr'}>
  * 
  * 8. Consider country-specific content using localStorage:
- *    const country = localStorage.getItem('spirolink_country');
+ *    const country = localStorage.getItem('nodalwire_country');
  *    if (country === 'IN') { /* Show India-specific content */ }
  */

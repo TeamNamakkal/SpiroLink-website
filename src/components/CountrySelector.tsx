@@ -3,7 +3,7 @@ import { COUNTRIES } from '../lib/countries';
 import { useI18n } from '../i18n/I18nProvider';
 import { detectUserCountry } from '../lib/geolocation';
 
-const COUNTRY_STORAGE_KEY = 'spirolink_country';
+const COUNTRY_STORAGE_KEY = 'nodalwire_country';
 
 export function CountrySelector() {
   const { t } = useI18n();

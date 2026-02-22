@@ -73,30 +73,32 @@ export default function Contact() {
 
   return (
     <>
-      <Section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-40 overflow-hidden relative">
+      <Section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 md:py-40 overflow-hidden relative">
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-sky-500/10 to-cyan-500/10 pointer-events-none" />
-        <div className="relative z-10">
-          <div className="inline-block px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-sky-500/20 rounded-full border border-cyan-400/30 text-sm font-semibold text-cyan-300 mb-6">
-            💬 Get in Touch
+        <div className="relative z-10 px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-center">
+            <div className="inline-block px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-sky-500/20 rounded-full border border-cyan-400/30 text-sm font-semibold text-cyan-300 mb-6">
+              💬 Get in Touch
+            </div>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight bg-gradient-to-r from-cyan-400 via-sky-400 to-cyan-400 bg-clip-text text-transparent mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight bg-gradient-to-r from-cyan-400 via-sky-400 to-cyan-400 bg-clip-text text-transparent mb-6 text-center">
             {t('contactPageTitle')}
           </h1>
-          <p className="text-xl text-slate-300 leading-relaxed max-w-3xl">
+          <p className="text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto text-center">
             {t('contactPageDescription')}
           </p>
         </div>
       </Section>
 
-      <Section className="bg-white">
+      <Section className="bg-white px-4 sm:px-6 lg:px-8">
         <SectionHeading title="Contact Information" subtitle="Multiple ways to reach us" centered={true} />
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-12 md:mt-16">
           {[
             {
               icon: Mail,
               title: 'Email',
-              detail: 'contact@spirolink.com',
-              link: 'mailto:contact@spirolink.com',
+              detail: 'contact@nodalwire.com',
+              link: 'mailto:contact@nodalwire.com',
               color: 'from-cyan-50'
             },
             {
@@ -134,11 +136,11 @@ export default function Contact() {
         </div>
       </Section>
 
-      <Section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+      <Section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white px-4 sm:px-6 lg:px-8">
         <SectionHeading title="Send us a Message" subtitle="We'll respond within 24 hours" centered={true} dark={true} />
-        <div className="max-w-2xl mx-auto mt-16">
-          <form onSubmit={handleSubmit} className="space-y-7">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="max-w-2xl mx-auto mt-12 md:mt-16">
+          <form onSubmit={handleSubmit} className="space-y-5 md:space-y-7">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-semibold text-white mb-2.5 tracking-tight">
                   {t('contactFormNameLabel')} *
@@ -248,10 +250,10 @@ export default function Contact() {
         </div>
       </Section>
 
-      <Section className="bg-white">
+      <Section className="bg-white px-4 sm:px-6 lg:px-8">
         <SectionHeading title="Response Commitment" centered={true} />
         <div className="max-w-2xl mx-auto text-center">
-          <p className="text-slate-600 mb-4">
+          <p className="text-sm sm:text-base text-slate-600 mb-4 leading-relaxed">
             We typically respond to all inquiries within 24 hours during business days. For urgent matters, please call our office directly.
           </p>
         </div>

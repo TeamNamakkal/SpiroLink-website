@@ -96,7 +96,7 @@ es: { myPageTitle: 'Mi Página' }
 - Changing country doesn't reset language
 
 ✅ **Persistent Storage**
-- `localStorage` keys: `spirolink_language` and `spirolink_country`
+- `localStorage` keys: `nodalwire_language` and `nodalwire_country`
 - Survives page refresh and browser restart
 
 ✅ **Keyboard Accessible**
@@ -153,7 +153,7 @@ es: { myPageTitle: 'Mi Página' }
 
 **Access selected country:**
 ```tsx
-const country = localStorage.getItem('spirolink_country');
+const country = localStorage.getItem('nodalwire_country');
 ```
 
 **Get country name from code:**
