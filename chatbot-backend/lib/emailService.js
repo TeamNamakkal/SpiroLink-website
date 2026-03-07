@@ -3,11 +3,11 @@ import { Resend } from 'resend';
 
 let emailService = null;
 
-// Verified sender for Resend (must match your verified domain)
-const RESEND_FROM = 'SpiroLink <contact@spirolink.com>';
+// Verified sender for Resend (use environment variable or default onboarding domain)
+const RESEND_FROM = process.env.RESEND_FROM_EMAIL || 'contact@nodalwire.com';
 
 // Admin/company recipient for notifications
-const ADMIN_EMAIL = process.env.COMPANY_EMAIL || process.env.ADMIN_EMAIL || 'contact@spirolink.com';
+const ADMIN_EMAIL = process.env.COMPANY_EMAIL || process.env.ADMIN_EMAIL || 'contact@nodalwire.com';
 
 /**
  * Initialize email service (Resend or SMTP)
@@ -115,10 +115,10 @@ export const sendPaymentConfirmation = async (paymentData) => {
             
             <p>Keep this email for your records. Our team will be in touch soon to provide you with the services details and next steps.</p>
             
-            <p><strong>Questions?</strong> Contact us at support@spirolink.com</p>
+            <p><strong>Questions?</strong> Contact us at contact@nodalwire.com</p>
           </div>
           <div class="footer">
-            <p>© SPIROLINK – Network Design & Engineering Excellence</p>
+            <p>© NODALWIRE – Network Design & Engineering Excellence</p>
             <p>This is an automated email. Please do not reply directly.</p>
           </div>
         </div>
@@ -139,7 +139,7 @@ Date: ${new Date().toLocaleString()}
 
 Keep this email for your records.
 
-© SPIROLINK – Network Design & Engineering Excellence
+© NODALWIRE – Network Design & Engineering Excellence
   `;
 
   try {
@@ -150,7 +150,7 @@ Keep this email for your records.
           // Always send from the verified domain sender
           from: RESEND_FROM,
           to: email,
-          subject: 'Payment Confirmation - SPIROLINK',
+          subject: 'Payment Confirmation - NODALWIRE',
           html: htmlContent,
           text: textContent,
         }),
@@ -235,7 +235,7 @@ export const sendPaymentFailedEmail = async (paymentData) => {
             <p>Please try again or contact support if you need assistance.</p>
           </div>
           <div class="footer">
-            <p>© SPIROLINK</p>
+            <p>© NODALWIRE</p>
           </div>
         </div>
       </body>
@@ -247,7 +247,7 @@ export const sendPaymentFailedEmail = async (paymentData) => {
       await emailService.client.emails.send({
         from: RESEND_FROM,
         to: email,
-        subject: 'Payment Failed - SPIROLINK',
+        subject: 'Payment Failed - NODALWIRE',
         html: htmlContent,
       });
     }

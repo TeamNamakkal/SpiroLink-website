@@ -22,6 +22,7 @@ import Dashboard from './pages/Dashboard';
 import Payment from './pages/Payment';
 import PaymentSuccess from './pages/PaymentSuccess';
 import PaymentCancel from './pages/PaymentCancel';
+import DigitalCard from './pages/DigitalCard';
 
 // Protected Route Component
 interface ProtectedRouteProps {
@@ -54,7 +55,7 @@ export default function App() {
     <I18nProvider>
       <AuthProvider>
         <BrowserRouter>
-          <div className="flex flex-col min-h-screen relative z-[5]">
+          <div className="flex flex-col min-h-screen">
             <Header />
             <main className="flex-grow pt-16">
               <Routes>
@@ -76,6 +77,7 @@ export default function App() {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/terms" element={<Terms />} />
+                <Route path="/card" element={<DigitalCard />} />
               </Routes>
             </main>
             <Footer />

@@ -1,10 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Mail, Phone, MapPin, Linkedin, Twitter, Github } from 'lucide-react';
 
 const PRIMARY_COLOR = '#0C94CE';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+
+  if (location.pathname === '/card') {
+    return null;
+  }
 
   return (
     <footer className="bg-gray-900 text-white relative z-10">
