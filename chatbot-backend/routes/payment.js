@@ -234,7 +234,44 @@ router.post('/stripe/webhook', express.raw({type: 'application/json'}), async (r
         const session = event.data.object;
         console.log('✅ Checkout session completed:', session.id);
 
-        const payment = await paymentsDb.getPaymentByStripeSession(session.id);
+        let payment = await paymentsDb.getPaymentByStripeSession(session.id);
+
+        // Fallback insert: create payment if checkout was completed without a pre-created DB row
+        if (!payment) {
+          const email =
+            session.customer_details?.email ||
+            session.customer_email ||
+            session.metadata?.customer_email ||
+            'unknown@stripe.customer';
+          const name =
+            session.customer_details?.name ||
+            session.metadata?.customer_name ||
+            null;
+          const serviceType =
+            session.metadata?.service_type ||
+            session.metadata?.serviceType ||
+            'Stripe Checkout';
+          const amount = Number(session.amount_total || 0) / 100;
+
+          payment = await paymentsDb.createPayment({
+            email,
+            name,
+            service_type: serviceType,
+            amount,
+            currency: (session.currency || 'usd').toUpperCase(),
+            stripe_session_id: session.id,
+            stripe_payment_intent_id: session.payment_intent || null,
+            metadata: {
+              source: 'stripe_webhook',
+              event_type: event.type,
+              customer_id: session.customer || null,
+              raw_metadata: session.metadata || {},
+            },
+          });
+
+          console.log(`✅ Inserted payment from webhook for ${email}`);
+        }
+
         if (payment) {
           if (session.payment_intent) {
             await paymentsDb.updateStripePaymentIntentForPayment(payment.id, session.payment_intent);
@@ -299,7 +336,27 @@ router.post('/stripe/webhook', express.raw({type: 'application/json'}), async (r
         const intent = event.data.object;
         console.log('✅ Payment intent succeeded:', intent.id);
 
-        const payment = await paymentsDb.getPaymentByStripeIntent(intent.id);
+        let payment = await paymentsDb.getPaymentByStripeIntent(intent.id);
+
+        // Fallback insert when webhook arrives without an existing payment row
+        if (!payment) {
+          payment = await paymentsDb.createPayment({
+            email: intent.receipt_email || intent.metadata?.customer_email || 'unknown@stripe.customer',
+            name: intent.metadata?.customer_name || null,
+            service_type: intent.metadata?.service_type || intent.description || 'Stripe Payment Intent',
+            amount: Number(intent.amount_received || intent.amount || 0) / 100,
+            currency: (intent.currency || 'usd').toUpperCase(),
+            stripe_session_id: null,
+            stripe_payment_intent_id: intent.id,
+            metadata: {
+              source: 'stripe_webhook',
+              event_type: event.type,
+              raw_metadata: intent.metadata || {},
+            },
+          });
+          console.log(`✅ Inserted payment from payment_intent webhook: ${intent.id}`);
+        }
+
         if (payment && payment.status === 'pending') {
           await paymentsDb.updatePaymentStatus(
             payment.id,
