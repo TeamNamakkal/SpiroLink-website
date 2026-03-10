@@ -21,15 +21,8 @@ const PORT = process.env.PORT || 5000;
    MIDDLEWARE
 ================================ */
 app.use(cors({ origin: true }));
-const jsonParser = express.json();
-app.use((req, res, next) => {
-  const isStripeWebhook = req.originalUrl.startsWith('/api/payment/stripe/webhook');
-  if (isStripeWebhook) {
-    next(); // Skip JSON parsing for Stripe webhook
-  } else {
-    jsonParser(req, res, next);
-  }
-});
+app.use('/api/payment/stripe/webhook', express.raw({ type: 'application/json' }));
+app.use(express.json());
 
 /* ===============================
    OPENAI INITIALIZATION
