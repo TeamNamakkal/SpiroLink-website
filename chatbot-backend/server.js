@@ -21,6 +21,7 @@ const PORT = process.env.PORT || 5000;
    MIDDLEWARE
 ================================ */
 app.use(cors({ origin: true }));
+app.use('/api/payment/stripe/webhook', express.raw({ type: 'application/json' }));
 app.use(express.json());
 
 /* ===============================

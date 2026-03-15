@@ -4,14 +4,18 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const shouldUseSsl = process.env.DATABASE_URL?.includes('render.com');
+const dbUrl = process.env.DATABASE_URL || '';
+const shouldUseSsl =
+  dbUrl.includes('render.com') ||
+  dbUrl.includes('railway.app') ||
+  dbUrl.includes('rlwy.net');
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: dbUrl,
   ssl: shouldUseSsl ? { rejectUnauthorized: false } : undefined,
   max: 20,
   idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 2000,
+  connectionTimeoutMillis: 10000,
 });
 
 pool.on('connect', () => {
