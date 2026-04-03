@@ -28,6 +28,8 @@ export function ImageCarousel({
 }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+  const [containerRef, setContainerRef] = useState<HTMLDivElement | null>(null);
 
   // Auto-rotate carousel
   useEffect(() => {
@@ -39,6 +41,34 @@ export function ImageCarousel({
 
     return () => clearInterval(interval);
   }, [isAutoPlay, images.length, autoRotateInterval]);
+
+  useEffect(() => {
+    if (!containerRef) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      setIsVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px -8% 0px',
+      }
+    );
+
+    observer.observe(containerRef);
+
+    return () => observer.disconnect();
+  }, [containerRef]);
 
   const goToPrevious = () => {
     setIsAutoPlay(false);
@@ -62,8 +92,17 @@ export function ImageCarousel({
 
   return (
     <div
+      ref={setContainerRef}
       className={`relative w-full bg-white rounded-2xl overflow-hidden shadow-lg ${className}`}
-      style={{ aspectRatio: '16/9', maxWidth: '100%', ...style }}
+      style={{
+        aspectRatio: '16/9',
+        maxWidth: '100%',
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
+        transition: 'opacity 500ms ease-out, transform 500ms ease-out',
+        willChange: 'opacity, transform',
+        ...style,
+      }}
     >
       {/* Images Container */}
       <div className="relative w-full h-full">

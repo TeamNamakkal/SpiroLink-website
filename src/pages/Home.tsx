@@ -1,199 +1,13 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '../components/ui/Button';
+import { Card, CardContent } from '../components/ui/Card';
 import { Section, SectionHeading } from '../components/ui/Section';
+import { ImageCarousel } from '../components/ImageCarousel';
 import { useI18n } from '../i18n/I18nProvider';
 import StayTuned from '../components/StayTuned';
 import Chatbot from '../components/Chatbot';
-import { useState, useEffect } from 'react';
-
-const images = [
-  { src: '/assets/downloads/ftth.jpg', alt: 'PON FTTH Network' },
-  { src: '/assets/downloads/microwave.jpg', alt: 'Microwave Network' },
-  { src: '/assets/downloads/optical.jpg', alt: 'Optical Long Haul' },
-  { src: '/assets/downloads/wifi.jpg', alt: 'WiFi Network' },
-];
-
-function EricImageSlider() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlay, setIsAutoPlay] = useState(true);
-
-  useEffect(() => {
-    if (!isAutoPlay) return;
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [isAutoPlay]);
-
-  const goToPrevious = () => {
-    setIsAutoPlay(false);
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-    setIsAutoPlay(true);
-  };
-
-  const goToNext = () => {
-    setIsAutoPlay(false);
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    setIsAutoPlay(true);
-  };
-
-  return (
-    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-      {/* Images Container */}
-      <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-        {images.map((image, index) => (
-          <div
-            key={index}
-            style={{
-              position: 'absolute',
-              inset: 0,
-              opacity: index === currentIndex ? 1 : 0,
-              transition: 'opacity 0.7s ease',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: '#f5f5f5',
-            }}
-          >
-            <img
-              src={image.src}
-              alt={image.alt}
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center',
-              }}
-              loading={index === currentIndex ? 'eager' : 'lazy'}
-            />
-            {/* Overlay Gradient */}
-            <div
-              style={{
-                position: 'absolute',
-                inset: 0,
-                background: 'linear-gradient(to top, rgba(0,0,0,0.3), transparent)',
-              }}
-            />
-          </div>
-        ))}
-      </div>
-
-      {/* Left Arrow */}
-      <button
-        onClick={goToPrevious}
-        style={{
-          position: 'absolute',
-          left: '16px',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          zIndex: 20,
-          padding: '8px',
-          borderRadius: '50%',
-          backgroundColor: 'rgba(255, 255, 255, 0.8)',
-          border: 'none',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          transition: 'all 0.3s',
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = 'white';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
-        }}
-      >
-        <ChevronLeft style={{ width: '24px', height: '24px', color: '#1f2937' }} />
-      </button>
-
-      {/* Right Arrow */}
-      <button
-        onClick={goToNext}
-        style={{
-          position: 'absolute',
-          right: '16px',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          zIndex: 20,
-          padding: '8px',
-          borderRadius: '50%',
-          backgroundColor: 'rgba(255, 255, 255, 0.8)',
-          border: 'none',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          transition: 'all 0.3s',
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = 'white';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
-        }}
-      >
-        <ChevronRight style={{ width: '24px', height: '24px', color: '#1f2937' }} />
-      </button>
-
-      {/* Pagination Dots */}
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '16px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: 20,
-          display: 'flex',
-          gap: '8px',
-        }}
-      >
-        {images.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => {
-              setIsAutoPlay(false);
-              setCurrentIndex(index);
-              setIsAutoPlay(true);
-            }}
-            style={{
-              width: index === currentIndex ? '32px' : '10px',
-              height: '10px',
-              borderRadius: '5px',
-              backgroundColor: 'white',
-              border: 'none',
-              cursor: 'pointer',
-              opacity: index === currentIndex ? 1 : 0.6,
-              transition: 'all 0.3s',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Slide Counter */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '16px',
-          right: '16px',
-          zIndex: 20,
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          color: 'white',
-          padding: '8px 12px',
-          borderRadius: '20px',
-          fontSize: '14px',
-          fontWeight: '600',
-        }}
-      >
-        {currentIndex + 1} / {images.length}
-      </div>
-    </div>
-  );
-}
+import { useState } from 'react';
 
 
 export default function Home() {
@@ -291,7 +105,10 @@ export default function Home() {
 
       {/* Ericsson-Style Solutions Section - FULL WIDTH IMAGE BAND */}
       <div style={{ width: '100vw', height: '480px', position: 'relative', left: '50%', transform: 'translateX(-50%)', overflow: 'hidden' }}>
-        <EricImageSlider />
+        <ImageCarousel
+          className="h-full rounded-none shadow-none"
+          style={{ aspectRatio: 'auto', height: '100%', maxWidth: 'none' }}
+        />
       </div>
 
       <div style={{ position: 'relative', zIndex: 10 }}>
@@ -304,18 +121,24 @@ export default function Home() {
           centered={true}
         />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-6 rounded-lg hover:shadow-lg transition-shadow">
-            <h3 className="text-xl font-semibold text-slate-900 mb-3">{t('homeInnovativeTitle')}</h3>
-            <p className="text-slate-600">{t('homeInnovativeDesc')}</p>
-          </div>
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-6 rounded-lg hover:shadow-lg transition-shadow">
-            <h3 className="text-xl font-semibold text-slate-900 mb-3">{t('homeSustainableTitle')}</h3>
-            <p className="text-slate-600">{t('homeSustainableDesc')}</p>
-          </div>
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-6 rounded-lg hover:shadow-lg transition-shadow">
-            <h3 className="text-xl font-semibold text-slate-900 mb-3">{t('homeExpertTitle')}</h3>
-            <p className="text-slate-600">{t('homeExpertDesc')}</p>
-          </div>
+          <Card hoverable reveal revealDelay={0} className="bg-gradient-to-br from-green-50 to-blue-50">
+            <CardContent className="p-6">
+              <h3 className="text-xl font-semibold text-slate-900 mb-3">{t('homeInnovativeTitle')}</h3>
+              <p className="text-slate-600">{t('homeInnovativeDesc')}</p>
+            </CardContent>
+          </Card>
+          <Card hoverable reveal revealDelay={120} className="bg-gradient-to-br from-green-50 to-blue-50">
+            <CardContent className="p-6">
+              <h3 className="text-xl font-semibold text-slate-900 mb-3">{t('homeSustainableTitle')}</h3>
+              <p className="text-slate-600">{t('homeSustainableDesc')}</p>
+            </CardContent>
+          </Card>
+          <Card hoverable reveal revealDelay={240} className="bg-gradient-to-br from-green-50 to-blue-50">
+            <CardContent className="p-6">
+              <h3 className="text-xl font-semibold text-slate-900 mb-3">{t('homeExpertTitle')}</h3>
+              <p className="text-slate-600">{t('homeExpertDesc')}</p>
+            </CardContent>
+          </Card>
         </div>
       </Section>
       </div>
